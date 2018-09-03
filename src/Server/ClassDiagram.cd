@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OpenServiceBroker.Bindings.ServiceBindingsController" Collapsed="true">
+    <Position X="3.75" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAACAAAAEEAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Bindings\ServiceBindingsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenServiceBroker.Instances.ServiceInstancesController" Collapsed="true">
+    <Position X="8.25" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAKAAAAIAAEEAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Instances\ServiceInstancesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenServiceBroker.Catalogs.CatalogController" Collapsed="true">
+    <Position X="0.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Catalogs\CatalogController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenServiceBroker.BrokerControllerBase&lt;TBlocking, TDeferred&gt;" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>ABAIAAAAACAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BrokerControllerBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="OpenServiceBroker.Bindings.IServiceBindingBase">
+    <Position X="8.25" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindings\IServiceBindingBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OpenServiceBroker.Bindings.IServiceBindingBlocking">
+    <Position X="9.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindings\IServiceBindingBlocking.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OpenServiceBroker.Bindings.IServiceBindingDeferred">
+    <Position X="7.25" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAwAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindings\IServiceBindingDeferred.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OpenServiceBroker.Instances.IServiceInstanceBase">
+    <Position X="3.75" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Instances\IServiceInstanceBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OpenServiceBroker.Instances.IServiceInstanceBlocking">
+    <Position X="2.75" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAQAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Instances\IServiceInstanceBlocking.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OpenServiceBroker.Instances.IServiceInstanceDeferred">
+    <Position X="5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAQAAAAAAQAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Instances\IServiceInstanceDeferred.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OpenServiceBroker.Catalogs.ICatalogService">
+    <Position X="0.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Catalogs\ICatalogService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

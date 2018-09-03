@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OpenServiceBroker.Instances.ServiceInstanceAsyncOperation">
+    <Position X="17" Y="3" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAgAAAAAQAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Instances\ServiceInstanceAsyncOperation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Result" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.Instances.ServiceInstanceBase">
+    <Position X="10" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAgAAAAAAAAAAAAIAAAIAAACAAAAA=</HashCode>
+      <FileName>Instances\ServiceInstanceBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.Instances.ServiceInstancePreviousValues" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="6.75" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAggAAAAAAAQAAAIAAAAAAACAAAAA=</HashCode>
+      <FileName>Instances\ServiceInstancePreviousValues.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.Instances.ServiceInstanceProvision" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="3" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAABAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Instances\ServiceInstanceProvision.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.Instances.ServiceInstanceProvisionRequest">
+    <Position X="8.75" Y="3" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAggAAAAAAAQAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Instances\ServiceInstanceProvisionRequest.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.Instances.ServiceInstanceResource">
+    <Position X="11.5" Y="3" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Instances\ServiceInstanceResource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.Instances.ServiceInstanceUpdateRequest" Collapsed="true">
+    <Position X="8.75" Y="5.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAEAA=</HashCode>
+      <FileName>Instances\ServiceInstanceUpdateRequest.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PreviousValues" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.AsyncOperation">
+    <Position X="18.5" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAEAAAAAAAA=</HashCode>
+      <FileName>AsyncOperation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.LastOperationResource" BaseTypeListCollapsed="true">
+    <Position X="18.75" Y="5.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAgAAAAAAAAAAAAIAAAAAABAAAAAA=</HashCode>
+      <FileName>LastOperationResource.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="State" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.Bindings.ServiceBinding">
+    <Position X="23.25" Y="3" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindings\ServiceBinding.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.Bindings.ServiceBindingAsyncOperation" Collapsed="true">
+    <Position X="19.75" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindings\ServiceBindingAsyncOperation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Result" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.Bindings.ServiceBindingBase">
+    <Position X="24.25" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAQAAAgAAAgAAAAAAAAAAEAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindings\ServiceBindingBase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="VolumeMounts" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="OpenServiceBroker.Bindings.ServiceBindingRequest">
+    <Position X="27.75" Y="3" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAgAAAAAAgAAAAAAAAAAAAIAAEIAAAKAAAAA=</HashCode>
+      <FileName>Bindings\ServiceBindingRequest.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BindResource" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.Bindings.ServiceBindingResouceObject" BaseTypeListCollapsed="true">
+    <Position X="27.5" Y="6.25" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgEAAAAAAAAAAAIAAAAAAAIAAAAA=</HashCode>
+      <FileName>Bindings\ServiceBindingResouceObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.Bindings.ServiceBindingResource">
+    <Position X="25.5" Y="3" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAIAAAAAAAAA=</HashCode>
+      <FileName>Bindings\ServiceBindingResource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.Bindings.ServiceBindingVolumeMount">
+    <Position X="32.5" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAIAAAgAAAAAAACAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindings\ServiceBindingVolumeMount.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Mode" />
+      <Property Name="DeviceType" />
+      <Property Name="Device" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="OpenServiceBroker.Bindings.ServiceBindingVolumeMountDevice">
+    <Position X="32.25" Y="6.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Bindings\ServiceBindingVolumeMountDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenServiceBroker.Catalogs.Catalog" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Catalogs\Catalog.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Services" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="OpenServiceBroker.Catalogs.DashboardClient" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAgAAAAAAAAABAAIAAAAAAIAAAAAA=</HashCode>
+      <FileName>Catalogs\DashboardClient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.Catalogs.Plan" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAgAAAAAQAAAAAAIAAAAAAAAAEgAI=</HashCode>
+      <FileName>Catalogs\Plan.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Schemas" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.Catalogs.SchemaParameters" Collapsed="true">
+    <Position X="4" Y="6.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Catalogs\SchemaParameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenServiceBroker.Catalogs.Schemas" Collapsed="true">
+    <Position X="4" Y="4.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAACAA=</HashCode>
+      <FileName>Catalogs\Schemas.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ServiceBinding" />
+      <Property Name="ServiceInstance" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="OpenServiceBroker.Catalogs.Service" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="1.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACEAAAAAAoAAAAgAAAAAQACAAAAMAAAAAAAAAGAAA=</HashCode>
+      <FileName>Catalogs\Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DashboardClient" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Requires" />
+      <Property Name="Plans" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OpenServiceBroker.Catalogs.ServiceBindingSchema" Collapsed="true">
+    <Position X="6.25" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Catalogs\ServiceBindingSchema.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Create" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="OpenServiceBroker.Catalogs.ServiceInstanceSchema" Collapsed="true">
+    <Position X="4" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Catalogs\ServiceInstanceSchema.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Create" />
+      <Property Name="Update" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="OpenServiceBroker.LastOperationResourceState">
+    <Position X="18.75" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAABAAAIA=</HashCode>
+      <FileName>LastOperationResourceState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="OpenServiceBroker.Bindings.ServiceBindingVolumeMountDeviceType">
+    <Position X="34" Y="5.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindings\ServiceBindingVolumeMountDeviceType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="OpenServiceBroker.Bindings.ServiceBindingVolumeMountMode">
+    <Position X="30.5" Y="5.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindings\ServiceBindingVolumeMountMode.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="OpenServiceBroker.Catalogs.Features">
+    <Position X="4" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAgAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Catalogs\Features.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

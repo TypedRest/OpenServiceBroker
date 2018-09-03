@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OpenServiceBroker.OpenServiceBrokerClient" Collapsed="true">
+    <Position X="8" Y="0.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAABAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>OpenServiceBrokerClient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OpenServiceBroker.Bindings.ServiceBindingBlockingEndpoint" Collapsed="true">
+    <Position X="7.5" Y="8.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindings\ServiceBindingBlockingEndpoint.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OpenServiceBroker.Bindings.ServiceBindingDeferredEndpoint" Collapsed="true">
+    <Position X="10.25" Y="8.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgABAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindings\ServiceBindingDeferredEndpoint.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OpenServiceBroker.Bindings.ServiceBindingEndpointBase" Collapsed="true">
+    <Position X="8.75" Y="7" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindings\ServiceBindingEndpointBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OpenServiceBroker.Instances.ServiceInstanceBlockingEndpoint" Collapsed="true">
+    <Position X="7.5" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAQAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Instances\ServiceInstanceBlockingEndpoint.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OpenServiceBroker.Instances.ServiceInstanceDeferredEndpoint" Collapsed="true">
+    <Position X="10.25" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAABAAAAQAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Instances\ServiceInstanceDeferredEndpoint.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OpenServiceBroker.Instances.ServiceInstanceEndpointBase&lt;TServiceBindingEndpointInterface, TServiceBindingEndpoint&gt;" Collapsed="true">
+    <Position X="8" Y="2.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Instances\ServiceInstanceEndpointBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OpenServiceBroker.ServiceEndpointBase" Collapsed="true">
+    <Position X="12.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgEAAAAAAAAAAAAAAAAAAAAAAAAACAIAAAAAAAAAA=</HashCode>
+      <FileName>ServiceEndpointBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenServiceBroker.LastOperationEndpoint" Collapsed="true">
+    <Position X="10.25" Y="9.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LastOperationEndpoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="OpenServiceBroker.IOpenServiceBrokerClient">
+    <Position X="1.75" Y="0.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAABAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>IOpenServiceBrokerClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OpenServiceBroker.Bindings.IServiceBindingDeferredEndpoint">
+    <Position X="4" Y="8.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgABAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindings\IServiceBindingDeferredEndpoint.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OpenServiceBroker.Bindings.IServiceBindingEndpoint">
+    <Position X="1.25" Y="8.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindings\IServiceBindingEndpoint.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OpenServiceBroker.Bindings.IServiceBindingEndpointBase">
+    <Position X="2.5" Y="7" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindings\IServiceBindingEndpointBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint">
+    <Position X="4" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAABAAAAQAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Instances\IServiceInstanceDeferredEndpoint.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OpenServiceBroker.Instances.IServiceInstanceEndpoint">
+    <Position X="1.25" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAQAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Instances\IServiceInstanceEndpoint.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OpenServiceBroker.Instances.IServiceInstanceEndpointBase&lt;TServiceBindingEndpoint&gt;">
+    <Position X="1.75" Y="2.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Instances\IServiceInstanceEndpointBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

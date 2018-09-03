@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>OpenServiceBroker.Client</AssemblyName>
+    <RootNamespace>OpenServiceBroker</RootNamespace>
+    <LangVersion>7.2</LangVersion>
+    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <OutputPath>..\..\artifacts\</OutputPath>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <IncludeSource>True</IncludeSource>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>AXOOM GmbH</Authors>
+    <Company>AXOOM GmbH</Company>
+    <Copyright>Copyright (c) AXOOM GmbH</Copyright>
+    <Description>Open Service Broker API</Description>
+    <PackageIconUrl>https://github.com/AXOOM/OpenServiceBroker/raw/develop/logo.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/AXOOM/OpenServiceBroker</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/AXOOM/OpenServiceBroker</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TypedRest.Reactive" Version="0.38.3-ci0007" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net45'">
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj" />
+  </ItemGroup>
+
+</Project>

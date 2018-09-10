@@ -6,7 +6,7 @@ namespace OpenServiceBroker.Bindings
     public class ServiceBindingResouceObject : IEquatable<ServiceBindingResouceObject>
     {
         [JsonProperty("app_guid")]
-        public string AppGuid { get; set; }
+        public Guid AppGuid { get; set; }
 
         [JsonProperty("route")]
         public string Route { get; set; }

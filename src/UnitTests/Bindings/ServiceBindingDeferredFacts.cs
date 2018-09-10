@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 using OpenServiceBroker.Errors;
@@ -23,7 +24,11 @@ namespace OpenServiceBroker.Bindings
             var request = new ServiceBindingRequest
             {
                 ServiceId = "abc",
-                PlanId = "xyz"
+                PlanId = "xyz",
+                BindResource = new ServiceBindingResouceObject
+                {
+                    AppGuid = Guid.NewGuid()
+                }
             };
             var response = new ServiceBindingAsyncOperation
             {

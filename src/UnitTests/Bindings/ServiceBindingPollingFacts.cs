@@ -15,7 +15,11 @@ namespace OpenServiceBroker.Bindings
             var request = new ServiceBindingRequest
             {
                 ServiceId = "abc",
-                PlanId = "xyz"
+                PlanId = "xyz",
+                BindResource = new ServiceBindingResouceObject
+                {
+                    AppGuid = Guid.NewGuid()
+                }
             };
             var response = new ServiceBindingAsyncOperation
             {

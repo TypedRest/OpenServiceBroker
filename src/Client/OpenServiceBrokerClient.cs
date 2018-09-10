@@ -58,6 +58,12 @@ namespace OpenServiceBroker
             => SetCustomHeader(ApiVersion.HttpHeaderName, version.ToString());
 
         /// <summary>
+        /// Sets the identity of the user that initiated the request from the Platform.
+        /// </summary>
+        public void SetOriginatingIdentity(OriginatingIdentity identity)
+            => SetCustomHeader(OriginatingIdentity.HttpHeaderName, identity.ToString());
+
+        /// <summary>
         /// exposes the catalog of services that the service broker offers
         /// </summary>
         public IElementEndpoint<Catalog> Catalog

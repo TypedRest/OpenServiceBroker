@@ -65,6 +65,15 @@ namespace OpenServiceBroker
             }
         }
 
+        protected OriginatingIdentity OriginatingIdentity
+        {
+            get
+            {
+                string headerValue = Request.Headers[OriginatingIdentity.HttpHeaderName].FirstOrDefault();
+                return string.IsNullOrEmpty(headerValue) ? null : OriginatingIdentity.Parse(headerValue);
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             try

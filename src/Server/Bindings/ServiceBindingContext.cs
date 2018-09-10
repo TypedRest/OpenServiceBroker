@@ -16,6 +16,12 @@ namespace OpenServiceBroker.Bindings
             BindingId = bindingId ?? throw new ArgumentNullException(nameof(bindingId));
         }
 
+        public ServiceBindingContext(string instanceId, string bindingId, OriginatingIdentity originatingIdentity)
+            : base(instanceId, originatingIdentity)
+        {
+            BindingId = bindingId ?? throw new ArgumentNullException(nameof(bindingId));
+        }
+
         public bool Equals(ServiceBindingContext other)
         {
             if (other == null) return false;

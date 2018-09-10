@@ -1,4 +1,6 @@
+using System.Threading.Tasks;
 using FluentAssertions;
+using Newtonsoft.Json.Linq;
 using OpenServiceBroker.Errors;
 using Xunit;
 
@@ -18,6 +20,21 @@ namespace OpenServiceBroker.Instances
         {
             Client.SetApiVersion(new ApiVersion(ApiVersion.Current.Major, ApiVersion.Current.Minor + 1));
             Client.ServiceInstancesBlocking["123"].Awaiting(x => x.FetchAsync()).Should().Throw<ApiVersionNotSupportedException>();
+        }
+
+        [Fact]
+        public async Task OriginatingIdentity()
+        {
+            var request = new ServiceInstanceProvisionRequest
+            {
+                ServiceId = "abc",
+                PlanId = "xyz"
+            };
+            var identity = new OriginatingIdentity("myplatform", new JObject {{"id", "test"}});
+
+            SetupMock(x => x.ProvisionAsync(new ServiceInstanceContext("123", identity), request), new ServiceInstanceProvision());
+            Client.SetOriginatingIdentity(identity);
+            await Client.ServiceInstancesBlocking["123"].ProvisionAsync(request);
         }
     }
 }

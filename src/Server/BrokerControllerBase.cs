@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +23,8 @@ namespace OpenServiceBroker
         {
             try
             {
+                CheckApiVersion();
+
                 if (allowDeferred)
                 {
                     if (TryGetService<TDeferred>(out var asyncService))
@@ -49,6 +52,17 @@ namespace OpenServiceBroker
         {
             service = _scope.ServiceProvider.GetService<T>();
             return (service != null);
+        }
+
+        private void CheckApiVersion()
+        {
+            string headerValue = Request.Headers[ApiVersion.HttpHeaderName].FirstOrDefault();
+            if (!string.IsNullOrEmpty(headerValue))
+            {
+                var clientVersion = ApiVersion.Parse(headerValue);
+                if (clientVersion.Major != ApiVersion.Current.Major || clientVersion.Minor > ApiVersion.Current.Minor)
+                    throw new ApiVersionNotSupportedException($"Client requested API version {clientVersion} but server only supports versions between {ApiVersion.Current.Major}.0 and {ApiVersion.Current}.");
+            }
         }
 
         protected override void Dispose(bool disposing)

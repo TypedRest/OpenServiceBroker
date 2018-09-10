@@ -16,7 +16,7 @@ namespace OpenServiceBroker
 
         private readonly Mock<TMock> _mock = new Mock<TMock>();
 
-        protected OpenServiceBrokerClient Client => new OpenServiceBrokerClient(new Uri("http://localhost"), _server.CreateClient());
+        protected readonly OpenServiceBrokerClient Client;
 
         protected FactsBase()
         {
@@ -25,6 +25,7 @@ namespace OpenServiceBroker
                                                              .AddSingleton(_mock.Object)
                                                              .AddMvc())
                                     .Configure(x => x.UseMvc()));
+            Client = new OpenServiceBrokerClient(new Uri("http://localhost"), _server.CreateClient());
         }
 
         protected void SetupMock(Expression<Func<TMock, Task>> expression)

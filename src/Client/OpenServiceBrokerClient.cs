@@ -19,7 +19,9 @@ namespace OpenServiceBroker
         /// <param name="httpClient">The <see cref="HttpClient"/> to use for communication with My Service.</param>
         public OpenServiceBrokerClient(Uri uri, HttpClient httpClient)
             : base(uri, httpClient)
-        {}
+        {
+            SetApiVersion();
+        }
 
         /// <summary>
         /// Creates a new Open Service Broker Client.
@@ -28,7 +30,9 @@ namespace OpenServiceBroker
         /// <param name="credentials">Optional HTTP Basic Auth credentials used to authenticate against the REST interface.</param>
         public OpenServiceBrokerClient(Uri uri, ICredentials credentials = null)
             : base(uri, credentials)
-        {}
+        {
+            SetApiVersion();
+        }
 
         /// <summary>
         /// Creates a new Open Service Broker Client.
@@ -37,7 +41,21 @@ namespace OpenServiceBroker
         /// <param name="token">The OAuth token to present as a "Bearer" to the REST interface.</param>
         public OpenServiceBrokerClient(Uri uri, string token)
             : base(uri, token)
-        {}
+        {
+            SetApiVersion();
+        }
+
+        /// <summary>
+        /// Sets the Open Service Broker API version to the default value of <see cref="ApiVersion.Current"/>.
+        /// </summary>
+        public void SetApiVersion()
+            => SetApiVersion(ApiVersion.Current);
+
+        /// <summary>
+        /// Sets the Open Service Broker API version to a custom value. Only use this if you know what you are doing!
+        /// </summary>
+        public void SetApiVersion(ApiVersion version)
+            => SetCustomHeader(ApiVersion.HttpHeaderName, version.ToString());
 
         /// <summary>
         /// exposes the catalog of services that the service broker offers

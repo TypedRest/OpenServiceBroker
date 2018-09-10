@@ -15,13 +15,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Authors>AXOOM GmbH</Authors>
+    <Authors>Bastian Eicher</Authors>
     <Company>AXOOM GmbH</Company>
     <Copyright>Copyright (c) AXOOM GmbH</Copyright>
-    <Description>DTO classes for the Open Service Broker REST API</Description>
-    <PackageIconUrl>https://github.com/AXOOM/OpenServiceBroker/raw/develop/logo.png</PackageIconUrl>
+    <Description>DTO classes for the Open Service Broker API</Description>
     <RepositoryUrl>https://github.com/AXOOM/OpenServiceBroker</RepositoryUrl>
     <PackageProjectUrl>https://github.com/AXOOM/OpenServiceBroker</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/AXOOM/OpenServiceBroker/raw/develop/logo.png</PackageIconUrl>
+    <PackageTags>Open Service Broker API</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

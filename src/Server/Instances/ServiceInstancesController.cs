@@ -29,11 +29,12 @@ namespace OpenServiceBroker.Instances
         [ProducesResponseType(typeof(Error), 404)]
         [ProducesResponseType(typeof(Error), 422)]
         public Task<IActionResult> Fetch(
-            [FromRoute(Name = "instance_id"), Required]
-            string instanceId)
-            => Do(allowDeferred: true,
+            [FromRoute(Name = "instance_id"), Required] string instanceId)
+        {
+            return Do(allowDeferred: true,
                 blocking: async x => Ok(await x.FetchAsync(instanceId)),
                 deferred: async x => Ok(await x.FetchAsync(instanceId)));
+        }
 
         /// <summary>
         /// provision a service instance
@@ -55,27 +56,20 @@ namespace OpenServiceBroker.Instances
         [ProducesResponseType(typeof(Error), 409)]
         [ProducesResponseType(typeof(Error), 422)]
         public Task<IActionResult> Provision(
-            [FromRoute(Name = "instance_id"), Required]
-            string instanceId,
+            [FromRoute(Name = "instance_id"), Required] string instanceId,
             [FromBody, Required] ServiceInstanceProvisionRequest request,
-            [FromQuery(Name = "accepts_incomplete")]
-            bool acceptsIncomplete = false)
-            => Do(acceptsIncomplete,
-                blocking: async x => ProvisionSyncResult(instanceId, await x.ProvisionAsync(instanceId, request)),
+            [FromQuery(Name = "accepts_incomplete")] bool acceptsIncomplete = false)
+        {
+            var context = Context(instanceId);
+            return Do(acceptsIncomplete,
+                blocking: async x => SyncResult(context, await x.ProvisionAsync(context, request)),
                 deferred: async x =>
                 {
-                    var result = await x.ProvisionAsync(instanceId, request);
+                    var result = await x.ProvisionAsync(context, request);
                     return string.IsNullOrEmpty(result.Operation)
-                        ? ProvisionSyncResult(instanceId, result.Result)
-                        : AsyncResult(instanceId, result, request);
+                        ? SyncResult(context, result.Result)
+                        : AsyncResult(context, result, request);
                 });
-
-        private IActionResult ProvisionSyncResult(string instanceId, ServiceInstanceProvision result)
-        {
-            if (result.Unchanged)
-                return Ok(result);
-            else
-                return CreatedAtAction(nameof(Fetch), new {instanceId}, result);
         }
 
         /// <summary>
@@ -94,24 +88,25 @@ namespace OpenServiceBroker.Instances
         [ProducesResponseType(typeof(Error), 400)]
         [ProducesResponseType(typeof(Error), 422)]
         public Task<IActionResult> Update(
-            [FromRoute(Name = "instance_id"), Required]
-            string instanceId,
+            [FromRoute(Name = "instance_id"), Required] string instanceId,
             [FromBody, Required] ServiceInstanceUpdateRequest request,
-            [FromQuery(Name = "accepts_incomplete")]
-            bool acceptsIncomplete = false)
-            => Do(acceptsIncomplete,
+            [FromQuery(Name = "accepts_incomplete")] bool acceptsIncomplete = false)
+        {
+            var context = Context(instanceId);
+            return Do(acceptsIncomplete,
                 blocking: async x =>
                 {
-                    await x.UpdateAsync(instanceId, request);
+                    await x.UpdateAsync(context, request);
                     return Ok();
                 },
                 deferred: async x =>
                 {
-                    var result = await x.UpdateAsync(instanceId, request);
+                    var result = await x.UpdateAsync(context, request);
                     return string.IsNullOrEmpty(result.Operation)
                         ? Ok()
-                        : AsyncResult(instanceId, result, request);
+                        : AsyncResult(context, result, request);
                 });
+        }
 
         /// <summary>
         /// deprovision a service instance
@@ -132,39 +127,26 @@ namespace OpenServiceBroker.Instances
         [ProducesResponseType(typeof(Error), 410)]
         [ProducesResponseType(typeof(Error), 422)]
         public Task<IActionResult> Deprovision(
-            [FromRoute(Name = "instance_id"), Required]
-            string instanceId,
-            [FromQuery(Name = "service_id"), Required]
-            string serviceId,
-            [FromQuery(Name = "plan_id"), Required]
-            string planId,
-            [FromQuery(Name = "accepts_incomplete")]
-            bool acceptsIncomplete = false)
-            => Do(acceptsIncomplete,
+            [FromRoute(Name = "instance_id"), Required] string instanceId,
+            [FromQuery(Name = "service_id"), Required] string serviceId,
+            [FromQuery(Name = "plan_id"), Required] string planId,
+            [FromQuery(Name = "accepts_incomplete")] bool acceptsIncomplete = false)
+        {
+            var context = Context(instanceId);
+            return Do(acceptsIncomplete,
                 blocking: async x =>
                 {
-                    await x.DeprovisionAsync(instanceId, serviceId, planId);
+                    await x.DeprovisionAsync(context, serviceId, planId);
                     return Ok();
                 },
                 deferred: async x =>
                 {
-                    var result = await x.DeprovisionAsync(instanceId, serviceId, planId);
+                    var result = await x.DeprovisionAsync(context, serviceId, planId);
                     return string.IsNullOrEmpty(result.Operation)
                         ? Ok()
-                        : AsyncResult(instanceId, result);
+                        : AsyncResult(context, result);
                 });
-
-        private IActionResult AsyncResult(string instanceId, AsyncOperation result, ServiceInstanceBase request = null)
-            => AcceptedAtAction(
-                actionName: nameof(GetLastOperation),
-                routeValues: new
-                {
-                    instanceId,
-                    serviceId = request?.ServiceId,
-                    planId = request?.PlanId,
-                    operation = result.Operation
-                },
-                result);
+        }
 
         /// <summary>
         /// get last requested operation state for service instance
@@ -181,13 +163,46 @@ namespace OpenServiceBroker.Instances
         [ProducesResponseType(typeof(Error), 400)]
         [ProducesResponseType(typeof(Error), 410)]
         public Task<IActionResult> GetLastOperation(
-            [FromRoute(Name = "instance_id"), Required]
-            string instanceId,
+            [FromRoute(Name = "instance_id"), Required] string instanceId,
             [FromQuery(Name = "service_id")] string serviceId = null,
             [FromQuery(Name = "plan_id")] string planId = null,
             [FromQuery(Name = "operation")] string operation = null)
-            => Do(allowDeferred: true,
+        {
+            var context = Context(instanceId);
+            return Do(allowDeferred: true,
                 blocking: _ => throw new NotSupportedException("This server does not support asynchronous operations."),
-                deferred: async x => Ok(await x.GetLastOperationAsync(instanceId, serviceId, planId, operation)));
+                deferred: async x => Ok(await x.GetLastOperationAsync(context, serviceId, planId, operation)));
+        }
+
+        private ServiceInstanceContext Context(string instanceId)
+            => new ServiceInstanceContext(instanceId);
+
+        private IActionResult SyncResult(ServiceInstanceContext context, IUnchangedFlag result)
+        {
+            if (result.Unchanged)
+                return Ok(result);
+            else
+            {
+                return CreatedAtAction(
+                    actionName: nameof(Fetch),
+                    routeValues: new
+                    {
+                        instanceId = context.InstanceId
+                    },
+                    result);
+            }
+        }
+
+        private IActionResult AsyncResult(ServiceInstanceContext context, AsyncOperation result, IServicePlanReference request = null)
+            => AcceptedAtAction(
+                actionName: nameof(GetLastOperation),
+                routeValues: new
+                {
+                    instanceId = context.InstanceId,
+                    serviceId = request?.ServiceId,
+                    planId = request?.PlanId,
+                    operation = result.Operation
+                },
+                result);
     }
 }

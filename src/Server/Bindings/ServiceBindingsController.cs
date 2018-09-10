@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using OpenServiceBroker.Errors;
-using OpenServiceBroker.Instances;
 
 namespace OpenServiceBroker.Bindings
 {
@@ -30,13 +29,13 @@ namespace OpenServiceBroker.Bindings
         [ProducesResponseType(typeof(Error), 404)]
         [ProducesResponseType(typeof(Error), 422)]
         public Task<IActionResult> Fetch(
-            [FromRoute(Name = "instance_id"), Required]
-            string instanceId,
-            [FromRoute(Name = "binding_id"), Required]
-            string bindingId)
-            => Do(allowDeferred: true,
+            [FromRoute(Name = "instance_id"), Required] string instanceId,
+            [FromRoute(Name = "binding_id"), Required] string bindingId)
+        {
+            return Do(allowDeferred: true,
                 blocking: async x => Ok(await x.FetchAsync(instanceId, bindingId)),
                 deferred: async x => Ok(await x.FetchAsync(instanceId, bindingId)));
+        }
 
         /// <summary>
         /// generates a service binding
@@ -59,29 +58,21 @@ namespace OpenServiceBroker.Bindings
         [ProducesResponseType(typeof(Error), 409)]
         [ProducesResponseType(typeof(Error), 422)]
         public Task<IActionResult> Bind(
-            [FromRoute(Name = "instance_id"), Required]
-            string instanceId,
-            [FromRoute(Name = "binding_id"), Required]
-            string bindingId,
+            [FromRoute(Name = "instance_id"), Required] string instanceId,
+            [FromRoute(Name = "binding_id"), Required] string bindingId,
             [FromBody, Required] ServiceBindingRequest request,
-            [FromQuery(Name = "accepts_incomplete")]
-            bool acceptsIncomplete = false)
-            => Do(acceptsIncomplete,
-                blocking: async x => BindSyncResult(instanceId, await x.BindAsync(instanceId, bindingId, request)),
+            [FromQuery(Name = "accepts_incomplete")] bool acceptsIncomplete = false)
+        {
+            var context = Context(instanceId, bindingId);
+            return Do(acceptsIncomplete,
+                blocking: async x => SyncResult(context, await x.BindAsync(context, request)),
                 deferred: async x =>
                 {
-                    var result = await x.BindAsync(instanceId, bindingId, request);
+                    var result = await x.BindAsync(context, request);
                     return string.IsNullOrEmpty(result.Operation)
-                        ? BindSyncResult(instanceId, result.Result)
-                        : AsyncResult(instanceId, bindingId, result, request);
+                        ? SyncResult(context, result.Result)
+                        : AsyncResult(context, result, request);
                 });
-
-        private IActionResult BindSyncResult(string instanceId, ServiceBinding result)
-        {
-            if (result.Unchanged)
-                return Ok(result);
-            else
-                return CreatedAtAction(nameof(Fetch), new {instanceId}, result);
         }
 
         /// <summary>
@@ -104,42 +95,27 @@ namespace OpenServiceBroker.Bindings
         [ProducesResponseType(typeof(Error), 410)]
         [ProducesResponseType(typeof(Error), 422)]
         public Task<IActionResult> Unbind(
-            [FromRoute(Name = "instance_id"), Required]
-            string instanceId,
-            [FromRoute(Name = "binding_id"), Required]
-            string bindingId,
-            [FromQuery(Name = "service_id"), Required]
-            string serviceId,
-            [FromQuery(Name = "plan_id"), Required]
-            string planId,
-            [FromQuery(Name = "accepts_incomplete")]
-            bool acceptsIncomplete = false)
-            => Do(acceptsIncomplete,
+            [FromRoute(Name = "instance_id"), Required] string instanceId,
+            [FromRoute(Name = "binding_id"), Required] string bindingId,
+            [FromQuery(Name = "service_id"), Required] string serviceId,
+            [FromQuery(Name = "plan_id"), Required] string planId,
+            [FromQuery(Name = "accepts_incomplete")] bool acceptsIncomplete = false)
+        {
+            var context = Context(instanceId, bindingId);
+            return Do(acceptsIncomplete,
                 blocking: async x =>
                 {
-                    await x.UnbindAsync(instanceId, bindingId, serviceId, planId);
+                    await x.UnbindAsync(context, serviceId, planId);
                     return Ok();
                 },
                 deferred: async x =>
                 {
-                    var result = await x.UnbindAsync(instanceId, bindingId, serviceId, planId);
+                    var result = await x.UnbindAsync(context, serviceId, planId);
                     return string.IsNullOrEmpty(result.Operation)
                         ? Ok()
-                        : AsyncResult(instanceId, bindingId, result);
+                        : AsyncResult(context, result);
                 });
-
-        private IActionResult AsyncResult(string instanceId, string bindingId, AsyncOperation result, IServicePlanReference request = null)
-            => AcceptedAtAction(
-                actionName: nameof(GetLastOperation),
-                routeValues: new
-                {
-                    instanceId,
-                    bindingId,
-                    serviceId = request?.ServiceId,
-                    planId = request?.PlanId,
-                    operation = result.Operation
-                },
-                result);
+        }
 
         /// <summary>
         /// get last requested operation state for service binding
@@ -157,15 +133,49 @@ namespace OpenServiceBroker.Bindings
         [ProducesResponseType(typeof(Error), 400)]
         [ProducesResponseType(typeof(Error), 410)]
         public Task<IActionResult> GetLastOperation(
-            [FromRoute(Name = "instance_id"), Required]
-            string instanceId,
-            [FromRoute(Name = "binding_id"), Required]
-            string bindingId,
+            [FromRoute(Name = "instance_id"), Required] string instanceId,
+            [FromRoute(Name = "binding_id"), Required] string bindingId,
             [FromQuery(Name = "service_id")] string serviceId = null,
             [FromQuery(Name = "plan_id")] string planId = null,
             [FromQuery(Name = "operation")] string operation = null)
-            => Do(allowDeferred: true,
+        {
+            var context = Context(instanceId, bindingId);
+            return Do(allowDeferred: true,
                 blocking: _ => throw new NotSupportedException("This server does not support asynchronous operations."),
-                deferred: async x => Ok(await x.GetLastOperationAsync(instanceId, bindingId, serviceId, planId, operation)));
+                deferred: async x => Ok(await x.GetLastOperationAsync(context, serviceId, planId, operation)));
+        }
+
+        private ServiceBindingContext Context(string instanceId, string bindingId)
+            => new ServiceBindingContext(instanceId, bindingId);
+
+        private IActionResult SyncResult(ServiceBindingContext context, IUnchangedFlag result)
+        {
+            if (result.Unchanged)
+                return Ok(result);
+            else
+            {
+                return CreatedAtAction(
+                    actionName: nameof(Fetch),
+                    routeValues: new
+                    {
+                        instanceId = context.InstanceId,
+                        bindingId = context.BindingId
+                    },
+                    result);
+            }
+        }
+
+        private IActionResult AsyncResult(ServiceBindingContext context, AsyncOperation result, IServicePlanReference request = null)
+            => AcceptedAtAction(
+                actionName: nameof(GetLastOperation),
+                routeValues: new
+                {
+                    instanceId = context.InstanceId,
+                    bindingId = context.BindingId,
+                    serviceId = request?.ServiceId,
+                    planId = request?.PlanId,
+                    operation = result.Operation
+                },
+                result);
     }
 }

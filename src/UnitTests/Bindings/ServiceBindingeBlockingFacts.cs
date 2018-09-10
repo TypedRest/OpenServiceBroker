@@ -27,7 +27,7 @@ namespace OpenServiceBroker.Bindings
             };
             var response = new ServiceBinding();
 
-            SetupMock(x => x.BindAsync("123", "456", request), response);
+            SetupMock(x => x.BindAsync(new ServiceBindingContext("123", "456"), request), response);
             var result = await Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].BindAsync(request);
             result.Should().BeEquivalentTo(response);
         }
@@ -42,7 +42,7 @@ namespace OpenServiceBroker.Bindings
             };
             var response = new ServiceBinding();
 
-            SetupMock(x => x.BindAsync("123", "456", request), response);
+            SetupMock(x => x.BindAsync(new ServiceBindingContext("123", "456"), request), response);
             var result = await Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].BindAsync(request);
             result.Should().BeEquivalentTo(response);
         }
@@ -56,21 +56,21 @@ namespace OpenServiceBroker.Bindings
                 PlanId = "xyz"
             };
 
-            SetupMock(x => x.BindAsync("123", "456", request), new ConflictException());
+            SetupMock(x => x.BindAsync(new ServiceBindingContext("123", "456"), request), new ConflictException());
             Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].Awaiting(x => x.BindAsync(request)).Should().Throw<ConflictException>();
         }
 
         [Fact]
         public async Task Unbind()
         {
-            SetupMock(x => x.UnbindAsync("123", "456", "abc", "xyz"));
+            SetupMock(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"));
             await Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].UnbindAsync("abc", "xyz");
         }
 
         [Fact]
         public void UnbindGone()
         {
-            SetupMock(x => x.UnbindAsync("123", "456", "abc", "xyz"), new GoneException());
+            SetupMock(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"), new GoneException());
             Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].Awaiting(x => x.UnbindAsync("abc", "xyz")).Should().Throw<GoneException>();
         }
     }

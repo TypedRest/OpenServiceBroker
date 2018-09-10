@@ -35,7 +35,7 @@ namespace OpenServiceBroker.Instances
                 DashboardUrl = new Uri("http://example.com")
             };
 
-            SetupMock(x => x.ProvisionAsync("123", request), response);
+            SetupMock(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request), response);
             var result = await Client.ServiceInstancesBlocking["123"].ProvisionAsync(request);
             result.Should().BeEquivalentTo(response);
         }
@@ -54,7 +54,7 @@ namespace OpenServiceBroker.Instances
                 Unchanged = true
             };
 
-            SetupMock(x => x.ProvisionAsync("123", request), response);
+            SetupMock(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request), response);
             var result = await Client.ServiceInstancesBlocking["123"].ProvisionAsync(request);
             result.Should().BeEquivalentTo(response);
         }
@@ -68,7 +68,7 @@ namespace OpenServiceBroker.Instances
                 PlanId = "xyz"
             };
 
-            SetupMock(x => x.ProvisionAsync("123", request), new ConflictException("custom message"));
+            SetupMock(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request), new ConflictException("custom message"));
             Client.ServiceInstancesBlocking["123"].Awaiting(x => x.ProvisionAsync(request)).Should().Throw<ConflictException>().WithMessage("custom message");
         }
 
@@ -81,21 +81,21 @@ namespace OpenServiceBroker.Instances
                 PlanId = "xyz"
             };
 
-            SetupMock(x => x.UpdateAsync("123", request));
+            SetupMock(x => x.UpdateAsync(new ServiceInstanceContext("123"), request));
             await Client.ServiceInstancesBlocking["123"].UpdateAsync(request);
         }
 
         [Fact]
         public async Task Deprovision()
         {
-            SetupMock(x => x.DeprovisionAsync("123", "abc", "xyz"));
+            SetupMock(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"));
             await Client.ServiceInstancesBlocking["123"].DeprovisionAsync("abc", "xyz");
         }
 
         [Fact]
         public void DeprovisionGone()
         {
-            SetupMock(x => x.DeprovisionAsync("123", "abc", "xyz"), new GoneException());
+            SetupMock(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"), new GoneException());
             Client.ServiceInstancesBlocking["123"].Awaiting(x => x.DeprovisionAsync("abc", "xyz")).Should().Throw<GoneException>();
         }
     }

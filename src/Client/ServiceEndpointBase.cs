@@ -45,7 +45,7 @@ namespace OpenServiceBroker
                 {
                     // Error responses without a response in standard format will be handled below
                 }
-                if (error != null) throw BrokerException.FromDto(error);
+                if (error != null) throw BrokerException.FromDto(error, response.StatusCode);
             }
 
             response.EnsureSuccessStatusCode();

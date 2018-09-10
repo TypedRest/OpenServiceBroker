@@ -9,7 +9,7 @@ namespace OpenServiceBroker.Errors
 
         public HttpStatusCode HttpCode { get; }
 
-        public BrokerException(string message, string errorCode, HttpStatusCode httpCode = (HttpStatusCode)422)
+        public BrokerException(string message, string errorCode, HttpStatusCode httpCode = (HttpStatusCode)422 /*UnprocessableEntity*/)
             : base(message)
         {
             ErrorCode = errorCode;
@@ -22,7 +22,7 @@ namespace OpenServiceBroker.Errors
             Description = Message
         };
 
-        public static BrokerException FromDto(Error dto)
+        public static BrokerException FromDto(Error dto, HttpStatusCode statusCode)
         {
             switch (dto.ErrorCode)
             {
@@ -38,9 +38,19 @@ namespace OpenServiceBroker.Errors
                     return new NotFoundException(dto.Description);
                 case RequiresAppException.ErrorCode:
                     return new RequiresAppException(dto.Description);
-                default:
-                    return new BrokerException(dto.ErrorCode, dto.Description);
             }
+
+            switch (statusCode)
+            {
+                case HttpStatusCode.Conflict:
+                    return new ConflictException(dto.Description);
+                case HttpStatusCode.Gone:
+                    return new GoneException(dto.Description);
+                case HttpStatusCode.NotFound:
+                    return new NotFoundException(dto.Description);
+            }
+
+            return new BrokerException(dto.ErrorCode, dto.Description);
         }
     }
 }

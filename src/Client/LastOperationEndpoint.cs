@@ -28,7 +28,7 @@ namespace OpenServiceBroker
             if (response.StatusCode == HttpStatusCode.Gone)
             {
                 var error = await response.Content.ReadAsAsync<Error>(new[] {Serializer});
-                if (error != null) throw BrokerException.FromDto(error);
+                if (error != null) throw BrokerException.FromDto(error, response.StatusCode);
             }
 
             response.EnsureSuccessStatusCode();

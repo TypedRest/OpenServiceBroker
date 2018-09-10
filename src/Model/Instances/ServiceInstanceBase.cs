@@ -15,7 +15,7 @@ namespace OpenServiceBroker.Instances
         public JObject Parameters { get; set; }
 
         protected bool Equals(ServiceInstanceBase other)
-            => string.Equals(ServiceId, other.ServiceId) && string.Equals(PlanId, other.PlanId);
+            => ServiceId == other.ServiceId && PlanId == other.PlanId;
 
         public override bool Equals(object obj)
         {

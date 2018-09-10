@@ -3,14 +3,14 @@
   <Class Name="OpenServiceBroker.Bindings.ServiceBindingsController" Collapsed="true">
     <Position X="3.75" Y="2" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAgAAAACAACAAAAEEAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <HashCode>AAAAgAAAAiAAAAAAAEEAAgAAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Bindings\ServiceBindingsController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OpenServiceBroker.Instances.ServiceInstancesController" Collapsed="true">
     <Position X="8.25" Y="2" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAKAAAAIAAEEAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAqAAAAIAAEEAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Instances\ServiceInstancesController.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -24,7 +24,7 @@
   <Class Name="OpenServiceBroker.BrokerControllerBase&lt;TBlocking, TDeferred&gt;" Collapsed="true">
     <Position X="5.5" Y="0.5" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>ABAIAAAAACAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>ABAIAAAAACAAAAAAAAAAAAAACAAAAAAAACAAAAAAAQA=</HashCode>
       <FileName>BrokerControllerBase.cs</FileName>
     </TypeIdentifier>
   </Class>

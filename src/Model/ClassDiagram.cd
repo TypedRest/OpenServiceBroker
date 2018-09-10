@@ -236,7 +236,7 @@
   <Class Name="OpenServiceBroker.Catalogs.SchemaParameters" Collapsed="true">
     <Position X="4" Y="6.75" Width="4.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
       <FileName>Catalogs\SchemaParameters.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -247,8 +247,8 @@
       <FileName>Catalogs\Schemas.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="ServiceBinding" />
       <Property Name="ServiceInstance" />
+      <Property Name="ServiceBinding" />
     </ShowAsAssociation>
   </Class>
   <Class Name="OpenServiceBroker.Catalogs.Service" BaseTypeListCollapsed="true">

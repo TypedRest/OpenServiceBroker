@@ -14,7 +14,7 @@ namespace OpenServiceBroker.Bindings
         public bool Equals(ServiceBindingResouceObject other)
         {
             if (other == null) return false;
-            return string.Equals(AppGuid, other.AppGuid) && string.Equals(Route, other.Route);
+            return AppGuid == other.AppGuid && Route == other.Route;
         }
 
         public override bool Equals(object obj)

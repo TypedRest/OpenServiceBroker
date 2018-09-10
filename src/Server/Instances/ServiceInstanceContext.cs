@@ -31,14 +31,14 @@ namespace OpenServiceBroker.Instances
         public override bool Equals(object obj)
         {
             if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((ServiceInstanceContext) obj);
+            return obj.GetType() == GetType() && Equals((ServiceInstanceContext)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                var hashCode = InstanceId.GetHashCode();
+                int hashCode = InstanceId.GetHashCode();
                 hashCode = (hashCode * 397) ^ OriginatingIdentity.GetHashCode();
                 return hashCode;
             }

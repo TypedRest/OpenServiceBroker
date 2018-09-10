@@ -33,7 +33,7 @@ namespace OpenServiceBroker.Catalogs
         public DashboardClient DashboardClient { get; set; }
 
         [JsonProperty("plan_updateable")]
-        public bool? PlanUpdateable { get; set; }
+        public bool PlanUpdateable { get; set; }
 
         [JsonProperty("plans", Required = Required.Always)]
         public IList<Plan> Plans { get; } = new List<Plan>();
@@ -41,7 +41,7 @@ namespace OpenServiceBroker.Catalogs
         public bool Equals(Service other)
         {
             if (other == null) return false;
-            return string.Equals(Id, other.Id) && string.Equals(Name, other.Name) && string.Equals(Description, other.Description) && Bindable == other.Bindable && Equals(DashboardClient, other.DashboardClient) && PlanUpdateable == other.PlanUpdateable;
+            return Id == other.Id && Name == other.Name && Description == other.Description && Bindable == other.Bindable && Equals(DashboardClient, other.DashboardClient) && PlanUpdateable == other.PlanUpdateable;
         }
 
         public override bool Equals(object obj)
@@ -54,7 +54,7 @@ namespace OpenServiceBroker.Catalogs
         {
             unchecked
             {
-                int hashCode = (Id != null ? Id.GetHashCode() : 0);
+                int hashCode = Id != null ? Id.GetHashCode() : 0;
                 hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Description != null ? Description.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ Bindable.GetHashCode();

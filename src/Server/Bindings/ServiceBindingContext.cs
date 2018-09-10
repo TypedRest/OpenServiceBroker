@@ -31,7 +31,7 @@ namespace OpenServiceBroker.Bindings
         public override bool Equals(object obj)
         {
             if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((ServiceBindingContext) obj);
+            return obj.GetType() == GetType() && Equals((ServiceBindingContext)obj);
         }
 
         public override int GetHashCode()

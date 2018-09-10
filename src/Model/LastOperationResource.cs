@@ -16,7 +16,7 @@ namespace OpenServiceBroker
         public bool Equals(LastOperationResource other)
         {
             if (other == null) return false;
-            return State == other.State && string.Equals(Description, other.Description);
+            return State == other.State && Description == other.Description;
         }
 
         public override bool Equals(object obj)

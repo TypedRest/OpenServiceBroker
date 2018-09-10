@@ -17,7 +17,7 @@ namespace OpenServiceBroker.Catalogs
         public bool Equals(DashboardClient other)
         {
             if (other == null) return false;
-            return string.Equals(Id, other.Id) && string.Equals(Secret, other.Secret) && string.Equals(RedirectUri, other.RedirectUri);
+            return Id == other.Id && Secret == other.Secret && RedirectUri == other.RedirectUri;
         }
 
         public override bool Equals(object obj)
@@ -30,7 +30,7 @@ namespace OpenServiceBroker.Catalogs
         {
             unchecked
             {
-                int hashCode = (Id != null ? Id.GetHashCode() : 0);
+                int hashCode = Id != null ? Id.GetHashCode() : 0;
                 hashCode = (hashCode * 397) ^ (Secret != null ? Secret.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (RedirectUri != null ? RedirectUri.GetHashCode() : 0);
                 return hashCode;

@@ -3,7 +3,7 @@
   <Class Name="OpenServiceBroker.OpenServiceBrokerClient" Collapsed="true">
     <Position X="8" Y="0.5" Width="4.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAQAABAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAQAABAAAAAAAAIAAAAAAAAAA=</HashCode>
       <FileName>OpenServiceBrokerClient.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />

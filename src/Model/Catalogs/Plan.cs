@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -19,10 +20,11 @@ namespace OpenServiceBroker.Catalogs
         public JObject Metadata { get; set; }
 
         [JsonProperty("free")]
-        public bool? Free { get; set; } = true;
+        [DefaultValue(true)]
+        public bool Free { get; set; } = true;
 
         [JsonProperty("bindable")]
-        public bool? Bindable { get; set; }
+        public bool Bindable { get; set; }
 
         [JsonProperty("schemas")]
         public Schemas Schemas { get; set; }
@@ -30,7 +32,7 @@ namespace OpenServiceBroker.Catalogs
         public bool Equals(Plan other)
         {
             if (other == null) return false;
-            return string.Equals(Id, other.Id) && string.Equals(Name, other.Name) && string.Equals(Description, other.Description) && Free == other.Free && Bindable == other.Bindable;
+            return Id == other.Id && Name == other.Name && Description == other.Description && Free == other.Free && Bindable == other.Bindable;
         }
 
         public override bool Equals(object obj)
@@ -43,7 +45,7 @@ namespace OpenServiceBroker.Catalogs
         {
             unchecked
             {
-                int hashCode = (Id != null ? Id.GetHashCode() : 0);
+                int hashCode = Id != null ? Id.GetHashCode() : 0;
                 hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Description != null ? Description.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ Free.GetHashCode();

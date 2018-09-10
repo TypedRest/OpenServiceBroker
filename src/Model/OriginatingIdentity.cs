@@ -50,7 +50,7 @@ namespace OpenServiceBroker
         {
             if (obj == null) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((OriginatingIdentity) obj);
+            return obj.GetType() == GetType() && Equals((OriginatingIdentity)obj);
         }
 
         public override int GetHashCode()

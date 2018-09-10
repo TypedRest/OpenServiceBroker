@@ -21,7 +21,7 @@ namespace OpenServiceBroker.Instances
         public string SpaceId { get; set; }
 
         public bool Equals(ServiceInstancePreviousValues other)
-            => other != null && string.Equals(PlanId, other.PlanId);
+            => other != null && PlanId == other.PlanId;
 
         public override bool Equals(object obj)
         {
@@ -29,6 +29,6 @@ namespace OpenServiceBroker.Instances
             return obj.GetType() == GetType() && Equals((ServiceInstancePreviousValues)obj);
         }
 
-        public override int GetHashCode() => (PlanId != null ? PlanId.GetHashCode() : 0);
+        public override int GetHashCode() => PlanId != null ? PlanId.GetHashCode() : 0;
     }
 }

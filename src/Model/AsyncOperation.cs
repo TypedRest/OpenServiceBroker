@@ -9,7 +9,7 @@ namespace OpenServiceBroker
         public string Operation { get; set; }
 
         public bool Equals(AsyncOperation other)
-            => other != null && string.Equals(Operation, other.Operation);
+            => other != null && Operation == other.Operation;
 
         public override bool Equals(object obj)
         {
@@ -17,6 +17,6 @@ namespace OpenServiceBroker
             return obj.GetType() == GetType() && Equals((AsyncOperation)obj);
         }
 
-        public override int GetHashCode() => (Operation != null ? Operation.GetHashCode() : 0);
+        public override int GetHashCode() => Operation != null ? Operation.GetHashCode() : 0;
     }
 }

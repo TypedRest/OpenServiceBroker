@@ -1,6 +1,4 @@
 ﻿using Newtonsoft.Json;
-using OpenServiceBroker.Bindings;
-using OpenServiceBroker.Instances;
 
 namespace OpenServiceBroker.Catalogs
 {

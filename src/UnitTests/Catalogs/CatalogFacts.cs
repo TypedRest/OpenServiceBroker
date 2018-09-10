@@ -24,7 +24,7 @@ namespace OpenServiceBroker.Catalogs
 
             SetupMock(x => x.GetCatalogAsync(), response);
             var result = await Client.Catalog.ReadAsync();
-            AssertionExtensions.Should((object)result).BeEquivalentTo(response);
+            result.Should().BeEquivalentTo(response);
         }
     }
 }

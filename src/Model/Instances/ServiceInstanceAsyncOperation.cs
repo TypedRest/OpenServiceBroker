@@ -14,7 +14,7 @@ namespace OpenServiceBroker.Instances
         public bool Equals(ServiceInstanceAsyncOperation other)
         {
             if (other == null) return false;
-            return base.Equals(other) && Equals(DashboardUrl, other.DashboardUrl) && Equals(Result, other.Result);
+            return base.Equals(other) && DashboardUrl == other.DashboardUrl && Equals(Result, other.Result);
         }
 
         public override bool Equals(object obj)

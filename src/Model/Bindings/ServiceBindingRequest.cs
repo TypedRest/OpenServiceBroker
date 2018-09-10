@@ -29,21 +29,21 @@ namespace OpenServiceBroker.Bindings
         {
             if (other == null) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(ServiceId, other.ServiceId) && string.Equals(PlanId, other.PlanId) && Equals(BindResource, other.BindResource);
+            return ServiceId == other.ServiceId && PlanId == other.PlanId && Equals(BindResource, other.BindResource);
         }
 
         public override bool Equals(object obj)
         {
             if (obj == null) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((ServiceBindingRequest) obj);
+            return obj.GetType() == GetType() && Equals((ServiceBindingRequest)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                var hashCode = (ServiceId != null ? ServiceId.GetHashCode() : 0);
+                int hashCode = ServiceId != null ? ServiceId.GetHashCode() : 0;
                 hashCode = (hashCode * 397) ^ (PlanId != null ? PlanId.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (BindResource != null ? BindResource.GetHashCode() : 0);
                 return hashCode;

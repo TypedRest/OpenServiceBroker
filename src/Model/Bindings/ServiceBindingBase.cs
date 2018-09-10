@@ -20,7 +20,7 @@ namespace OpenServiceBroker.Bindings
         public List<ServiceBindingVolumeMount> VolumeMounts { get; } = new List<ServiceBindingVolumeMount>();
 
         protected bool Equals(ServiceBindingBase other)
-            => string.Equals(SyslogDrainUrl, other.SyslogDrainUrl) && string.Equals(RouteServiceUrl, other.RouteServiceUrl);
+            => SyslogDrainUrl == other.SyslogDrainUrl && RouteServiceUrl == other.RouteServiceUrl;
 
         public override bool Equals(object obj)
         {

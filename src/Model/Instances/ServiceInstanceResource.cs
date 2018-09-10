@@ -11,7 +11,7 @@ namespace OpenServiceBroker.Instances
         public bool Equals(ServiceInstanceResource other)
         {
             if (other == null) return false;
-            return base.Equals(other) && Equals(DashboardUrl, other.DashboardUrl);
+            return base.Equals(other) && DashboardUrl == other.DashboardUrl;
         }
 
         public override bool Equals(object obj)

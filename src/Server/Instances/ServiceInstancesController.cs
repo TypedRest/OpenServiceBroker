@@ -2,7 +2,6 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
 using OpenServiceBroker.Errors;
 
 namespace OpenServiceBroker.Instances
@@ -13,8 +12,8 @@ namespace OpenServiceBroker.Instances
     [Route("v2/service_instances/{instance_id}")]
     public class ServiceInstancesController : BrokerControllerBase<IServiceInstanceBlocking, IServiceInstanceDeferred>
     {
-        public ServiceInstancesController(IServiceScopeFactory factory)
-            : base(factory)
+        public ServiceInstancesController(IServiceProvider provider)
+            : base(provider)
         {}
 
         /// <summary>

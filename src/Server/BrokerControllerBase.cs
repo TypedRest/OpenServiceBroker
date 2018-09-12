@@ -9,11 +9,11 @@ namespace OpenServiceBroker
 {
     public abstract class BrokerControllerBase<TBlocking, TDeferred> : Controller
     {
-        private readonly IServiceScope _scope;
+        private readonly IServiceProvider _provider;
 
-        protected BrokerControllerBase(IServiceScopeFactory factory)
+        protected BrokerControllerBase(IServiceProvider provider)
         {
-            _scope = factory.CreateScope();
+            _provider = provider;
         }
 
         protected async Task<IActionResult> Do(
@@ -50,7 +50,7 @@ namespace OpenServiceBroker
 
         private bool TryGetService<T>(out T service)
         {
-            service = _scope.ServiceProvider.GetService<T>();
+            service = _provider.GetService<T>();
             return (service != null);
         }
 
@@ -71,18 +71,6 @@ namespace OpenServiceBroker
             {
                 string headerValue = Request.Headers[OriginatingIdentity.HttpHeaderName].FirstOrDefault();
                 return string.IsNullOrEmpty(headerValue) ? null : OriginatingIdentity.Parse(headerValue);
-            }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            try
-            {
-                if (disposing) _scope.Dispose();
-            }
-            finally
-            {
-                base.Dispose(disposing);
             }
         }
     }

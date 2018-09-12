@@ -1,4 +1,6 @@
 using System;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using OpenServiceBroker.Errors;
@@ -97,6 +99,14 @@ namespace OpenServiceBroker.Instances
         {
             SetupMock(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"), new GoneException());
             Client.ServiceInstancesBlocking["123"].Awaiting(x => x.DeprovisionAsync("abc", "xyz")).Should().Throw<GoneException>();
+        }
+
+        [Fact]
+        public async Task BadRequest()
+        {
+            var result = await Client.HttpClient.PutAsync(Client.ServiceInstancesBlocking["123"].Uri, new StringContent("{}", Encoding.UTF8, "application/json"));
+            var error = await result.Content.ReadAsAsync<Error>(new[] {Client.Serializer});
+            error.ErrorCode.Should().Be(BadRequestException.ErrorCode);
         }
     }
 }

@@ -30,6 +30,8 @@ namespace OpenServiceBroker.Errors
                     return new ApiVersionNotSupportedException(dto.Description);
                 case AsyncRequiredException.ErrorCode:
                     return new AsyncRequiredException(dto.Description);
+                case BadRequestException.ErrorCode:
+                    return new BadRequestException(dto.Description);
                 case ConcurrencyException.ErrorCode:
                     return new ConcurrencyException(dto.Description);
                 case ConflictException.ErrorCode:
@@ -46,6 +48,8 @@ namespace OpenServiceBroker.Errors
             {
                 case HttpStatusCode.PreconditionFailed:
                     return new ApiVersionNotSupportedException(dto.Description);
+                case HttpStatusCode.BadRequest:
+                    return new BadRequestException(dto.Description);
                 case HttpStatusCode.Conflict:
                     return new ConflictException(dto.Description);
                 case HttpStatusCode.Gone:

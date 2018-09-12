@@ -24,6 +24,7 @@ namespace OpenServiceBroker
             try
             {
                 CheckApiVersion();
+                ValidateModel();
 
                 if (allowDeferred)
                 {
@@ -48,12 +49,6 @@ namespace OpenServiceBroker
             throw new InvalidOperationException($"Neither {typeof(TBlocking).Name} nor {typeof(TDeferred).Name} implementation was found.");
         }
 
-        private bool TryGetService<T>(out T service)
-        {
-            service = _provider.GetService<T>();
-            return (service != null);
-        }
-
         private void CheckApiVersion()
         {
             string headerValue = Request.Headers[ApiVersion.HttpHeaderName].FirstOrDefault();
@@ -63,6 +58,23 @@ namespace OpenServiceBroker
                 if (clientVersion.Major != ApiVersion.Current.Major || clientVersion.Minor > ApiVersion.Current.Minor)
                     throw new ApiVersionNotSupportedException($"Client requested API version {clientVersion} but server only supports versions between {ApiVersion.Current.Major}.0 and {ApiVersion.Current}.");
             }
+        }
+
+        private void ValidateModel()
+        {
+            if (!ModelState.IsValid)
+            {
+                var error = ModelState.Values.SelectMany(x => x.Errors).FirstOrDefault();
+                throw new BadRequestException((error == null)
+                    ? "Request was rejected by server due to semantic errors."
+                    : (string.IsNullOrEmpty(error.ErrorMessage) ? error.Exception.Message : error.ErrorMessage));
+            }
+        }
+
+        private bool TryGetService<T>(out T service)
+        {
+            service = _provider.GetService<T>();
+            return (service != null);
         }
 
         protected OriginatingIdentity OriginatingIdentity

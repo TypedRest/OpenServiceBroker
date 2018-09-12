@@ -6,12 +6,15 @@ using TypedRest;
 
 namespace OpenServiceBroker.Bindings
 {
+    /// <summary>
+    /// Represents a Service Binding for a specific Service Instance. Uses potentially deferred (asynchronous) operations and automatically handles polling to make them appear blocking.
+    /// </summary>
     public class ServiceBindingPollingEndpoint : ServiceBindingEndpointBase, IServiceBindingEndpoint
     {
         private readonly IServiceBindingDeferredEndpoint _inner;
 
         /// <summary>
-        /// Creates a new service binding endpoint.
+        /// Creates a new polling Service Binding endpoint.
         /// </summary>
         /// <param name="referrer">The endpoint used to navigate to this one.</param>
         /// <param name="relativeUri">The URI of this endpoint relative to the <paramref name="referrer"/>'s.</param>

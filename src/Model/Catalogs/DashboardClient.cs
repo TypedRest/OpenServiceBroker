@@ -3,16 +3,28 @@ using Newtonsoft.Json;
 
 namespace OpenServiceBroker.Catalogs
 {
+    /// <summary>
+    /// Contains the data necessary to activate the Dashboard SSO feature for this service.
+    /// </summary>
     public class DashboardClient : IEquatable<DashboardClient>
     {
+        /// <summary>
+        /// The id of the OAuth client that the dashboard will use. If present, MUST be a non-empty string.
+        /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
 
+        /// <summary>
+        /// A secret for the dashboard client. If present, MUST be a non-empty string.
+        /// </summary>
         [JsonProperty("secret")]
         public string Secret { get; set; }
 
+        /// <summary>
+        /// A URI for the service dashboard. Validated by the OAuth token server when the dashboard requests a token.
+        /// </summary>
         [JsonProperty("redirect_uri")]
-        public string RedirectUri { get; set; }
+        public Uri RedirectUri { get; set; }
 
         public bool Equals(DashboardClient other)
         {

@@ -8,7 +8,7 @@ using TypedRest;
 namespace OpenServiceBroker
 {
     /// <summary>
-    /// Provides a type-safe client for the Open Service Broker API.
+    /// A type-safe client for the Open Service Broker API.
     /// </summary>
     public class OpenServiceBrokerClient : EntryEndpoint, IOpenServiceBrokerClient
     {
@@ -64,25 +64,25 @@ namespace OpenServiceBroker
             => SetCustomHeader(OriginatingIdentity.HttpHeaderName, identity.ToString());
 
         /// <summary>
-        /// exposes the catalog of services that the service broker offers
+        /// Exposes a list of all services available on the Service Broker.
         /// </summary>
         public IElementEndpoint<Catalog> Catalog
             => new ElementEndpoint<Catalog>(this, relativeUri: "./v2/catalog");
 
         /// <summary>
-        /// exposes service instances with blocking operations
+        /// Exposes Service Instances with blocking operations. If the Service Broker can only handle a request deferred (asynchronously) <see cref="Errors.AsyncRequiredException"/> is thrown.
         /// </summary>
         public IIndexerEndpoint<IServiceInstanceEndpoint> ServiceInstancesBlocking
             => new IndexerEndpoint<ServiceInstanceBlockingEndpoint>(this, relativeUri: "./v2/service_instances");
 
         /// <summary>
-        /// exposes service instances with potentially deferred (asynchronous) operations
+        /// Exposes Service Instances with potentially deferred (asynchronous) operations.
         /// </summary>
         public IIndexerEndpoint<IServiceInstanceDeferredEndpoint> ServiceInstancesDeferred
             => new IndexerEndpoint<ServiceInstanceDeferredEndpoint>(this, relativeUri: "./v2/service_instances");
 
         /// <summary>
-        /// exposes service instances with polling operations
+        /// Exposes Service Instances. Uses potentially deferred (asynchronous) operations and automatically handles polling to make them appear blocking.
         /// </summary>
         public IIndexerEndpoint<IServiceInstanceEndpoint> ServiceInstancesPolling
             => new IndexerEndpoint<ServiceInstancePollingEndpoint>(this, relativeUri: "./v2/service_instances");

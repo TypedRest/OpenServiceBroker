@@ -6,6 +6,9 @@ namespace OpenServiceBroker.Bindings
 {
     public class ServiceBindingResource : ServiceBindingBase, IEquatable<ServiceBindingResource>
     {
+        /// <summary>
+        /// Configuration parameters for the Service Binding.
+        /// </summary>
         [JsonProperty("parameters")]
         public JObject Parameters { get; set; }
 

@@ -4,12 +4,15 @@ using TypedRest;
 
 namespace OpenServiceBroker.Bindings
 {
+    /// <summary>
+    /// Common base for <see cref="IServiceBindingEndpoint"/> and <see cref="IServiceBindingDeferredEndpoint"/>; do not use directly!
+    /// </summary>
     public interface IServiceBindingEndpointBase : IEndpoint
     {
         /// <summary>
-        /// fetches a service binding
+        /// Fetches the Service Binding.
         /// </summary>
-        /// <exception cref="NotFoundException">binding does not exist or a binding operation is still in progress</exception>
+        /// <exception cref="NotFoundException">The binding does not exist or a binding operation is still in progress.</exception>
         Task<ServiceBindingResource> FetchAsync();
     }
 }

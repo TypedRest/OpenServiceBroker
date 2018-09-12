@@ -7,7 +7,7 @@ using OpenServiceBroker.Errors;
 namespace OpenServiceBroker.Bindings
 {
     /// <summary>
-    /// exposes bindings for service instances
+    /// Exposes bindings for Service Instances.
     /// </summary>
     [Route("v2/service_instances/{instance_id}/service_bindings/{binding_id}")]
     public class ServiceBindingsController : BrokerControllerBase<IServiceBindingBlocking, IServiceBindingDeferred>
@@ -17,12 +17,12 @@ namespace OpenServiceBroker.Bindings
         {}
 
         /// <summary>
-        /// fetches a service binding
+        /// Fetches a Service Binding.
         /// </summary>
-        /// <param name="instanceId">instance id of instance associated with the binding</param>
-        /// <param name="bindingId">binding id of binding to fetch</param>
-        /// <response code="200">binding is in response body</response>
-        /// <response code="404">binding does not exist or a binding operation is still in progress</response>
+        /// <param name="instanceId">The id of instance associated with the binding.</param>
+        /// <param name="bindingId">The binding id of binding to fetch</param>
+        /// <response code="200"/>
+        /// <response code="404">The binding does not exist or a binding operation is still in progress.</response>
         [HttpGet, Route("")]
         [ProducesResponseType(typeof(ServiceBindingResource), 200)]
         [ProducesResponseType(typeof(Error), 404)]
@@ -31,24 +31,24 @@ namespace OpenServiceBroker.Bindings
             [FromRoute(Name = "instance_id"), Required] string instanceId,
             [FromRoute(Name = "binding_id"), Required] string bindingId)
         {
-            return Do(allowDeferred: true,
+            return Do(acceptsIncomplete: true,
                 blocking: async x => Ok(await x.FetchAsync(instanceId, bindingId)),
                 deferred: async x => Ok(await x.FetchAsync(instanceId, bindingId)));
         }
 
         /// <summary>
-        /// generates a service binding
+        /// Generates a Service Binding.
         /// </summary>
-        /// <param name="instanceId">instance id of instance to create a binding on</param>
-        /// <param name="bindingId">binding id of binding to create</param>
-        /// <param name="request">parameters for the requested service binding</param>
-        /// <param name="acceptsIncomplete">deferred (asynchronous) operations supported</param>
-        /// <response code="200">binding already exists and the requested parameters are identical to the existing binding</response>
-        /// <response code="201">binding was created as a result of this request</response>
-        /// <response code="202">binding is in progress</response>
-        /// <response code="400">request is malformed or missing mandatory data</response>
-        /// <response code="409">binding with the same id already exists but with different attributes</response>
-        /// <response code="422">broker only supports asynchronous processing for the requested operation and the request did not include ?accepts_incomplete=true</response>
+        /// <param name="instanceId">The id of instance to create a binding on.</param>
+        /// <param name="bindingId">The binding id of binding to create.</param>
+        /// <param name="request">Parameters for the requested Service Binding.</param>
+        /// <param name="acceptsIncomplete">A value of true indicates that the Platform and its clients support deferred (asynchronous) Service Broker operations. If this parameter is false, and the Service Broker can only handle a request deferred (asynchronously) <see cref="Errors.AsyncRequiredException"/> is thrown.</param>
+        /// <response code="200">The binding already exists and the requested parameters are identical to the existing binding.</response>
+        /// <response code="201">The binding was created as a result of this request.</response>
+        /// <response code="202">The binding is in progress. See <see cref="GetLastOperation"/>.</response>
+        /// <response code="400">The request is malformed or missing mandatory data.</response>
+        /// <response code="409">The binding with the same id already exists but with different attributes.</response>
+        /// <response code="422">The broker only supports asynchronous processing for the requested operation and the request did not include <paramref name="acceptsIncomplete"/>=true.</response>
         [HttpPut, Route("")]
         [ProducesResponseType(typeof(ServiceBinding), 200)]
         [ProducesResponseType(typeof(ServiceBinding), 201)]
@@ -75,18 +75,18 @@ namespace OpenServiceBroker.Bindings
         }
 
         /// <summary>
-        /// deletes a service binding
+        /// Unbinds/deletes a Service Binding.
         /// </summary>
-        /// <param name="instanceId">id of the instance associated with the binding being deleted</param>
-        /// <param name="bindingId">id of the binding being deleted</param>
-        /// <param name="serviceId">id of the service associated with the binding being deleted</param>
-        /// <param name="planId">id of the plan associated with the binding being deleted</param>
-        /// <param name="acceptsIncomplete">deferred (asynchronous) operations supported</param>
-        /// <response code="200">binding was deleted as a result of this request</response>
-        /// <response code="202">binding deletion is in progress</response>
-        /// <response code="400">request is malformed or missing mandatory data</response>
-        /// <response code="410">binding does not exist</response>
-        /// <response code="422">broker only supports asynchronous processing for the requested operation and the request did not include ?accepts_incomplete=true</response>
+        /// <param name="instanceId">The id of the instance associated with the binding being deleted.</param>
+        /// <param name="bindingId">The id of the binding being deleted.</param>
+        /// <param name="serviceId">The id of the service associated with the binding being deleted.</param>
+        /// <param name="planId">The id of the plan associated with the binding being deleted.</param>
+        /// <param name="acceptsIncomplete">A value of true indicates that the Platform and its clients support deferred (asynchronous) Service Broker operations. If this parameter is false, and the Service Broker can only handle a request deferred (asynchronously) <see cref="Errors.AsyncRequiredException"/> is thrown.</param>
+        /// <response code="200">The binding was deleted as a result of this request.</response>
+        /// <response code="202">The binding deletion is in progress. See <see cref="GetLastOperation"/>.</response>
+        /// <response code="400">The request is malformed or missing mandatory data.</response>
+        /// <response code="410">The binding does not exist.</response>
+        /// <response code="422">The broker only supports asynchronous processing for the requested operation and the request did not include <paramref name="acceptsIncomplete"/>=true.</response>
         [HttpDelete, Route("")]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(AsyncOperation), 202)]
@@ -117,16 +117,16 @@ namespace OpenServiceBroker.Bindings
         }
 
         /// <summary>
-        /// get last requested operation state for service binding
+        /// Gets the state of the last requested deferred (asynchronous) operation for a Service Binding.
         /// </summary>
-        /// <param name="instanceId">instance id of instance to find last operation applied to it</param>
-        /// <param name="bindingId">binding id of service binding to find last operation applied to it</param>
-        /// <param name="serviceId">id of the service associated with the binding</param>
-        /// <param name="planId">id of the plan associated with the binding</param>
-        /// <param name="operation">a provided identifier for the operation</param>
-        /// <response code="200">status is in response body</response>
-        /// <response code="400">request is malformed or missing mandatory data</response>
-        /// <response code="410">result of asynchronous delete operation: binding does not exist</response>
+        /// <param name="instanceId">The id of instance to find last operation applied to it</param>
+        /// <param name="bindingId">The binding id of Service Binding to find last operation applied to it</param>
+        /// <param name="serviceId">The id of the service associated with the binding.</param>
+        /// <param name="planId">The id of the plan associated with the binding.</param>
+        /// <param name="operation">The value provided in <see cref="AsyncOperation.Operation"/>.</param>
+        /// <response code="200"/>
+        /// <response code="400">The request is malformed or missing mandatory data.</response>
+        /// <response code="410">The binding requested to be deleted does not exist (anymore).</response>
         [HttpGet, Route("last_operation")]
         [ProducesResponseType(typeof(LastOperationResource), 200)]
         [ProducesResponseType(typeof(Error), 400)]
@@ -139,7 +139,7 @@ namespace OpenServiceBroker.Bindings
             [FromQuery(Name = "operation")] string operation = null)
         {
             var context = Context(instanceId, bindingId);
-            return Do(allowDeferred: true,
+            return Do(acceptsIncomplete: true,
                 blocking: _ => throw new NotSupportedException("This server does not support asynchronous operations."),
                 deferred: async x => Ok(await x.GetLastOperationAsync(context, serviceId, planId, operation)));
         }

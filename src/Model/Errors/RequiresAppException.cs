@@ -1,7 +1,9 @@
+using OpenServiceBroker.Bindings;
+
 namespace OpenServiceBroker.Errors
 {
     /// <summary>
-    /// request body is missing the app_guid field
+    /// The request body is missing the <see cref="ServiceBindingResourceObject.AppGuid"/> field.
     /// </summary>
     public class RequiresAppException : BrokerException
     {

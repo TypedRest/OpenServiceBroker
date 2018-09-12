@@ -3,6 +3,9 @@ using System.Net;
 
 namespace OpenServiceBroker.Errors
 {
+    /// <summary>
+    /// The request to the Service Broker failed.
+    /// </summary>
     public class BrokerException : Exception
     {
         public string ErrorCode { get; }
@@ -16,13 +19,19 @@ namespace OpenServiceBroker.Errors
             HttpCode = httpCode;
         }
 
-        public Error ToDto() => new Error
+        /// <summary>
+        /// Serializes the exception to an error response object.
+        /// </summary>
+        public Error ToResponse() => new Error
         {
             ErrorCode = ErrorCode,
             Description = Message
         };
 
-        public static BrokerException FromDto(Error dto, HttpStatusCode statusCode)
+        /// <summary>
+        /// Deserializes the exception from an error response object.
+        /// </summary>
+        public static BrokerException FromResponse(Error dto, HttpStatusCode statusCode)
         {
             switch (dto.ErrorCode)
             {

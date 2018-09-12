@@ -24,7 +24,7 @@
   <Class Name="OpenServiceBroker.BrokerControllerBase&lt;TBlocking, TDeferred&gt;" Collapsed="true">
     <Position X="5.5" Y="0.5" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>ABAIAAAAACAAAAAAAAAAAAAACAAAAAAAACAAAAAAAQA=</HashCode>
+      <HashCode>ABACAAAAAAAAAAAAAEAAAAAACAAAAAAAACAAAAAAAQA=</HashCode>
       <FileName>BrokerControllerBase.cs</FileName>
     </TypeIdentifier>
   </Class>

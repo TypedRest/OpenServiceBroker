@@ -7,7 +7,7 @@ using OpenServiceBroker.Errors;
 namespace OpenServiceBroker.Instances
 {
     /// <summary>
-    /// exposes service instances
+    /// Exposes Service Instances.
     /// </summary>
     [Route("v2/service_instances/{instance_id}")]
     public class ServiceInstancesController : BrokerControllerBase<IServiceInstanceBlocking, IServiceInstanceDeferred>
@@ -17,12 +17,12 @@ namespace OpenServiceBroker.Instances
         {}
 
         /// <summary>
-        /// fetches a service instance
+        /// Fetches a Service Instance.
         /// </summary>
-        /// <param name="instanceId">id of instance to fetch</param>
-        /// <response code="200">instance is in response body</response>
-        /// <response code="404">instance does not exist or a provisioning operation is still in progress</response>
-        /// <response code="422">instance is being updated and therefore cannot be fetched at this time</response>
+        /// <param name="instanceId">The id of instance to fetch.</param>
+        /// <response code="200"/>
+        /// <response code="404">The instance does not exist or a provisioning operation is still in progress.</response>
+        /// <response code="422">The instance is being updated and therefore cannot be fetched at this time.</response>
         [HttpGet, Route("")]
         [ProducesResponseType(typeof(ServiceInstanceResource), 200)]
         [ProducesResponseType(typeof(Error), 404)]
@@ -30,23 +30,23 @@ namespace OpenServiceBroker.Instances
         public Task<IActionResult> Fetch(
             [FromRoute(Name = "instance_id"), Required] string instanceId)
         {
-            return Do(allowDeferred: true,
+            return Do(acceptsIncomplete: true,
                 blocking: async x => Ok(await x.FetchAsync(instanceId)),
                 deferred: async x => Ok(await x.FetchAsync(instanceId)));
         }
 
         /// <summary>
-        /// provision a service instance
+        /// Provisions a Service Instance.
         /// </summary>
-        /// <param name="instanceId">instance id of instance to provision</param>
-        /// <param name="request">parameters for the requested service instance provision</param>
-        /// <param name="acceptsIncomplete">deferred (asynchronous) operations supported</param>
-        /// <response code="200">instance already exists, is fully provisioned, and the requested parameters are identical to the existing instance</response>
-        /// <response code="201">instance was provisioned as a result of this request</response>
-        /// <response code="202">instance provisioning is in progress</response>
-        /// <response code="400">request is malformed or missing mandatory data</response>
-        /// <response code="409">instance with the same id already exists but with different attributes</response>
-        /// <response code="422">broker only supports asynchronous processing for the requested operation and the request did not include ?accepts_incomplete=true</response>
+        /// <param name="instanceId">The id of instance to provision.</param>
+        /// <param name="request">Parameters for the requested Service Instance provision</param>
+        /// <param name="acceptsIncomplete">A value of true indicates that the Platform and its clients support deferred (asynchronous) Service Broker operations. If this parameter is false, and the Service Broker can only handle a request deferred (asynchronously) <see cref="Errors.AsyncRequiredException"/> is thrown.</param>
+        /// <response code="200">The instance already exists, is fully provisioned, and the requested parameters are identical to the existing instance.</response>
+        /// <response code="201">The instance was provisioned as a result of this request.</response>
+        /// <response code="202">The instance provisioning is in progress. See <see cref="GetLastOperation"/>.</response>
+        /// <response code="400">The request is malformed or missing mandatory data.</response>
+        /// <response code="409">The instance with the same id already exists but with different attributes.</response>
+        /// <response code="422">The broker only supports asynchronous processing for the requested operation and the request did not include <paramref name="acceptsIncomplete"/>=true.</response>
         [HttpPut, Route("")]
         [ProducesResponseType(typeof(ServiceInstanceProvision), 200)]
         [ProducesResponseType(typeof(ServiceInstanceProvision), 201)]
@@ -72,15 +72,15 @@ namespace OpenServiceBroker.Instances
         }
 
         /// <summary>
-        /// update a service instance
+        /// Updates a Service Instance.
         /// </summary>
-        /// <param name="instanceId">instance id of instance to update</param>
-        /// <param name="request">parameters for the requested service instance update</param>
-        /// <param name="acceptsIncomplete">deferred (asynchronous) operations supported</param>
-        /// <response code="200">request's changes have been applied or have had no effect</response>
-        /// <response code="202">instance update is in progress</response>
-        /// <response code="400">request is malformed or missing mandatory data</response>
-        /// <response code="422">requested change is not supported or broker only supports asynchronous processing for the requested operation and the request did not include ?accepts_incomplete=true</response>
+        /// <param name="instanceId">The instance id of instance to update</param>
+        /// <param name="request">Parameters for the requested Service Instance update</param>
+        /// <param name="acceptsIncomplete">A value of true indicates that the Platform and its clients support deferred (asynchronous) Service Broker operations. If this parameter is false, and the Service Broker can only handle a request deferred (asynchronously) <see cref="Errors.AsyncRequiredException"/> is thrown.</param>
+        /// <response code="200">The request's changes have been applied or have had no effect.</response>
+        /// <response code="202">The instance update is in progress. See <see cref="GetLastOperation"/>.</response>
+        /// <response code="400">The request is malformed or missing mandatory data.</response>
+        /// <response code="422">The requested change is not supported or the broker only supports asynchronous processing for the requested operation and the request did not include <paramref name="acceptsIncomplete"/>=true.</response>
         [HttpPatch, Route("")]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(ServiceInstanceAsyncOperation), 202)]
@@ -108,17 +108,17 @@ namespace OpenServiceBroker.Instances
         }
 
         /// <summary>
-        /// deprovision a service instance
+        /// Deprovisions/deletes a Service Instance.
         /// </summary>
-        /// <param name="instanceId">id of instance being deleted</param>
-        /// <param name="serviceId">id of the service associated with the instance being deleted</param>
-        /// <param name="planId">id of the plan associated with the instance being deleted</param>
-        /// <param name="acceptsIncomplete">deferred (asynchronous) operations supported</param>
-        /// <response code="200">instance was deleted as a result of this request</response>
-        /// <response code="202">instance deletion is in progress</response>
-        /// <response code="400">request is malformed or missing mandatory data</response>
-        /// <response code="410">instance does not exist</response>
-        /// <response code="422">broker only supports asynchronous processing for the requested operation and the request did not include ?accepts_incomplete=true</response>
+        /// <param name="instanceId">The id of instance being deleted.</param>
+        /// <param name="serviceId">The id of the service associated with the instance being deleted.</param>
+        /// <param name="planId">The id of the plan associated with the instance being deleted.</param>
+        /// <param name="acceptsIncomplete">A value of true indicates that the Platform and its clients support deferred (asynchronous) Service Broker operations. If this parameter is false, and the Service Broker can only handle a request deferred (asynchronously) <see cref="Errors.AsyncRequiredException"/> is thrown.</param>
+        /// <response code="200">The instance was deleted as a result of this request.</response>
+        /// <response code="202">The instance deletion is in progress. See <see cref="GetLastOperation"/>.</response>
+        /// <response code="400">The request is malformed or missing mandatory data.</response>
+        /// <response code="410">The instance does not exist.</response>
+        /// <response code="422">The broker only supports asynchronous processing for the requested operation and the request did not include <paramref name="acceptsIncomplete"/>=true.</response>
         [HttpDelete, Route("")]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(ServiceInstanceAsyncOperation), 202)]
@@ -148,15 +148,15 @@ namespace OpenServiceBroker.Instances
         }
 
         /// <summary>
-        /// get last requested operation state for service instance
+        /// Gets the state of the last requested deferred (asynchronous) operation for a Service Instance.
         /// </summary>
-        /// <param name="instanceId">instance id of instance to find last operation applied to it</param>
-        /// <param name="serviceId">id of the service associated with the instance</param>
-        /// <param name="planId">id of the plan associated with the instance</param>
-        /// <param name="operation">a provided identifier for the operation</param>
-        /// <response code="200">status is in response body</response>
-        /// <response code="400">request is malformed or missing mandatory data</response>
-        /// <response code="410">result of asynchronous delete operation: instance does not exist</response>
+        /// <param name="instanceId">The instance id of instance to find last operation applied to it</param>
+        /// <param name="serviceId">The id of the service associated with the instance.</param>
+        /// <param name="planId">The id of the plan associated with the instance.</param>
+        /// <param name="operation">The value provided in <see cref="AsyncOperation.Operation"/>.</param>
+        /// <response code="200"/>
+        /// <response code="400">The request is malformed or missing mandatory data.</response>
+        /// <response code="410">The instance requested to be deleted does not exist (anymore).</response>
         [HttpGet, Route("last_operation")]
         [ProducesResponseType(typeof(LastOperationResource), 200)]
         [ProducesResponseType(typeof(Error), 400)]
@@ -168,7 +168,7 @@ namespace OpenServiceBroker.Instances
             [FromQuery(Name = "operation")] string operation = null)
         {
             var context = Context(instanceId);
-            return Do(allowDeferred: true,
+            return Do(acceptsIncomplete: true,
                 blocking: _ => throw new NotSupportedException("This server does not support asynchronous operations."),
                 deferred: async x => Ok(await x.GetLastOperationAsync(context, serviceId, planId, operation)));
         }

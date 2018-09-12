@@ -4,25 +4,25 @@ using OpenServiceBroker.Errors;
 namespace OpenServiceBroker.Bindings
 {
     /// <summary>
-    /// manages bindings for service instances with blocking operations
+    /// manages bindings for Service Instances with blocking operations
     /// </summary>
     public interface IServiceBindingBlocking : IServiceBindingBase
     {
         /// <summary>
-        /// generates a service binding
+        /// generates a Service Binding
         /// </summary>
-        /// <param name="context">id of binding to create</param>
-        /// <param name="request">parameters for the requested service binding</param>
-        /// <exception cref="ConflictException">binding with the same id already exists but with different attributes</exception>
+        /// <param name="context">The id of binding to create.</param>
+        /// <param name="request">Parameters for the requested Service Binding.</param>
+        /// <exception cref="ConflictException">An instance with the same id already exists but with different attributes.</exception>
         Task<ServiceBinding> BindAsync(ServiceBindingContext context, ServiceBindingRequest request);
 
         /// <summary>
-        /// deletes a service binding
+        /// deletes a Service Binding
         /// </summary>
-        /// <param name="context">id of the binding being deleted</param>
-        /// <param name="serviceId">id of the service associated with the binding being deleted</param>
-        /// <param name="planId">id of the plan associated with the binding being deleted</param>
-        /// <exception cref="GoneException">binding does not exist</exception>
+        /// <param name="context">The id of the binding being deleted.</param>
+        /// <param name="serviceId">The id of the service associated with the binding being deleted.</param>
+        /// <param name="planId">The id of the plan associated with the binding being deleted.</param>
+        /// <exception cref="GoneException">The binding does not exist (anymore).</exception>
         Task UnbindAsync(ServiceBindingContext context, string serviceId, string planId);
     }
 }

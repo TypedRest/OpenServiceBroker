@@ -14,14 +14,12 @@ namespace OpenServiceBroker
         public bool Equals(AsyncOperation other)
         {
             if (other == null) return false;
-            if (ReferenceEquals(this, other)) return true;
             return Operation == other.Operation && Completed == other.Completed;
         }
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
+            if (obj == null) return false;
             return obj.GetType() == GetType() && Equals((AsyncOperation) obj);
         }
 

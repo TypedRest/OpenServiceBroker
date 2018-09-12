@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace OpenServiceBroker.Catalogs
 {
     /// <summary>
-    /// exposes the catalog of services that the service broker offers
+    /// Exposes a list of all services available on the Service Broker.
     /// </summary>
     [Route("v2/catalog")]
     public class CatalogController : Controller
@@ -17,7 +17,7 @@ namespace OpenServiceBroker.Catalogs
         }
 
         /// <summary>
-        /// get the catalog of services that the service broker offers
+        /// Gets the catalog of services that the service broker offers.
         /// </summary>
         [Route(""), HttpGet]
         public Task<Catalog> Get()

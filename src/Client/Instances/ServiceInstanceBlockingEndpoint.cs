@@ -7,10 +7,13 @@ using TypedRest;
 
 namespace OpenServiceBroker.Instances
 {
+    /// <summary>
+    /// Represents a specific Service Instance with blocking operations. If the Service Broker can only handle a request deferred (asynchronously) <see cref="Errors.AsyncRequiredException"/> is thrown.
+    /// </summary>
     public class ServiceInstanceBlockingEndpoint : ServiceInstanceEndpointBase<IServiceBindingEndpoint, ServiceBindingBlockingEndpoint>, IServiceInstanceEndpoint
     {
         /// <summary>
-        /// Creates a new service instance endpoint.
+        /// Creates a new blocking Service Instance endpoint.
         /// </summary>
         /// <param name="referrer">The endpoint used to navigate to this one.</param>
         /// <param name="relativeUri">The URI of this endpoint relative to the <paramref name="referrer"/>'s.</param>

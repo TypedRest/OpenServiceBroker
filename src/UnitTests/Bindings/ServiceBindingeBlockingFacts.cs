@@ -25,9 +25,9 @@ namespace OpenServiceBroker.Bindings
             {
                 ServiceId = "abc",
                 PlanId = "xyz",
-                BindResource = new ServiceBindingResouceObject
+                BindResource = new ServiceBindingResourceObject
                 {
-                    AppGuid = Guid.NewGuid()
+                    AppGuid = "123-456"
                 }
             };
             var response = new ServiceBinding();

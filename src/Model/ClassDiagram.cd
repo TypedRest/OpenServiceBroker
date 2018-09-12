@@ -53,7 +53,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAAAAAAggAAAAAAAQAAAIAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAgAAAAAAgAAAAAAAAAAAAIAgIAAAAAAAAAA=</HashCode>
       <FileName>Instances\ServiceInstanceProvisionRequest.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -157,14 +157,14 @@
     </ShowAsAssociation>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="OpenServiceBroker.Bindings.ServiceBindingResouceObject" BaseTypeListCollapsed="true">
+  <Class Name="OpenServiceBroker.Bindings.ServiceBindingResourceObject" BaseTypeListCollapsed="true">
     <Position X="27.5" Y="6.25" Width="2.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgEAAAAAAAAAAAIAAAAAAAIAAAAA=</HashCode>
-      <FileName>Bindings\ServiceBindingResouceObject.cs</FileName>
+      <FileName>Bindings\ServiceBindingResourceObject.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
@@ -257,7 +257,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAACEAAAAAAoAAAAgAAAAAQACAAAAMAAAAAAAAAGAAA=</HashCode>
+      <HashCode>AAACEAAAAAAoAAAAkAAAACQACAAAAMAAAAAAAAAGAAA=</HashCode>
       <FileName>Catalogs\Service.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

@@ -5,6 +5,9 @@ namespace OpenServiceBroker.Instances
 {
     public class ServiceInstanceUpdateRequest : ServiceInstanceProvisionRequest, IEquatable<ServiceInstanceUpdateRequest>
     {
+        /// <summary>
+        /// Information about the Service Instance prior to the update.
+        /// </summary>
         [JsonProperty("previous_values")]
         public ServiceInstancePreviousValues PreviousValues { get; set; }
 

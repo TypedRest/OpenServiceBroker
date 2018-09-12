@@ -3,7 +3,7 @@ using System.Net;
 namespace OpenServiceBroker.Errors
 {
     /// <summary>
-    /// instance with the same id already exists but with different attributes
+    /// An instance with the same id already exists but with different attributes.
     /// </summary>
     public class ConflictException : BrokerException
     {

@@ -5,6 +5,9 @@ namespace OpenServiceBroker.Instances
 {
     public class ServiceInstanceProvision : IUnchangedFlag, IEquatable<ServiceInstanceProvision>
     {
+        /// <summary>
+        /// The URL of a web-based management user interface for the Service Instance; we refer to this as a service dashboard. The URL MUST contain enough information for the dashboard to identify the resource being accessed.
+        /// </summary>
         [JsonProperty("dashboard_url")]
         public Uri DashboardUrl { get; set; }
 

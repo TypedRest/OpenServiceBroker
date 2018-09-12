@@ -3,28 +3,39 @@ using System;
 namespace OpenServiceBroker.Instances
 {
     /// <summary>
-    /// Identifies a specific service instance to apply an operation to.
+    /// Identifies a specific Service Instance to apply an operation to.
     /// </summary>
     public class ServiceInstanceContext : IEquatable<ServiceInstanceContext>
     {
         public string InstanceId { get; }
 
+        /// <summary>
+        /// Describes the identity of the user that initiated a request from the Platform. Optional.
+        /// </summary>
         public OriginatingIdentity OriginatingIdentity { get; }
 
+        /// <summary>
+        /// Creates a new Service Instance context.
+        /// </summary>
+        /// <param name="instanceId">The ID of the Service Instance.</param>
+        public ServiceInstanceContext(string instanceId)
+            : this(instanceId, null)
+        {}
+
+        /// <summary>
+        /// Creates a new Service Instance context.
+        /// </summary>
+        /// <param name="instanceId">The ID of the Service Instance.</param>
+        /// <param name="originatingIdentity">Describes the identity of the user that initiated a request from the Platform.</param>
         public ServiceInstanceContext(string instanceId, OriginatingIdentity originatingIdentity)
         {
             InstanceId = instanceId ?? throw new ArgumentNullException(nameof(instanceId));
             OriginatingIdentity = originatingIdentity;
         }
 
-        public ServiceInstanceContext(string instanceId)
-            : this(instanceId, null)
-        {}
-
         public bool Equals(ServiceInstanceContext other)
         {
             if (other == null) return false;
-            if (ReferenceEquals(this, other)) return true;
             return InstanceId == other.InstanceId && OriginatingIdentity == other.OriginatingIdentity;
         }
 

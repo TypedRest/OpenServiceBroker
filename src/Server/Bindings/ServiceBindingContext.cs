@@ -4,18 +4,29 @@ using OpenServiceBroker.Instances;
 namespace OpenServiceBroker.Bindings
 {
     /// <summary>
-    /// Identifies a specific service binding to apply an operation to.
+    /// Identifies a specific Service Binding to apply an operation to.
     /// </summary>
     public class ServiceBindingContext : ServiceInstanceContext, IEquatable<ServiceBindingContext>
     {
         public string BindingId { get; }
 
+        /// <summary>
+        /// Creates a new Service Binding context.
+        /// </summary>
+        /// <param name="instanceId">The ID of the Service Instance.</param>
+        /// <param name="bindingId">The ID of the Service Binding.</param>
         public ServiceBindingContext(string instanceId, string bindingId)
             : base(instanceId)
         {
             BindingId = bindingId ?? throw new ArgumentNullException(nameof(bindingId));
         }
 
+        /// <summary>
+        /// Creates a new Service Binding context.
+        /// </summary>
+        /// <param name="instanceId">The ID of the Service Instance.</param>
+        /// <param name="bindingId">The ID of the Service Binding.</param>
+        /// <param name="originatingIdentity">Describes the identity of the user that initiated a request from the Platform.</param>
         public ServiceBindingContext(string instanceId, string bindingId, OriginatingIdentity originatingIdentity)
             : base(instanceId, originatingIdentity)
         {

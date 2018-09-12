@@ -1,7 +1,7 @@
 namespace OpenServiceBroker.Errors
 {
     /// <summary>
-    /// request requires client support for asynchronous service operations
+    /// This request requires client support for deferred (asynchronous) service operations.
     /// </summary>
     public class AsyncRequiredException : BrokerException
     {

@@ -7,12 +7,15 @@ using TypedRest;
 
 namespace OpenServiceBroker.Instances
 {
+    /// <summary>
+    /// Represents a specific Service Instance. Uses potentially deferred (asynchronous) operations and automatically handles polling to make them appear blocking.
+    /// </summary>
     public class ServiceInstancePollingEndpoint : ServiceInstanceEndpointBase<IServiceBindingEndpoint, ServiceBindingPollingEndpoint>, IServiceInstanceEndpoint
     {
         private readonly IServiceInstanceDeferredEndpoint _inner;
 
         /// <summary>
-        /// Creates a new service instance endpoint.
+        /// Creates a new polling Service Instance endpoint.
         /// </summary>
         /// <param name="referrer">The endpoint used to navigate to this one.</param>
         /// <param name="relativeUri">The URI of this endpoint relative to the <paramref name="referrer"/>'s.</param>

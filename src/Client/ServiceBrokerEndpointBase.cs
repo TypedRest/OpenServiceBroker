@@ -7,15 +7,18 @@ using TypedRest;
 
 namespace OpenServiceBroker
 {
-    public abstract class ServiceEndpointBase : EndpointBase
+    /// <summary>
+    /// Common base class for Open Service Broker endpoints.
+    /// </summary>
+    public abstract class ServiceBrokerEndpointBase : EndpointBase
     {
         /// <summary>
         /// Creates a new service endpoint.
         /// </summary>
         /// <param name="referrer">The endpoint used to navigate to this one.</param>
         /// <param name="relativeUri">The URI of this endpoint relative to the <paramref name="referrer"/>'s. Prefix <c>./</c> to append a trailing slash to the <paramref name="referrer"/> URI if missing.</param>
-        /// <param name="acceptsIncomplete">deferred (asynchronous) operations supported</param>
-        protected ServiceEndpointBase(IEndpoint referrer, Uri relativeUri, bool acceptsIncomplete = false)
+        /// <param name="acceptsIncomplete">A value of true indicates that the Platform and its clients support deferred (asynchronous) Service Broker operations. If this parameter is false, and the Service Broker can only handle a request deferred (asynchronously) <see cref="Errors.AsyncRequiredException"/> is thrown.</param>
+        protected ServiceBrokerEndpointBase(IEndpoint referrer, Uri relativeUri, bool acceptsIncomplete = false)
             : base(referrer, acceptsIncomplete
                 ? relativeUri.Join("./?accepts_incomplete=true")
                 : relativeUri)
@@ -45,7 +48,7 @@ namespace OpenServiceBroker
                 {
                     // Error responses without a response in standard format will be handled below
                 }
-                if (error != null) throw BrokerException.FromDto(error, response.StatusCode);
+                if (error != null) throw BrokerException.FromResponse(error, response.StatusCode);
             }
 
             response.EnsureSuccessStatusCode();

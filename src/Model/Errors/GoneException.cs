@@ -3,14 +3,14 @@ using System.Net;
 namespace OpenServiceBroker.Errors
 {
     /// <summary>
-    /// specified resource no longer exists
+    /// The specified resource does not exist (anymore).
     /// </summary>
     public class GoneException : BrokerException
     {
         public new const string ErrorCode = "Gone";
 
         public GoneException()
-            : this("The specified resource no longer exists.")
+            : this("The specified resource does not exist (anymore).")
         {}
 
         public GoneException(string message)

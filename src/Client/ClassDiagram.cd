@@ -56,11 +56,11 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="OpenServiceBroker.ServiceEndpointBase" Collapsed="true">
-    <Position X="12.5" Y="1.25" Width="1.5" />
+  <Class Name="OpenServiceBroker.ServiceBrokerEndpointBase" Collapsed="true">
+    <Position X="12.5" Y="1.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAgEAAAAAAAAAAAAAAAAAAAAAAAAACAIAAAAAAAAAA=</HashCode>
-      <FileName>ServiceEndpointBase.cs</FileName>
+      <FileName>ServiceBrokerEndpointBase.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OpenServiceBroker.LastOperationEndpoint" Collapsed="true">

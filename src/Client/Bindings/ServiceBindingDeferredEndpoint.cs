@@ -5,10 +5,13 @@ using TypedRest;
 
 namespace OpenServiceBroker.Bindings
 {
+    /// <summary>
+    /// Represents a Service Binding for a specific Service Instance with potentially deferred (asynchronous) operations.
+    /// </summary>
     public class ServiceBindingDeferredEndpoint : ServiceBindingEndpointBase, IServiceBindingDeferredEndpoint
     {
         /// <summary>
-        /// Creates a new service binding endpoint.
+        /// Creates a new deferred Service Binding endpoint.
         /// </summary>
         /// <param name="referrer">The endpoint used to navigate to this one.</param>
         /// <param name="relativeUri">The URI of this endpoint relative to the <paramref name="referrer"/>'s.</param>

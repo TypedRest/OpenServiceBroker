@@ -1,7 +1,7 @@
 namespace OpenServiceBroker.Errors
 {
     /// <summary>
-    /// broker does not support concurrent requests that mutate the same resource
+    /// The Service Broker does not support concurrent requests that mutate the same resource.
     /// </summary>
     public class ConcurrencyException : BrokerException
     {

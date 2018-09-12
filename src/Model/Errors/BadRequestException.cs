@@ -3,7 +3,7 @@ using System.Net;
 namespace OpenServiceBroker.Errors
 {
     /// <summary>
-    /// request was rejected by server due to semantic errors
+    /// The The request is malformed or missing mandatory data..
     /// </summary>
     public class BadRequestException : BrokerException
     {

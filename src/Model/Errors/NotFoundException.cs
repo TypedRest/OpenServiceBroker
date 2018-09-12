@@ -3,7 +3,7 @@ using System.Net;
 namespace OpenServiceBroker.Errors
 {
     /// <summary>
-    /// resource does not exist or a provisioning operation is still in progress
+    /// The resource does not exist or a provisioning operation is still in progress.
     /// </summary>
     public class NotFoundException : BrokerException
     {

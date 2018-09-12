@@ -56,7 +56,7 @@ namespace OpenServiceBroker
             switch (response.StatusCode)
             {
                 case HttpStatusCode.OK:
-                    return new AsyncOperation();
+                    return new AsyncOperation().Complete();
 
                 case HttpStatusCode.Accepted:
                     return await FromContentAsync<AsyncOperation>(response);
@@ -67,8 +67,8 @@ namespace OpenServiceBroker
         }
 
         protected async Task<TDeferred> ParseDeferredResponseAsync<TComplete, TDeferred>(HttpResponseMessage response)
-            where TComplete : IUnchangedFlag
-            where TDeferred : ICompletedResult<TComplete>, new()
+            where TComplete : class, IUnchangedFlag
+            where TDeferred : AsyncOperation, ICompletableWithResult<TComplete>, new()
         {
             switch (response.StatusCode)
             {
@@ -77,13 +77,13 @@ namespace OpenServiceBroker
                     var result = await FromContentAsync<TComplete>(response);
                     if (result != null)
                         result.Unchanged = true;
-                    return new TDeferred {Result = result};
+                    return new TDeferred().Complete(result);
                 }
 
                 case HttpStatusCode.Created:
                 {
                     var result = await FromContentAsync<TComplete>(response);
-                    return new TDeferred {Result = result};
+                    return new TDeferred().Complete(result);
                 }
 
                 case HttpStatusCode.Accepted:

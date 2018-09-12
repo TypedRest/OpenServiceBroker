@@ -49,13 +49,10 @@ namespace OpenServiceBroker.Instances
                 ServiceId = "abc",
                 PlanId = "xyz"
             };
-            var response = new ServiceInstanceAsyncOperation
+            var response = new ServiceInstanceAsyncOperation().Complete(new ServiceInstanceProvision
             {
-                Result = new ServiceInstanceProvision
-                {
-                    DashboardUrl = new Uri("http://example.com")
-                }
-            };
+                DashboardUrl = new Uri("http://example.com")
+            });
 
             SetupMock(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request), response);
             var result = await Client.ServiceInstancesDeferred["123"].ProvisionAsync(request);
@@ -70,14 +67,11 @@ namespace OpenServiceBroker.Instances
                 ServiceId = "abc",
                 PlanId = "xyz"
             };
-            var response = new ServiceInstanceAsyncOperation
+            var response = new ServiceInstanceAsyncOperation().Complete(new ServiceInstanceProvision
             {
-                Result = new ServiceInstanceProvision
-                {
-                    DashboardUrl = new Uri("http://example.com"),
-                    Unchanged = true
-                }
-            };
+                DashboardUrl = new Uri("http://example.com"),
+                Unchanged = true
+            });
 
             SetupMock(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request), response);
             var result = await Client.ServiceInstancesDeferred["123"].ProvisionAsync(request);

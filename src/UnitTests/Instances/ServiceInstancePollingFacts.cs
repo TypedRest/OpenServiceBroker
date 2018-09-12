@@ -49,10 +49,7 @@ namespace OpenServiceBroker.Instances
             {
                 DashboardUrl = new Uri("http://example.com")
             };
-            var response = new ServiceInstanceAsyncOperation
-            {
-                Result = syntheticResponse
-            };
+            var response = new ServiceInstanceAsyncOperation().Complete(syntheticResponse);
 
             SetupMock(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request), response);
             var result = await Client.ServiceInstancesPolling["123"].ProvisionAsync(request);

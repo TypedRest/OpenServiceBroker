@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace OpenServiceBroker.Instances
 {
-    public class ServiceInstanceAsyncOperation : AsyncOperation, ICompletedResult<ServiceInstanceProvision>, IEquatable<ServiceInstanceAsyncOperation>
+    public class ServiceInstanceAsyncOperation : AsyncOperation, ICompletableWithResult<ServiceInstanceProvision>, IEquatable<ServiceInstanceAsyncOperation>
     {
         [JsonProperty("dashboard_url")]
         public Uri DashboardUrl { get; set; }

@@ -48,10 +48,7 @@ namespace OpenServiceBroker.Bindings
                 ServiceId = "abc",
                 PlanId = "xyz"
             };
-            var response = new ServiceBindingAsyncOperation
-            {
-                Result = new ServiceBinding()
-            };
+            var response = new ServiceBindingAsyncOperation().Complete(new ServiceBinding());
 
             SetupMock(x => x.BindAsync(new ServiceBindingContext("123", "456"), request), response);
             var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].BindAsync(request);
@@ -66,13 +63,10 @@ namespace OpenServiceBroker.Bindings
                 ServiceId = "abc",
                 PlanId = "xyz"
             };
-            var response = new ServiceBindingAsyncOperation
+            var response = new ServiceBindingAsyncOperation().Complete(new ServiceBinding
             {
-                Result = new ServiceBinding
-                {
-                    Unchanged = true
-                }
-            };
+                Unchanged = true
+            });
 
             SetupMock(x => x.BindAsync(new ServiceBindingContext("123", "456"), request), response);
             var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].BindAsync(request);

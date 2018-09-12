@@ -65,7 +65,7 @@ namespace OpenServiceBroker.Instances
                 deferred: async x =>
                 {
                     var result = await x.ProvisionAsync(context, request);
-                    return string.IsNullOrEmpty(result.Operation)
+                    return result.Completed
                         ? SyncResult(context, result.Result)
                         : AsyncResult(context, result, request);
                 });
@@ -101,7 +101,7 @@ namespace OpenServiceBroker.Instances
                 deferred: async x =>
                 {
                     var result = await x.UpdateAsync(context, request);
-                    return string.IsNullOrEmpty(result.Operation)
+                    return result.Completed
                         ? Ok()
                         : AsyncResult(context, result, request);
                 });
@@ -141,7 +141,7 @@ namespace OpenServiceBroker.Instances
                 deferred: async x =>
                 {
                     var result = await x.DeprovisionAsync(context, serviceId, planId);
-                    return string.IsNullOrEmpty(result.Operation)
+                    return result.Completed
                         ? Ok()
                         : AsyncResult(context, result);
                 });

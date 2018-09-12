@@ -58,10 +58,7 @@ namespace OpenServiceBroker.Bindings
             {
                 RouteServiceUrl = new Uri("http://example.com")
             };
-            var response = new ServiceBindingAsyncOperation
-            {
-                Result = syntheticResponse
-            };
+            var response = new ServiceBindingAsyncOperation().Complete(syntheticResponse);
 
             SetupMock(x => x.BindAsync(new ServiceBindingContext("123", "456"), request), response);
             var result = await Client.ServiceInstancesPolling["123"].ServiceBindings["456"].BindAsync(request);

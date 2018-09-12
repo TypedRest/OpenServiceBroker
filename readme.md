@@ -120,7 +120,7 @@ await client.ServiceInstancesPolling["123"].ServiceBindings["456"].UnbindAsync(s
 
 [![OpenServiceBroker.Server](https://img.shields.io/nuget/v/OpenServiceBroker.Server.svg?label=OpenServiceBroker.Server)](https://www.nuget.org/packages/OpenServiceBroker.Server/)
 
-Add the NuGet package NuGet package `OpenServiceBroker.Server` (available for .NET Standard 2.0+) to your project. Next implement the following interfaces:
+Set up a regular ASP.NET Core 2.0+ project and add the NuGet package NuGet package `OpenServiceBroker.Server` (available for .NET Standard 2.0+) to your project. Then implement the following interfaces:
 - [`ICatalogService`](src/Server/Catalogs/ICatalogService.cs)
 - either [`IServiceInstanceBlocking`](src/Server/Instances/IServiceInstanceBlocking.cs) or [`IServiceInstanceDeferred`](src/Server/Instances/IServiceInstanceDeferred.cs) or both
 - either [`IServiceBindingBlocking`](src/Server/Bindings/IServiceBindingBlocking.cs) or [`IServiceBindingDeferred`](src/Server/Bindings/IServiceBindingDeferred.cs) or both

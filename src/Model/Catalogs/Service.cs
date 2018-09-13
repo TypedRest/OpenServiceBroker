@@ -100,11 +100,11 @@ namespace OpenServiceBroker.Catalogs
         {
             unchecked
             {
-                int hashCode = Id != null ? Id.GetHashCode() : 0;
-                hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Description != null ? Description.GetHashCode() : 0);
+                int hashCode = Id?.GetHashCode() ?? 0;
+                hashCode = (hashCode * 397) ^ (Name?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Description?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ Bindable.GetHashCode();
-                hashCode = (hashCode * 397) ^ (DashboardClient != null ? DashboardClient.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (DashboardClient?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ PlanUpdateable.GetHashCode();
                 return hashCode;
             }

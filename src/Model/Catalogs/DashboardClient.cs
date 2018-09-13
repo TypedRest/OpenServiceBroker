@@ -42,8 +42,8 @@ namespace OpenServiceBroker.Catalogs
         {
             unchecked
             {
-                int hashCode = Id != null ? Id.GetHashCode() : 0;
-                hashCode = (hashCode * 397) ^ (Secret != null ? Secret.GetHashCode() : 0);
+                int hashCode = Id?.GetHashCode() ?? 0;
+                hashCode = (hashCode * 397) ^ (Secret?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ (RedirectUri != null ? RedirectUri.GetHashCode() : 0);
                 return hashCode;
             }

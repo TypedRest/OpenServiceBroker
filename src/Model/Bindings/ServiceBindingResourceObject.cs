@@ -33,7 +33,7 @@ namespace OpenServiceBroker.Bindings
         {
             unchecked
             {
-                return ((AppGuid != null ? AppGuid.GetHashCode() : 0) * 397) ^ (Route != null ? Route.GetHashCode() : 0);
+                return ((AppGuid?.GetHashCode() ?? 0) * 397) ^ (Route?.GetHashCode() ?? 0);
             }
         }
     }

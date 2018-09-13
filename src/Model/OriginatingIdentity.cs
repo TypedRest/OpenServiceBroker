@@ -71,7 +71,7 @@ namespace OpenServiceBroker
         {
             unchecked
             {
-                return ((Platform != null ? Platform.GetHashCode() : 0) * 397) ^ (Value != null ? Value.ToString(Formatting.None).GetHashCode() : 0);
+                return ((Platform?.GetHashCode() ?? 0) * 397) ^ (Value?.ToString(Formatting.None).GetHashCode() ?? 0);
             }
         }
 

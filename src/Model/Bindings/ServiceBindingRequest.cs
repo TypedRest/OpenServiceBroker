@@ -59,9 +59,9 @@ namespace OpenServiceBroker.Bindings
         {
             unchecked
             {
-                int hashCode = ServiceId != null ? ServiceId.GetHashCode() : 0;
-                hashCode = (hashCode * 397) ^ (PlanId != null ? PlanId.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (BindResource != null ? BindResource.GetHashCode() : 0);
+                int hashCode = ServiceId?.GetHashCode() ?? 0;
+                hashCode = (hashCode * 397) ^ (PlanId?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (BindResource?.GetHashCode() ?? 0);
                 return hashCode;
             }
         }

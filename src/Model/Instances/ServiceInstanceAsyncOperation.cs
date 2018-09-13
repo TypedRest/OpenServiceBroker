@@ -32,7 +32,7 @@ namespace OpenServiceBroker.Instances
             {
                 int hashCode = base.GetHashCode();
                 hashCode = (hashCode * 397) ^ (DashboardUrl != null ? DashboardUrl.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Result != null ? Result.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Result?.GetHashCode() ?? 0);
                 return hashCode;
             }
         }

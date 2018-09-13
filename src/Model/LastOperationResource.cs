@@ -38,7 +38,7 @@ namespace OpenServiceBroker
         {
             unchecked
             {
-                return ((int)State * 397) ^ (Description != null ? Description.GetHashCode() : 0);
+                return ((int)State * 397) ^ (Description?.GetHashCode() ?? 0);
             }
         }
     }

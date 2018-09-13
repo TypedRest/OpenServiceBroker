@@ -27,7 +27,7 @@ namespace OpenServiceBroker
         {
             unchecked
             {
-                return ((Operation != null ? Operation.GetHashCode() : 0) * 397) ^ Completed.GetHashCode();
+                return ((Operation?.GetHashCode() ?? 0) * 397) ^ Completed.GetHashCode();
             }
         }
     }

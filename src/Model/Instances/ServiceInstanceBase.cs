@@ -36,7 +36,7 @@ namespace OpenServiceBroker.Instances
         {
             unchecked
             {
-                return ((ServiceId != null ? ServiceId.GetHashCode() : 0) * 397) ^ (PlanId != null ? PlanId.GetHashCode() : 0);
+                return ((ServiceId?.GetHashCode() ?? 0) * 397) ^ (PlanId?.GetHashCode() ?? 0);
             }
         }
     }

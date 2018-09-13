@@ -69,9 +69,9 @@ namespace OpenServiceBroker.Catalogs
         {
             unchecked
             {
-                var hashCode = Id != null ? Id.GetHashCode() : 0;
-                hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Description != null ? Description.GetHashCode() : 0);
+                int hashCode = Id?.GetHashCode() ?? 0;
+                hashCode = (hashCode * 397) ^ (Name?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Description?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ Free.GetHashCode();
                 hashCode = (hashCode * 397) ^ Bindable.GetHashCode();
                 return hashCode;

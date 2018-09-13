@@ -35,6 +35,6 @@ namespace OpenServiceBroker.Instances
             return obj.GetType() == GetType() && Equals((ServiceInstancePreviousValues)obj);
         }
 
-        public override int GetHashCode() => PlanId != null ? PlanId.GetHashCode() : 0;
+        public override int GetHashCode() => PlanId?.GetHashCode() ?? 0;
     }
 }

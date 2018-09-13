@@ -27,7 +27,7 @@ namespace OpenServiceBroker.Instances
         {
             unchecked
             {
-                return (base.GetHashCode() * 397) ^ (PreviousValues != null ? PreviousValues.GetHashCode() : 0);
+                return (base.GetHashCode() * 397) ^ (PreviousValues?.GetHashCode() ?? 0);
             }
         }
     }

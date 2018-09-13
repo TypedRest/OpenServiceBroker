@@ -26,7 +26,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="TypedRest.Reactive" Version="0.38.3-ci0009" />
+    <PackageReference Include="TypedRest.Reactive" Version="0.39.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">

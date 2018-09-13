@@ -28,12 +28,12 @@ namespace OpenServiceBroker
                 : "./{?service_id,plan_id}");
         }
 
-        protected Uri GetDeleteUri(string serviceId, string planId)
-            => Uri.Join(LinkTemplate("delete").Resolve(new
+        protected Uri GetDeleteUri(string serviceId, string planId) 
+            => LinkTemplate("delete", new
             {
                 service_id = serviceId,
                 plan_id = planId
-            }));
+            });
 
         protected override async Task HandleErrorsAsync(HttpResponseMessage response)
         {

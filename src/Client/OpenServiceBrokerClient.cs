@@ -20,7 +20,7 @@ namespace OpenServiceBroker
         public OpenServiceBrokerClient(Uri uri, HttpClient httpClient)
             : base(uri, httpClient)
         {
-            SetApiVersion();
+            SetApiVersion(DefaultApiVersion);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace OpenServiceBroker
         public OpenServiceBrokerClient(Uri uri, ICredentials credentials = null)
             : base(uri, credentials)
         {
-            SetApiVersion();
+            SetApiVersion(DefaultApiVersion);
         }
 
         /// <summary>
@@ -42,14 +42,13 @@ namespace OpenServiceBroker
         public OpenServiceBrokerClient(Uri uri, string token)
             : base(uri, token)
         {
-            SetApiVersion();
+            SetApiVersion(DefaultApiVersion);
         }
 
         /// <summary>
-        /// Sets the Open Service Broker API version to the default value of <see cref="ApiVersion.Current"/>.
+        /// The default Open Service Broker API version to set for requests.
         /// </summary>
-        public void SetApiVersion()
-            => SetApiVersion(ApiVersion.Current);
+        public static ApiVersion DefaultApiVersion => new ApiVersion(2, 13);
 
         /// <summary>
         /// Sets the Open Service Broker API version to a custom value. Only use this if you know what you are doing!

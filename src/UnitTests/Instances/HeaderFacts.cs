@@ -18,7 +18,7 @@ namespace OpenServiceBroker.Instances
         [Fact]
         public void TooNewMinorVersion()
         {
-            Client.SetApiVersion(new ApiVersion(ApiVersion.Current.Major, ApiVersion.Current.Minor + 1));
+            Client.SetApiVersion(new ApiVersion(ServiceInstancesController.SupportedApiVersion.Major, ServiceInstancesController.SupportedApiVersion.Minor + 1));
             Client.ServiceInstancesBlocking["123"].Awaiting(x => x.FetchAsync()).Should().Throw<ApiVersionNotSupportedException>();
         }
 

@@ -116,6 +116,15 @@ var result = await client.ServiceInstancesPolling["123"].ServiceBindings["456"].
 await client.ServiceInstancesPolling["123"].ServiceBindings["456"].UnbindAsync(serviceId: "abc", planId: "xyz");
 ```
 
+### Versioning
+
+The client library specifies the API version it expects by setting the `X-Broker-API-Version` header for all requests (as defined in the specification).  
+Currently the library defaults to `2.13`. If the broker you are calling expects a different version (and you are sure your request is compliant with that version of the specification) you can override this:
+
+```csharp
+client.SetApiVersion(new ApiVersion(2, 10));
+```
+
 ## Server
 
 [![OpenServiceBroker.Server](https://img.shields.io/nuget/v/OpenServiceBroker.Server.svg?label=OpenServiceBroker.Server)](https://www.nuget.org/packages/OpenServiceBroker.Server/)
@@ -135,3 +144,8 @@ services.AddTransient<ICatalogService, MyCatalogService>()
         .AddTransient<IServiceBindingDeferred, MyServiceBindingDeferred>()
         .AddOpenServiceBroker();
 ```
+
+### Versioning
+
+The server library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification).  
+Currently the library accepts all versions from `2.0` to `2.14`.

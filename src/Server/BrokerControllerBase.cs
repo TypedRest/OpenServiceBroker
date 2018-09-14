@@ -61,14 +61,19 @@ namespace OpenServiceBroker
             throw new InvalidOperationException($"Neither {typeof(TBlocking).Name} nor {typeof(TDeferred).Name} implementation was found.");
         }
 
+        /// <summary>
+        /// The latest Open Service Broker API version currently supported.
+        /// </summary>
+        public static ApiVersion SupportedApiVersion => new ApiVersion(2, 14);
+
         private void CheckApiVersion()
         {
             string headerValue = Request.Headers[ApiVersion.HttpHeaderName].FirstOrDefault();
             if (!string.IsNullOrEmpty(headerValue))
             {
                 var clientVersion = ApiVersion.Parse(headerValue);
-                if (clientVersion.Major != ApiVersion.Current.Major || clientVersion.Minor > ApiVersion.Current.Minor)
-                    throw new ApiVersionNotSupportedException($"Client requested API version {clientVersion} but server only supports versions between {ApiVersion.Current.Major}.0 and {ApiVersion.Current}.");
+                if (clientVersion.Major != SupportedApiVersion.Major || clientVersion.Minor > SupportedApiVersion.Minor)
+                    throw new ApiVersionNotSupportedException($"Client requested API version {clientVersion} but server only supports versions between {SupportedApiVersion.Major}.0 and {SupportedApiVersion}.");
             }
         }
 

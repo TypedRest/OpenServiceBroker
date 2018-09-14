@@ -6,8 +6,6 @@ namespace OpenServiceBroker
     {
         public const string HttpHeaderName = "X-Broker-API-Version";
 
-        public static ApiVersion Current => new ApiVersion(2, 14);
-
         public static ApiVersion Parse(string input)
         {
             var split = input.Split('.');

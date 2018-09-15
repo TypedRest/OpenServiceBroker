@@ -18,7 +18,7 @@
     <Authors>Bastian Eicher</Authors>
     <Company>AXOOM GmbH</Company>
     <Copyright>Copyright (c) AXOOM GmbH</Copyright>
-    <Description>ASP.NET Core implementation of Open Service Broker API</Description>
+    <Description>ASP.NET Core implementation of the Open Service Broker API</Description>
     <RepositoryUrl>https://github.com/AXOOM/OpenServiceBroker</RepositoryUrl>
     <PackageProjectUrl>https://github.com/AXOOM/OpenServiceBroker</PackageProjectUrl>
     <PackageIconUrl>https://github.com/AXOOM/OpenServiceBroker/raw/develop/logo.png</PackageIconUrl>

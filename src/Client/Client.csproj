@@ -18,7 +18,7 @@
     <Authors>Bastian Eicher</Authors>
     <Company>AXOOM GmbH</Company>
     <Copyright>Copyright (c) AXOOM GmbH</Copyright>
-    <Description>Client library for Open Service Broker API</Description>
+    <Description>Client library for the Open Service Broker API</Description>
     <RepositoryUrl>https://github.com/AXOOM/OpenServiceBroker</RepositoryUrl>
     <PackageProjectUrl>https://github.com/AXOOM/OpenServiceBroker</PackageProjectUrl>
     <PackageIconUrl>https://github.com/AXOOM/OpenServiceBroker/raw/develop/logo.png</PackageIconUrl>
@@ -27,10 +27,6 @@
 
   <ItemGroup>
     <PackageReference Include="TypedRest.Reactive" Version="0.39.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)'=='net45'">
-    <Reference Include="System.Net.Http" />
   </ItemGroup>
 
   <ItemGroup>

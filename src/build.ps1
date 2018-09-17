@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Stop"
 pushd $(Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
-dotnet clean OpenServiceBroker.sln
-dotnet msbuild /t:Restore /t:Build /p:Configuration=Release /p:Version=$Version OpenServiceBroker.sln
+dotnet clean
+dotnet msbuild /t:Restore /t:Build /p:Configuration=Release /p:Version=$Version
 
 popd

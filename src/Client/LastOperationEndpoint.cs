@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -31,7 +32,9 @@ namespace OpenServiceBroker
                     operation
                 }),
                 endCondition: obj => obj?.State != LastOperationResourceState.InProgress)
-        {}
+        {
+            PollingInterval = TimeSpan.FromSeconds(10);
+        }
 
         protected override async Task HandleErrorsAsync(HttpResponseMessage response)
         {

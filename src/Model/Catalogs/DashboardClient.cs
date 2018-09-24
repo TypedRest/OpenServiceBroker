@@ -27,16 +27,12 @@ namespace OpenServiceBroker.Catalogs
         public Uri RedirectUri { get; set; }
 
         public bool Equals(DashboardClient other)
-        {
-            if (other == null) return false;
-            return Id == other.Id && Secret == other.Secret && RedirectUri == other.RedirectUri;
-        }
+            => other != null
+            && Id == other.Id
+            && Secret == other.Secret
+            && RedirectUri == other.RedirectUri;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((DashboardClient)obj);
-        }
+        public override bool Equals(object obj) => obj is DashboardClient other && Equals(other);
 
         public override int GetHashCode()
         {

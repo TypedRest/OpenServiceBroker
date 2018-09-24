@@ -12,16 +12,11 @@ namespace OpenServiceBroker.Instances
         public ServiceInstancePreviousValues PreviousValues { get; set; }
 
         public bool Equals(ServiceInstanceUpdateRequest other)
-        {
-            if (other == null) return false;
-            return base.Equals(other) && Equals(PreviousValues, other.PreviousValues);
-        }
+            => other != null
+            && base.Equals(other)
+            && Equals(PreviousValues, other.PreviousValues);
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((ServiceInstanceUpdateRequest)obj);
-        }
+        public override bool Equals(object obj) => obj is ServiceInstanceUpdateRequest other && Equals(other);
 
         public override int GetHashCode()
         {

@@ -56,16 +56,11 @@ namespace OpenServiceBroker
             => Platform + " " + Convert.ToBase64String(Encoding.UTF8.GetBytes(Value.ToString(Formatting.None)));
 
         public bool Equals(OriginatingIdentity other)
-        {
-            if (other == null) return false;
-            return Platform == other.Platform && Value.ToString(Formatting.None) == other.Value.ToString(Formatting.None);
-        }
+            => other != null
+            && Platform == other.Platform
+            && Value.ToString(Formatting.None) == other.Value.ToString(Formatting.None);
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((OriginatingIdentity)obj);
-        }
+        public override bool Equals(object obj) => obj is OriginatingIdentity other && Equals(other);
 
         public override int GetHashCode()
         {

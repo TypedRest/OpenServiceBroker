@@ -15,16 +15,11 @@ namespace OpenServiceBroker.Instances
         public bool Unchanged { get; set; }
 
         public bool Equals(ServiceInstanceProvision other)
-        {
-            if (other == null) return false;
-            return DashboardUrl == other.DashboardUrl && Unchanged == other.Unchanged;
-        }
+            => other != null
+            && DashboardUrl == other.DashboardUrl
+            && Unchanged == other.Unchanged;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((ServiceInstanceProvision)obj);
-        }
+        public override bool Equals(object obj) => obj is ServiceInstanceProvision other && Equals(other);
 
         public override int GetHashCode()
         {

@@ -28,16 +28,12 @@ namespace OpenServiceBroker.Instances
         public string SpaceGuid { get; set; }
 
         public bool Equals(ServiceInstanceProvisionRequest other)
-        {
-            if (other == null) return false;
-            return base.Equals(other) && OrganizationGuid == other.OrganizationGuid && SpaceGuid == other.SpaceGuid;
-        }
+            => other != null
+            && base.Equals(other)
+            && OrganizationGuid == other.OrganizationGuid
+            && SpaceGuid == other.SpaceGuid;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((ServiceInstanceProvisionRequest) obj);
-        }
+        public override bool Equals(object obj) => obj is ServiceInstanceProvisionRequest other && Equals(other);
 
         public override int GetHashCode()
         {

@@ -12,16 +12,11 @@ namespace OpenServiceBroker
         public bool Completed { get; set; }
 
         public bool Equals(AsyncOperation other)
-        {
-            if (other == null) return false;
-            return Operation == other.Operation && Completed == other.Completed;
-        }
+            => other != null
+            && Operation == other.Operation
+            && Completed == other.Completed;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((AsyncOperation) obj);
-        }
+        public override bool Equals(object obj) => obj is AsyncOperation other && Equals(other);
 
         public override int GetHashCode()
         {

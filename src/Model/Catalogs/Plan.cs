@@ -54,16 +54,14 @@ namespace OpenServiceBroker.Catalogs
         public Schemas Schemas { get; set; }
 
         public bool Equals(Plan other)
-        {
-            if (other == null) return false;
-            return Id == other.Id && Name ==other.Name && Description == other.Description && Free == other.Free && Bindable == other.Bindable;
-        }
+            => other != null
+            && Id == other.Id
+            && Name == other.Name
+            && Description == other.Description
+            && Free == other.Free
+            && Bindable == other.Bindable;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((Plan) obj);
-        }
+        public override bool Equals(object obj) => obj is Plan other && Equals(other);
 
         public override int GetHashCode()
         {

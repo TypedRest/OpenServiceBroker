@@ -27,13 +27,10 @@ namespace OpenServiceBroker.Instances
         public string SpaceId { get; set; }
 
         public bool Equals(ServiceInstancePreviousValues other)
-            => other != null && PlanId == other.PlanId;
+            => other != null
+            && PlanId == other.PlanId;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((ServiceInstancePreviousValues)obj);
-        }
+        public override bool Equals(object obj) => obj is ServiceInstancePreviousValues other && Equals(other);
 
         public override int GetHashCode() => PlanId?.GetHashCode() ?? 0;
     }

@@ -26,11 +26,7 @@ namespace OpenServiceBroker
 
         public bool Equals(ApiVersion other) => Major == other.Major && Minor == other.Minor;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj is ApiVersion other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is ApiVersion other && Equals(other);
 
         public override int GetHashCode()
         {

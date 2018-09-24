@@ -18,16 +18,11 @@ namespace OpenServiceBroker.Bindings
         public string Route { get; set; }
 
         public bool Equals(ServiceBindingResourceObject other)
-        {
-            if (other == null) return false;
-            return AppGuid == other.AppGuid && Route == other.Route;
-        }
+            => other != null
+            && AppGuid == other.AppGuid
+            && Route == other.Route;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((ServiceBindingResourceObject)obj);
-        }
+        public override bool Equals(object obj) => obj is ServiceBindingResourceObject other && Equals(other);
 
         public override int GetHashCode()
         {

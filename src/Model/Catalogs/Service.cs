@@ -85,16 +85,15 @@ namespace OpenServiceBroker.Catalogs
         public IList<Plan> Plans { get; } = new List<Plan>();
 
         public bool Equals(Service other)
-        {
-            if (other == null) return false;
-            return Id == other.Id && Name == other.Name && Description == other.Description && Bindable == other.Bindable && Equals(DashboardClient, other.DashboardClient) && PlanUpdateable == other.PlanUpdateable;
-        }
+            => other != null
+            && Id == other.Id
+            && Name == other.Name
+            && Description == other.Description
+            && Bindable == other.Bindable
+            && Equals(DashboardClient, other.DashboardClient)
+            && PlanUpdateable == other.PlanUpdateable;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((Service)obj);
-        }
+        public override bool Equals(object obj) => obj is Service other && Equals(other);
 
         public override int GetHashCode()
         {

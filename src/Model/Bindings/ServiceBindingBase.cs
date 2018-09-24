@@ -32,13 +32,10 @@ namespace OpenServiceBroker.Bindings
         public List<ServiceBindingVolumeMount> VolumeMounts { get; } = new List<ServiceBindingVolumeMount>();
 
         protected bool Equals(ServiceBindingBase other)
-            => SyslogDrainUrl == other.SyslogDrainUrl && RouteServiceUrl == other.RouteServiceUrl;
+            => SyslogDrainUrl == other.SyslogDrainUrl
+            && RouteServiceUrl == other.RouteServiceUrl;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj is ServiceBindingBase other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is ServiceBindingBase other && Equals(other);
 
         public override int GetHashCode()
         {

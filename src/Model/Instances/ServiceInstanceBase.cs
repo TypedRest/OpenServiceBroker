@@ -24,13 +24,10 @@ namespace OpenServiceBroker.Instances
         public JObject Parameters { get; set; }
 
         protected bool Equals(ServiceInstanceBase other)
-            => ServiceId == other.ServiceId && PlanId == other.PlanId;
+            => ServiceId == other.ServiceId
+            && PlanId == other.PlanId;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((ServiceInstanceBase)obj);
-        }
+        public override bool Equals(object obj) => obj is ServiceInstanceBase other && Equals(other);
 
         public override int GetHashCode()
         {

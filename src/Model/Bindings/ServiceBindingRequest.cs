@@ -44,16 +44,12 @@ namespace OpenServiceBroker.Bindings
         public ServiceBindingResourceObject BindResource { get; set; }
 
         public bool Equals(ServiceBindingRequest other)
-        {
-            if (other == null) return false;
-            return ServiceId == other.ServiceId && PlanId == other.PlanId && Equals(BindResource, other.BindResource);
-        }
+            => other != null
+            && ServiceId == other.ServiceId
+            && PlanId == other.PlanId
+            && Equals(BindResource, other.BindResource);
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((ServiceBindingRequest)obj);
-        }
+        public override bool Equals(object obj) => obj is ServiceBindingRequest other && Equals(other);
 
         public override int GetHashCode()
         {

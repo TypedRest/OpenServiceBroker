@@ -12,16 +12,11 @@ namespace OpenServiceBroker.Instances
         public Uri DashboardUrl { get; set; }
 
         public bool Equals(ServiceInstanceResource other)
-        {
-            if (other == null) return false;
-            return base.Equals(other) && DashboardUrl == other.DashboardUrl;
-        }
+            => other != null
+            && base.Equals(other)
+            && DashboardUrl == other.DashboardUrl;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((ServiceInstanceResource)obj);
-        }
+        public override bool Equals(object obj) => obj is ServiceInstanceResource other && Equals(other);
 
         public override int GetHashCode()
         {

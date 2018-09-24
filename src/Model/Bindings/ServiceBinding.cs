@@ -9,16 +9,11 @@ namespace OpenServiceBroker.Bindings
         public bool Unchanged { get; set; }
 
         public bool Equals(ServiceBinding other)
-        {
-            if (other == null) return false;
-            return base.Equals(other) && Unchanged == other.Unchanged;
-        }
+            => other != null
+            && base.Equals(other)
+            && Unchanged == other.Unchanged;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((ServiceBinding)obj);
-        }
+        public override bool Equals(object obj) => obj is ServiceBinding other && Equals(other);
 
         public override int GetHashCode()
         {

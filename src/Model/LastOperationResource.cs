@@ -23,16 +23,11 @@ namespace OpenServiceBroker
         public string Description { get; set; }
 
         public bool Equals(LastOperationResource other)
-        {
-            if (other == null) return false;
-            return State == other.State && Description == other.Description;
-        }
+            => other != null
+            && State == other.State
+            && Description == other.Description;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((LastOperationResource)obj);
-        }
+        public override bool Equals(object obj) => obj is LastOperationResource other && Equals(other);
 
         public override int GetHashCode()
         {

@@ -2,7 +2,6 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using OpenServiceBroker.Errors;
 using TypedRest;
 
 namespace OpenServiceBroker
@@ -34,25 +33,6 @@ namespace OpenServiceBroker
                 service_id = serviceId,
                 plan_id = planId
             });
-
-        protected override async Task HandleErrorsAsync(HttpResponseMessage response)
-        {
-            if (!response.IsSuccessStatusCode && response.Content != null)
-            {
-                Error error = null;
-                try
-                {
-                    error = await FromContentAsync<Error>(response);
-                }
-                catch
-                {
-                    // Error responses without a response in standard format will be handled below
-                }
-                if (error != null) throw BrokerException.FromResponse(error, response.StatusCode);
-            }
-
-            response.EnsureSuccessStatusCode();
-        }
 
         protected async Task<AsyncOperation> ParseDeferredResponseAsync(HttpResponseMessage response)
         {

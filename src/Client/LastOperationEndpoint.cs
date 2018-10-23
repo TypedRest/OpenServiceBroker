@@ -35,16 +35,5 @@ namespace OpenServiceBroker
         {
             PollingInterval = TimeSpan.FromSeconds(10);
         }
-
-        protected override async Task HandleErrorsAsync(HttpResponseMessage response)
-        {
-            if (response.StatusCode == HttpStatusCode.Gone)
-            {
-                var error = await response.Content.ReadAsAsync<Error>(new[] {Serializer});
-                if (error != null) throw BrokerException.FromResponse(error, response.StatusCode);
-            }
-
-            response.EnsureSuccessStatusCode();
-        }
     }
 }

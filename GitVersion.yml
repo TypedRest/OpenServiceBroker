@@ -2,14 +2,14 @@ mode: ContinuousDeployment
 
 branches:
   # Mainline branches
-  master: 
-    tag: ci
   develop:
-    tag: dev
+    tag: alpha
     increment: patch
+  master:
+    tag: beta
 
   # Stabilization branches
-  release[/-]:
+  release:
     tag: rc
-  hotfix[/-]:
+  hotfix:
     tag: rc

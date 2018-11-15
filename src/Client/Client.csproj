@@ -9,7 +9,8 @@
     <OutputPath>..\..\artifacts</OutputPath>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <IncludeSource>True</IncludeSource>
+    <PublishRepositoryUrl>True</PublishRepositoryUrl>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
@@ -19,7 +20,6 @@
     <Company>AXOOM GmbH</Company>
     <Copyright>Copyright (c) AXOOM GmbH</Copyright>
     <Description>Client library for the Open Service Broker API</Description>
-    <RepositoryUrl>https://github.com/AXOOM/OpenServiceBroker</RepositoryUrl>
     <PackageProjectUrl>https://github.com/AXOOM/OpenServiceBroker</PackageProjectUrl>
     <PackageIconUrl>https://github.com/AXOOM/OpenServiceBroker/raw/develop/logo.png</PackageIconUrl>
     <PackageTags>Open Service Broker API Client</PackageTags>
@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <PackageReference Include="TypedRest.Reactive" Version="0.41.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>

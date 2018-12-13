@@ -22,6 +22,7 @@
     <Description>Client library for the Open Service Broker API</Description>
     <PackageProjectUrl>https://github.com/AXOOM/OpenServiceBroker</PackageProjectUrl>
     <PackageIconUrl>https://github.com/AXOOM/OpenServiceBroker/raw/develop/logo.png</PackageIconUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>Open Service Broker API Client</PackageTags>
   </PropertyGroup>
 

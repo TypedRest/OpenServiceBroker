@@ -136,13 +136,13 @@ namespace OpenServiceBroker.Instances
                 blocking: async x =>
                 {
                     await x.DeprovisionAsync(context, serviceId, planId);
-                    return Ok();
+                    return Ok(new {});
                 },
                 deferred: async x =>
                 {
                     var result = await x.DeprovisionAsync(context, serviceId, planId);
                     return result.Completed
-                        ? Ok()
+                        ? Ok(new {})
                         : AsyncResult(context, result);
                 });
         }

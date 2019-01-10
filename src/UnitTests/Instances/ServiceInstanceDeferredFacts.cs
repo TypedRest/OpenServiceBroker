@@ -1,5 +1,4 @@
 using System;
-using System.Net;
 using System.Threading.Tasks;
 using FluentAssertions;
 using OpenServiceBroker.Errors;
@@ -147,21 +146,6 @@ namespace OpenServiceBroker.Instances
             SetupMock(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"), response);
             var result = await Client.ServiceInstancesDeferred["123"].DeprovisionAsync("abc", "xyz");
             result.Should().BeEquivalentTo(response);
-        }
-
-        [Fact]
-        public async Task DeprovisionCompletedRequest()
-        {
-            var response = new AsyncOperation
-            {
-                Completed = true
-            };
-
-            SetupMock(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), null, null), response);
-            var result = await Client.HttpClient.DeleteAsync(Client.ServiceInstancesDeferred["123"].Uri);
-            result.StatusCode.Should().BeEquivalentTo(HttpStatusCode.OK);
-            var resultString = await result.Content.ReadAsStringAsync();
-            resultString.Should().Be("{}");
         }
 
         [Fact]

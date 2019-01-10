@@ -1,7 +1,7 @@
-using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 using OpenServiceBroker.Errors;
+using TypedRest;
 using Xunit;
 
 namespace OpenServiceBroker.Bindings
@@ -70,6 +70,16 @@ namespace OpenServiceBroker.Bindings
         {
             SetupMock(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"));
             await Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].UnbindAsync("abc", "xyz");
+        }
+
+        [Fact]
+        public async Task UnbindBody()
+        {
+            SetupMock(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"));
+
+            var result = await Client.HttpClient.DeleteAsync(Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].Uri.Join("?service_id=abc&plan_id=xyz"));
+            string resultString = await result.Content.ReadAsStringAsync();
+            resultString.Should().Be("{}");
         }
 
         [Fact]

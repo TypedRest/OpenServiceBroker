@@ -1,9 +1,11 @@
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using OpenServiceBroker.Errors;
+using TypedRest;
 using Xunit;
 
 namespace OpenServiceBroker.Instances
@@ -88,10 +90,38 @@ namespace OpenServiceBroker.Instances
         }
 
         [Fact]
+        public async Task UpdateBody()
+        {
+            var request = new ServiceInstanceUpdateRequest
+            {
+                ServiceId = "abc",
+                PlanId = "xyz"
+            };
+
+            SetupMock(x => x.UpdateAsync(new ServiceInstanceContext("123"), request));
+
+            var result = await Client.HttpClient.PatchAsync(Client.ServiceInstancesBlocking["123"].Uri, request, Client.Serializer);
+            result.StatusCode.Should().BeEquivalentTo(HttpStatusCode.OK);
+            string resultString = await result.Content.ReadAsStringAsync();
+            resultString.Should().Be("{}");
+        }
+
+        [Fact]
         public async Task Deprovision()
         {
             SetupMock(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"));
             await Client.ServiceInstancesBlocking["123"].DeprovisionAsync("abc", "xyz");
+        }
+
+        [Fact]
+        public async Task DeprovisionBody()
+        {
+            SetupMock(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"));
+
+            var result = await Client.HttpClient.DeleteAsync(Client.ServiceInstancesBlocking["123"].Uri.Join("?service_id=abc&plan_id=xyz"));
+            result.StatusCode.Should().BeEquivalentTo(HttpStatusCode.OK);
+            string resultString = await result.Content.ReadAsStringAsync();
+            resultString.Should().Be("{}");
         }
 
         [Fact]

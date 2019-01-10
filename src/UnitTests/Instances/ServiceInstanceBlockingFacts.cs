@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -92,6 +93,15 @@ namespace OpenServiceBroker.Instances
         {
             SetupMock(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"));
             await Client.ServiceInstancesBlocking["123"].DeprovisionAsync("abc", "xyz");
+        }
+
+        [Fact]
+        public async Task DeprovisionRequest()
+        {
+            var result = await Client.HttpClient.DeleteAsync(Client.ServiceInstancesBlocking["123"].Uri);
+            result.StatusCode.Should().BeEquivalentTo(HttpStatusCode.OK);
+            var resultString = await result.Content.ReadAsStringAsync();
+            resultString.Should().Be("{}");
         }
 
         [Fact]

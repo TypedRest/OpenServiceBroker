@@ -56,7 +56,7 @@ namespace OpenServiceBroker.Bindings
 
         private async Task LastOperationWaitAsync(string serviceId, string planId, string operation)
         {
-            var result = await _inner.LastOperation(serviceId, planId, operation).GetStream().LastAsync();
+            var result = await _inner.LastOperation(serviceId, planId, operation).GetObservable().LastAsync();
             if (result.State != LastOperationResourceState.Succeeded)
                 throw new BrokerException(result.Description, "AsyncFailed");
         }

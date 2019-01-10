@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>OpenServiceBroker.UnitTests</AssemblyName>
     <RootNamespace>OpenServiceBroker</RootNamespace>
-    <LangVersion>7.2</LangVersion>
+    <LangVersion>7.3</LangVersion>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <OutputType>Library</OutputType>
     <IsPackable>False</IsPackable>

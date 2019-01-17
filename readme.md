@@ -157,3 +157,17 @@ services.AddTransient<ICatalogService, MyCatalogService>()
 ### Versioning
 
 The Server Library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.14`.
+
+
+### Note to ASP.NET Core 2.2 users
+In ASP.NET Core 2.2 routing was completely overhauled to what is known as [endpoint routing](https://blogs.msdn.microsoft.com/webdev/2018/08/27/asp-net-core-2-2-0-preview1-endpoint-routing/). However, endpoint routing is not completely backwards compatible with previous routing implementations. In particular, calls to `CreatedAtAction` for returning HTTP 201 responses fail with an error: _System.InvalidOperationException: No route matches the supplied values_.
+
+This failure can be resolved by switching back to the old routing implementation:
+
+    services.AddMvc(o =>
+    {
+        o.EnableEndpointRouting = false;
+    })
+    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+This behavior will be fixed in version 3.0 of the ASP.NET Core framework.

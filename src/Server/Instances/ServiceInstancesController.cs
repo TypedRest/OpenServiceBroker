@@ -23,7 +23,7 @@ namespace OpenServiceBroker.Instances
         /// <response code="200"/>
         /// <response code="404">The instance does not exist or a provisioning operation is still in progress.</response>
         /// <response code="422">The instance is being updated and therefore cannot be fetched at this time.</response>
-        [HttpGet, Route("")]
+        [HttpGet("")]
         [ProducesResponseType(typeof(ServiceInstanceResource), 200)]
         [ProducesResponseType(typeof(Error), 404)]
         [ProducesResponseType(typeof(Error), 422)]
@@ -47,7 +47,7 @@ namespace OpenServiceBroker.Instances
         /// <response code="400">The request is malformed or missing mandatory data.</response>
         /// <response code="409">The instance with the same id already exists but with different attributes.</response>
         /// <response code="422">The broker only supports asynchronous processing for the requested operation and the request did not include <paramref name="acceptsIncomplete"/>=true.</response>
-        [HttpPut, Route("")]
+        [HttpPut("")]
         [ProducesResponseType(typeof(ServiceInstanceProvision), 200)]
         [ProducesResponseType(typeof(ServiceInstanceProvision), 201)]
         [ProducesResponseType(typeof(ServiceInstanceAsyncOperation), 202)]
@@ -81,7 +81,7 @@ namespace OpenServiceBroker.Instances
         /// <response code="202">The instance update is in progress. See <see cref="GetLastOperation"/>.</response>
         /// <response code="400">The request is malformed or missing mandatory data.</response>
         /// <response code="422">The requested change is not supported or the broker only supports asynchronous processing for the requested operation and the request did not include <paramref name="acceptsIncomplete"/>=true.</response>
-        [HttpPatch, Route("")]
+        [HttpPatch("")]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(ServiceInstanceAsyncOperation), 202)]
         [ProducesResponseType(typeof(Error), 400)]
@@ -119,7 +119,7 @@ namespace OpenServiceBroker.Instances
         /// <response code="400">The request is malformed or missing mandatory data.</response>
         /// <response code="410">The instance does not exist.</response>
         /// <response code="422">The broker only supports asynchronous processing for the requested operation and the request did not include <paramref name="acceptsIncomplete"/>=true.</response>
-        [HttpDelete, Route("")]
+        [HttpDelete("")]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(ServiceInstanceAsyncOperation), 202)]
         [ProducesResponseType(typeof(Error), 400)]
@@ -157,7 +157,7 @@ namespace OpenServiceBroker.Instances
         /// <response code="200"/>
         /// <response code="400">The request is malformed or missing mandatory data.</response>
         /// <response code="410">The instance requested to be deleted does not exist (anymore).</response>
-        [HttpGet, Route("last_operation")]
+        [HttpGet("last_operation")]
         [ProducesResponseType(typeof(LastOperationResource), 200)]
         [ProducesResponseType(typeof(Error), 400)]
         [ProducesResponseType(typeof(Error), 410)]

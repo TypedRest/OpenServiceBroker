@@ -23,7 +23,7 @@ namespace OpenServiceBroker.Bindings
         /// <param name="bindingId">The binding id of binding to fetch</param>
         /// <response code="200"/>
         /// <response code="404">The binding does not exist or a binding operation is still in progress.</response>
-        [HttpGet, Route("")]
+        [HttpGet("")]
         [ProducesResponseType(typeof(ServiceBindingResource), 200)]
         [ProducesResponseType(typeof(Error), 404)]
         [ProducesResponseType(typeof(Error), 422)]
@@ -49,7 +49,7 @@ namespace OpenServiceBroker.Bindings
         /// <response code="400">The request is malformed or missing mandatory data.</response>
         /// <response code="409">The binding with the same id already exists but with different attributes.</response>
         /// <response code="422">The broker only supports asynchronous processing for the requested operation and the request did not include <paramref name="acceptsIncomplete"/>=true.</response>
-        [HttpPut, Route("")]
+        [HttpPut("")]
         [ProducesResponseType(typeof(ServiceBinding), 200)]
         [ProducesResponseType(typeof(ServiceBinding), 201)]
         [ProducesResponseType(typeof(AsyncOperation), 202)]
@@ -87,7 +87,7 @@ namespace OpenServiceBroker.Bindings
         /// <response code="400">The request is malformed or missing mandatory data.</response>
         /// <response code="410">The binding does not exist.</response>
         /// <response code="422">The broker only supports asynchronous processing for the requested operation and the request did not include <paramref name="acceptsIncomplete"/>=true.</response>
-        [HttpDelete, Route("")]
+        [HttpDelete("")]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(AsyncOperation), 202)]
         [ProducesResponseType(typeof(Error), 400)]
@@ -127,7 +127,7 @@ namespace OpenServiceBroker.Bindings
         /// <response code="200"/>
         /// <response code="400">The request is malformed or missing mandatory data.</response>
         /// <response code="410">The binding requested to be deleted does not exist (anymore).</response>
-        [HttpGet, Route("last_operation")]
+        [HttpGet("last_operation")]
         [ProducesResponseType(typeof(LastOperationResource), 200)]
         [ProducesResponseType(typeof(Error), 400)]
         [ProducesResponseType(typeof(Error), 410)]

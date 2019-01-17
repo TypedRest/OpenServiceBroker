@@ -157,8 +157,8 @@ namespace OpenServiceBroker.Bindings
                     actionName: nameof(Fetch),
                     routeValues: new
                     {
-                        instanceId = context.InstanceId,
-                        bindingId = context.BindingId
+                        instance_id = context.InstanceId,
+                        binding_id = context.BindingId
                     },
                     result);
             }
@@ -169,10 +169,10 @@ namespace OpenServiceBroker.Bindings
                 actionName: nameof(GetLastOperation),
                 routeValues: new
                 {
-                    instanceId = context.InstanceId,
-                    bindingId = context.BindingId,
-                    serviceId = request?.ServiceId,
-                    planId = request?.PlanId,
+                    instance_id = context.InstanceId,
+                    binding_id = context.BindingId,
+                    service_id = request?.ServiceId,
+                    plan_id = request?.PlanId,
                     operation = result.Operation
                 },
                 result);

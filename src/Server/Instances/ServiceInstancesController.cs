@@ -186,7 +186,7 @@ namespace OpenServiceBroker.Instances
                     actionName: nameof(Fetch),
                     routeValues: new
                     {
-                        instanceId = context.InstanceId
+                        instance_id = context.InstanceId
                     },
                     result);
             }
@@ -197,9 +197,9 @@ namespace OpenServiceBroker.Instances
                 actionName: nameof(GetLastOperation),
                 routeValues: new
                 {
-                    instanceId = context.InstanceId,
-                    serviceId = request?.ServiceId,
-                    planId = request?.PlanId,
+                    instance_id = context.InstanceId,
+                    service_id = request?.ServiceId,
+                    plan_id = request?.PlanId,
                     operation = result.Operation
                 },
                 result);

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -30,6 +31,13 @@ namespace OpenServiceBroker.Bindings
         /// </summary>
         [JsonProperty("volume_mounts")]
         public List<ServiceBindingVolumeMount> VolumeMounts { get; } = new List<ServiceBindingVolumeMount>();
+
+        /// <summary>
+        /// Do not serialize volume mounts if there are none. On some platforms (PCF for example), binding credentials to
+        /// an application fails when an empty list of volume mounts is returned.
+        /// </summary>
+        /// <returns></returns>
+        public bool ShouldSerializeVolumeMounts() => VolumeMounts.Any();
 
         protected bool Equals(ServiceBindingBase other)
             => SyslogDrainUrl == other.SyslogDrainUrl

@@ -11,19 +11,19 @@ namespace OpenServiceBroker.Bindings
         /// <summary>
         /// A free-form hash of credentials that can be used by applications or users to access the service. MUST be returned if the Service Broker supports generation of credentials.
         /// </summary>
-        [JsonProperty("credentials")]
+        [JsonProperty("credentials", NullValueHandling = NullValueHandling.Ignore)]
         public JObject Credentials { get; set; }
 
         /// <summary>
         /// A URL to which logs MUST be streamed. <see cref="Catalogs.Service.Requires"/>: <see cref="Catalogs.Features.SyslogDrain"/> MUST be declared in the Catalog endpoint or the Platform can consider the response invalid.
         /// </summary>
-        [JsonProperty("syslog_drain_url")]
+        [JsonProperty("syslog_drain_url", NullValueHandling = NullValueHandling.Ignore)]
         public Uri SyslogDrainUrl { get; set; }
 
         /// <summary>
         /// A URL to which the Platform MUST proxy requests for the address sent with <see cref="ServiceBindingResourceObject.Route"/> in the request body. <see cref="Catalogs.Service.Requires"/>: <see cref="Catalogs.Features.RouteForwarding"/> MUST be declared in the Catalog endpoint or the Platform can consider the response invalid.
         /// </summary>
-        [JsonProperty("route_service_url")]
+        [JsonProperty("route_service_url", NullValueHandling = NullValueHandling.Ignore)]
         public Uri RouteServiceUrl { get; set; }
 
         /// <summary>

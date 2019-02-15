@@ -11,11 +11,7 @@ namespace OpenServiceBroker.Instances
         [JsonProperty("service_id", Required = Required.Always)]
         public string ServiceId { get; set; }
 
-        /// <summary>
-        /// MUST be the ID of a <see cref="Catalogs.Plan"/> from the service that has been requested.
-        /// </summary>
-        [JsonProperty("plan_id", Required = Required.Always)]
-        public string PlanId { get; set; }
+        public abstract string PlanId { get; set; }
 
         /// <summary>
         /// Configuration parameters for the Service Instance. Service Brokers SHOULD ensure that the client has provided valid configuration parameters and values for the operation.

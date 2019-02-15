@@ -30,7 +30,9 @@ namespace OpenServiceBroker.Instances
             var request = new ServiceInstanceProvisionRequest
             {
                 ServiceId = "abc",
-                PlanId = "xyz"
+                PlanId = "xyz",
+                OrganizationGuid = "org",
+                SpaceGuid = "space"
             };
             var response = new ServiceInstanceProvision
             {
@@ -48,7 +50,9 @@ namespace OpenServiceBroker.Instances
             var request = new ServiceInstanceProvisionRequest
             {
                 ServiceId = "abc",
-                PlanId = "xyz"
+                PlanId = "xyz",
+                OrganizationGuid = "org",
+                SpaceGuid = "space"
             };
             var response = new ServiceInstanceProvision
             {
@@ -67,7 +71,9 @@ namespace OpenServiceBroker.Instances
             var request = new ServiceInstanceProvisionRequest
             {
                 ServiceId = "abc",
-                PlanId = "xyz"
+                PlanId = "xyz",
+                OrganizationGuid = "org",
+                SpaceGuid = "space"
             };
 
             SetupMock(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request), new ConflictException("custom message"));

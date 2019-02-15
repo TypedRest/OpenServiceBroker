@@ -28,7 +28,9 @@ namespace OpenServiceBroker.Instances
             var request = new ServiceInstanceProvisionRequest
             {
                 ServiceId = "abc",
-                PlanId = "xyz"
+                PlanId = "xyz",
+                OrganizationGuid = "org",
+                SpaceGuid = "space"
             };
             var identity = new OriginatingIdentity("myplatform", new JObject {{"id", "test"}});
 

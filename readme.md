@@ -157,3 +157,7 @@ services.AddTransient<ICatalogService, MyCatalogService>()
 ### Versioning
 
 The Server Library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.14`.
+
+### Walkthrough
+
+The blog post [Implementing a Service Broker in .NET](https://ronaldwildenberg.com/programming/cloudfoundry/2019/01/18/net-service-broker-01.html) walks you through creating a .NET Open Service Broker and testing it with Pivotal Cloud Foundry.

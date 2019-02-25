@@ -97,7 +97,7 @@ namespace OpenServiceBroker
         /// <summary>
         /// Creates an OK response with an empty JSON object in the body.
         /// </summary>
-        public new OkObjectResult Ok() => Ok(new {});
+        protected new OkObjectResult Ok() => Ok(new {});
 
         /// <summary>
         /// Describes the identity of the user that initiated a request from the Platform.

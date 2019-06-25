@@ -143,7 +143,13 @@ Set up a regular ASP.NET Core 2.0+ project and add the NuGet package `OpenServic
 
 Register your implementations in the `IServiceCollection` for dependency injection and finally call the `.AddOpenServiceBroker()` extension method.
 
+### Versioning
+
+The Server Library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.14`.
+
 ### Sample
+
+Register your interface implementations like this:
 
 ```csharp
 services.AddTransient<ICatalogService, MyCatalogService>()
@@ -154,10 +160,6 @@ services.AddTransient<ICatalogService, MyCatalogService>()
         .AddOpenServiceBroker();
 ```
 
-### Versioning
-
-The Server Library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.14`.
-
-### Walkthrough
+You can use the [AXOOM Service Broker Template](https://github.com/AXOOM/Templates.ServiceBroker) to generate a complete Service Broker implementation with `dotnet new`.
 
 The blog post [Implementing a Service Broker in .NET](https://ronaldwildenberg.com/programming/cloudfoundry/2019/01/18/net-service-broker-01.html) walks you through creating a .NET Open Service Broker and testing it with Pivotal Cloud Foundry.

@@ -3,7 +3,8 @@ using System.Net;
 using System.Net.Http;
 using OpenServiceBroker.Catalogs;
 using OpenServiceBroker.Instances;
-using TypedRest;
+using TypedRest.Endpoints;
+using TypedRest.Endpoints.Generic;
 
 namespace OpenServiceBroker
 {
@@ -54,13 +55,19 @@ namespace OpenServiceBroker
         /// Sets the Open Service Broker API version to a custom value. Only use this if you know what you are doing!
         /// </summary>
         public void SetApiVersion(ApiVersion version)
-            => SetCustomHeader(ApiVersion.HttpHeaderName, version.ToString());
+        {
+            HttpClient.DefaultRequestHeaders.Remove(ApiVersion.HttpHeaderName);
+            HttpClient.DefaultRequestHeaders.Add(ApiVersion.HttpHeaderName, version.ToString());
+        }
 
         /// <summary>
         /// Sets the identity of the user that initiated the request from the Platform.
         /// </summary>
         public void SetOriginatingIdentity(OriginatingIdentity identity)
-            => SetCustomHeader(OriginatingIdentity.HttpHeaderName, identity.ToString());
+        {
+            HttpClient.DefaultRequestHeaders.Remove(OriginatingIdentity.HttpHeaderName);
+            HttpClient.DefaultRequestHeaders.Add(OriginatingIdentity.HttpHeaderName, identity.ToString());
+        }
 
         /// <summary>
         /// Exposes a list of all services available on the Service Broker.

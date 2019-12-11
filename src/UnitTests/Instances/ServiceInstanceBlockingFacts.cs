@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using OpenServiceBroker.Errors;
 using TypedRest;
+using TypedRest.Http;
 using Xunit;
 
 namespace OpenServiceBroker.Instances

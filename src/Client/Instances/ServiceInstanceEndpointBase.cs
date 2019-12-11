@@ -1,7 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using OpenServiceBroker.Bindings;
-using TypedRest;
+using TypedRest.Endpoints;
+using TypedRest.Endpoints.Generic;
 
 namespace OpenServiceBroker.Instances
 {

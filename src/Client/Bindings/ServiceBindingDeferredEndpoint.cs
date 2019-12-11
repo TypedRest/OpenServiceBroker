@@ -1,7 +1,8 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using TypedRest;
+using TypedRest.Endpoints;
+using TypedRest.Endpoints.Reactive;
 
 namespace OpenServiceBroker.Bindings
 {

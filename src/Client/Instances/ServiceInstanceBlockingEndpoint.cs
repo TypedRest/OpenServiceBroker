@@ -3,7 +3,8 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using OpenServiceBroker.Bindings;
-using TypedRest;
+using TypedRest.Endpoints;
+using TypedRest.Http;
 
 namespace OpenServiceBroker.Instances
 {

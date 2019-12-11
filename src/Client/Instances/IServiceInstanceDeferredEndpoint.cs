@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using OpenServiceBroker.Bindings;
 using OpenServiceBroker.Errors;
-using TypedRest;
+using TypedRest.Endpoints.Reactive;
 
 namespace OpenServiceBroker.Instances
 {

@@ -1,9 +1,6 @@
 using System;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using OpenServiceBroker.Errors;
-using TypedRest;
+using TypedRest.Endpoints;
+using TypedRest.Endpoints.Reactive;
 using TypedRest.UriTemplates;
 
 namespace OpenServiceBroker

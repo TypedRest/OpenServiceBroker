@@ -3,7 +3,7 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using OpenServiceBroker.Bindings;
 using OpenServiceBroker.Errors;
-using TypedRest;
+using TypedRest.Endpoints;
 
 namespace OpenServiceBroker.Instances
 {

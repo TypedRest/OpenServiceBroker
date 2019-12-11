@@ -1,6 +1,6 @@
 using OpenServiceBroker.Catalogs;
 using OpenServiceBroker.Instances;
-using TypedRest;
+using TypedRest.Endpoints.Generic;
 
 namespace OpenServiceBroker
 {

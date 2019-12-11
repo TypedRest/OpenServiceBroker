@@ -2,7 +2,8 @@ using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Threading.Tasks;
 using OpenServiceBroker.Errors;
-using TypedRest;
+using TypedRest.Errors;
+using TypedRest.Serializers;
 
 namespace OpenServiceBroker
 {

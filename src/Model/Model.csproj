@@ -9,7 +9,8 @@
     <OutputPath>..\..\artifacts</OutputPath>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <IncludeSource>True</IncludeSource>
+    <PublishRepositoryUrl>True</PublishRepositoryUrl>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
@@ -19,7 +20,6 @@
     <Company>AXOOM GmbH</Company>
     <Copyright>Copyright (c) AXOOM GmbH</Copyright>
     <Description>DTO classes for the Open Service Broker API</Description>
-    <RepositoryUrl>https://github.com/AXOOM/OpenServiceBroker</RepositoryUrl>
     <PackageProjectUrl>https://github.com/AXOOM/OpenServiceBroker</PackageProjectUrl>
     <PackageIconUrl>https://github.com/AXOOM/OpenServiceBroker/raw/develop/logo.png</PackageIconUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>

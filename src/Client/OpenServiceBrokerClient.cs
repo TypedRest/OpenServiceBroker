@@ -30,7 +30,7 @@ namespace OpenServiceBroker
         /// </summary>
         /// <param name="uri">The base URI of the Open Service Broker API instance (without the version number).</param>
         /// <param name="credentials">Optional HTTP Basic Auth credentials used to authenticate against the REST interface.</param>
-        public OpenServiceBrokerClient(Uri uri, ICredentials credentials = null)
+        public OpenServiceBrokerClient(Uri uri, ICredentials? credentials = null)
             : base(uri, credentials, errorHandler: new OpenServiceBrokerErrorHandler())
         {
             SetApiVersion(DefaultApiVersion);

@@ -35,6 +35,6 @@ namespace OpenServiceBroker.Bindings
         /// <param name="planId">The id of the plan associated with the binding.</param>
         /// <param name="operation">The value provided in <see cref="AsyncOperation.Operation"/>.</param>
         /// <exception cref="GoneException">The binding requested to be deleted does not exist (anymore).</exception>
-        Task<LastOperationResource> GetLastOperationAsync(ServiceBindingContext context, string serviceId = null, string planId = null, string operation = null);
+        Task<LastOperationResource> GetLastOperationAsync(ServiceBindingContext context, string? serviceId = null, string? planId = null, string? operation = null);
     }
 }

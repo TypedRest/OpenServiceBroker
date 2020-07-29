@@ -34,7 +34,7 @@ namespace OpenServiceBroker.Instances
         /// <param name="planId">The id of the plan associated with the instance being deleted.</param>
         /// <returns>A potentially deferred (asynchronous) operation. If <see cref="AsyncOperation.Completed"/> is false, start polling <see cref="LastOperation"/>.</returns>
         /// <exception cref="GoneException">The instance does not exist (anymore).</exception>
-        Task<AsyncOperation> DeprovisionAsync(string serviceId = null, string planId = null);
+        Task<AsyncOperation> DeprovisionAsync(string? serviceId = null, string? planId = null);
 
         /// <summary>
         /// Provides an endpoint to obtain the state of the last requested deferred (asynchronous) operation.
@@ -42,6 +42,6 @@ namespace OpenServiceBroker.Instances
         /// <param name="serviceId">If present, it MUST be the ID of the service being used.</param>
         /// <param name="planId">If present, it MUST be the ID of the plan for the Service Instance. If this endpoint is being polled as a result of changing the plan through a Service Instance Update, the ID of the plan prior to the update MUST be used.</param>
         /// <param name="operation">A Service Broker-provided identifier for the operation. When a value for operation is included with deferred (asynchronous) responses for Provision, Update, and Deprovision requests, the Platform MUST provide the same value using this query parameter. If present, MUST be a non-empty string.</param>
-        IPollingEndpoint<LastOperationResource> LastOperation(string serviceId = null, string planId = null, string operation = null);
+        IPollingEndpoint<LastOperationResource> LastOperation(string? serviceId = null, string? planId = null, string? operation = null);
     }
 }

@@ -32,7 +32,7 @@ namespace OpenServiceBroker.Bindings
             return await ParseDeferredResponseAsync(response);
         }
 
-        public IPollingEndpoint<LastOperationResource> LastOperation(string serviceId = null, string planId = null, string operation = null)
+        public IPollingEndpoint<LastOperationResource> LastOperation(string? serviceId = null, string? planId = null, string? operation = null)
             => new LastOperationEndpoint(this, serviceId, planId, operation);
     }
 }

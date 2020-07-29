@@ -1,3 +1,5 @@
+#nullable enable
+
 using Newtonsoft.Json;
 
 namespace OpenServiceBroker
@@ -13,7 +15,7 @@ namespace OpenServiceBroker
         /// </summary>
         /// <remarks>This is not part of the Open Service Broker JSON representation. Instead it is communicated out of band via HTTP status codes.</remarks>
         [JsonIgnore]
-        T Result { get; set; }
+        T? Result { get; set; }
     }
 
     public static class CompletableWithResult
@@ -24,7 +26,7 @@ namespace OpenServiceBroker
         /// <param name="completable">The operation to mark.</param>
         /// <param name="result">The result of the operation.</param>
         /// <returns><paramref name="completable"/> for fluent-style use.</returns>
-        public static TCompletable Complete<TCompletable, TResult>(this TCompletable completable, TResult result)
+        public static TCompletable Complete<TCompletable, TResult>(this TCompletable completable, TResult? result)
             where TCompletable : ICompletableWithResult<TResult>
             where TResult : class
         {

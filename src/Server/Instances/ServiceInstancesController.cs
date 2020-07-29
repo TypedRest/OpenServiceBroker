@@ -163,9 +163,9 @@ namespace OpenServiceBroker.Instances
         [ProducesResponseType(typeof(Error), 410)]
         public Task<IActionResult> GetLastOperation(
             [FromRoute(Name = "instance_id"), Required] string instanceId,
-            [FromQuery(Name = "service_id")] string serviceId = null,
-            [FromQuery(Name = "plan_id")] string planId = null,
-            [FromQuery(Name = "operation")] string operation = null)
+            [FromQuery(Name = "service_id")] string? serviceId = null,
+            [FromQuery(Name = "plan_id")] string? planId = null,
+            [FromQuery(Name = "operation")] string? operation = null)
         {
             var context = Context(instanceId);
             return Do(acceptsIncomplete: true,
@@ -173,7 +173,7 @@ namespace OpenServiceBroker.Instances
                 deferred: async x => Ok(await x.GetLastOperationAsync(context, serviceId, planId, operation)));
         }
 
-        private ServiceInstanceContext Context(string instanceId)
+        private ServiceInstanceContext Context(string? instanceId)
             => new ServiceInstanceContext(instanceId, OriginatingIdentity);
 
         private IActionResult SyncResult(ServiceInstanceContext context, IUnchangedFlag result)
@@ -192,7 +192,7 @@ namespace OpenServiceBroker.Instances
             }
         }
 
-        private IActionResult AsyncResult(ServiceInstanceContext context, AsyncOperation result, IServicePlanReference request = null)
+        private IActionResult AsyncResult(ServiceInstanceContext context, AsyncOperation result, IServicePlanReference? request = null)
             => AcceptedAtAction(
                 actionName: nameof(GetLastOperation),
                 routeValues: new

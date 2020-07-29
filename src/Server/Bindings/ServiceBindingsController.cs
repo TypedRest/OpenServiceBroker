@@ -134,9 +134,9 @@ namespace OpenServiceBroker.Bindings
         public Task<IActionResult> GetLastOperation(
             [FromRoute(Name = "instance_id"), Required] string instanceId,
             [FromRoute(Name = "binding_id"), Required] string bindingId,
-            [FromQuery(Name = "service_id")] string serviceId = null,
-            [FromQuery(Name = "plan_id")] string planId = null,
-            [FromQuery(Name = "operation")] string operation = null)
+            [FromQuery(Name = "service_id")] string? serviceId = null,
+            [FromQuery(Name = "plan_id")] string? planId = null,
+            [FromQuery(Name = "operation")] string? operation = null)
         {
             var context = Context(instanceId, bindingId);
             return Do(acceptsIncomplete: true,
@@ -164,7 +164,7 @@ namespace OpenServiceBroker.Bindings
             }
         }
 
-        private IActionResult AsyncResult(ServiceBindingContext context, AsyncOperation result, IServicePlanReference request = null)
+        private IActionResult AsyncResult(ServiceBindingContext context, AsyncOperation result, IServicePlanReference? request = null)
             => AcceptedAtAction(
                 actionName: nameof(GetLastOperation),
                 routeValues: new

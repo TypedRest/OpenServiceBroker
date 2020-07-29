@@ -1,7 +1,7 @@
-﻿Param ([string]$Version = "0.1-dev")
-$ErrorActionPreference = "Stop"
-pushd $(Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
+﻿$ErrorActionPreference = "Stop"
+pushd $PSScriptRoot
 
 dotnet test --no-build --configuration Release UnitTests\UnitTests.csproj
+if ($LASTEXITCODE -ne 0) {throw "Exit Code: $LASTEXITCODE"}
 
 popd

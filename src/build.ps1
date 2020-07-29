@@ -1,8 +1,9 @@
-﻿Param ([string]$Version = "0.1-dev")
+﻿Param ($Version = "1.0-dev")
 $ErrorActionPreference = "Stop"
-pushd $(Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
+pushd $PSScriptRoot
 
-dotnet clean
-dotnet msbuild /t:Restore /t:Build /p:Configuration=Release /p:Version=$Version
+if ($env:CI) { $ci = "-p:ContinuousIntegrationBuild=True" }
+dotnet msbuild -v:Quiet -t:Restore -t:Build $ci -p:Configuration=Release -p:Version=$Version
+if ($LASTEXITCODE -ne 0) {throw "Exit Code: $LASTEXITCODE"}
 
 popd

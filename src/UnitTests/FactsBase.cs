@@ -27,7 +27,7 @@ namespace OpenServiceBroker
                                                              .AddMvc()
                                                              .SetCompatibilityVersion(CompatibilityVersion.Version_2_2))
                                     .Configure(x => x.UseMvc()));
-            Client = new OpenServiceBrokerClient(new Uri("http://localhost"), _server.CreateClient());
+            Client = new OpenServiceBrokerClient(_server.CreateClient(), new Uri("http://localhost"));
         }
 
         protected void SetupMock(Expression<Func<TMock, Task>> expression)

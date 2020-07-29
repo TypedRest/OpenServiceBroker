@@ -1,6 +1,7 @@
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using OpenServiceBroker.Catalogs;
 using OpenServiceBroker.Instances;
 using TypedRest.Endpoints;
@@ -18,8 +19,8 @@ namespace OpenServiceBroker
         /// </summary>
         /// <param name="uri">The base URI of the Open Service Broker API instance (without the version number).</param>
         /// <param name="httpClient">The <see cref="HttpClient"/> to use for communication with My Service.</param>
-        public OpenServiceBrokerClient(Uri uri, HttpClient httpClient)
-            : base(uri, httpClient, errorHandler: new OpenServiceBrokerErrorHandler())
+        public OpenServiceBrokerClient(HttpClient httpClient, Uri uri)
+            : base(httpClient, uri, errorHandler: new OpenServiceBrokerErrorHandler())
         {
             SetApiVersion(DefaultApiVersion);
         }
@@ -41,9 +42,10 @@ namespace OpenServiceBroker
         /// <param name="uri">The base URI of the Open Service Broker API instance (without the version number).</param>
         /// <param name="token">The OAuth token to present as a "Bearer" to the REST interface.</param>
         public OpenServiceBrokerClient(Uri uri, string token)
-            : base(uri, token, errorHandler: new OpenServiceBrokerErrorHandler())
+            : base(uri, errorHandler: new OpenServiceBrokerErrorHandler())
         {
             SetApiVersion(DefaultApiVersion);
+            HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
         }
 
         /// <summary>

@@ -18,7 +18,7 @@ namespace OpenServiceBroker.Bindings
 
         public async Task<ServiceBindingResource> FetchAsync()
         {
-            var response = await HandleResponseAsync(HttpClient.GetAsync(Uri));
+            var response = await HandleAsync(() => HttpClient.GetAsync(Uri));
             return await FromContentAsync<ServiceBindingResource>(response);
         }
     }

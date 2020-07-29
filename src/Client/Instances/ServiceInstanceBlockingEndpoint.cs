@@ -24,16 +24,16 @@ namespace OpenServiceBroker.Instances
 
         public async Task<ServiceInstanceProvision> ProvisionAsync(ServiceInstanceProvisionRequest request)
         {
-            var response = await HandleResponseAsync(HttpClient.PutAsync(Uri, request, Serializer));
+            var response = await HandleAsync(() => HttpClient.PutAsync(Uri, request, Serializer));
             var result = await FromContentAsync<ServiceInstanceProvision>(response);
             result.Unchanged = (response.StatusCode == HttpStatusCode.OK);
             return result;
         }
 
         public Task UpdateAsync(ServiceInstanceUpdateRequest request)
-            => HandleResponseAsync(HttpClient.PatchAsync(Uri, request, Serializer));
+            => HandleAsync(() => HttpClient.PatchAsync(Uri, request, Serializer));
 
         public Task DeprovisionAsync(string serviceId, string planId)
-            => HandleResponseAsync(HttpClient.DeleteAsync(GetDeleteUri(serviceId, planId)));
+            => HandleAsync(() => HttpClient.DeleteAsync(GetDeleteUri(serviceId, planId)));
     }
 }

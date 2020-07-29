@@ -24,19 +24,19 @@ namespace OpenServiceBroker.Instances
 
         public async Task<ServiceInstanceAsyncOperation> ProvisionAsync(ServiceInstanceProvisionRequest request)
         {
-            var response = await HandleResponseAsync(HttpClient.PutAsync(Uri, request, Serializer));
+            var response = await HandleAsync(() => HttpClient.PutAsync(Uri, request, Serializer));
             return await ParseDeferredResponseAsync<ServiceInstanceProvision, ServiceInstanceAsyncOperation>(response);
         }
 
         public async Task<ServiceInstanceAsyncOperation> UpdateAsync(ServiceInstanceUpdateRequest request)
         {
-            var response = await HandleResponseAsync(HttpClient.PatchAsync(Uri, request, Serializer));
+            var response = await HandleAsync(() => HttpClient.PatchAsync(Uri, request, Serializer));
             return await ParseDeferredResponseAsync<ServiceInstanceProvision, ServiceInstanceAsyncOperation>(response);
         }
 
         public async Task<AsyncOperation> DeprovisionAsync(string serviceId = null, string planId = null)
         {
-            var response = await HandleResponseAsync(HttpClient.DeleteAsync(GetDeleteUri(serviceId, planId)));
+            var response = await HandleAsync(() => HttpClient.DeleteAsync(GetDeleteUri(serviceId, planId)));
             return await ParseDeferredResponseAsync(response);
         }
 

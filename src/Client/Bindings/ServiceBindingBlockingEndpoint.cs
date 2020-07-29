@@ -22,13 +22,13 @@ namespace OpenServiceBroker.Bindings
 
         public async Task<ServiceBinding> BindAsync(ServiceBindingRequest request)
         {
-            var response = await HandleResponseAsync(HttpClient.PutAsync(Uri, request, Serializer));
+            var response = await HandleAsync(() => HttpClient.PutAsync(Uri, request, Serializer));
             var result = await FromContentAsync<ServiceBinding>(response);
             result.Unchanged = (response.StatusCode == HttpStatusCode.OK);
             return result;
         }
 
         public Task UnbindAsync(string serviceId, string planId)
-            => HandleResponseAsync(HttpClient.DeleteAsync(GetDeleteUri(serviceId, planId)));
+            => HandleAsync(() => HttpClient.DeleteAsync(GetDeleteUri(serviceId, planId)));
     }
 }

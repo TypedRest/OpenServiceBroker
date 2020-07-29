@@ -22,7 +22,7 @@ namespace OpenServiceBroker.Instances
 
         public async Task<ServiceInstanceResource> FetchAsync()
         {
-            var response = await HandleResponseAsync(HttpClient.GetAsync(Uri));
+            var response = await HandleAsync(() => HttpClient.GetAsync(Uri));
             return await FromContentAsync<ServiceInstanceResource>(response);
         }
 

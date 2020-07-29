@@ -1,10 +1,12 @@
-/artifacts/
+*.user
+*.bak
 
-/src/**/obj/
-/src/**/bin/
-
+# Caches
 /src/.vs/
 /src/.idea/
 /src/_ReSharper.*/
-/src/**/*.user
-.vscode/
+obj/
+bin/
+
+# Output
+/artifacts/

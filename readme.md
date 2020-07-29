@@ -135,28 +135,26 @@ client.SetApiVersion(new ApiVersion(2, 14));
 
 [![OpenServiceBroker.Server](https://img.shields.io/nuget/v/OpenServiceBroker.Server.svg)](https://www.nuget.org/packages/OpenServiceBroker.Server/)
 
-Set up a regular ASP.NET Core 2.0+ project and add the NuGet package [`OpenServiceBroker.Server`](https://www.nuget.org/packages/OpenServiceBroker.Server/). Then implement the following interfaces:
+Set up a regular ASP.NET Core 2.1 or 3.1 project and add the NuGet package [`OpenServiceBroker.Server`](https://www.nuget.org/packages/OpenServiceBroker.Server/). Then implement the following interfaces:
 - [`ICatalogService`](src/Server/Catalogs/ICatalogService.cs)
 - either [`IServiceInstanceBlocking`](src/Server/Instances/IServiceInstanceBlocking.cs) or [`IServiceInstanceDeferred`](src/Server/Instances/IServiceInstanceDeferred.cs) or both
 - either [`IServiceBindingBlocking`](src/Server/Bindings/IServiceBindingBlocking.cs) or [`IServiceBindingDeferred`](src/Server/Bindings/IServiceBindingDeferred.cs) or both
 
-Register your implementations in the `IServiceCollection` for dependency injection and finally call the `.AddOpenServiceBroker()` extension method.
-
-### Versioning
-
-The Server Library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.14`.
-
-### Sample
-
-Register your interface implementations like this:
+Register your implementations in the `IServiceCollection` for dependency injection. For example:
 
 ```csharp
 services.AddTransient<ICatalogService, MyCatalogService>()
         .AddTransient<IServiceInstanceBlocking, MyServiceInstanceBlocking>()
-        .AddTransient<IServiceInstanceDeferred, MyServiceInstanceDeferred>()
-        .AddTransient<IServiceBindingBlocking, MyServiceBindingBlocking>()
-        .AddTransient<IServiceBindingDeferred, MyServiceBindingDeferred>()
+        .AddTransient<IServiceBindingBlocking, MyServiceBindingBlocking>();
+```
+
+Then enable MVC Controllers using `.AddMvc()` or `.AddControllers()` followed by calling the `.AddOpenServiceBroker()` extension method:
+
+```csharp
+services.AddControllers()
         .AddOpenServiceBroker();
 ```
 
-The blog post [Implementing a Service Broker in .NET](https://ronaldwildenberg.com/programming/cloudfoundry/2019/01/18/net-service-broker-01.html) walks you through creating a .NET Open Service Broker and testing it with Pivotal Cloud Foundry.
+### Versioning
+
+The Server Library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.14`.

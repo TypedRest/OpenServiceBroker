@@ -5,10 +5,10 @@ using OpenServiceBroker.Instances;
 
 namespace OpenServiceBroker
 {
-    public static class ServiceCollectionExtensions
+    public static class MvcBuilderExtensions
     {
         /// <summary>
-        /// Registers ASP.NET Core MVC Controllers implementing the Open Service Broker API.
+        /// Registers API Controllers implementing the Open Service Broker API.
         /// </summary>
         /// <remarks>
         /// Make sure to also register your implementations of:
@@ -16,9 +16,15 @@ namespace OpenServiceBroker
         /// <see cref="IServiceInstanceBlocking"/> or <see cref="IServiceInstanceDeferred"/>,
         /// optionally <see cref="IServiceBindingBlocking"/> or <see cref="IServiceBindingDeferred"/>.
         /// </remarks>
-        public static IServiceCollection AddOpenServiceBroker(this IServiceCollection services)
-            => services.AddTransient<CatalogController>()
-                       .AddTransient<ServiceInstancesController>()
-                       .AddTransient<ServiceBindingsController>();
+        public static IMvcBuilder AddOpenServiceBroker(this IMvcBuilder builder)
+        {
+            builder.AddApplicationPart(typeof(CatalogController).Assembly);
+
+#if NETCOREAPP3_1
+            builder.AddNewtonsoftJson();
+#endif
+
+            return builder;
+        }
     }
 }

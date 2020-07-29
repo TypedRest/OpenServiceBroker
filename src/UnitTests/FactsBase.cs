@@ -3,7 +3,6 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
@@ -21,12 +20,20 @@ namespace OpenServiceBroker
 
         protected FactsBase()
         {
-            _server = new TestServer(new WebHostBuilder()
-                                    .ConfigureServices(x => x.AddOpenServiceBroker()
-                                                             .AddSingleton(_mock.Object)
-                                                             .AddMvc()
-                                                             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2))
-                                    .Configure(x => x.UseMvc()));
+            _server = new TestServer(
+                new WebHostBuilder()
+                   .ConfigureServices(x
+                        => x.AddSingleton(_mock.Object)
+#if NETCOREAPP2_1
+                            .AddMvc()
+                            .AddOpenServiceBroker())
+                   .Configure(x => x.UseMvc()));
+#elif NETCOREAPP3_1
+                            .AddControllers()
+                            .AddOpenServiceBroker())
+                   .Configure(x => x.UseRouting()
+                                    .UseEndpoints(endpoints => endpoints.MapControllers())));
+#endif
             Client = new OpenServiceBrokerClient(_server.CreateClient(), new Uri("http://localhost"));
         }
 

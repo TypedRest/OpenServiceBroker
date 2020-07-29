@@ -127,26 +127,26 @@ client.SetApiVersion(new ApiVersion(2, 14));
 
 ## Server Library
 
-Set up a regular ASP.NET Core 2.0+ project and add the NuGet package [OpenServiceBroker.Server](https://www.nuget.org/packages/OpenServiceBroker.Server/). Then implement the following interfaces:
+Set up a regular ASP.NET Core 2.1 or 3.1 project and add the NuGet package [OpenServiceBroker.Server](https://www.nuget.org/packages/OpenServiceBroker.Server/). Then implement the following interfaces:
 - \ref OpenServiceBroker.Catalogs.ICatalogService "ICatalogService"
 - either \ref OpenServiceBroker.Instances.IServiceInstanceBlocking "InstancesIServiceInstanceBlocking" or \ref OpenServiceBroker.Instances.IServiceInstanceDeferred "InstancesIServiceInstanceDeferred" or both
 - either \ref OpenServiceBroker.Bindings.IServiceBindingBlocking "InstancesIServiceBindingBlocking" or \ref OpenServiceBroker.Bindings.IServiceBindingDeferred "InstancesIServiceBindingDeferred" or both
 
-Register your implementations in the `IServiceCollection` for dependency injection and finally call the \ref OpenServiceBroker.ServiceCollectionExtensions.AddOpenServiceBroker ".AddOpenServiceBroker()" extension method.
-
-### Versioning
-
-The Server Library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.14`.
-
-### Sample
-
-Register your interface implementations like this:
+Register your implementations in the `IServiceCollection` for dependency injection. For example:
 
 ```csharp
 services.AddTransient<ICatalogService, MyCatalogService>()
         .AddTransient<IServiceInstanceBlocking, MyServiceInstanceBlocking>()
-        .AddTransient<IServiceInstanceDeferred, MyServiceInstanceDeferred>()
-        .AddTransient<IServiceBindingBlocking, MyServiceBindingBlocking>()
-        .AddTransient<IServiceBindingDeferred, MyServiceBindingDeferred>()
+        .AddTransient<IServiceBindingBlocking, MyServiceBindingBlocking>();
+```
+
+Then enable MVC Controllers using `.AddMvc()` or `.AddControllers()` followed by calling the \ref OpenServiceBroker.MvcBuilderExtensions.AddOpenServiceBroker ".AddOpenServiceBroker()" extension method:
+
+```csharp
+services.AddControllers()
         .AddOpenServiceBroker();
 ```
+
+### Versioning
+
+The Server Library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.14`.

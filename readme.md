@@ -10,10 +10,9 @@ The **[Server Library](#server-library)** implements the API for you using ASP.N
 
 ## Client Library
 
-[![OpenServiceBroker.Client](https://img.shields.io/nuget/v/OpenServiceBroker.Client.svg)](https://www.nuget.org/packages/OpenServiceBroker.Client/)  
-(for .NET Framework 4.5+ and .NET Standard 2.0+)
+[![OpenServiceBroker.Client](https://img.shields.io/nuget/v/OpenServiceBroker.Client.svg)](https://www.nuget.org/packages/OpenServiceBroker.Client/)
 
-Add the NuGet package `OpenServiceBroker.Client` to your project. You can then create an instance of the client like this:
+Add the NuGet package [`OpenServiceBroker.Client`](https://www.nuget.org/packages/OpenServiceBroker.Client/) to your project. You can then create an instance of the client like this:
 
 ```csharp
 var client = new OpenServiceBrokerClient(new Uri("http://example.com/"));
@@ -21,13 +20,13 @@ var client = new OpenServiceBrokerClient(new Uri("http://example.com/"));
 
 ### Asynchronous Operations
 
-All operations that result in HTTP request are `async`. Non-successful HTTP status codes are mapped to domain-specific exception types (`BrokerException` and derived). Refer to the libraries XML documentation for details on which exceptions to expect on which invocations.
+All operations that result in HTTP request are `async`. Non-successful HTTP status codes are mapped to domain-specific exception types ([`BrokerException`](src/Model/Errors/BrokerException.cs) and derived). Refer to the libraries XML documentation for details on which exceptions to expect on which invocations.
 
 The Open Service Broker API specification allows for both synchronous/blocking and asynchronous/incomplete/deferred operations. To avoid confusion with the C# language concept of `async` this library uses the terms "blocking" and "deferred" to describe these API features.
 
-Instances of `OpenServiceBrokerClient` have three properties that expose the same functionality in different ways:
+Instances of [`OpenServiceBrokerClient`](src/Client/OpenServiceBrokerClient.cs) have three properties that expose the same functionality in different ways:
 
-- `.ServiceInstancesBlocking` allows you to request blocking responses from the server. However, you may encounter `AsyncRequiredException` if the server does not support blocking operations.
+- `.ServiceInstancesBlocking` allows you to request blocking responses from the server. However, you may encounter [`AsyncRequiredException`](src/Model/Errors/AsyncRequiredException.cs) if the server does not support blocking operations.
 - `.ServiceInstancesDeferred` allows you to request deferred responses from the server. However, you have to manually handle waiting/polling for the completion of operations.
 - `.ServiceInstancesPolling` combines the advantages of both. It requests deferred responses from the server and transparently handles the waiting/polling for you. It is the recommended option for most use-cases.
 
@@ -133,10 +132,9 @@ client.SetApiVersion(new ApiVersion(2, 14));
 
 ## Server Library
 
-[![OpenServiceBroker.Server](https://img.shields.io/nuget/v/OpenServiceBroker.Server.svg)](https://www.nuget.org/packages/OpenServiceBroker.Server/)  
-(for .NET Standard 2.0+)
+[![OpenServiceBroker.Server](https://img.shields.io/nuget/v/OpenServiceBroker.Server.svg)](https://www.nuget.org/packages/OpenServiceBroker.Server/)
 
-Set up a regular ASP.NET Core 2.0+ project and add the NuGet package `OpenServiceBroker.Server`. Then implement the following interfaces:
+Set up a regular ASP.NET Core 2.0+ project and add the NuGet package [`OpenServiceBroker.Server`](https://www.nuget.org/packages/OpenServiceBroker.Server/). Then implement the following interfaces:
 - [`ICatalogService`](src/Server/Catalogs/ICatalogService.cs)
 - either [`IServiceInstanceBlocking`](src/Server/Instances/IServiceInstanceBlocking.cs) or [`IServiceInstanceDeferred`](src/Server/Instances/IServiceInstanceDeferred.cs) or both
 - either [`IServiceBindingBlocking`](src/Server/Bindings/IServiceBindingBlocking.cs) or [`IServiceBindingDeferred`](src/Server/Bindings/IServiceBindingDeferred.cs) or both
@@ -159,7 +157,5 @@ services.AddTransient<ICatalogService, MyCatalogService>()
         .AddTransient<IServiceBindingDeferred, MyServiceBindingDeferred>()
         .AddOpenServiceBroker();
 ```
-
-You can use the [AXOOM Service Broker Template](https://github.com/AXOOM/Templates.ServiceBroker) to generate a complete Service Broker implementation with `dotnet new`.
 
 The blog post [Implementing a Service Broker in .NET](https://ronaldwildenberg.com/programming/cloudfoundry/2019/01/18/net-service-broker-01.html) walks you through creating a .NET Open Service Broker and testing it with Pivotal Cloud Foundry.

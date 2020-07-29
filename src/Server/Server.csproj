@@ -24,7 +24,7 @@
   <PropertyGroup>
     <Description>A library to help you provide an ASP.NET Core implementation of the Open Service Broker API. This specification allows developers, ISVs, and SaaS vendors a single, simple, and elegant way to deliver services to applications running within cloud native platforms such as Cloud Foundry, OpenShift, and Kubernetes.</Description>
     <PackageTags>OSB;Open Service Broker;Server;ASP.NET Core;Controller</PackageTags>
-    <PackageProjectUrl>https://github.com/TypedRest/OpenServiceBroker</PackageProjectUrl>
+    <PackageProjectUrl>https://openservicebroker.typedrest.net/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/TypedRest/OpenServiceBroker</RepositoryUrl>

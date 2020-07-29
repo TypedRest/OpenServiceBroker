@@ -44,6 +44,14 @@ jobs:
       - name: Publish packages (NuGet.org)
         if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
         run: dotnet nuget push artifacts/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
+      - name: Publish documentation
+        if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          force_orphan: true
+          publish_dir: artifacts/Documentation
+          cname: openservicebroker.typedrest.net
       - name: Create release
         if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
         uses: actions/create-release@v1

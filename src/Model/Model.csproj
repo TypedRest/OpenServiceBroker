@@ -21,7 +21,7 @@
     <Description>DTO classes for the Open Service Broker API. This is usually referenced indirectly via OpenServiceBroker.Client or OpenServiceBroker.Server.</Description>
     <Summary>DTO classes for the Open Service Broker API</Summary>
     <PackageTags>OSB;Open Service Broker;Model</PackageTags>
-    <PackageProjectUrl>https://github.com/TypedRest/OpenServiceBroker</PackageProjectUrl>
+    <PackageProjectUrl>https://openservicebroker.typedrest.net/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/TypedRest/OpenServiceBroker</RepositoryUrl>

@@ -102,7 +102,7 @@ namespace OpenServiceBroker
         /// <summary>
         /// Describes the identity of the user that initiated a request from the Platform.
         /// </summary>
-        protected OriginatingIdentity OriginatingIdentity
+        protected OriginatingIdentity? OriginatingIdentity
         {
             get
             {

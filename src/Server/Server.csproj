@@ -1,39 +1,46 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- Build config -->
   <PropertyGroup>
     <AssemblyName>OpenServiceBroker.Server</AssemblyName>
     <RootNamespace>OpenServiceBroker</RootNamespace>
-    <LangVersion>7.3</LangVersion>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <OutputType>Library</OutputType>
-    <OutputPath>..\..\artifacts</OutputPath>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <LangVersion>8.0</LangVersion>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.1</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PublishRepositoryUrl>True</PublishRepositoryUrl>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
+    <Nullable>annotations</Nullable>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
+    <OutputType>Library</OutputType>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(TargetFramework)=='netcoreapp3.1'">
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <!-- NuGet package metadata -->
   <PropertyGroup>
     <Authors>Bastian Eicher</Authors>
-    <Company>AXOOM GmbH</Company>
-    <Copyright>Copyright (c) AXOOM GmbH</Copyright>
     <Description>ASP.NET Core implementation of the Open Service Broker API</Description>
-    <PackageProjectUrl>https://github.com/AXOOM/OpenServiceBroker</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/AXOOM/OpenServiceBroker/raw/develop/logo.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/TypedRest/OpenServiceBroker</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>Open Service Broker API Server</PackageTags>
+    <PackageTags>OSB;Open Service Broker;Server</PackageTags>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
+  <!-- Dependencies -->
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj" />
   </ItemGroup>
 
 </Project>

@@ -28,7 +28,7 @@ namespace OpenServiceBroker
                 : "./{?service_id,plan_id}");
         }
 
-        protected Uri GetDeleteUri(string serviceId, string planId) 
+        protected Uri GetDeleteUri(string? serviceId, string? planId)
             => LinkTemplate("delete", new
             {
                 service_id = serviceId,

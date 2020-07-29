@@ -27,19 +27,16 @@ namespace OpenServiceBroker.Bindings
         /// <param name="instanceId">The ID of the Service Instance.</param>
         /// <param name="bindingId">The ID of the Service Binding.</param>
         /// <param name="originatingIdentity">Describes the identity of the user that initiated a request from the Platform.</param>
-        public ServiceBindingContext(string instanceId, string bindingId, OriginatingIdentity originatingIdentity)
+        public ServiceBindingContext(string instanceId, string bindingId, OriginatingIdentity? originatingIdentity)
             : base(instanceId, originatingIdentity)
         {
             BindingId = bindingId ?? throw new ArgumentNullException(nameof(bindingId));
         }
 
-        public bool Equals(ServiceBindingContext other)
-        {
-            if (other == null) return false;
-            return base.Equals(other) && string.Equals(BindingId, other.BindingId);
-        }
+        public bool Equals(ServiceBindingContext? other)
+            => !ReferenceEquals(other, null) && base.Equals(other) && string.Equals(BindingId, other.BindingId);
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj == null) return false;
             return obj.GetType() == GetType() && Equals((ServiceBindingContext)obj);
@@ -53,8 +50,8 @@ namespace OpenServiceBroker.Bindings
             }
         }
 
-        public static bool operator ==(ServiceBindingContext left, ServiceBindingContext right) => Equals(left, right);
+        public static bool operator ==(ServiceBindingContext? left, ServiceBindingContext? right) => Equals(left, right);
 
-        public static bool operator !=(ServiceBindingContext left, ServiceBindingContext right) => !Equals(left, right);
+        public static bool operator !=(ServiceBindingContext? left, ServiceBindingContext? right) => !Equals(left, right);
     }
 }

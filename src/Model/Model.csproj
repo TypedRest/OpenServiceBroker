@@ -1,31 +1,35 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- Build config -->
   <PropertyGroup>
     <AssemblyName>OpenServiceBroker.Model</AssemblyName>
     <RootNamespace>OpenServiceBroker</RootNamespace>
-    <LangVersion>7.3</LangVersion>
-    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
-    <OutputType>Library</OutputType>
-    <OutputPath>..\..\artifacts</OutputPath>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <LangVersion>8.0</LangVersion>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PublishRepositoryUrl>True</PublishRepositoryUrl>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
+    <OutputType>Library</OutputType>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
+  <!-- NuGet package metadata -->
   <PropertyGroup>
     <Authors>Bastian Eicher</Authors>
-    <Company>AXOOM GmbH</Company>
-    <Copyright>Copyright (c) AXOOM GmbH</Copyright>
     <Description>DTO classes for the Open Service Broker API</Description>
-    <PackageProjectUrl>https://github.com/AXOOM/OpenServiceBroker</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/AXOOM/OpenServiceBroker/raw/develop/logo.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/TypedRest/OpenServiceBroker</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>Open Service Broker API</PackageTags>
+    <PackageTags>OSB;Open Service Broker</PackageTags>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
+  <!-- Dependencies -->
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />

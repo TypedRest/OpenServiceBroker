@@ -18,7 +18,7 @@ namespace OpenServiceBroker
         {
             if (response.Content != null)
             {
-                Error error = null;
+                Error? error = null;
                 try
                 {
                     error = await response.Content.ReadAsAsync<Error>(new[] {Serializer});

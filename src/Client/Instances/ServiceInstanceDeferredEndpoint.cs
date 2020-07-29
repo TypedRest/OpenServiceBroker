@@ -34,13 +34,13 @@ namespace OpenServiceBroker.Instances
             return await ParseDeferredResponseAsync<ServiceInstanceProvision, ServiceInstanceAsyncOperation>(response);
         }
 
-        public async Task<AsyncOperation> DeprovisionAsync(string serviceId = null, string planId = null)
+        public async Task<AsyncOperation> DeprovisionAsync(string? serviceId = null, string? planId = null)
         {
             var response = await HandleAsync(() => HttpClient.DeleteAsync(GetDeleteUri(serviceId, planId)));
             return await ParseDeferredResponseAsync(response);
         }
 
-        public IPollingEndpoint<LastOperationResource> LastOperation(string serviceId = null, string planId = null, string operation = null)
+        public IPollingEndpoint<LastOperationResource> LastOperation(string? serviceId = null, string? planId = null, string? operation = null)
             => new LastOperationEndpoint(this, serviceId, planId, operation);
     }
 }

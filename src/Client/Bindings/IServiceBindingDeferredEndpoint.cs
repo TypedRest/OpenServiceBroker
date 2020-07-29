@@ -33,6 +33,6 @@ namespace OpenServiceBroker.Bindings
         /// <param name="serviceId">If present, it MUST be the ID of the service being used.</param>
         /// <param name="planId">If present, it MUST be the ID of the plan for the Service Instance. If this endpoint is being polled as a result of changing the plan through a Service Instance Update, the ID of the plan prior to the update MUST be used.</param>
         /// <param name="operation">A Service Broker-provided identifier for the operation. When a value for operation is included with deferred (asynchronous) responses for Provision, Update, and Deprovision requests, the Platform MUST provide the same value using this query parameter. If present, MUST be a non-empty string.</param>
-        IPollingEndpoint<LastOperationResource> LastOperation(string serviceId = null, string planId = null, string operation = null);
+        IPollingEndpoint<LastOperationResource> LastOperation(string? serviceId = null, string? planId = null, string? operation = null);
     }
 }

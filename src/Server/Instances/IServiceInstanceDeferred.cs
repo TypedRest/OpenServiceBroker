@@ -34,7 +34,7 @@ namespace OpenServiceBroker.Instances
         /// <param name="planId">The id of the plan associated with the instance being deleted.</param>
         /// <returns>A potentially deferred (asynchronous) operation.</returns>
         /// <exception cref="GoneException">The instance does not exist (anymore).</exception>
-        Task<AsyncOperation> DeprovisionAsync(ServiceInstanceContext context, string serviceId = null, string planId = null);
+        Task<AsyncOperation> DeprovisionAsync(ServiceInstanceContext context, string? serviceId = null, string? planId = null);
 
         /// <summary>
         /// Gets the state of the last requested deferred (asynchronous) operation for a Service Instance.
@@ -44,6 +44,6 @@ namespace OpenServiceBroker.Instances
         /// <param name="planId">The id of the plan associated with the instance.</param>
         /// <param name="operation">The value provided in <see cref="AsyncOperation.Operation"/>.</param>
         /// <exception cref="GoneException">The instance requested to be deleted does not exist (anymore).</exception>
-        Task<LastOperationResource> GetLastOperationAsync(ServiceInstanceContext context, string serviceId = null, string planId = null, string operation = null);
+        Task<LastOperationResource> GetLastOperationAsync(ServiceInstanceContext context, string? serviceId = null, string? planId = null, string? operation = null);
     }
 }

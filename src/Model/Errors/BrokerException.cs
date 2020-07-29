@@ -51,6 +51,8 @@ namespace OpenServiceBroker.Errors
                     return new NotFoundException(dto.Description);
                 case RequiresAppException.ErrorCode:
                     return new RequiresAppException(dto.Description);
+                case MaintenanceInfoConflictException.ErrorCode:
+                    return new MaintenanceInfoConflictException(dto.Description);
             }
 
             switch (statusCode)

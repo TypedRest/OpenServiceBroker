@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using OpenServiceBroker.Errors;
 
 namespace OpenServiceBroker.Instances
 {
@@ -19,9 +20,18 @@ namespace OpenServiceBroker.Instances
         [JsonProperty("parameters")]
         public JObject Parameters { get; set; }
 
+        /// <summary>
+        /// If a Service Broker provides maintenance information for a Service Plan in its Catalog, a Platform MAY provide the same maintenance information when provisioning a Service Instance.
+        /// This field can be used to ensure that the end-user of a Platform is provisioning what they are expecting since maintenance information can be used to describe important information (such as the version of the operating system the Service Instance will run on).
+        /// If a Service Broker's catalog has changed and new maintenance information version is available for the Service Plan being provisioned, then the Service Broker MUST reject the request with <see cref="MaintenanceInfoConflictException"/>.
+        /// </summary>
+        [JsonProperty("maintenance_info", NullValueHandling = NullValueHandling.Ignore)]
+        public MaintenanceInfo MaintenanceInfo { get; set; }
+
         protected bool Equals(ServiceInstanceBase other)
             => ServiceId == other.ServiceId
-            && PlanId == other.PlanId;
+            && PlanId == other.PlanId
+            && Equals(MaintenanceInfo, other.MaintenanceInfo);
 
         public override bool Equals(object obj) => obj is ServiceInstanceBase other && Equals(other);
 

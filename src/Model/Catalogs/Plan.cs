@@ -44,8 +44,14 @@ namespace OpenServiceBroker.Catalogs
         /// <summary>
         /// Specifies whether Service Instances of the Service Plan can be bound to applications. This field is OPTIONAL. If specified, this takes precedence over the bindable attribute of the service. If not specified, the default is derived from the service.
         /// </summary>
-        [JsonProperty("bindable")]
+        [JsonProperty("bindable", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Bindable { get; set; }
+
+        /// <summary>
+        /// Whether the Plan supports upgrade/downgrade/sidegrade to another version. This field is OPTIONAL. If specified, this takes precedence over <see cref="Service.PlanUpdateable"/>.
+        /// </summary>
+        [JsonProperty("plan_updateable", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? PlanUpdateable { get; set; }
 
         /// <summary>
         /// Schema definitions for Service Instances and bindings for the plan.
@@ -53,13 +59,28 @@ namespace OpenServiceBroker.Catalogs
         [JsonProperty("schemas")]
         public Schemas Schemas { get; set; }
 
+        /// <summary>
+        /// A duration, in seconds, that the Platform SHOULD use as the Service's maximum polling duration.
+        /// </summary>
+        [JsonProperty("maximum_polling_duration", NullValueHandling = NullValueHandling.Ignore)]
+        public int? MaximumPollingDuration { get; set; }
+
+        /// <summary>
+        /// Maintenance information for a Service Instance which is provisioned using the Service Plan.
+        /// </summary>
+        [JsonProperty("maintenance_info", NullValueHandling = NullValueHandling.Ignore)]
+        public MaintenanceInfo MaintenanceInfo { get; set; }
+
         public bool Equals(Plan other)
             => other != null
             && Id == other.Id
             && Name == other.Name
             && Description == other.Description
             && Free == other.Free
-            && Bindable == other.Bindable;
+            && Bindable == other.Bindable
+            && PlanUpdateable == other.PlanUpdateable
+            && Equals(Schemas, other.Schemas)
+            && Equals(MaintenanceInfo, other.MaintenanceInfo);
 
         public override bool Equals(object obj) => obj is Plan other && Equals(other);
 
@@ -72,6 +93,7 @@ namespace OpenServiceBroker.Catalogs
                 hashCode = (hashCode * 397) ^ (Description?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ Free.GetHashCode();
                 hashCode = (hashCode * 397) ^ Bindable.GetHashCode();
+                hashCode = (hashCode * 397) ^ PlanUpdateable.GetHashCode();
                 return hashCode;
             }
         }

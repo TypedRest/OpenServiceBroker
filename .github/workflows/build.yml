@@ -12,6 +12,10 @@ jobs:
         uses: gittools/actions/gitversion/setup@v0.9.4
         with:
           versionSpec: '5.3.x'
+      - name: Set up NuGet
+        uses: nuget/setup-nuget@v1
+        with:
+          nuget-version: '5.x'
       - name: Check out repository
         uses: actions/checkout@v2
         with:
@@ -59,3 +63,11 @@ jobs:
           tag_name: ${{github.ref}}
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Post-release commit
+        if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
+        run: |
+          set -e
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git commit --all -m "Automatic post-release commit"
+          git push

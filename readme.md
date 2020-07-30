@@ -155,6 +155,8 @@ services.AddControllers()
         .AddOpenServiceBroker();
 ```
 
+You can use the **[project template](template/)** to quickly set up a pre-configured ASP.NET Core 3.1 project with `OpenServiceBroker.Server`.
+
 ### Versioning
 
 The Server Library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.16`.

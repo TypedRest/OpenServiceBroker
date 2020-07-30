@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>OpenServiceBroker.Template</id>
+    <version>$version$</version>
+    <title>OpenServiceBroker Template</title>
+    <authors>Bastian Eicher</authors>
+    <license type="expression">MIT</license>
+    <icon>icon.png</icon>
+    <projectUrl>https://github.com/TypedRest/OpenServiceBroker/tree/master/template</projectUrl>
+    <description>dotnet-new template for implementing a Service Broker (according to the Open Service Broker API) using ASP.NET Core</description>
+    <tags>OSB Open Service Broker Template</tags>
+    <repository type="git" url="https://github.com/TypedRest/OpenServiceBroker" />
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+  </metadata>
+  <files>
+    <file src="../icon.png" />
+    <file src="content/**" exclude="content/**/obj/**;content/**/bin/**;content/.vs/**;content/.idea/**;content/_ReSharper.*/**;content/**/*.user;content/**/*.db;**/.vscode/**" />
+  </files>
+</package>

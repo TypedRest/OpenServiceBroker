@@ -1,0 +1,13 @@
+{
+  "author": "Bastian Eicher",
+  "classifications": [ "Web", "OpenServiceBroker" ],
+  "name": "Open Service Broker",
+  "shortName": "osb",
+  "identity": "OpenServiceBroker",
+  "groupIdentity": "OpenServiceBroker",
+  "tags": {
+    "language": "C#"
+  },
+  "sourceName": "MyServiceBroker",
+  "preferNameDirectory": true
+}

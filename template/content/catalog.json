@@ -1,0 +1,40 @@
+{
+  "services": [
+    {
+      "id": "myservice1",
+      "name": "myservice1",
+      "description": "A service.",
+      "bindable": "false",
+      "plans": [
+        {
+          "id": "myplan1a",
+          "name": "myplan1a",
+          "description": "A plan."
+        },
+        {
+          "id": "myplan1b",
+          "name": "myplan1b",
+          "description": "A plan."
+        }
+      ]
+    },
+    {
+      "id": "myservice2",
+      "name": "myservice2",
+      "description": "A service.",
+      "bindable": "false",
+      "plans": [
+        {
+          "id": "myplan2a",
+          "name": "myplan2a",
+          "description": "A plan."
+        },
+        {
+          "id": "myplan2b",
+          "name": "myplan2b",
+          "description": "A plan."
+        }
+      ]
+    }
+  ]
+}

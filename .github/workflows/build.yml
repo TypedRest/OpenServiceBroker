@@ -47,7 +47,7 @@ jobs:
       # Publish (release only)
       - name: Publish packages (NuGet.org)
         if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
-        run: dotnet nuget push artifacts/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
+        run: dotnet nuget push 'artifacts/Release/*.nupkg' --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
       - name: Publish documentation
         if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
         uses: peaceiris/actions-gh-pages@v3
@@ -66,7 +66,6 @@ jobs:
       - name: Post-release commit
         if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
         run: |
-          set -e
           git config user.name github-actions
           git config user.email github-actions@github.com
           git commit --all -m "Automatic post-release commit"

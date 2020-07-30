@@ -12,10 +12,6 @@ jobs:
         uses: gittools/actions/gitversion/setup@v0.9.4
         with:
           versionSpec: '5.3.x'
-      - name: Set up NuGet
-        uses: nuget/setup-nuget@v1
-        with:
-          nuget-version: '5.x'
       - name: Check out repository
         uses: actions/checkout@v2
         with:

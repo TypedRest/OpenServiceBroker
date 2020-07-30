@@ -2,14 +2,15 @@
 $ErrorActionPreference = "Stop"
 pushd $PSScriptRoot
 
-pushd content
-dotnet add . package OpenServiceBroker.Server --version $Version
+# Keep template and library version in-sync
+dotnet add MyServiceBroker.csproj package OpenServiceBroker.Server --version $Version
 if ($LASTEXITCODE -ne 0) {throw "Exit Code: $LASTEXITCODE"}
-dotnet build
+dotnet build MyServiceBroker.csproj
 if ($LASTEXITCODE -ne 0) {throw "Exit Code: $LASTEXITCODE"}
-popd
 
-nuget pack -Version $Version -OutputDirectory ..\artifacts\Release -NoPackageAnalysis
+# Generate template NuGet package
+dotnet restore .template.csproj
+dotnet msbuild .template.csproj -v:Quiet -t:Pack -p:Configuration=Release -p:Version=$Version
 if ($LASTEXITCODE -ne 0) {throw "Exit Code: $LASTEXITCODE"}
 
 popd

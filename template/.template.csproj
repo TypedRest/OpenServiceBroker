@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework><!-- dummy value required -->
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <NoWarn>$(NoWarn);2008;NU5128</NoWarn>
+    <OutputPath>..\artifacts\$(Configuration)\</OutputPath>
+    <Description>dotnet-new template for implementing a Service Broker (according to the Open Service Broker API) using ASP.NET Core.</Description>
+    <Summary>DTO classes for the Open Service Broker API</Summary>
+    <PackageType>Template</PackageType>
+    <PackageId>OpenServiceBroker.Template</PackageId>
+    <PackageTags>OSB;Open Service Broker;Template</PackageTags>
+    <PackageProjectUrl>https://github.com/TypedRest/OpenServiceBroker/tree/master/template</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/TypedRest/OpenServiceBroker</RepositoryUrl>
+    <Authors>Bastian Eicher</Authors>
+  </PropertyGroup>
+ 
+  <ItemGroup>
+    <Compile Remove="**\*" />
+    <None Pack="true" PackagePath="\" Include="..\icon.png" />
+    <None Pack="true" PackagePath="content" Include="**\*" Exclude=".template.csproj;nuget.config;readme.md;build.*;*.db;*.user;obj\**;bin\**;.vs\**;.idea\**;_ReSharper.*\**" />
+  </ItemGroup>
+
+</Project>

@@ -5,6 +5,8 @@ The Client Library allows you to call Service Brokers that implement the API usi
 
 The Server Library implements the API for you using ASP.NET Core. You simply need to provide implementations for a few interfaces, shielded from the HTTP-related details.
 
+[**GitHub repository**](https://github.com/TypedRest/OpenServiceBroker)
+
 ## Client Library
 
 Add the NuGet package [OpenServiceBroker.Client](https://www.nuget.org/packages/OpenServiceBroker.Client/) to your project. You can then create an instance of the client like this:

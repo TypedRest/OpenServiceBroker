@@ -6,59 +6,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Prepare
-      - name: Set up 0install
-        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends 0install-core
-      - name: Set up GitVersion
-        uses: gittools/actions/gitversion/setup@v0.9.4
-        with:
-          versionSpec: '5.3.x'
-      - name: Check out repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: GitVersion
+      - uses: gittools/actions/gitversion/setup@v0.9.4
+        with:
+          versionSpec: 5.3.x
+      - uses: gittools/actions/gitversion/execute@v0.9.4
         id: gitversion
-        uses: gittools/actions/gitversion/execute@v0.9.4
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/0install.net
+          key: 0install-${{hashFiles('**/build.sh')}}
 
       # Build
-      - name: Build (release)
-        if: steps.gitversion.outputs.preReleaseLabel == ''
-        run: ./build.sh ${{steps.gitversion.outputs.nuGetVersion}}
       - name: Build (pre-release)
         if: steps.gitversion.outputs.preReleaseLabel != ''
         run: ./build.sh ${{steps.gitversion.outputs.nuGetVersion}}-${{steps.gitversion.outputs.shortSha}}
+      - name: Build (release)
+        if: steps.gitversion.outputs.preReleaseLabel == ''
+        run: ./build.sh ${{steps.gitversion.outputs.nuGetVersion}}
 
-      # Publish
-      - name: NuGet authentication
-        if: github.event_name == 'push'
-        uses: actions/setup-dotnet@v1
-        with:
-          source-url: https://nuget.pkg.github.com/TypedRest/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: Publish packages (GitHub)
-        if: github.event_name == 'push'
-        run: dotnet nuget push 'artifacts/Release/*.nupkg' --skip-duplicate
-
-      # Publish (release only)
-      - name: Publish packages (NuGet.org)
-        if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
-        run: dotnet nuget push 'artifacts/Release/*.nupkg' --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
-      - name: Publish documentation
-        if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
-          force_orphan: true
-          publish_dir: artifacts/Documentation
-          cname: openservicebroker.typedrest.net
-      - name: Create release
+      # Release
+      - name: Create GitHub Release
         if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
         uses: actions/create-release@v1
         with:
           tag_name: ${{github.ref}}
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{github.token}}
       - name: Post-release commit
         if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
         run: |
@@ -66,3 +42,22 @@ jobs:
           git config user.email github-actions@github.com
           git commit --all -m "Automatic post-release commit"
           git push
+
+      # Publish
+      - name: Publish documentation
+        if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{github.token}}
+          force_orphan: true
+          publish_dir: artifacts/Documentation
+          cname: openservicebroker.typedrest.net
+      - name: Publish packages (GitHub)
+        if: github.event_name == 'push'
+        run: |
+          for file in artifacts/Release/*.nupkg; do
+            curl -sS -X PUT -u "${{github.actor}}:${{github.token}}" -F package=@$file https://nuget.pkg.github.com/${{github.repository_owner}}/
+          done
+      - name: Publish packages (NuGet.org)
+        if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
+        run: dotnet nuget push 'artifacts/Release/*.nupkg' --api-key ${{secrets.NUGET_API_KEY}}

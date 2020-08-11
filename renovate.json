@@ -15,12 +15,12 @@
       "automergeType": "branch"
     },
     {
-      "packagePatterns": ["^Microsoft\\.Extensions", "^Microsoft\\.AspNetCore"],
+      "packagePatterns": ["^Microsoft\\.Extensions", "^Microsoft\\.AspNetCore", "^Microsoft\\.EntityFrameworkCore"],
       "groupName": "Microsoft Extensions",
       "separateMinorPatch": true
     },
     {
-      "packagePatterns": ["^Microsoft\\.Extensions", "^Microsoft\\.AspNetCore"],
+      "packagePatterns": ["^Microsoft\\.Extensions", "^Microsoft\\.AspNetCore", "^Microsoft\\.EntityFrameworkCore"],
       "updateTypes": ["major", "minor"],
       "enabled": false
     }

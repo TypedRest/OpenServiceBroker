@@ -8,4 +8,4 @@ curl -sS -o typedrest-dotnet.tag https://dotnet.typedrest.net/typedrest-dotnet.t
 rm -rf ../artifacts/Documentation
 mkdir -p ../artifacts/Documentation
 
-VERSION=${1:-1.0-dev} ./_0install.sh run https://apps.0install.net/devel/doxygen.xml
+VERSION=${1:-1.0-dev} ../0install.sh run https://apps.0install.net/devel/doxygen.xml

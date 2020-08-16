@@ -2,6 +2,10 @@
 $ErrorActionPreference = "Stop"
 pushd $PSScriptRoot
 
+echo "Downloading references to other documentation..."
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]'Tls11,Tls12'
+Invoke-WebRequest https://dotnet.typedrest.net/typedrest-dotnet.tag -OutFile typedrest-dotnet.tag
+
 if (Test-Path ..\artifacts\Documentation) {rm -Recurse -Force ..\artifacts\Documentation}
 mkdir ..\artifacts\Documentation | Out-Null
 

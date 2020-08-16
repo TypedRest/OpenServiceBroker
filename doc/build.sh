@@ -2,6 +2,9 @@
 set -e
 cd `dirname $0`
 
+echo "Downloading references to other documentation..."
+curl -sS -o typedrest-dotnet.tag https://dotnet.typedrest.net/typedrest-dotnet.tag
+
 rm -rf ../artifacts/Documentation
 mkdir -p ../artifacts/Documentation
 

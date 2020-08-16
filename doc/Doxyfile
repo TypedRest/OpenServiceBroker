@@ -7,6 +7,7 @@ USE_MDFILE_AS_MAINPAGE = main.md
 STRIP_FROM_PATH = ../src
 RECURSIVE = YES
 EXCLUDE_PATTERNS = */UnitTests/* */Properties/* */obj/* */bin/*
+TAGFILES = typedrest-dotnet.tag=https://dotnet.typedrest.net/
 
 OUTPUT_DIRECTORY = ../artifacts/Documentation
 GENERATE_TAGFILE = ../artifacts/Documentation/openservicebroker.tag

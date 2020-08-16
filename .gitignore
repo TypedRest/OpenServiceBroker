@@ -8,6 +8,7 @@
 _ReSharper.*/
 obj/
 bin/
+/doc/*.tag
 
 # Output
 /artifacts/

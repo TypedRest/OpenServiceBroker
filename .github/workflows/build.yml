@@ -20,7 +20,7 @@ jobs:
             ~\AppData\Roaming\0install.net
             ~\AppData\Local\0install.net
             C:\ProgramData\0install.net
-          key: windows-0install-${{hashFiles('**/build.ps1')}}
+          key: 0install-${{hashFiles('**/build.ps1')}}
 
       # Build
       - name: Build (pre-release)
@@ -29,6 +29,11 @@ jobs:
       - name: Build (release)
         if: steps.gitversion.outputs.preReleaseLabel == ''
         run: .\build.ps1 ${{steps.gitversion.outputs.nuGetVersion}}
+      - name: Report test results
+        uses: scacap/action-surefire-report@v1
+        with:
+          github_token: ${{github.token}}
+          report_paths: '**/TestResults/TestResults.xml'
 
       # Release
       - name: Create GitHub Release

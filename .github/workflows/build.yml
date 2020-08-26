@@ -62,4 +62,4 @@ jobs:
           }
       - name: Publish packages (NuGet.org)
         if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
-        run: dotnet nuget push artifacts\Release\*.nupkg --api-key ${{secrets.NUGET_API_KEY}}
+        run: dotnet nuget push artifacts\Release\*.nupkg --source nuget.org --api-key ${{secrets.NUGET_API_KEY}}

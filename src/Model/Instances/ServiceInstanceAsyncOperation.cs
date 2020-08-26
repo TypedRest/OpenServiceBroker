@@ -11,6 +11,12 @@ namespace OpenServiceBroker.Instances
         [JsonProperty("dashboard_url")]
         public Uri DashboardUrl { get; set; }
 
+        /// <summary>
+        /// An optional object containing metadata for the Service Instance.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public ServiceInstanceMetadata Metadata { get; set; }
+
         [JsonIgnore]
         public ServiceInstanceProvision Result { get; set; }
 

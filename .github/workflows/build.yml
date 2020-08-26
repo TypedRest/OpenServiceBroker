@@ -30,6 +30,7 @@ jobs:
         if: steps.gitversion.outputs.preReleaseLabel == ''
         run: .\build.ps1 ${{steps.gitversion.outputs.nuGetVersion}}
       - name: Report test results
+        if: always()
         uses: scacap/action-surefire-report@v1
         with:
           github_token: ${{github.token}}

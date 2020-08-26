@@ -44,13 +44,6 @@ jobs:
           tag_name: ${{github.ref}}
         env:
           GITHUB_TOKEN: ${{github.token}}
-      - name: Post-release commit
-        if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git commit --all -m "Automatic post-release commit"
-          git push
 
       # Publish
       - name: Publish documentation

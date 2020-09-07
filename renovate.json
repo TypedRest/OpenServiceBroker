@@ -10,7 +10,7 @@
       "automergeType": "branch"
     },
     {
-      "packagePatterns": ["SourceLink", "TypedRest"],
+      "packagePatterns": ["SourceLink", "TypedRest", "NJsonSchema"],
       "automerge": true,
       "automergeType": "branch"
     },

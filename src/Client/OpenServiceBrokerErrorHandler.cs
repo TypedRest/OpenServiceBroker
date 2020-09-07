@@ -16,21 +16,26 @@ namespace OpenServiceBroker
 
         public async Task HandleAsync(HttpResponseMessage response)
         {
-            if (response.Content != null)
-            {
-                Error? error = null;
-                try
-                {
-                    error = await response.Content.ReadAsAsync<Error>(new[] {Serializer});
-                }
-                catch
-                {
-                    // Error responses without a response in standard format will be handled below
-                }
-                if (error != null) throw BrokerException.FromResponse(error, response.StatusCode);
-            }
+            if (response.IsSuccessStatusCode) return;
+
+            var error = await GetErrorAsync(response);
+            if (error != null) throw BrokerException.FromResponse(error, response.StatusCode);
 
             response.EnsureSuccessStatusCode();
+        }
+
+        private static async Task<Error?> GetErrorAsync(HttpResponseMessage response)
+        {
+            if (response.Content == null) return null;
+
+            try
+            {
+                return await response.Content.ReadAsAsync<Error>(new[] {Serializer});
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

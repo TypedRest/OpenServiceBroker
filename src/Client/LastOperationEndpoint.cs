@@ -1,7 +1,8 @@
 using System;
+using System.Collections.Generic;
+using Resta.UriTemplates;
 using TypedRest.Endpoints;
 using TypedRest.Endpoints.Reactive;
-using TypedRest.UriTemplates;
 
 namespace OpenServiceBroker
 {
@@ -10,8 +11,6 @@ namespace OpenServiceBroker
     /// </summary>
     public class LastOperationEndpoint : PollingEndpoint<LastOperationResource>
     {
-        private static readonly UriTemplate UriTemplate = new UriTemplate("./last_operation{?service_id,plan_id,operation}");
-
         /// <summary>
         /// Creates a new last operation endpoint.
         /// </summary>
@@ -22,15 +21,21 @@ namespace OpenServiceBroker
         public LastOperationEndpoint(IEndpoint referrer, string? serviceId = null, string? planId = null, string? operation = null)
             : base(
                 referrer,
-                UriTemplate.Resolve(new
-                {
-                    service_id = serviceId,
-                    plan_id = planId,
-                    operation
-                }),
+                GetUri(serviceId, planId, operation),
                 endCondition: obj => obj?.State != LastOperationResourceState.InProgress)
         {
             PollingInterval = TimeSpan.FromSeconds(10);
+        }
+
+        private static readonly UriTemplate UriTemplate = new UriTemplate("./last_operation{?service_id,plan_id,operation}");
+
+        private static string GetUri(string? serviceId, string? planId, string? operation)
+        {
+            var variables = new Dictionary<string, object>();
+            if (!string.IsNullOrEmpty(serviceId)) variables.Add("service_id", serviceId);
+            if (!string.IsNullOrEmpty(planId)) variables.Add("plan_id", planId);
+            if (!string.IsNullOrEmpty(operation)) variables.Add("operation", operation);
+            return UriTemplate.Resolve(variables);
         }
     }
 }

@@ -37,16 +37,12 @@ jobs:
           report_paths: '**/TestResults/TestResults.xml'
 
       # Release
-      - name: Extract Git tag message
-        if: steps.gitversion.outputs.preReleaseLabel == ''
-        run: git show -s --format='' ${{github.ref}} | tail -n +4 > .git/TAGMESSAGE
       - name: Create GitHub Release
         if: steps.gitversion.outputs.preReleaseLabel == ''
         uses: actions/create-release@v1
         with:
           tag_name: ${{github.ref}}
           release_name: ${{github.ref}}
-          body_path: .git/TAGMESSAGE
         env:
           GITHUB_TOKEN: ${{github.token}}
       - name: Post-release commit

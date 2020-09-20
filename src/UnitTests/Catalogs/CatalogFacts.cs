@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
@@ -44,6 +45,10 @@ namespace OpenServiceBroker.Catalogs
                     }
                 }
             };
+            Mock.As<IETagProvider>().SetupGet(x => x.ETag)
+                .Returns("\"abc\"");
+            Mock.As<ILastModifiedProvider>().SetupGet(x => x.LastModified)
+                .Returns(new DateTimeOffset(new DateTime(2000, 1, 1)));
             Mock.Setup(x => x.GetCatalogAsync())
                 .ReturnsAsync(result);
 
@@ -51,6 +56,8 @@ namespace OpenServiceBroker.Catalogs
             var result1 = await catalogEndpoint.ReadAsync();
             var result2 = await catalogEndpoint.ReadAsync();
             result1.Should().BeEquivalentTo(result2);
+
+            Mock.Verify(x => x.GetCatalogAsync(), Times.Once());
         }
     }
 }

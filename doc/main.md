@@ -130,7 +130,7 @@ client.SetApiVersion(new ApiVersion(2, 16));
 ## Server Library
 
 Set up a regular ASP.NET Core 2.1 or 3.1 project and add the NuGet package [OpenServiceBroker.Server](https://www.nuget.org/packages/OpenServiceBroker.Server/). Then implement the following interfaces:
-- \ref OpenServiceBroker.Catalogs.ICatalogService "ICatalogService"
+- \ref OpenServiceBroker.Catalogs.ICatalogService "ICatalogService" (optionally also \ref OpenServiceBroker.Catalogs.IETagProvider "IETagProvider" and/or \ref OpenServiceBroker.Catalogs.ILastModifiedProvider "ILastModifiedProvider" on the same class)
 - either \ref OpenServiceBroker.Instances.IServiceInstanceBlocking "InstancesIServiceInstanceBlocking" or \ref OpenServiceBroker.Instances.IServiceInstanceDeferred "InstancesIServiceInstanceDeferred" or both
 - either \ref OpenServiceBroker.Bindings.IServiceBindingBlocking "InstancesIServiceBindingBlocking" or \ref OpenServiceBroker.Bindings.IServiceBindingDeferred "InstancesIServiceBindingDeferred" or both
 

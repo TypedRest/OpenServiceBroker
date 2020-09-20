@@ -1,13 +1,10 @@
-using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
-using Newtonsoft.Json;
 
 namespace OpenServiceBroker.Catalogs
 {
@@ -28,23 +25,29 @@ namespace OpenServiceBroker.Catalogs
         /// Gets the catalog of services that the service broker offers.
         /// </summary>
         [Route(""), HttpGet]
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
         public async Task<IActionResult> Get()
         {
-            var catalog = await _catalogService.GetCatalogAsync();
-            string eTag = GenerateETag(catalog);
+            var requestHeaders = Request.GetTypedHeaders();
+            var responseHeaders = Response.GetTypedHeaders();
 
-            if (Request.GetTypedHeaders().IfNoneMatch?.Any(x => x.Tag.Value == eTag) ?? false)
-                return StatusCode((int) HttpStatusCode.NotModified);
+            string? eTag = (_catalogService as IETagProvider)?.ETag;
+            if (!string.IsNullOrEmpty(eTag))
+            {
+                if (requestHeaders.IfNoneMatch?.Any(x => x.Tag.Value == eTag) ?? false)
+                    return StatusCode((int) HttpStatusCode.NotModified);
+                responseHeaders.ETag = new EntityTagHeaderValue(eTag);
+            }
 
-            Response.GetTypedHeaders().ETag = new EntityTagHeaderValue(eTag);
-            return Ok(catalog);
-        }
+            var lastModified = (_catalogService as ILastModifiedProvider)?.LastModified;
+            if (lastModified.HasValue)
+            {
+                if (requestHeaders.IfModifiedSince.HasValue && requestHeaders.IfModifiedSince <= lastModified.Value)
+                    return StatusCode((int) HttpStatusCode.NotModified);
+                responseHeaders.LastModified = lastModified;
+            }
 
-        private static string GenerateETag(Catalog catalog)
-        {
-            string serializedCatalog = JsonConvert.SerializeObject(catalog);
-            var hash = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(serializedCatalog));
-            return '"' + BitConverter.ToString(hash) + '"';
+            return Ok(await _catalogService.GetCatalogAsync());
         }
     }
 }

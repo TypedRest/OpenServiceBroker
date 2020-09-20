@@ -4,7 +4,7 @@ using OpenServiceBroker.Errors;
 namespace OpenServiceBroker.Bindings
 {
     /// <summary>
-    /// manages bindings for Service Instances with blocking operations
+    /// Manages bindings for Service Instances with blocking operations.
     /// </summary>
     public interface IServiceBindingBlocking : IServiceBindingBase
     {

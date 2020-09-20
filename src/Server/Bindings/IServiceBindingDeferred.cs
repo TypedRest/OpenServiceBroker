@@ -4,7 +4,7 @@ using OpenServiceBroker.Errors;
 namespace OpenServiceBroker.Bindings
 {
     /// <summary>
-    /// manages bindings for Service Instances with potentially deferred (asynchronous) operations
+    /// Manages bindings for Service Instances with potentially deferred (asynchronous) operations.
     /// </summary>
     public interface IServiceBindingDeferred : IServiceBindingBase
     {

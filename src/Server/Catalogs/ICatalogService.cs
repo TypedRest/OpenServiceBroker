@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 namespace OpenServiceBroker.Catalogs
 {
     /// <summary>
-    /// Provides access to the catalog of services that the service broker offers
+    /// Provides access to the catalog of services that the service broker offers.
     /// </summary>
     public interface ICatalogService
     {

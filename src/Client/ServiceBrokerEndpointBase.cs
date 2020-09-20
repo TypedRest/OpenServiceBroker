@@ -59,8 +59,7 @@ namespace OpenServiceBroker
                 case HttpStatusCode.OK:
                 {
                     var result = await FromContentAsync<TComplete>(response);
-                    if (result != null)
-                        result.Unchanged = true;
+                    result.Unchanged = true;
                     return new TDeferred().Complete(result);
                 }
 

@@ -8,6 +8,9 @@ namespace OpenServiceBroker.Bindings
     /// </summary>
     public class ServiceBindingContext : ServiceInstanceContext, IEquatable<ServiceBindingContext>
     {
+        /// <summary>
+        /// The ID of the Service Binding.
+        /// </summary>
         public string BindingId { get; }
 
         /// <summary>
@@ -46,7 +49,7 @@ namespace OpenServiceBroker.Bindings
         {
             unchecked
             {
-                return (base.GetHashCode() * 397) ^ (BindingId != null ? BindingId.GetHashCode() : 0);
+                return (base.GetHashCode() * 397) ^ BindingId.GetHashCode();
             }
         }
 

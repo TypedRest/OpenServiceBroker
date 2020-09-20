@@ -68,7 +68,7 @@ namespace OpenServiceBroker
 
         private void CheckApiVersion()
         {
-            string headerValue = Request.Headers[ApiVersion.HttpHeaderName].FirstOrDefault();
+            string? headerValue = Request.Headers[ApiVersion.HttpHeaderName].FirstOrDefault();
             if (!string.IsNullOrEmpty(headerValue))
             {
                 var clientVersion = ApiVersion.Parse(headerValue);

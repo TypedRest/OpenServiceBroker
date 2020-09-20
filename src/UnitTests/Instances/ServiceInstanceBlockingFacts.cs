@@ -2,6 +2,7 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 using FluentAssertions;
+using Moq;
 using OpenServiceBroker.Errors;
 using TypedRest;
 using TypedRest.Http;
@@ -20,7 +21,8 @@ namespace OpenServiceBroker.Instances
                 PlanId = "xyz"
             };
 
-            SetupMock(x => x.FetchAsync("123"), response);
+            Mock.Setup(x => x.FetchAsync("123"))
+                .ReturnsAsync(response);
             var result = await Client.ServiceInstancesBlocking["123"].FetchAsync();
             result.Should().BeEquivalentTo(response);
         }
@@ -40,7 +42,8 @@ namespace OpenServiceBroker.Instances
                 DashboardUrl = new Uri("http://example.com")
             };
 
-            SetupMock(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request), response);
+            Mock.Setup(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request))
+                .ReturnsAsync(response);
             var result = await Client.ServiceInstancesBlocking["123"].ProvisionAsync(request);
             result.Should().BeEquivalentTo(response);
         }
@@ -61,7 +64,8 @@ namespace OpenServiceBroker.Instances
                 Unchanged = true
             };
 
-            SetupMock(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request), response);
+            Mock.Setup(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request))
+                .ReturnsAsync(response);
             var result = await Client.ServiceInstancesBlocking["123"].ProvisionAsync(request);
             result.Should().BeEquivalentTo(response);
         }
@@ -77,8 +81,11 @@ namespace OpenServiceBroker.Instances
                 SpaceGuid = "space"
             };
 
-            SetupMock(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request), new ConflictException("custom message"));
-            Client.ServiceInstancesBlocking["123"].Awaiting(x => x.ProvisionAsync(request)).Should().Throw<ConflictException>().WithMessage("custom message");
+            Mock.Setup((x => x.ProvisionAsync(new ServiceInstanceContext("123"), request)))
+                .Throws(new ConflictException("custom message"));
+            Client.ServiceInstancesBlocking["123"]
+                  .Awaiting(x => x.ProvisionAsync(request))
+                  .Should().Throw<ConflictException>().WithMessage("custom message");
         }
 
         [Fact]
@@ -90,7 +97,8 @@ namespace OpenServiceBroker.Instances
                 PlanId = "xyz"
             };
 
-            SetupMock(x => x.UpdateAsync(new ServiceInstanceContext("123"), request));
+            Mock.Setup(x => x.UpdateAsync(new ServiceInstanceContext("123"), request))
+                .Returns(Task.CompletedTask);
             await Client.ServiceInstancesBlocking["123"].UpdateAsync(request);
         }
 
@@ -103,7 +111,8 @@ namespace OpenServiceBroker.Instances
                 PlanId = "xyz"
             };
 
-            SetupMock(x => x.UpdateAsync(new ServiceInstanceContext("123"), request));
+            Mock.Setup(x => x.UpdateAsync(new ServiceInstanceContext("123"), request))
+                .Returns(Task.CompletedTask);
 
             var result = await Client.HttpClient.PatchAsync(Client.ServiceInstancesBlocking["123"].Uri, request, Client.Serializer);
             result.StatusCode.Should().BeEquivalentTo(HttpStatusCode.OK);
@@ -114,14 +123,16 @@ namespace OpenServiceBroker.Instances
         [Fact]
         public async Task Deprovision()
         {
-            SetupMock(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"));
+            Mock.Setup(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"))
+                .Returns(Task.CompletedTask);
             await Client.ServiceInstancesBlocking["123"].DeprovisionAsync("abc", "xyz");
         }
 
         [Fact]
         public async Task DeprovisionBody()
         {
-            SetupMock(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"));
+            Mock.Setup(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"))
+                .Returns(Task.CompletedTask);
 
             var result = await Client.HttpClient.DeleteAsync(Client.ServiceInstancesBlocking["123"].Uri.Join("?service_id=abc&plan_id=xyz"));
             result.StatusCode.Should().BeEquivalentTo(HttpStatusCode.OK);
@@ -132,8 +143,11 @@ namespace OpenServiceBroker.Instances
         [Fact]
         public void DeprovisionGone()
         {
-            SetupMock(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"), new GoneException());
-            Client.ServiceInstancesBlocking["123"].Awaiting(x => x.DeprovisionAsync("abc", "xyz")).Should().Throw<GoneException>();
+            Mock.Setup((x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz")))
+               .Throws<GoneException>();
+            Client.ServiceInstancesBlocking["123"]
+                  .Awaiting(x => x.DeprovisionAsync("abc", "xyz"))
+                  .Should().Throw<GoneException>();
         }
     }
 }

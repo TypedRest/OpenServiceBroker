@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using FluentAssertions;
+using Moq;
 using Xunit;
 
 namespace OpenServiceBroker.Catalogs
@@ -22,7 +23,8 @@ namespace OpenServiceBroker.Catalogs
                 }
             };
 
-            SetupMock(x => x.GetCatalogAsync(), response);
+            Mock.Setup(x => x.GetCatalogAsync())
+                .ReturnsAsync(response);
             var result = await Client.Catalog.ReadAsync();
             result.Should().BeEquivalentTo(response);
         }
@@ -30,7 +32,7 @@ namespace OpenServiceBroker.Catalogs
         [Fact]
         public async Task ReadCached()
         {
-            SetupMock(x => x.GetCatalogAsync(), new Catalog
+            Catalog result = new Catalog
             {
                 Services =
                 {
@@ -41,7 +43,9 @@ namespace OpenServiceBroker.Catalogs
                         Description = "my service"
                     }
                 }
-            });
+            };
+            Mock.Setup(x => x.GetCatalogAsync())
+                .ReturnsAsync(result);
 
             var catalogEndpoint = Client.Catalog;
             var result1 = await catalogEndpoint.ReadAsync();

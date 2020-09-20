@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using FluentAssertions;
+using Moq;
 using OpenServiceBroker.Errors;
 using Xunit;
 
@@ -17,7 +18,8 @@ namespace OpenServiceBroker.Instances
                 PlanId = "xyz"
             };
 
-            SetupMock(x => x.FetchAsync("123"), response);
+            Mock.Setup(x => x.FetchAsync("123"))
+                .ReturnsAsync(response);
             var result = await Client.ServiceInstancesDeferred["123"].FetchAsync();
             result.Should().BeEquivalentTo(response);
         }
@@ -38,7 +40,8 @@ namespace OpenServiceBroker.Instances
                 DashboardUrl = new Uri("http://example.com")
             };
 
-            SetupMock(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request), response);
+            Mock.Setup(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request))
+                .ReturnsAsync(response);
             var result = await Client.ServiceInstancesDeferred["123"].ProvisionAsync(request);
             result.Should().BeEquivalentTo(response);
         }
@@ -58,7 +61,8 @@ namespace OpenServiceBroker.Instances
                 DashboardUrl = new Uri("http://example.com")
             });
 
-            SetupMock(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request), response);
+            Mock.Setup(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request))
+                .ReturnsAsync(response);
             var result = await Client.ServiceInstancesDeferred["123"].ProvisionAsync(request);
             result.Should().BeEquivalentTo(response);
         }
@@ -79,7 +83,8 @@ namespace OpenServiceBroker.Instances
                 Unchanged = true
             });
 
-            SetupMock(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request), response);
+            Mock.Setup(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request))
+                .ReturnsAsync(response);
             var result = await Client.ServiceInstancesDeferred["123"].ProvisionAsync(request);
             result.Should().BeEquivalentTo(response);
         }
@@ -95,8 +100,11 @@ namespace OpenServiceBroker.Instances
                 SpaceGuid = "space"
             };
 
-            SetupMock(x => x.ProvisionAsync(new ServiceInstanceContext("123"), request), new ConflictException("custom message"));
-            Client.ServiceInstancesDeferred["123"].Awaiting(x => x.ProvisionAsync(request)).Should().Throw<ConflictException>().WithMessage("custom message");
+            Mock.Setup((x => x.ProvisionAsync(new ServiceInstanceContext("123"), request)))
+                .Throws(new ConflictException("custom message"));
+            Client.ServiceInstancesDeferred["123"]
+                  .Awaiting(x => x.ProvisionAsync(request))
+                  .Should().Throw<ConflictException>().WithMessage("custom message");
         }
 
         [Fact]
@@ -113,7 +121,8 @@ namespace OpenServiceBroker.Instances
                 DashboardUrl = new Uri("http://example.com")
             };
 
-            SetupMock(x => x.UpdateAsync(new ServiceInstanceContext("123"), request), response);
+            Mock.Setup(x => x.UpdateAsync(new ServiceInstanceContext("123"), request))
+                .ReturnsAsync(response);
             var result = await Client.ServiceInstancesDeferred["123"].UpdateAsync(request);
             result.Should().BeEquivalentTo(response);
         }
@@ -128,7 +137,8 @@ namespace OpenServiceBroker.Instances
             };
             var response = new ServiceInstanceAsyncOperation();
 
-            SetupMock(x => x.UpdateAsync(new ServiceInstanceContext("123"), request), response);
+            Mock.Setup(x => x.UpdateAsync(new ServiceInstanceContext("123"), request))
+                .ReturnsAsync(response);
             var result = await Client.ServiceInstancesDeferred["123"].UpdateAsync(request);
             result.Should().BeEquivalentTo(response);
         }
@@ -141,7 +151,8 @@ namespace OpenServiceBroker.Instances
                 Operation = "my operation"
             };
 
-            SetupMock(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"), response);
+            Mock.Setup(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"))
+                .ReturnsAsync(response);
             var result = await Client.ServiceInstancesDeferred["123"].DeprovisionAsync("abc", "xyz");
             result.Should().BeEquivalentTo(response);
         }
@@ -151,7 +162,8 @@ namespace OpenServiceBroker.Instances
         {
             var response = new AsyncOperation();
 
-            SetupMock(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"), response);
+            Mock.Setup(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"))
+                .ReturnsAsync(response);
             var result = await Client.ServiceInstancesDeferred["123"].DeprovisionAsync("abc", "xyz");
             result.Should().BeEquivalentTo(response);
         }
@@ -159,8 +171,11 @@ namespace OpenServiceBroker.Instances
         [Fact]
         public void DeprovisionGone()
         {
-            SetupMock(x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz"), new GoneException());
-            Client.ServiceInstancesDeferred["123"].Awaiting(x => x.DeprovisionAsync("abc", "xyz")).Should().Throw<GoneException>();
+            Mock.Setup((x => x.DeprovisionAsync(new ServiceInstanceContext("123"), "abc", "xyz")))
+                .Throws<GoneException>();
+            Client.ServiceInstancesDeferred["123"]
+                  .Awaiting(x => x.DeprovisionAsync("abc", "xyz"))
+                  .Should().Throw<GoneException>();
         }
 
         [Fact]
@@ -171,7 +186,8 @@ namespace OpenServiceBroker.Instances
                 State = LastOperationResourceState.InProgress
             };
 
-            SetupMock(x => x.GetLastOperationAsync(new ServiceInstanceContext("123"), "abc", "xyz", "my operation"), response);
+            Mock.Setup(x => x.GetLastOperationAsync(new ServiceInstanceContext("123"), "abc", "xyz", "my operation"))
+                .ReturnsAsync(response);
             var result = await Client.ServiceInstancesDeferred["123"].LastOperation("abc", "xyz", "my operation").ReadAsync();
             result.Should().BeEquivalentTo(response);
         }
@@ -179,8 +195,11 @@ namespace OpenServiceBroker.Instances
         [Fact]
         public void GetLastOperationGone()
         {
-            SetupMock(x => x.GetLastOperationAsync(new ServiceInstanceContext("123"), "abc", "xyz", "my operation"), new GoneException("custom message"));
-            Client.ServiceInstancesDeferred["123"].LastOperation("abc", "xyz", "my operation").Awaiting(x => x.ReadAsync()).Should().Throw<GoneException>().WithMessage("custom message");
+            Mock.Setup((x => x.GetLastOperationAsync(new ServiceInstanceContext("123"), "abc", "xyz", "my operation")))
+                .Throws(new GoneException("custom message"));
+            Client.ServiceInstancesDeferred["123"].LastOperation("abc", "xyz", "my operation")
+                  .Awaiting(x => x.ReadAsync())
+                  .Should().Throw<GoneException>().WithMessage("custom message");
         }
     }
 }

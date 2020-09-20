@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using FluentAssertions;
+using Moq;
 using OpenServiceBroker.Errors;
 using TypedRest;
 using Xunit;
@@ -13,7 +14,8 @@ namespace OpenServiceBroker.Bindings
         {
             var response = new ServiceBindingResource();
 
-            SetupMock(x => x.FetchAsync("123", "456"), response);
+            Mock.Setup(x => x.FetchAsync("123", "456"))
+                .ReturnsAsync(response);
             var result = await Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].FetchAsync();
             result.Should().BeEquivalentTo(response);
         }
@@ -32,7 +34,8 @@ namespace OpenServiceBroker.Bindings
             };
             var response = new ServiceBinding();
 
-            SetupMock(x => x.BindAsync(new ServiceBindingContext("123", "456"), request), response);
+            Mock.Setup(x => x.BindAsync(new ServiceBindingContext("123", "456"), request))
+                .ReturnsAsync(response);
             var result = await Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].BindAsync(request);
             result.Should().BeEquivalentTo(response);
         }
@@ -47,7 +50,8 @@ namespace OpenServiceBroker.Bindings
             };
             var response = new ServiceBinding();
 
-            SetupMock(x => x.BindAsync(new ServiceBindingContext("123", "456"), request), response);
+            Mock.Setup(x => x.BindAsync(new ServiceBindingContext("123", "456"), request))
+                .ReturnsAsync(response);
             var result = await Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].BindAsync(request);
             result.Should().BeEquivalentTo(response);
         }
@@ -61,21 +65,26 @@ namespace OpenServiceBroker.Bindings
                 PlanId = "xyz"
             };
 
-            SetupMock(x => x.BindAsync(new ServiceBindingContext("123", "456"), request), new ConflictException());
-            Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].Awaiting(x => x.BindAsync(request)).Should().Throw<ConflictException>();
+            Mock.Setup(x => x.BindAsync(new ServiceBindingContext("123", "456"), request))
+                .Throws<ConflictException>();
+            Client.ServiceInstancesBlocking["123"].ServiceBindings["456"]
+                  .Awaiting(x => x.BindAsync(request))
+                  .Should().Throw<ConflictException>();
         }
 
         [Fact]
         public async Task Unbind()
         {
-            SetupMock(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"));
+            Mock.Setup(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"))
+                .Returns(Task.CompletedTask);
             await Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].UnbindAsync("abc", "xyz");
         }
 
         [Fact]
         public async Task UnbindBody()
         {
-            SetupMock(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"));
+            Mock.Setup(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"))
+                .Returns(Task.CompletedTask);
 
             var result = await Client.HttpClient.DeleteAsync(Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].Uri.Join("?service_id=abc&plan_id=xyz"));
             string resultString = await result.Content.ReadAsStringAsync();
@@ -85,8 +94,11 @@ namespace OpenServiceBroker.Bindings
         [Fact]
         public void UnbindGone()
         {
-            SetupMock(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"), new GoneException());
-            Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].Awaiting(x => x.UnbindAsync("abc", "xyz")).Should().Throw<GoneException>();
+            Mock.Setup(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"))
+                .Throws<GoneException>();
+            Client.ServiceInstancesBlocking["123"].ServiceBindings["456"]
+                  .Awaiting(x => x.UnbindAsync("abc", "xyz"))
+                  .Should().Throw<GoneException>();
         }
     }
 }

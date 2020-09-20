@@ -1,6 +1,4 @@
 using System;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
@@ -14,7 +12,7 @@ namespace OpenServiceBroker
     {
         private readonly TestServer _server;
 
-        private readonly Mock<TMock> _mock = new Mock<TMock>();
+        protected readonly Mock<TMock> Mock = new Mock<TMock>();
 
         protected readonly OpenServiceBrokerClient Client;
 
@@ -22,13 +20,15 @@ namespace OpenServiceBroker
         {
             _server = new TestServer(
                 new WebHostBuilder()
-                   .ConfigureServices(x
-                        => x.AddSingleton(_mock.Object)
 #if NETCOREAPP2_1
+                   .ConfigureServices(x
+                        => x.AddTransient(_ => Mock.Object)
                             .AddMvc()
                             .AddOpenServiceBroker())
                    .Configure(x => x.UseMvc()));
 #elif NETCOREAPP3_1
+                   .ConfigureServices(x
+                        => x.AddScoped(_ => Mock.Object)
                             .AddControllers()
                             .AddOpenServiceBroker())
                    .Configure(x => x.UseRouting()
@@ -37,20 +37,11 @@ namespace OpenServiceBroker
             Client = new OpenServiceBrokerClient(_server.CreateClient(), new Uri("http://localhost"));
         }
 
-        protected void SetupMock(Expression<Func<TMock, Task>> expression)
-            => _mock.Setup(expression).Returns(Task.CompletedTask);
-
-        protected void SetupMock<T>(Expression<Func<TMock, Task<T>>> expression, T result)
-            => _mock.Setup(expression).ReturnsAsync(result);
-
-        protected void SetupMock(Expression<Func<TMock, Task>> expression, Exception exception)
-            => _mock.Setup(expression).Throws(exception);
-
         public virtual void Dispose()
         {
             try
             {
-                _mock.VerifyAll();
+                Mock.VerifyAll();
             }
             finally
             {

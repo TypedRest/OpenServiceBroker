@@ -21,14 +21,12 @@ The [startup logic](Startup.cs) in the template registers the following services
 - [`CatalogService`](CatalogService.cs) as an implementation of `ICatalogService`.
 - [`ServiceInstanceService`](ServiceInstanceService.cs) as an implementation of `IServiceInstanceBlocking`.
 
-The catalog of available services is read from the file [catalog.json](catalog.json).
+[`CatalogService`](CatalogService.cs) reads the list of available services from a static file named [`catalog.json`](catalog.json).  
+You can add your services to this file or modify the code to fetch service information from elsewhere.
 
-Provisioned services are stored in a database using Entity Framework and SQLite. The data structures are described by [`DbContext`](DbContext.cs) and [`ServiceInstanceEntity`](ServiceInstanceEntity.cs).
+[`ServiceInstanceService`](ServiceInstanceService.cs) stores provisioned services using Entity Framework and SQLite. The relevant data structures are described by [`DbContext`](DbContext.cs) and [`ServiceInstanceEntity`](ServiceInstanceEntity.cs).  
+You will need to add code that does the actual provisioning, optionally replacing the pre-implemented database storage in the process. You can change the service to implement `IServiceInstanceDeferred` instead of `IServiceBindingBlocking` if your provisioning logic takes more than a few seconds to complete.
 
-You may wish to:
-
-- Add your own services to [`catalog.json`](catalog.json) or modify [`CatalogService`](CatalogService.cs) fetch service-information from elsewhere.
-- Implement the actual provisioning of services in [`ServiceInstanceService`](ServiceInstanceService.cs), potentially removing the database storage.
-- Add implementations for `IServiceInstanceDeferred`, `IServiceBindingBlocking` and/or `IServiceBindingDeferred`
+You may also wish to add and register an implementation for `IServiceBindingBlocking` or `IServiceBindingDeferred`
 
 See the **[API documentation](https://openservicebroker.typedrest.net/)** for more details.

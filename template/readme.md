@@ -5,7 +5,7 @@ It uses the [OpenServiceBroker.Server library](https://github.com/TypedRest/Open
 
 ## Using the template
 
-Make sure you have the [.NET Core SDK](https://www.microsoft.com/net/download) installed your machine. Then install the template by running the following:
+Make sure you have the [.NET SDK](https://dotnet.microsoft.com/download/dotnet-core) installed your machine. Then install the template by running the following:
 
     dotnet new --install OpenServiceBroker.Template::*
 

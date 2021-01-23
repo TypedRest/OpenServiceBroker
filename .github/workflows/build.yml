@@ -64,7 +64,7 @@ jobs:
           publish_dir: artifacts/Documentation
           cname: openservicebroker.typedrest.net
       - name: Publish packages (GitHub)
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && !startsWith(github.ref, 'refs/heads/renovate/')
         run: |
           Get-ChildItem artifacts\Release\*.nupkg | ForEach-Object {
             curl.exe -sS -X PUT -u "${{github.actor}}:${{github.token}}" -F package=@$_ https://nuget.pkg.github.com/${{github.repository_owner}}/

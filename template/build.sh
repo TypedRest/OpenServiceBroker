@@ -1,6 +1,13 @@
-#!/bin/sh
+#!/usr/bin/env bash
 set -e
 cd `dirname $0`
+
+# Find dotnet
+if command -v dotnet > /dev/null 2> /dev/null; then
+    dotnet="dotnet"
+else
+    dotnet="../0install.sh run --version 5.0..!5.1 https://apps.0install.net/dotnet/core-sdk.xml"
+fi
 
 # Keep template and library version in-sync
 dotnet add MyServiceBroker.csproj package OpenServiceBroker.Server --version ${1:-1.0-dev}

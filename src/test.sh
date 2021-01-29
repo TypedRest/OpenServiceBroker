@@ -9,5 +9,5 @@ else
     dotnet="../0install.sh run --version 3.1..!3.2 https://apps.0install.net/dotnet/core-sdk.xml"
 fi
 
-# Unit tests (without .NET Framework)
-$dotnet test --no-build --logger junit --configuration Release --framework netcoreapp3.1 UnitTests/UnitTests.csproj
+# Unit tests
+$dotnet test --no-build --logger junit --configuration Release UnitTests/UnitTests.csproj

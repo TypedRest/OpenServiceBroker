@@ -106,7 +106,7 @@ namespace OpenServiceBroker
         {
             get
             {
-                string headerValue = Request.Headers[OriginatingIdentity.HttpHeaderName].FirstOrDefault();
+                string? headerValue = Request.Headers[OriginatingIdentity.HttpHeaderName].FirstOrDefault();
                 return string.IsNullOrEmpty(headerValue) ? null : OriginatingIdentity.Parse(headerValue);
             }
         }

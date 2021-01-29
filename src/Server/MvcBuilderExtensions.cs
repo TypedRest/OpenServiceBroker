@@ -20,7 +20,7 @@ namespace OpenServiceBroker
         {
             builder.AddApplicationPart(typeof(CatalogController).Assembly);
 
-#if NETCOREAPP3_1
+#if !NETSTANDARD2_0
             builder.AddNewtonsoftJson();
 #endif
 

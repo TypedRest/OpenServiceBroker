@@ -26,7 +26,7 @@ namespace OpenServiceBroker
                             .AddMvc()
                             .AddOpenServiceBroker())
                    .Configure(x => x.UseMvc()));
-#elif NETCOREAPP3_1
+#else
                    .ConfigureServices(x
                         => x.AddScoped(_ => Mock.Object)
                             .AddControllers()

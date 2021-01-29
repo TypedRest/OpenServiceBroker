@@ -6,6 +6,7 @@ using OpenServiceBroker.Catalogs;
 using OpenServiceBroker.Instances;
 using TypedRest.Endpoints;
 using TypedRest.Endpoints.Generic;
+using TypedRest.Http;
 
 namespace OpenServiceBroker
 {
@@ -30,9 +31,10 @@ namespace OpenServiceBroker
         /// </summary>
         /// <param name="uri">The base URI of the Open Service Broker API instance (without the version number).</param>
         /// <param name="credentials">Optional HTTP Basic Auth credentials used to authenticate against the REST interface.</param>
-        public OpenServiceBrokerClient(Uri uri, ICredentials? credentials = null)
-            : base(uri, credentials, errorHandler: new OpenServiceBrokerErrorHandler())
+        public OpenServiceBrokerClient(Uri uri, NetworkCredential? credentials = null)
+            : base(uri, errorHandler: new OpenServiceBrokerErrorHandler())
         {
+            if (credentials != null) HttpClient.AddBasicAuth(credentials);
             SetApiVersion(DefaultApiVersion);
         }
 

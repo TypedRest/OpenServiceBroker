@@ -11,7 +11,8 @@ function Run-DotNet {
     if ($LASTEXITCODE -ne 0) {throw "Exit Code: $LASTEXITCODE"}
 }
 
+# Build
 if ($env:CI) { $ci = "/p:ContinuousIntegrationBuild=True" }
-Run-DotNet msbuild /v:Quiet /t:Restore /t:Build $ci /p:Configuration=Release /p:Version=$Version
+Run-DotNet msbuild /v:Quiet /t:Restore /t:Build /p:Configuration=Release /p:Version=$Version $ci
 
 popd

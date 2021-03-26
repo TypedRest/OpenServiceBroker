@@ -82,13 +82,15 @@ namespace OpenServiceBroker
             if (!ModelState.IsValid)
             {
                 var error = ModelState.Values.SelectMany(x => x.Errors).FirstOrDefault();
-                throw new BadRequestException((error == null)
-                    ? "Request was rejected by server due to semantic errors."
-                    : (string.IsNullOrEmpty(error.ErrorMessage) ? error.Exception.Message : error.ErrorMessage));
+                throw new BadRequestException(error?.ErrorMessage ?? error?.Exception?.Message ?? "Request was rejected by server due to semantic errors.");
             }
         }
 
-        private bool TryGetService<T>(out T service)
+        private bool TryGetService<T>(
+#if !NETSTANDARD2_0
+            [System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out T? service)
         {
             service = _provider.GetService<T>();
             return (service != null);

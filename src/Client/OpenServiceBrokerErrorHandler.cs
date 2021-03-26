@@ -26,7 +26,9 @@ namespace OpenServiceBroker
 
         private static async Task<Error?> GetErrorAsync(HttpResponseMessage response)
         {
+#if NETSTANDARD2_0
             if (response.Content == null) return null;
+#endif
 
             try
             {

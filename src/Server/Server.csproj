@@ -1,45 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <!-- Build config -->
+  <!-- Project properties -->
   <PropertyGroup>
     <AssemblyName>OpenServiceBroker.Server</AssemblyName>
-    <RootNamespace>OpenServiceBroker</RootNamespace>
-    <LangVersion>8.0</LangVersion>
     <TargetFrameworks>netstandard2.0;netcoreapp3.1;net5.0</TargetFrameworks>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);1591</NoWarn>
-    <Nullable>annotations</Nullable>
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
-    <OutputType>Library</OutputType>
-    <IncludeSymbols>True</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-  </PropertyGroup>
-  <PropertyGroup Condition="$(TargetFramework)=='netcoreapp3.1'">
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-  <!-- NuGet package metadata -->
-  <PropertyGroup>
+    <Summary>Server library for the Open Service Broker API</Summary>
     <Description>A library to help you provide an ASP.NET Core implementation of the Open Service Broker API. This specification allows developers, ISVs, and SaaS vendors a single, simple, and elegant way to deliver services to applications running within cloud native platforms such as Cloud Foundry, OpenShift, and Kubernetes.</Description>
     <PackageTags>OSB;Open Service Broker;Server;ASP.NET Core;Controller</PackageTags>
-    <PackageProjectUrl>https://openservicebroker.typedrest.net/</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageIcon>icon.png</PackageIcon>
-    <RepositoryUrl>https://github.com/TypedRest/OpenServiceBroker</RepositoryUrl>
-    <Authors>Bastian Eicher</Authors>
+    <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
+    <Nullable>annotations</Nullable>
   </PropertyGroup>
-  <ItemGroup>
-    <None Include="..\..\icon.png" Pack="true" PackagePath="\" />
-  </ItemGroup>
+  <PropertyGroup Condition="$(TargetFramework)=='netcoreapp3.1' Or $(TargetFramework)=='net5.0'">
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
 
   <!-- Dependencies -->
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.3" />

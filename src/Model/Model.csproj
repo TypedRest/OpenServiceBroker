@@ -1,40 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <!-- Build config -->
+  <!-- Project properties -->
   <PropertyGroup>
     <AssemblyName>OpenServiceBroker.Model</AssemblyName>
-    <RootNamespace>OpenServiceBroker</RootNamespace>
-    <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);1591</NoWarn>
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
-    <OutputType>Library</OutputType>
-    <IncludeSymbols>True</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-  </PropertyGroup>
-
-  <!-- NuGet package metadata -->
-  <PropertyGroup>
-    <Description>DTO classes for the Open Service Broker API. This is usually referenced indirectly via OpenServiceBroker.Client or OpenServiceBroker.Server.</Description>
     <Summary>DTO classes for the Open Service Broker API</Summary>
+    <Description>DTO classes for the Open Service Broker API. This is usually referenced indirectly via OpenServiceBroker.Client or OpenServiceBroker.Server.</Description>
     <PackageTags>OSB;Open Service Broker;Model</PackageTags>
-    <PackageProjectUrl>https://openservicebroker.typedrest.net/</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageIcon>icon.png</PackageIcon>
-    <RepositoryUrl>https://github.com/TypedRest/OpenServiceBroker</RepositoryUrl>
-    <Authors>Bastian Eicher</Authors>
+    <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
   </PropertyGroup>
-  <ItemGroup>
-    <None Include="..\..\icon.png" Pack="true" PackagePath="\" />
-  </ItemGroup>
 
   <!-- Dependencies -->
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="NJsonSchema" Version="10.4.0" />
   </ItemGroup>
 

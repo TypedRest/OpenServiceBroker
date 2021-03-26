@@ -25,7 +25,7 @@ namespace MyServiceBroker
 
         public async Task<ServiceInstanceResource> FetchAsync(string instanceId)
         {
-            _logger.LogTrace("Read instance {0}", instanceId);
+            _logger.LogTrace("Read instance {InstanceId}", instanceId);
 
             var entity = await _context.ServiceInstances.FindAsync(instanceId);
             if (entity == null) throw new NotFoundException($"Instance '{instanceId}' not found.");
@@ -40,7 +40,7 @@ namespace MyServiceBroker
 
         public async Task<ServiceInstanceProvision> ProvisionAsync(ServiceInstanceContext context, ServiceInstanceProvisionRequest request)
         {
-            _logger.LogInformation("Provisioning instance {0} as service {1}.", context.InstanceId, request.ServiceId);
+            _logger.LogInformation("Provisioning instance {InstanceId} as service {ServiceId}", context.InstanceId, request.ServiceId);
 
             if (GetService(request.ServiceId).Plans.All(x => x.Id != request.PlanId))
                 throw new BadRequestException($"Unknown plan ID '{request.PlanId}'.");
@@ -85,7 +85,7 @@ namespace MyServiceBroker
 
         public async Task UpdateAsync(ServiceInstanceContext context, ServiceInstanceUpdateRequest request)
         {
-            _logger.LogInformation("Updating instance {0} as service {1}.", context.InstanceId, request.ServiceId);
+            _logger.LogInformation("Updating instance {InstanceId} as service {ServiceId}", context.InstanceId, request.ServiceId);
 
             var entity = await _context.ServiceInstances.FindAsync(context.InstanceId);
             if (entity == null) throw new NotFoundException($"Instance '{context.InstanceId}' not found.");
@@ -110,7 +110,7 @@ namespace MyServiceBroker
 
         public async Task DeprovisionAsync(ServiceInstanceContext context, string serviceId, string planId)
         {
-            _logger.LogInformation("Deprovisioning instance {0}.", context.InstanceId);
+            _logger.LogInformation("Deprovisioning instance {InstanceId}", context.InstanceId);
 
             var entity = await _context.ServiceInstances.FindAsync(context.InstanceId);
             if (entity == null)

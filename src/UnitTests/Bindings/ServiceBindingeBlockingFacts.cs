@@ -27,14 +27,14 @@ namespace OpenServiceBroker.Bindings
             {
                 ServiceId = "abc",
                 PlanId = "xyz",
-                BindResource = new ServiceBindingResourceObject
+                BindResource = new()
                 {
                     AppGuid = "123-456"
                 }
             };
             var response = new ServiceBinding();
 
-            Mock.Setup(x => x.BindAsync(new ServiceBindingContext("123", "456"), request))
+            Mock.Setup(x => x.BindAsync(new("123", "456"), request))
                 .ReturnsAsync(response);
             var result = await Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].BindAsync(request);
             result.Should().BeEquivalentTo(response);
@@ -50,7 +50,7 @@ namespace OpenServiceBroker.Bindings
             };
             var response = new ServiceBinding();
 
-            Mock.Setup(x => x.BindAsync(new ServiceBindingContext("123", "456"), request))
+            Mock.Setup(x => x.BindAsync(new("123", "456"), request))
                 .ReturnsAsync(response);
             var result = await Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].BindAsync(request);
             result.Should().BeEquivalentTo(response);
@@ -65,7 +65,7 @@ namespace OpenServiceBroker.Bindings
                 PlanId = "xyz"
             };
 
-            Mock.Setup(x => x.BindAsync(new ServiceBindingContext("123", "456"), request))
+            Mock.Setup(x => x.BindAsync(new("123", "456"), request))
                 .Throws<ConflictException>();
             Client.ServiceInstancesBlocking["123"].ServiceBindings["456"]
                   .Awaiting(x => x.BindAsync(request))
@@ -75,7 +75,7 @@ namespace OpenServiceBroker.Bindings
         [Fact]
         public async Task Unbind()
         {
-            Mock.Setup(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"))
+            Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
                 .Returns(Task.CompletedTask);
             await Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].UnbindAsync("abc", "xyz");
         }
@@ -83,7 +83,7 @@ namespace OpenServiceBroker.Bindings
         [Fact]
         public async Task UnbindBody()
         {
-            Mock.Setup(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"))
+            Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
                 .Returns(Task.CompletedTask);
 
             var result = await Client.HttpClient.DeleteAsync(Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].Uri.Join("?service_id=abc&plan_id=xyz"));
@@ -94,7 +94,7 @@ namespace OpenServiceBroker.Bindings
         [Fact]
         public void UnbindGone()
         {
-            Mock.Setup(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"))
+            Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
                 .Throws<GoneException>();
             Client.ServiceInstancesBlocking["123"].ServiceBindings["456"]
                   .Awaiting(x => x.UnbindAsync("abc", "xyz"))

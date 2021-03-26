@@ -4,7 +4,6 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Net.Http.Headers;
 
 namespace OpenServiceBroker.Catalogs
 {
@@ -36,7 +35,7 @@ namespace OpenServiceBroker.Catalogs
             {
                 if (requestHeaders.IfNoneMatch?.Any(x => x.Tag.Value == eTag) ?? false)
                     return StatusCode((int) HttpStatusCode.NotModified);
-                responseHeaders.ETag = new EntityTagHeaderValue(eTag);
+                responseHeaders.ETag = new(eTag);
             }
 
             var lastModified = (_catalogService as ILastModifiedProvider)?.LastModified;

@@ -27,7 +27,7 @@ namespace OpenServiceBroker
             PollingInterval = TimeSpan.FromSeconds(10);
         }
 
-        private static readonly UriTemplate UriTemplate = new UriTemplate("./last_operation{?service_id,plan_id,operation}");
+        private static readonly UriTemplate UriTemplate = new("./last_operation{?service_id,plan_id,operation}");
 
         private static string GetUri(string? serviceId, string? planId, string? operation)
         {

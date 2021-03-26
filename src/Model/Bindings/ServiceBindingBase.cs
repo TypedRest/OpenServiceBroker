@@ -30,7 +30,7 @@ namespace OpenServiceBroker.Bindings
         /// An array of configuration for remote storage devices to be mounted into an application container filesystem. <see cref="Catalogs.Service.Requires"/>: <see cref="Catalogs.Features.VolumeMount"/> MUST be declared in the Catalog endpoint or the Platform can consider the response invalid.
         /// </summary>
         [JsonProperty("volume_mounts")]
-        public List<ServiceBindingVolumeMount> VolumeMounts { get; } = new List<ServiceBindingVolumeMount>();
+        public List<ServiceBindingVolumeMount> VolumeMounts { get; } = new();
 
         /// <summary>
         /// Do not serialize volume mounts if there are none. On some platforms (PCF for example), binding credentials to

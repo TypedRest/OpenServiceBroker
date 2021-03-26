@@ -33,7 +33,7 @@ namespace OpenServiceBroker.Catalogs
         [Fact]
         public async Task ReadCached()
         {
-            Catalog result = new Catalog
+            Catalog result = new()
             {
                 Services =
                 {

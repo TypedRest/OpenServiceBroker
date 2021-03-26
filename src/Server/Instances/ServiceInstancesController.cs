@@ -174,7 +174,7 @@ namespace OpenServiceBroker.Instances
         }
 
         private ServiceInstanceContext Context(string? instanceId)
-            => new ServiceInstanceContext(instanceId, OriginatingIdentity);
+            => new(instanceId, OriginatingIdentity);
 
         private IActionResult SyncResult(ServiceInstanceContext context, IUnchangedFlag result)
         {

@@ -35,6 +35,6 @@ namespace OpenServiceBroker.Bindings
         /// Device object containing specific details.
         /// </summary>
         [JsonProperty("device", Required = Required.Always)]
-        public ServiceBindingVolumeMountDevice Device { get; set; } = new ServiceBindingVolumeMountDevice();
+        public ServiceBindingVolumeMountDevice Device { get; set; } = new();
     }
 }

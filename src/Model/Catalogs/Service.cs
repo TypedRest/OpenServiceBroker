@@ -33,13 +33,13 @@ namespace OpenServiceBroker.Catalogs
         /// Tags provide a flexible mechanism to expose a classification, attribute, or base technology of a service, enabling equivalent services to be swapped out without changes to dependent logic in applications, buildpacks, or other services. E.g. mysql, relational, redis, key-value, caching, messaging, amqp.
         /// </summary>
         [JsonProperty("tags")]
-        public List<string> Tags { get; } = new List<string>();
+        public List<string> Tags { get; } = new();
 
         /// <summary>
         /// A list of permissions that the user would have to give the service, if they provision it.
         /// </summary>
         [JsonProperty("requires", ItemConverterType = typeof(StringEnumConverter))]
-        public List<Features> Requires { get; } = new List<Features>();
+        public List<Features> Requires { get; } = new();
 
         /// <summary>
         /// Specifies whether Service Instances of the service can be bound to applications. This specifies the default for all plans of this service. Plans can override this field.
@@ -82,7 +82,7 @@ namespace OpenServiceBroker.Catalogs
         /// A list of plans for this service. MUST contain at least one plan.
         /// </summary>
         [JsonProperty("plans", Required = Required.Always)]
-        public IList<Plan> Plans { get; } = new List<Plan>();
+        public List<Plan> Plans { get; } = new();
 
         public bool Equals(Service other)
             => other != null

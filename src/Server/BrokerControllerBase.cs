@@ -64,7 +64,7 @@ namespace OpenServiceBroker
         /// <summary>
         /// The latest Open Service Broker API version currently supported.
         /// </summary>
-        public static ApiVersion SupportedApiVersion => new ApiVersion(2, 16);
+        public static ApiVersion SupportedApiVersion => new(2, 16);
 
         private void CheckApiVersion()
         {

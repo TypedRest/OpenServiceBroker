@@ -32,7 +32,7 @@ namespace OpenServiceBroker.Errors
         /// <summary>
         /// Serializes the exception to an error response object.
         /// </summary>
-        public Error ToResponse() => new Error
+        public Error ToResponse() => new()
         {
             ErrorCode = ErrorCode,
             Description = Message,

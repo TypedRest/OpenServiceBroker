@@ -12,7 +12,7 @@ namespace OpenServiceBroker
     {
         private readonly TestServer _server;
 
-        protected readonly Mock<TMock> Mock = new Mock<TMock>();
+        protected readonly Mock<TMock> Mock = new();
 
         protected readonly OpenServiceBrokerClient Client;
 

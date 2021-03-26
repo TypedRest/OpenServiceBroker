@@ -1,7 +1,6 @@
 using System;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using OpenServiceBroker.Catalogs;
 using OpenServiceBroker.Instances;
 using TypedRest.Endpoints;
@@ -47,13 +46,13 @@ namespace OpenServiceBroker
             : base(uri, errorHandler: new OpenServiceBrokerErrorHandler())
         {
             SetApiVersion(DefaultApiVersion);
-            HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            HttpClient.DefaultRequestHeaders.Authorization = new("Bearer", token);
         }
 
         /// <summary>
         /// The default Open Service Broker API version to set for requests.
         /// </summary>
-        public static ApiVersion DefaultApiVersion => new ApiVersion(2, 13);
+        public static ApiVersion DefaultApiVersion => new(2, 13);
 
         /// <summary>
         /// Sets the Open Service Broker API version to a custom value. Only use this if you know what you are doing!

@@ -145,7 +145,7 @@ namespace OpenServiceBroker.Bindings
         }
 
         private ServiceBindingContext Context(string instanceId, string bindingId)
-            => new ServiceBindingContext(instanceId, bindingId, OriginatingIdentity);
+            => new(instanceId, bindingId, OriginatingIdentity);
 
         private IActionResult SyncResult(ServiceBindingContext context, IUnchangedFlag result)
         {

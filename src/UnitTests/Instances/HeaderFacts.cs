@@ -12,7 +12,7 @@ namespace OpenServiceBroker.Instances
         [Fact]
         public void WrongMajorVersion()
         {
-            Client.SetApiVersion(new ApiVersion(1, 0));
+            Client.SetApiVersion(new(1, 0));
             Client.ServiceInstancesBlocking["123"]
                   .Awaiting(x => x.FetchAsync())
                   .Should().Throw<ApiVersionNotSupportedException>();
@@ -21,7 +21,7 @@ namespace OpenServiceBroker.Instances
         [Fact]
         public void TooNewMinorVersion()
         {
-            Client.SetApiVersion(new ApiVersion(ServiceInstancesController.SupportedApiVersion.Major, ServiceInstancesController.SupportedApiVersion.Minor + 1));
+            Client.SetApiVersion(new(ServiceInstancesController.SupportedApiVersion.Major, ServiceInstancesController.SupportedApiVersion.Minor + 1));
             Client.ServiceInstancesBlocking["123"]
                   .Awaiting(x => x.FetchAsync())
                   .Should().Throw<ApiVersionNotSupportedException>();
@@ -39,8 +39,8 @@ namespace OpenServiceBroker.Instances
             };
             var identity = new OriginatingIdentity("myplatform", new JObject {{"id", "test"}});
 
-            ServiceInstanceProvision result = new ServiceInstanceProvision();
-            Mock.Setup(x => x.ProvisionAsync(new ServiceInstanceContext("123", identity), request))
+            ServiceInstanceProvision result = new();
+            Mock.Setup(x => x.ProvisionAsync(new("123", identity), request))
                 .ReturnsAsync(result);
             Client.SetOriginatingIdentity(identity);
             await Client.ServiceInstancesBlocking["123"].ProvisionAsync(request);

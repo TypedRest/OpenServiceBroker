@@ -26,7 +26,7 @@ namespace OpenServiceBroker.Bindings
             {
                 ServiceId = "abc",
                 PlanId = "xyz",
-                BindResource = new ServiceBindingResourceObject
+                BindResource = new()
                 {
                     AppGuid = "123-456"
                 }
@@ -36,7 +36,7 @@ namespace OpenServiceBroker.Bindings
                 Operation = "my operation"
             };
 
-            Mock.Setup(x => x.BindAsync(new ServiceBindingContext("123", "456"), request))
+            Mock.Setup(x => x.BindAsync(new("123", "456"), request))
                 .ReturnsAsync(response);
             var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].BindAsync(request);
             result.Should().BeEquivalentTo(response);
@@ -52,7 +52,7 @@ namespace OpenServiceBroker.Bindings
             };
             var response = new ServiceBindingAsyncOperation().Complete(new ServiceBinding());
 
-            Mock.Setup(x => x.BindAsync(new ServiceBindingContext("123", "456"), request))
+            Mock.Setup(x => x.BindAsync(new("123", "456"), request))
                 .ReturnsAsync(response);
             var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].BindAsync(request);
             result.Should().BeEquivalentTo(response);
@@ -71,7 +71,7 @@ namespace OpenServiceBroker.Bindings
                 Unchanged = true
             });
 
-            Mock.Setup(x => x.BindAsync(new ServiceBindingContext("123", "456"), request))
+            Mock.Setup(x => x.BindAsync(new("123", "456"), request))
                 .ReturnsAsync(response);
             var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].BindAsync(request);
             result.Should().BeEquivalentTo(response);
@@ -86,7 +86,7 @@ namespace OpenServiceBroker.Bindings
                 PlanId = "xyz"
             };
 
-            Mock.Setup(x => x.BindAsync(new ServiceBindingContext("123", "456"), request))
+            Mock.Setup(x => x.BindAsync(new("123", "456"), request))
                 .Throws<ConflictException>();
             Client.ServiceInstancesDeferred["123"].ServiceBindings["456"]
                   .Awaiting(x => x.BindAsync(request))
@@ -101,7 +101,7 @@ namespace OpenServiceBroker.Bindings
                 Operation = "my operation"
             };
 
-            Mock.Setup(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"))
+            Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
                 .ReturnsAsync(response);
             var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].UnbindAsync("abc", "xyz");
             result.Should().BeEquivalentTo(response);
@@ -112,7 +112,7 @@ namespace OpenServiceBroker.Bindings
         {
             var response = new AsyncOperation();
 
-            Mock.Setup(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"))
+            Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
                 .ReturnsAsync(response);
             var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].UnbindAsync("abc", "xyz");
             result.Should().BeEquivalentTo(response);
@@ -121,7 +121,7 @@ namespace OpenServiceBroker.Bindings
         [Fact]
         public void UnbindGone()
         {
-            Mock.Setup(x => x.UnbindAsync(new ServiceBindingContext("123", "456"), "abc", "xyz"))
+            Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
                 .Throws<GoneException>();
             Client.ServiceInstancesDeferred["123"].ServiceBindings["456"]
                   .Awaiting(x => x.UnbindAsync("abc", "xyz"))
@@ -136,7 +136,7 @@ namespace OpenServiceBroker.Bindings
                 State = LastOperationResourceState.InProgress
             };
 
-            Mock.Setup(x => x.GetLastOperationAsync(new ServiceBindingContext("123", "456"), "abc", "xyz", "my operation"))
+            Mock.Setup(x => x.GetLastOperationAsync(new("123", "456"), "abc", "xyz", "my operation"))
                 .ReturnsAsync(response);
             var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].LastOperation("abc", "xyz", "my operation").ReadAsync();
             result.Should().BeEquivalentTo(response);
@@ -145,7 +145,7 @@ namespace OpenServiceBroker.Bindings
         [Fact]
         public void GetLastOperationGone()
         {
-            Mock.Setup(x => x.GetLastOperationAsync(new ServiceBindingContext("123", "456"), "abc", "xyz", "my operation"))
+            Mock.Setup(x => x.GetLastOperationAsync(new("123", "456"), "abc", "xyz", "my operation"))
                 .Throws(new GoneException("custom message"));
             Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].LastOperation("abc", "xyz", "my operation")
                   .Awaiting(x => x.ReadAsync())

@@ -34,7 +34,7 @@ namespace MyServiceBroker
             {
                 ServiceId = entity.ServiceId,
                 PlanId = entity.PlanId,
-                Parameters = JsonConvert.DeserializeObject<JObject>(entity.Parameters)
+                Parameters = (entity.Parameters == null) ? null : JsonConvert.DeserializeObject<JObject>(entity.Parameters)
             };
         }
 

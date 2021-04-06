@@ -27,7 +27,7 @@ namespace MyServiceBroker
         {
             // Catalog of available services
             string catalogPath = File.ReadAllText(Path.Combine(ApplicationEnvironment.ApplicationBasePath, "catalog.json"));
-            services.AddSingleton(JsonConvert.DeserializeObject<Catalog>(catalogPath));
+            services.AddSingleton(JsonConvert.DeserializeObject<Catalog>(catalogPath)!);
 
             // Database for storing provisioned service instances
             services.AddDbContext<DbContext>(options => options.UseSqlite(_configuration.GetConnectionString("Database")));

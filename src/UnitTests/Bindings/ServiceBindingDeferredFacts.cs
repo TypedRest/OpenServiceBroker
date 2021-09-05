@@ -78,7 +78,7 @@ namespace OpenServiceBroker.Bindings
         }
 
         [Fact]
-        public void BindConflict()
+        public async Task BindConflict()
         {
             var request = new ServiceBindingRequest
             {
@@ -88,9 +88,9 @@ namespace OpenServiceBroker.Bindings
 
             Mock.Setup(x => x.BindAsync(new("123", "456"), request))
                 .Throws<ConflictException>();
-            Client.ServiceInstancesDeferred["123"].ServiceBindings["456"]
-                  .Awaiting(x => x.BindAsync(request))
-                  .Should().Throw<ConflictException>();
+            await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"]
+                        .Awaiting(x => x.BindAsync(request))
+                        .Should().ThrowAsync<ConflictException>();
         }
 
         [Fact]
@@ -119,13 +119,13 @@ namespace OpenServiceBroker.Bindings
         }
 
         [Fact]
-        public void UnbindGone()
+        public async Task UnbindGone()
         {
             Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
                 .Throws<GoneException>();
-            Client.ServiceInstancesDeferred["123"].ServiceBindings["456"]
-                  .Awaiting(x => x.UnbindAsync("abc", "xyz"))
-                  .Should().Throw<GoneException>();
+            await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"]
+                        .Awaiting(x => x.UnbindAsync("abc", "xyz"))
+                        .Should().ThrowAsync<GoneException>();
         }
 
         [Fact]
@@ -143,13 +143,13 @@ namespace OpenServiceBroker.Bindings
         }
 
         [Fact]
-        public void GetLastOperationGone()
+        public async Task GetLastOperationGone()
         {
             Mock.Setup(x => x.GetLastOperationAsync(new("123", "456"), "abc", "xyz", "my operation"))
                 .Throws(new GoneException("custom message"));
-            Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].LastOperation("abc", "xyz", "my operation")
-                  .Awaiting(x => x.ReadAsync())
-                  .Should().Throw<GoneException>().WithMessage("custom message");
+            await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].LastOperation("abc", "xyz", "my operation")
+                        .Awaiting(x => x.ReadAsync())
+                        .Should().ThrowAsync<GoneException>().WithMessage("custom message");
         }
     }
 }

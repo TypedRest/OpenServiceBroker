@@ -71,7 +71,7 @@ namespace OpenServiceBroker.Instances
         }
 
         [Fact]
-        public void ProvisionConflict()
+        public async Task ProvisionConflict()
         {
             var request = new ServiceInstanceProvisionRequest
             {
@@ -83,9 +83,9 @@ namespace OpenServiceBroker.Instances
 
             Mock.Setup((x => x.ProvisionAsync(new("123"), request)))
                 .Throws(new ConflictException("custom message"));
-            Client.ServiceInstancesBlocking["123"]
-                  .Awaiting(x => x.ProvisionAsync(request))
-                  .Should().Throw<ConflictException>().WithMessage("custom message");
+            await Client.ServiceInstancesBlocking["123"]
+                        .Awaiting(x => x.ProvisionAsync(request))
+                        .Should().ThrowAsync<ConflictException>().WithMessage("custom message");
         }
 
         [Fact]
@@ -115,7 +115,7 @@ namespace OpenServiceBroker.Instances
                 .Returns(Task.CompletedTask);
 
             var result = await Client.HttpClient.PatchAsync(Client.ServiceInstancesBlocking["123"].Uri, request, Client.Serializer);
-            result.StatusCode.Should().BeEquivalentTo(HttpStatusCode.OK);
+            result.StatusCode.Should().Be(HttpStatusCode.OK);
             string resultString = await result.Content.ReadAsStringAsync();
             resultString.Should().Be("{}");
         }
@@ -135,19 +135,19 @@ namespace OpenServiceBroker.Instances
                 .Returns(Task.CompletedTask);
 
             var result = await Client.HttpClient.DeleteAsync(Client.ServiceInstancesBlocking["123"].Uri.Join("?service_id=abc&plan_id=xyz"));
-            result.StatusCode.Should().BeEquivalentTo(HttpStatusCode.OK);
+            result.StatusCode.Should().Be(HttpStatusCode.OK);
             string resultString = await result.Content.ReadAsStringAsync();
             resultString.Should().Be("{}");
         }
 
         [Fact]
-        public void DeprovisionGone()
+        public async Task DeprovisionGone()
         {
             Mock.Setup((x => x.DeprovisionAsync(new("123"), "abc", "xyz")))
-               .Throws<GoneException>();
-            Client.ServiceInstancesBlocking["123"]
-                  .Awaiting(x => x.DeprovisionAsync("abc", "xyz"))
-                  .Should().Throw<GoneException>();
+                .Throws<GoneException>();
+            await Client.ServiceInstancesBlocking["123"]
+                        .Awaiting(x => x.DeprovisionAsync("abc", "xyz"))
+                        .Should().ThrowAsync<GoneException>();
         }
     }
 }

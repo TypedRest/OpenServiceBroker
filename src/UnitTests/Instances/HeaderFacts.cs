@@ -10,21 +10,21 @@ namespace OpenServiceBroker.Instances
     public class HeaderFacts : FactsBase<IServiceInstanceBlocking>
     {
         [Fact]
-        public void WrongMajorVersion()
+        public async Task WrongMajorVersion()
         {
             Client.SetApiVersion(new(1, 0));
-            Client.ServiceInstancesBlocking["123"]
-                  .Awaiting(x => x.FetchAsync())
-                  .Should().Throw<ApiVersionNotSupportedException>();
+            await Client.ServiceInstancesBlocking["123"]
+                        .Awaiting(x => x.FetchAsync())
+                        .Should().ThrowAsync<ApiVersionNotSupportedException>();
         }
 
         [Fact]
-        public void TooNewMinorVersion()
+        public async Task TooNewMinorVersion()
         {
             Client.SetApiVersion(new(ServiceInstancesController.SupportedApiVersion.Major, ServiceInstancesController.SupportedApiVersion.Minor + 1));
-            Client.ServiceInstancesBlocking["123"]
-                  .Awaiting(x => x.FetchAsync())
-                  .Should().Throw<ApiVersionNotSupportedException>();
+            await Client.ServiceInstancesBlocking["123"]
+                        .Awaiting(x => x.FetchAsync())
+                        .Should().ThrowAsync<ApiVersionNotSupportedException>();
         }
 
         [Fact]

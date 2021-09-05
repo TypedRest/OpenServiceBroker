@@ -57,7 +57,7 @@ namespace OpenServiceBroker.Bindings
         }
 
         [Fact]
-        public void BindConflict()
+        public async Task BindConflict()
         {
             var request = new ServiceBindingRequest
             {
@@ -67,9 +67,9 @@ namespace OpenServiceBroker.Bindings
 
             Mock.Setup(x => x.BindAsync(new("123", "456"), request))
                 .Throws<ConflictException>();
-            Client.ServiceInstancesBlocking["123"].ServiceBindings["456"]
-                  .Awaiting(x => x.BindAsync(request))
-                  .Should().Throw<ConflictException>();
+            await Client.ServiceInstancesBlocking["123"].ServiceBindings["456"]
+                        .Awaiting(x => x.BindAsync(request))
+                        .Should().ThrowAsync<ConflictException>();
         }
 
         [Fact]
@@ -92,13 +92,13 @@ namespace OpenServiceBroker.Bindings
         }
 
         [Fact]
-        public void UnbindGone()
+        public async Task UnbindGone()
         {
             Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
                 .Throws<GoneException>();
-            Client.ServiceInstancesBlocking["123"].ServiceBindings["456"]
-                  .Awaiting(x => x.UnbindAsync("abc", "xyz"))
-                  .Should().Throw<GoneException>();
+            await Client.ServiceInstancesBlocking["123"].ServiceBindings["456"]
+                        .Awaiting(x => x.UnbindAsync("abc", "xyz"))
+                        .Should().ThrowAsync<GoneException>();
         }
     }
 }

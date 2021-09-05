@@ -71,7 +71,7 @@ namespace OpenServiceBroker.Bindings
         }
 
         [Fact]
-        public void BindConflict()
+        public async Task BindConflict()
         {
             var request = new ServiceBindingRequest
             {
@@ -81,13 +81,13 @@ namespace OpenServiceBroker.Bindings
 
             Mock.Setup(x => x.BindAsync(new("123", "456"), request))
                 .Throws<ConflictException>();
-            Client.ServiceInstancesPolling["123"].ServiceBindings["456"]
-                  .Awaiting(x => x.BindAsync(request))
-                  .Should().Throw<ConflictException>();
+            await Client.ServiceInstancesPolling["123"].ServiceBindings["456"]
+                        .Awaiting(x => x.BindAsync(request))
+                        .Should().ThrowAsync<ConflictException>();
         }
 
         [Fact]
-        public void BindAsyncError()
+        public async Task BindAsyncError()
         {
             var request = new ServiceBindingRequest
             {
@@ -108,9 +108,9 @@ namespace OpenServiceBroker.Bindings
                 .ReturnsAsync(response);
             Mock.Setup(x => x.GetLastOperationAsync(new("123", "456"), "abc", "xyz", "my operation"))
                 .ReturnsAsync(operation);
-            Client.ServiceInstancesPolling["123"].ServiceBindings["456"]
-                  .Awaiting(x => x.BindAsync(request))
-                  .Should().Throw<BrokerException>().WithMessage("custom message");
+            await Client.ServiceInstancesPolling["123"].ServiceBindings["456"]
+                        .Awaiting(x => x.BindAsync(request))
+                        .Should().ThrowAsync<BrokerException>().WithMessage("custom message");
         }
 
         [Fact]
@@ -144,17 +144,17 @@ namespace OpenServiceBroker.Bindings
         }
 
         [Fact]
-        public void UnbindGone()
+        public async Task UnbindGone()
         {
             Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
                 .Throws<GoneException>();
-            Client.ServiceInstancesPolling["123"].ServiceBindings["456"]
-                  .Awaiting(x => x.UnbindAsync("abc", "xyz"))
-                  .Should().Throw<GoneException>();
+            await Client.ServiceInstancesPolling["123"].ServiceBindings["456"]
+                        .Awaiting(x => x.UnbindAsync("abc", "xyz"))
+                        .Should().ThrowAsync<GoneException>();
         }
 
         [Fact]
-        public void UnbindAsyncGone()
+        public async Task UnbindAsyncGone()
         {
             var response = new ServiceInstanceAsyncOperation
             {
@@ -165,9 +165,9 @@ namespace OpenServiceBroker.Bindings
                 .ReturnsAsync(response);
             Mock.Setup(x => x.GetLastOperationAsync(new("123", "456"), "abc", "xyz", "my operation"))
                 .Throws<GoneException>();
-            Client.ServiceInstancesPolling["123"].ServiceBindings["456"]
-                  .Awaiting(x => x.UnbindAsync("abc", "xyz"))
-                  .Should().Throw<GoneException>();
+            await Client.ServiceInstancesPolling["123"].ServiceBindings["456"]
+                        .Awaiting(x => x.UnbindAsync("abc", "xyz"))
+                        .Should().ThrowAsync<GoneException>();
         }
     }
 }

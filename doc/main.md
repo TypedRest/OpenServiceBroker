@@ -15,7 +15,7 @@ Set up a regular ASP.NET Core 2.1 or 3.1 project and add the NuGet package [Open
 
 Register your implementations in the `IServiceCollection` for dependency injection. For example:
 
-```csharp
+```{.cs}
 services.AddTransient<ICatalogService, MyCatalogService>()
         .AddTransient<IServiceInstanceBlocking, MyServiceInstanceBlocking>()
         .AddTransient<IServiceBindingBlocking, MyServiceBindingBlocking>();
@@ -23,7 +23,7 @@ services.AddTransient<ICatalogService, MyCatalogService>()
 
 Then enable MVC Controllers using `.AddMvc()` or `.AddControllers()` followed by calling the \ref OpenServiceBroker.MvcBuilderExtensions.AddOpenServiceBroker ".AddOpenServiceBroker()" extension method:
 
-```csharp
+```{.cs}
 services.AddControllers()
         .AddOpenServiceBroker();
 ```
@@ -38,7 +38,7 @@ The Server Library inspects the `X-Broker-API-Version` header for all requests (
 
 Add the NuGet package [OpenServiceBroker.Client](https://www.nuget.org/packages/OpenServiceBroker.Client/) to your project. You can then create an instance of the client like this:
 
-```csharp
+```{.cs}
 var client = new OpenServiceBrokerClient(new Uri("http://example.com/"));
 ```
 
@@ -58,13 +58,13 @@ Instances of \ref OpenServiceBroker.OpenServiceBrokerClient "OpenServiceBrokerCl
 
 Read the catalog:
 
-```csharp
+```{.cs}
 var result = await client.Catalog.ReadAsync();
 ```
 
 Provision a service instance:
 
-```csharp
+```{.cs}
 var result = await client.ServiceInstancesPolling["123"].ProvisionAsync(new ServiceInstanceProvisionRequest
 {
     ServiceId = "abc",
@@ -82,13 +82,13 @@ var result = await client.ServiceInstancesPolling["123"].ProvisionAsync(new Serv
 
 Fetch a service instance:
 
-```csharp
+```{.cs}
 var result = await client.ServiceInstancesPolling["123"].FetchAsync();
 ```
 
 Update a service instance:
 
-```csharp
+```{.cs}
 var result = await client.ServiceInstancesPolling["123"].UpdateAsync(new ServiceInstanceUpdateRequest
 {
     ServiceId = "abc",
@@ -106,13 +106,13 @@ var result = await client.ServiceInstancesPolling["123"].UpdateAsync(new Service
 
 Deprovision a service instance:
 
-```csharp
+```{.cs}
 await client.ServiceInstancesPolling["123"].DeprovisionAsync(serviceId: "abc", planId: "xyz");
 ```
 
 Create a service binding:
 
-```csharp
+```{.cs}
 var result = await client.ServiceInstancesPolling["123"].ServiceBindings["456"].ProvisionAsync(new ServiceBindingRequest
 {
     ServiceId = "abc",
@@ -134,13 +134,13 @@ var result = await client.ServiceInstancesPolling["123"].ServiceBindings["456"].
 
 Fetch a service binding:
 
-```csharp
+```{.cs}
 var result = await client.ServiceInstancesPolling["123"].ServiceBindings["456"].FetchAsync();
 ```
 
 Delete a service binding:
 
-```csharp
+```{.cs}
 await client.ServiceInstancesPolling["123"].ServiceBindings["456"].UnbindAsync(serviceId: "abc", planId: "xyz");
 ```
 
@@ -150,6 +150,6 @@ The Client Library specifies the API version it expects by setting the `X-Broker
 
 Currently the Client Library supports the `2.16` feature set but defaults to setting the version header to `2.13` for greater compatibility with older brokers. If the broker you are calling expects a different version and you are sure your request is compliant with that version of the specification you can override this:
 
-```csharp
+```{.cs}
 client.SetApiVersion(new ApiVersion(2, 16));
 ```

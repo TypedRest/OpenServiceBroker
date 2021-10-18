@@ -10,6 +10,10 @@
     },
     {
       "matchPackagePatterns": ["SourceLink", "TypedRest.Reactive", "NJsonSchema"],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
       "matchSourceUrlPrefixes": ["https://github.com/domaindrivendev/Swashbuckle.AspNetCore"],
       "automerge": true,
       "automergeType": "branch"

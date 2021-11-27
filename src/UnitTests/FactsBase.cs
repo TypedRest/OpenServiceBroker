@@ -20,20 +20,12 @@ namespace OpenServiceBroker
         {
             _server = new TestServer(
                 new WebHostBuilder()
-#if NETCOREAPP2_1
-                   .ConfigureServices(x
-                        => x.AddTransient(_ => Mock.Object)
-                            .AddMvc()
-                            .AddOpenServiceBroker())
-                   .Configure(x => x.UseMvc()));
-#else
                    .ConfigureServices(x
                         => x.AddScoped(_ => Mock.Object)
                             .AddControllers()
                             .AddOpenServiceBroker())
                    .Configure(x => x.UseRouting()
                                     .UseEndpoints(endpoints => endpoints.MapControllers())));
-#endif
             Client = new OpenServiceBrokerClient(_server.CreateClient(), new Uri("http://localhost"));
         }
 

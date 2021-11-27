@@ -86,11 +86,7 @@ namespace OpenServiceBroker
             }
         }
 
-        private bool TryGetService<T>(
-#if !NETSTANDARD2_0
-            [System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out T? service)
+        private bool TryGetService<T>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out T? service)
         {
             service = _provider.GetService<T>();
             return (service != null);

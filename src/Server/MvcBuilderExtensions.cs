@@ -19,10 +19,7 @@ namespace OpenServiceBroker
         public static IMvcBuilder AddOpenServiceBroker(this IMvcBuilder builder)
         {
             builder.AddApplicationPart(typeof(CatalogController).Assembly);
-
-#if !NETSTANDARD2_0
             builder.AddNewtonsoftJson();
-#endif
 
             return builder;
         }

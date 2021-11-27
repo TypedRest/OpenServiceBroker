@@ -9,7 +9,7 @@
     <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
     <Nullable>annotations</Nullable>
   </PropertyGroup>
-  <PropertyGroup Condition="$(TargetFramework)=='netstandard2.1' Or $(TargetFramework)=='net5.0'">
+  <PropertyGroup Condition="$(TargetFramework)!='netstandard2.0'">
     <Nullable>enable</Nullable>
   </PropertyGroup>
 

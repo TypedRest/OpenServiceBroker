@@ -13,7 +13,7 @@ The **[Client Library](#client-library)** allows you to call Service Brokers tha
 
 [![OpenServiceBroker.Server](https://img.shields.io/nuget/v/OpenServiceBroker.Server.svg)](https://www.nuget.org/packages/OpenServiceBroker.Server/)
 
-Set up a regular ASP.NET Core 3.1 or 5.0 project and add the NuGet package [`OpenServiceBroker.Server`](https://www.nuget.org/packages/OpenServiceBroker.Server/). Then implement the following interfaces:
+Set up a regular ASP.NET Core 3.1, 5.0 or 6.0 project and add the NuGet package [`OpenServiceBroker.Server`](https://www.nuget.org/packages/OpenServiceBroker.Server/). Then implement the following interfaces:
 - [`ICatalogService`](src/Server/Catalogs/ICatalogService.cs) (optionally also [`IETagProvider`](src/Server/Catalogs/IETagProvider.cs) and/or [`ILastModifiedProvider`](src/Server/Catalogs/ILastModifiedProvider.cs) on the same class)
 - either [`IServiceInstanceBlocking`](src/Server/Instances/IServiceInstanceBlocking.cs) or [`IServiceInstanceDeferred`](src/Server/Instances/IServiceInstanceDeferred.cs) or both
 - either [`IServiceBindingBlocking`](src/Server/Bindings/IServiceBindingBlocking.cs) or [`IServiceBindingDeferred`](src/Server/Bindings/IServiceBindingDeferred.cs) or both

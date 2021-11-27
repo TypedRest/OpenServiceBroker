@@ -1,20 +1,18 @@
-using System.Threading.Tasks;
 using OpenServiceBroker.Catalogs;
 
-namespace MyServiceBroker
+namespace MyServiceBroker;
+
+public class CatalogService : ICatalogService
 {
-    public class CatalogService : ICatalogService
+    private readonly Catalog _catalog;
+
+    public CatalogService(Catalog catalog)
     {
-        private readonly Catalog _catalog;
+        _catalog = catalog;
+    }
 
-        public CatalogService(Catalog catalog)
-        {
-            _catalog = catalog;
-        }
-
-        public Task<Catalog> GetCatalogAsync()
-        {
-            return Task.FromResult(_catalog);
-        }
+    public Task<Catalog> GetCatalogAsync()
+    {
+        return Task.FromResult(_catalog);
     }
 }

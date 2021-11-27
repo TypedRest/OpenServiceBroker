@@ -33,7 +33,7 @@ services.AddControllers()
         .AddOpenServiceBroker();
 ```
 
-You can use the **[project template](template/)** to quickly set up a pre-configured ASP.NET Core 5.0 project with `OpenServiceBroker.Server`.
+You can use the **[project template](template/)** to quickly set up a pre-configured ASP.NET Core 6.0 project with `OpenServiceBroker.Server`.
 
 ### Versioning
 

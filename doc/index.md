@@ -1,29 +1,33 @@
+---
+title: Home
+---
+
+# Open Service Broker API for .NET
+
 This project provides both a server and a client .NET library for the [Open Service Broker API](https://www.openservicebrokerapi.org/) specification. This specification allows developers, ISVs, and SaaS vendors a single, simple, and elegant way to deliver services to applications running within cloud native platforms such as Cloud Foundry, OpenShift, and Kubernetes.
 
 The Server Library implements the API for you using ASP.NET Core. You simply need to provide implementations for a few interfaces, shielded from the HTTP-related details.
 
 The Client Library allows you to call Service Brokers that implement the API using idiomatic C# interfaces and type-safe DTOs.
 
-[**GitHub repository**](https://github.com/TypedRest/OpenServiceBroker)
-
 ## Server Library
 
 Set up a regular ASP.NET Core 2.1 or 3.1 project and add the NuGet package [OpenServiceBroker.Server](https://www.nuget.org/packages/OpenServiceBroker.Server/). Then implement the following interfaces:
-- \ref OpenServiceBroker.Catalogs.ICatalogService "ICatalogService" (optionally also \ref OpenServiceBroker.Catalogs.IETagProvider "IETagProvider" and/or \ref OpenServiceBroker.Catalogs.ILastModifiedProvider "ILastModifiedProvider" on the same class)
-- either \ref OpenServiceBroker.Instances.IServiceInstanceBlocking "InstancesIServiceInstanceBlocking" or \ref OpenServiceBroker.Instances.IServiceInstanceDeferred "InstancesIServiceInstanceDeferred" or both
-- either \ref OpenServiceBroker.Bindings.IServiceBindingBlocking "InstancesIServiceBindingBlocking" or \ref OpenServiceBroker.Bindings.IServiceBindingDeferred "InstancesIServiceBindingDeferred" or both
+- <xref:OpenServiceBroker.Catalogs.ICatalogService> (optionally also <xref:OpenServiceBroker.Catalogs.IETagProvider> and/or <xref:OpenServiceBroker.Catalogs.ILastModifiedProvider> on the same class)
+- either <xref:OpenServiceBroker.Instances.IServiceInstanceBlocking> or <xref:OpenServiceBroker.Instances.IServiceInstanceDeferred> or both
+- either <xref:OpenServiceBroker.Bindings.IServiceBindingBlocking> or <xref:OpenServiceBroker.Bindings.IServiceBindingDeferred> or both
 
 Register your implementations in the `IServiceCollection` for dependency injection. For example:
 
-```{.cs}
+```csharp
 services.AddTransient<ICatalogService, MyCatalogService>()
         .AddTransient<IServiceInstanceBlocking, MyServiceInstanceBlocking>()
         .AddTransient<IServiceBindingBlocking, MyServiceBindingBlocking>();
 ```
 
-Then enable MVC Controllers using `.AddMvc()` or `.AddControllers()` followed by calling the \ref OpenServiceBroker.MvcBuilderExtensions.AddOpenServiceBroker ".AddOpenServiceBroker()" extension method:
+Then enable MVC Controllers using `.AddMvc()` or `.AddControllers()` followed by calling the [.AddOpenServiceBroker()](xref:OpenServiceBroker.MvcBuilderExtensions##OpenServiceBroker_MvcBuilderExtensions_AddOpenServiceBroker_Microsoft_Extensions_DependencyInjection_IMvcBuilder_) extension method:
 
-```{.cs}
+```csharp
 services.AddControllers()
         .AddOpenServiceBroker();
 ```
@@ -38,33 +42,33 @@ The Server Library inspects the `X-Broker-API-Version` header for all requests (
 
 Add the NuGet package [OpenServiceBroker.Client](https://www.nuget.org/packages/OpenServiceBroker.Client/) to your project. You can then create an instance of the client like this:
 
-```{.cs}
+```csharp
 var client = new OpenServiceBrokerClient(new Uri("http://example.com/"));
 ```
 
 ### Asynchronous Operations
 
-All operations that result in HTTP request are `async`. Non-successful HTTP status codes are mapped to domain-specific exception types (\ref OpenServiceBroker.Errors.BrokerException "BrokerException" and derived). Refer to the libraries XML documentation for details on which exceptions to expect on which invocations.
+All operations that result in HTTP request are `async`. Non-successful HTTP status codes are mapped to domain-specific exception types (<xref:OpenServiceBroker.Errors.BrokerException> and derived). Refer to the libraries XML documentation for details on which exceptions to expect on which invocations.
 
 The Open Service Broker API specification allows for both synchronous/blocking and asynchronous/incomplete/deferred operations. To avoid confusion with the C# language concept of `async` this library uses the terms "blocking" and "deferred" to describe these API features.
 
-Instances of \ref OpenServiceBroker.OpenServiceBrokerClient "OpenServiceBrokerClient" have three properties that expose the same functionality in different ways:
+Instances of <xref:OpenServiceBroker.OpenServiceBrokerClient> have three properties that expose the same functionality in different ways:
 
-- \ref OpenServiceBroker.OpenServiceBrokerClient.ServiceInstancesBlocking ".ServiceInstancesBlocking" allows you to request blocking responses from the server. However, you may encounter \ref OpenServiceBroker.Errors.AsyncRequiredException "AsyncRequiredException" if the server does not support blocking operations.
-- \ref OpenServiceBroker.OpenServiceBrokerClient.ServiceInstancesDeferred ".ServiceInstancesDeferred" allows you to request deferred responses from the server. However, you have to manually handle waiting/polling for the completion of operations.
-- \ref OpenServiceBroker.OpenServiceBrokerClient.ServiceInstancesPolling ".ServiceInstancesPolling" combines the advantages of both. It requests deferred responses from the server and transparently handles the waiting/polling for you. It is the recommended option for most use-cases.
+- <xref:OpenServiceBroker.OpenServiceBrokerClient.ServiceInstancesBlocking> allows you to request blocking responses from the server. However, you may encounter <xref:OpenServiceBroker.Errors.AsyncRequiredException> if the server does not support blocking operations.
+- <xref:OpenServiceBroker.OpenServiceBrokerClient.ServiceInstancesDeferred> allows you to request deferred responses from the server. However, you have to manually handle waiting/polling for the completion of operations.
+- <xref:OpenServiceBroker.OpenServiceBrokerClient.ServiceInstancesPolling> combines the advantages of both. It requests deferred responses from the server and transparently handles the waiting/polling for you. It is the recommended option for most use-cases.
 
 ### Samples
 
 Read the catalog:
 
-```{.cs}
+```csharp
 var result = await client.Catalog.ReadAsync();
 ```
 
 Provision a service instance:
 
-```{.cs}
+```csharp
 var result = await client.ServiceInstancesPolling["123"].ProvisionAsync(new ServiceInstanceProvisionRequest
 {
     ServiceId = "abc",
@@ -82,13 +86,13 @@ var result = await client.ServiceInstancesPolling["123"].ProvisionAsync(new Serv
 
 Fetch a service instance:
 
-```{.cs}
+```csharp
 var result = await client.ServiceInstancesPolling["123"].FetchAsync();
 ```
 
 Update a service instance:
 
-```{.cs}
+```csharp
 var result = await client.ServiceInstancesPolling["123"].UpdateAsync(new ServiceInstanceUpdateRequest
 {
     ServiceId = "abc",
@@ -106,13 +110,13 @@ var result = await client.ServiceInstancesPolling["123"].UpdateAsync(new Service
 
 Deprovision a service instance:
 
-```{.cs}
+```csharp
 await client.ServiceInstancesPolling["123"].DeprovisionAsync(serviceId: "abc", planId: "xyz");
 ```
 
 Create a service binding:
 
-```{.cs}
+```csharp
 var result = await client.ServiceInstancesPolling["123"].ServiceBindings["456"].ProvisionAsync(new ServiceBindingRequest
 {
     ServiceId = "abc",
@@ -134,13 +138,13 @@ var result = await client.ServiceInstancesPolling["123"].ServiceBindings["456"].
 
 Fetch a service binding:
 
-```{.cs}
+```csharp
 var result = await client.ServiceInstancesPolling["123"].ServiceBindings["456"].FetchAsync();
 ```
 
 Delete a service binding:
 
-```{.cs}
+```csharp
 await client.ServiceInstancesPolling["123"].ServiceBindings["456"].UnbindAsync(serviceId: "abc", planId: "xyz");
 ```
 
@@ -150,6 +154,6 @@ The Client Library specifies the API version it expects by setting the `X-Broker
 
 Currently the Client Library supports the `2.16` feature set but defaults to setting the version header to `2.13` for greater compatibility with older brokers. If the broker you are calling expects a different version and you are sure your request is compliant with that version of the specification you can override this:
 
-```{.cs}
+```csharp
 client.SetApiVersion(new ApiVersion(2, 16));
 ```

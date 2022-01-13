@@ -1,0 +1,48 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../artifacts/Release/net6.0",
+          "files": [
+            "OpenServiceBroker.*.dll"
+          ]
+        }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "globalMetadata": {
+      "_baseUrl": "https://openservicebroker.typedrest.net",
+      "_appTitle": "OpenServiceBroker for .NET",
+      "_appFooter": "Copyright Bastian Eicher",
+      "_disableBreadcrumb": true,
+      "_enableNewTab": true
+    },
+    "content": [
+      {
+        "files": [
+          "*.md",
+          "toc.yml",
+          "api/*.yml"
+        ]
+      }
+    ],
+    "overwrite": [
+      {
+        "src": "../src/",
+        "files": [
+          "**/*.md"
+        ]
+      }
+    ],
+    "xref": [
+      "https://dotnet.typedrest.net/xrefmap.yml"
+    ],
+    "xrefService": [
+      "https://xref.docs.microsoft.com/query?uid={uid}"
+    ],
+    "dest": "../artifacts/Documentation"
+  }
+}

@@ -20,7 +20,7 @@ jobs:
             3.1.x
             5.0.x
             6.0.x
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: |
             ~\AppData\Roaming\0install.net

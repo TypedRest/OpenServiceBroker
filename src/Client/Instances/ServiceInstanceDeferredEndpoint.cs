@@ -1,6 +1,3 @@
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 using OpenServiceBroker.Bindings;
 using TypedRest.Endpoints;
 using TypedRest.Endpoints.Reactive;

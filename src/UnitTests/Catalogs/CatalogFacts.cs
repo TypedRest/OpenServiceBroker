@@ -1,9 +1,3 @@
-using System;
-using System.Threading.Tasks;
-using FluentAssertions;
-using Moq;
-using Xunit;
-
 namespace OpenServiceBroker.Catalogs;
 
 public class CatalogFacts : FactsBase<ICatalogService>

@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using OpenServiceBroker.Errors;
 
 namespace OpenServiceBroker.Bindings;

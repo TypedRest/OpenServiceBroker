@@ -29,4 +29,11 @@
     <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="6.0.10" />
   </ItemGroup>
 
+  <!-- Global usings -->
+  <ItemGroup>
+    <Using Include="Xunit" />
+    <Using Include="FluentAssertions" />
+    <Using Include="Moq" />
+  </ItemGroup>
+
 </Project>

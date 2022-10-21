@@ -1,5 +1,3 @@
-using System;
-
 namespace OpenServiceBroker;
 
 public struct ApiVersion : IEquatable<ApiVersion>

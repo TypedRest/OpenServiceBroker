@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using Resta.UriTemplates;
 using TypedRest.Endpoints;
 using TypedRest.Endpoints.Reactive;

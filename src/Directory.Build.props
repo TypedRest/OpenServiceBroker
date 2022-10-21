@@ -3,6 +3,7 @@
   <PropertyGroup>
     <!-- Build configuration -->
     <LangVersion>10.0</LangVersion>
+    <ImplicitUsings>True</ImplicitUsings>
     <RootNamespace>OpenServiceBroker</RootNamespace>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <OutputType>Library</OutputType>

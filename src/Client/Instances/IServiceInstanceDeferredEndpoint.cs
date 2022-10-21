@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using OpenServiceBroker.Bindings;
 using OpenServiceBroker.Errors;
 using TypedRest.Endpoints.Reactive;

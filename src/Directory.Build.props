@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <!-- Build configuration -->
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>10.0</LangVersion>
     <RootNamespace>OpenServiceBroker</RootNamespace>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <OutputType>Library</OutputType>

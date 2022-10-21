@@ -5,39 +5,38 @@ using OpenServiceBroker.Errors;
 using TypedRest.Errors;
 using TypedRest.Serializers;
 
-namespace OpenServiceBroker
+namespace OpenServiceBroker;
+
+/// <summary>
+/// Handles Open Service Broker error responses.
+/// </summary>
+public class OpenServiceBrokerErrorHandler : IErrorHandler
 {
-    /// <summary>
-    /// Handles Open Service Broker error responses.
-    /// </summary>
-    public class OpenServiceBrokerErrorHandler : IErrorHandler
+    private static readonly MediaTypeFormatter Serializer = new DefaultJsonSerializer();
+
+    public async Task HandleAsync(HttpResponseMessage response)
     {
-        private static readonly MediaTypeFormatter Serializer = new DefaultJsonSerializer();
+        if (response.IsSuccessStatusCode) return;
 
-        public async Task HandleAsync(HttpResponseMessage response)
-        {
-            if (response.IsSuccessStatusCode) return;
+        var error = await GetErrorAsync(response);
+        if (error != null) throw BrokerException.FromResponse(error, response.StatusCode);
 
-            var error = await GetErrorAsync(response);
-            if (error != null) throw BrokerException.FromResponse(error, response.StatusCode);
+        response.EnsureSuccessStatusCode();
+    }
 
-            response.EnsureSuccessStatusCode();
-        }
-
-        private static async Task<Error?> GetErrorAsync(HttpResponseMessage response)
-        {
+    private static async Task<Error?> GetErrorAsync(HttpResponseMessage response)
+    {
 #if NETSTANDARD2_0
-            if (response.Content == null) return null;
+        if (response.Content == null) return null;
 #endif
 
-            try
-            {
-                return await response.Content.ReadAsAsync<Error>(new[] {Serializer});
-            }
-            catch
-            {
-                return null;
-            }
+        try
+        {
+            return await response.Content.ReadAsAsync<Error>(new[] {Serializer});
+        }
+        catch
+        {
+            return null;
         }
     }
 }

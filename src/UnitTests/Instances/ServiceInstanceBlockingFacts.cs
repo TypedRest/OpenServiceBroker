@@ -8,146 +8,145 @@ using TypedRest;
 using TypedRest.Http;
 using Xunit;
 
-namespace OpenServiceBroker.Instances
+namespace OpenServiceBroker.Instances;
+
+public class ServiceInstanceBlockingFacts : FactsBase<IServiceInstanceBlocking>
 {
-    public class ServiceInstanceBlockingFacts : FactsBase<IServiceInstanceBlocking>
+    [Fact]
+    public async Task Fetch()
     {
-        [Fact]
-        public async Task Fetch()
+        var response = new ServiceInstanceResource
         {
-            var response = new ServiceInstanceResource
-            {
-                ServiceId = "abc",
-                PlanId = "xyz"
-            };
+            ServiceId = "abc",
+            PlanId = "xyz"
+        };
 
-            Mock.Setup(x => x.FetchAsync("123"))
-                .ReturnsAsync(response);
-            var result = await Client.ServiceInstancesBlocking["123"].FetchAsync();
-            result.Should().BeEquivalentTo(response);
-        }
+        Mock.Setup(x => x.FetchAsync("123"))
+            .ReturnsAsync(response);
+        var result = await Client.ServiceInstancesBlocking["123"].FetchAsync();
+        result.Should().BeEquivalentTo(response);
+    }
 
-        [Fact]
-        public async Task Provision()
+    [Fact]
+    public async Task Provision()
+    {
+        var request = new ServiceInstanceProvisionRequest
         {
-            var request = new ServiceInstanceProvisionRequest
-            {
-                ServiceId = "abc",
-                PlanId = "xyz",
-                OrganizationGuid = "org",
-                SpaceGuid = "space"
-            };
-            var response = new ServiceInstanceProvision
-            {
-                DashboardUrl = new Uri("http://example.com")
-            };
-
-            Mock.Setup(x => x.ProvisionAsync(new("123"), request))
-                .ReturnsAsync(response);
-            var result = await Client.ServiceInstancesBlocking["123"].ProvisionAsync(request);
-            result.Should().BeEquivalentTo(response);
-        }
-
-        [Fact]
-        public async Task ProvisionUnchanged()
+            ServiceId = "abc",
+            PlanId = "xyz",
+            OrganizationGuid = "org",
+            SpaceGuid = "space"
+        };
+        var response = new ServiceInstanceProvision
         {
-            var request = new ServiceInstanceProvisionRequest
-            {
-                ServiceId = "abc",
-                PlanId = "xyz",
-                OrganizationGuid = "org",
-                SpaceGuid = "space"
-            };
-            var response = new ServiceInstanceProvision
-            {
-                DashboardUrl = new Uri("http://example.com"),
-                Unchanged = true
-            };
+            DashboardUrl = new Uri("http://example.com")
+        };
 
-            Mock.Setup(x => x.ProvisionAsync(new("123"), request))
-                .ReturnsAsync(response);
-            var result = await Client.ServiceInstancesBlocking["123"].ProvisionAsync(request);
-            result.Should().BeEquivalentTo(response);
-        }
+        Mock.Setup(x => x.ProvisionAsync(new("123"), request))
+            .ReturnsAsync(response);
+        var result = await Client.ServiceInstancesBlocking["123"].ProvisionAsync(request);
+        result.Should().BeEquivalentTo(response);
+    }
 
-        [Fact]
-        public async Task ProvisionConflict()
+    [Fact]
+    public async Task ProvisionUnchanged()
+    {
+        var request = new ServiceInstanceProvisionRequest
         {
-            var request = new ServiceInstanceProvisionRequest
-            {
-                ServiceId = "abc",
-                PlanId = "xyz",
-                OrganizationGuid = "org",
-                SpaceGuid = "space"
-            };
-
-            Mock.Setup((x => x.ProvisionAsync(new("123"), request)))
-                .Throws(new ConflictException("custom message"));
-            await Client.ServiceInstancesBlocking["123"]
-                        .Awaiting(x => x.ProvisionAsync(request))
-                        .Should().ThrowAsync<ConflictException>().WithMessage("custom message");
-        }
-
-        [Fact]
-        public async Task Update()
+            ServiceId = "abc",
+            PlanId = "xyz",
+            OrganizationGuid = "org",
+            SpaceGuid = "space"
+        };
+        var response = new ServiceInstanceProvision
         {
-            var request = new ServiceInstanceUpdateRequest
-            {
-                ServiceId = "abc",
-                PlanId = "xyz"
-            };
+            DashboardUrl = new Uri("http://example.com"),
+            Unchanged = true
+        };
 
-            Mock.Setup(x => x.UpdateAsync(new("123"), request))
-                .Returns(Task.CompletedTask);
-            await Client.ServiceInstancesBlocking["123"].UpdateAsync(request);
-        }
+        Mock.Setup(x => x.ProvisionAsync(new("123"), request))
+            .ReturnsAsync(response);
+        var result = await Client.ServiceInstancesBlocking["123"].ProvisionAsync(request);
+        result.Should().BeEquivalentTo(response);
+    }
 
-        [Fact]
-        public async Task UpdateBody()
+    [Fact]
+    public async Task ProvisionConflict()
+    {
+        var request = new ServiceInstanceProvisionRequest
         {
-            var request = new ServiceInstanceUpdateRequest
-            {
-                ServiceId = "abc",
-                PlanId = "xyz"
-            };
+            ServiceId = "abc",
+            PlanId = "xyz",
+            OrganizationGuid = "org",
+            SpaceGuid = "space"
+        };
 
-            Mock.Setup(x => x.UpdateAsync(new("123"), request))
-                .Returns(Task.CompletedTask);
+        Mock.Setup((x => x.ProvisionAsync(new("123"), request)))
+            .Throws(new ConflictException("custom message"));
+        await Client.ServiceInstancesBlocking["123"]
+                    .Awaiting(x => x.ProvisionAsync(request))
+                    .Should().ThrowAsync<ConflictException>().WithMessage("custom message");
+    }
 
-            var result = await Client.HttpClient.PatchAsync(Client.ServiceInstancesBlocking["123"].Uri, request, Client.Serializer);
-            result.StatusCode.Should().Be(HttpStatusCode.OK);
-            string resultString = await result.Content.ReadAsStringAsync();
-            resultString.Should().Be("{}");
-        }
-
-        [Fact]
-        public async Task Deprovision()
+    [Fact]
+    public async Task Update()
+    {
+        var request = new ServiceInstanceUpdateRequest
         {
-            Mock.Setup(x => x.DeprovisionAsync(new("123"), "abc", "xyz"))
-                .Returns(Task.CompletedTask);
-            await Client.ServiceInstancesBlocking["123"].DeprovisionAsync("abc", "xyz");
-        }
+            ServiceId = "abc",
+            PlanId = "xyz"
+        };
 
-        [Fact]
-        public async Task DeprovisionBody()
+        Mock.Setup(x => x.UpdateAsync(new("123"), request))
+            .Returns(Task.CompletedTask);
+        await Client.ServiceInstancesBlocking["123"].UpdateAsync(request);
+    }
+
+    [Fact]
+    public async Task UpdateBody()
+    {
+        var request = new ServiceInstanceUpdateRequest
         {
-            Mock.Setup(x => x.DeprovisionAsync(new("123"), "abc", "xyz"))
-                .Returns(Task.CompletedTask);
+            ServiceId = "abc",
+            PlanId = "xyz"
+        };
 
-            var result = await Client.HttpClient.DeleteAsync(Client.ServiceInstancesBlocking["123"].Uri.Join("?service_id=abc&plan_id=xyz"));
-            result.StatusCode.Should().Be(HttpStatusCode.OK);
-            string resultString = await result.Content.ReadAsStringAsync();
-            resultString.Should().Be("{}");
-        }
+        Mock.Setup(x => x.UpdateAsync(new("123"), request))
+            .Returns(Task.CompletedTask);
 
-        [Fact]
-        public async Task DeprovisionGone()
-        {
-            Mock.Setup((x => x.DeprovisionAsync(new("123"), "abc", "xyz")))
-                .Throws<GoneException>();
-            await Client.ServiceInstancesBlocking["123"]
-                        .Awaiting(x => x.DeprovisionAsync("abc", "xyz"))
-                        .Should().ThrowAsync<GoneException>();
-        }
+        var result = await Client.HttpClient.PatchAsync(Client.ServiceInstancesBlocking["123"].Uri, request, Client.Serializer);
+        result.StatusCode.Should().Be(HttpStatusCode.OK);
+        string resultString = await result.Content.ReadAsStringAsync();
+        resultString.Should().Be("{}");
+    }
+
+    [Fact]
+    public async Task Deprovision()
+    {
+        Mock.Setup(x => x.DeprovisionAsync(new("123"), "abc", "xyz"))
+            .Returns(Task.CompletedTask);
+        await Client.ServiceInstancesBlocking["123"].DeprovisionAsync("abc", "xyz");
+    }
+
+    [Fact]
+    public async Task DeprovisionBody()
+    {
+        Mock.Setup(x => x.DeprovisionAsync(new("123"), "abc", "xyz"))
+            .Returns(Task.CompletedTask);
+
+        var result = await Client.HttpClient.DeleteAsync(Client.ServiceInstancesBlocking["123"].Uri.Join("?service_id=abc&plan_id=xyz"));
+        result.StatusCode.Should().Be(HttpStatusCode.OK);
+        string resultString = await result.Content.ReadAsStringAsync();
+        resultString.Should().Be("{}");
+    }
+
+    [Fact]
+    public async Task DeprovisionGone()
+    {
+        Mock.Setup((x => x.DeprovisionAsync(new("123"), "abc", "xyz")))
+            .Throws<GoneException>();
+        await Client.ServiceInstancesBlocking["123"]
+                    .Awaiting(x => x.DeprovisionAsync("abc", "xyz"))
+                    .Should().ThrowAsync<GoneException>();
     }
 }

@@ -4,152 +4,151 @@ using Moq;
 using OpenServiceBroker.Errors;
 using Xunit;
 
-namespace OpenServiceBroker.Bindings
+namespace OpenServiceBroker.Bindings;
+
+public class ServiceBindingDeferredFacts : FactsBase<IServiceBindingDeferred>
 {
-    public class ServiceBindingDeferredFacts : FactsBase<IServiceBindingDeferred>
+    [Fact]
+    public async Task Fetch()
     {
-        [Fact]
-        public async Task Fetch()
-        {
-            var response = new ServiceBindingResource();
+        var response = new ServiceBindingResource();
 
-            Mock.Setup(x => x.FetchAsync("123", "456"))
-                .ReturnsAsync(response);
-            var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].FetchAsync();
-            result.Should().BeEquivalentTo(response);
-        }
+        Mock.Setup(x => x.FetchAsync("123", "456"))
+            .ReturnsAsync(response);
+        var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].FetchAsync();
+        result.Should().BeEquivalentTo(response);
+    }
 
-        [Fact]
-        public async Task BindDeferred()
+    [Fact]
+    public async Task BindDeferred()
+    {
+        var request = new ServiceBindingRequest
         {
-            var request = new ServiceBindingRequest
+            ServiceId = "abc",
+            PlanId = "xyz",
+            BindResource = new()
             {
-                ServiceId = "abc",
-                PlanId = "xyz",
-                BindResource = new()
-                {
-                    AppGuid = "123-456"
-                }
-            };
-            var response = new ServiceBindingAsyncOperation
-            {
-                Operation = "my operation"
-            };
-
-            Mock.Setup(x => x.BindAsync(new("123", "456"), request))
-                .ReturnsAsync(response);
-            var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].BindAsync(request);
-            result.Should().BeEquivalentTo(response);
-        }
-
-        [Fact]
-        public async Task BindCompleted()
+                AppGuid = "123-456"
+            }
+        };
+        var response = new ServiceBindingAsyncOperation
         {
-            var request = new ServiceBindingRequest
-            {
-                ServiceId = "abc",
-                PlanId = "xyz"
-            };
-            var response = new ServiceBindingAsyncOperation().Complete(new ServiceBinding());
+            Operation = "my operation"
+        };
 
-            Mock.Setup(x => x.BindAsync(new("123", "456"), request))
-                .ReturnsAsync(response);
-            var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].BindAsync(request);
-            result.Should().BeEquivalentTo(response);
-        }
+        Mock.Setup(x => x.BindAsync(new("123", "456"), request))
+            .ReturnsAsync(response);
+        var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].BindAsync(request);
+        result.Should().BeEquivalentTo(response);
+    }
 
-        [Fact]
-        public async Task BindUnchanged()
+    [Fact]
+    public async Task BindCompleted()
+    {
+        var request = new ServiceBindingRequest
         {
-            var request = new ServiceBindingRequest
-            {
-                ServiceId = "abc",
-                PlanId = "xyz"
-            };
-            var response = new ServiceBindingAsyncOperation().Complete(new ServiceBinding
-            {
-                Unchanged = true
-            });
+            ServiceId = "abc",
+            PlanId = "xyz"
+        };
+        var response = new ServiceBindingAsyncOperation().Complete(new ServiceBinding());
 
-            Mock.Setup(x => x.BindAsync(new("123", "456"), request))
-                .ReturnsAsync(response);
-            var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].BindAsync(request);
-            result.Should().BeEquivalentTo(response);
-        }
+        Mock.Setup(x => x.BindAsync(new("123", "456"), request))
+            .ReturnsAsync(response);
+        var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].BindAsync(request);
+        result.Should().BeEquivalentTo(response);
+    }
 
-        [Fact]
-        public async Task BindConflict()
+    [Fact]
+    public async Task BindUnchanged()
+    {
+        var request = new ServiceBindingRequest
         {
-            var request = new ServiceBindingRequest
-            {
-                ServiceId = "abc",
-                PlanId = "xyz"
-            };
-
-            Mock.Setup(x => x.BindAsync(new("123", "456"), request))
-                .Throws<ConflictException>();
-            await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"]
-                        .Awaiting(x => x.BindAsync(request))
-                        .Should().ThrowAsync<ConflictException>();
-        }
-
-        [Fact]
-        public async Task UnbindDeferred()
+            ServiceId = "abc",
+            PlanId = "xyz"
+        };
+        var response = new ServiceBindingAsyncOperation().Complete(new ServiceBinding
         {
-            var response = new AsyncOperation
-            {
-                Operation = "my operation"
-            };
+            Unchanged = true
+        });
 
-            Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
-                .ReturnsAsync(response);
-            var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].UnbindAsync("abc", "xyz");
-            result.Should().BeEquivalentTo(response);
-        }
+        Mock.Setup(x => x.BindAsync(new("123", "456"), request))
+            .ReturnsAsync(response);
+        var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].BindAsync(request);
+        result.Should().BeEquivalentTo(response);
+    }
 
-        [Fact]
-        public async Task UnbindCompleted()
+    [Fact]
+    public async Task BindConflict()
+    {
+        var request = new ServiceBindingRequest
         {
-            var response = new AsyncOperation();
+            ServiceId = "abc",
+            PlanId = "xyz"
+        };
 
-            Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
-                .ReturnsAsync(response);
-            var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].UnbindAsync("abc", "xyz");
-            result.Should().BeEquivalentTo(response);
-        }
+        Mock.Setup(x => x.BindAsync(new("123", "456"), request))
+            .Throws<ConflictException>();
+        await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"]
+                    .Awaiting(x => x.BindAsync(request))
+                    .Should().ThrowAsync<ConflictException>();
+    }
 
-        [Fact]
-        public async Task UnbindGone()
+    [Fact]
+    public async Task UnbindDeferred()
+    {
+        var response = new AsyncOperation
         {
-            Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
-                .Throws<GoneException>();
-            await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"]
-                        .Awaiting(x => x.UnbindAsync("abc", "xyz"))
-                        .Should().ThrowAsync<GoneException>();
-        }
+            Operation = "my operation"
+        };
 
-        [Fact]
-        public async Task GetLastOperation()
+        Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
+            .ReturnsAsync(response);
+        var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].UnbindAsync("abc", "xyz");
+        result.Should().BeEquivalentTo(response);
+    }
+
+    [Fact]
+    public async Task UnbindCompleted()
+    {
+        var response = new AsyncOperation();
+
+        Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
+            .ReturnsAsync(response);
+        var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].UnbindAsync("abc", "xyz");
+        result.Should().BeEquivalentTo(response);
+    }
+
+    [Fact]
+    public async Task UnbindGone()
+    {
+        Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
+            .Throws<GoneException>();
+        await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"]
+                    .Awaiting(x => x.UnbindAsync("abc", "xyz"))
+                    .Should().ThrowAsync<GoneException>();
+    }
+
+    [Fact]
+    public async Task GetLastOperation()
+    {
+        var response = new LastOperationResource
         {
-            var response = new LastOperationResource
-            {
-                State = LastOperationResourceState.InProgress
-            };
+            State = LastOperationResourceState.InProgress
+        };
 
-            Mock.Setup(x => x.GetLastOperationAsync(new("123", "456"), "abc", "xyz", "my operation"))
-                .ReturnsAsync(response);
-            var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].LastOperation("abc", "xyz", "my operation").ReadAsync();
-            result.Should().BeEquivalentTo(response);
-        }
+        Mock.Setup(x => x.GetLastOperationAsync(new("123", "456"), "abc", "xyz", "my operation"))
+            .ReturnsAsync(response);
+        var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].LastOperation("abc", "xyz", "my operation").ReadAsync();
+        result.Should().BeEquivalentTo(response);
+    }
 
-        [Fact]
-        public async Task GetLastOperationGone()
-        {
-            Mock.Setup(x => x.GetLastOperationAsync(new("123", "456"), "abc", "xyz", "my operation"))
-                .Throws(new GoneException("custom message"));
-            await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].LastOperation("abc", "xyz", "my operation")
-                        .Awaiting(x => x.ReadAsync())
-                        .Should().ThrowAsync<GoneException>().WithMessage("custom message");
-        }
+    [Fact]
+    public async Task GetLastOperationGone()
+    {
+        Mock.Setup(x => x.GetLastOperationAsync(new("123", "456"), "abc", "xyz", "my operation"))
+            .Throws(new GoneException("custom message"));
+        await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].LastOperation("abc", "xyz", "my operation")
+                    .Awaiting(x => x.ReadAsync())
+                    .Should().ThrowAsync<GoneException>().WithMessage("custom message");
     }
 }

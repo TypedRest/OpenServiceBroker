@@ -1,13 +1,12 @@
 using System.Runtime.Serialization;
 
-namespace OpenServiceBroker.Bindings
-{
-    public enum ServiceBindingVolumeMountMode
-    {
-        [EnumMember(Value = "r")]
-        Read,
+namespace OpenServiceBroker.Bindings;
 
-        [EnumMember(Value = "rw")]
-        ReadWrite
-    }
+public enum ServiceBindingVolumeMountMode
+{
+    [EnumMember(Value = "r")]
+    Read,
+
+    [EnumMember(Value = "rw")]
+    ReadWrite
 }

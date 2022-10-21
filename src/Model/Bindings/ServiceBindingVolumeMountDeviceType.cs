@@ -1,10 +1,9 @@
 using System.Runtime.Serialization;
 
-namespace OpenServiceBroker.Bindings
+namespace OpenServiceBroker.Bindings;
+
+public enum ServiceBindingVolumeMountDeviceType
 {
-    public enum ServiceBindingVolumeMountDeviceType
-    {
-        [EnumMember(Value = "shared")]
-        Shared
-    }
+    [EnumMember(Value = "shared")]
+    Shared
 }

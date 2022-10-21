@@ -1,15 +1,14 @@
 using System.Threading.Tasks;
 
-namespace OpenServiceBroker.Catalogs
+namespace OpenServiceBroker.Catalogs;
+
+/// <summary>
+/// Provides access to the catalog of services that the service broker offers.
+/// </summary>
+public interface ICatalogService
 {
     /// <summary>
-    /// Provides access to the catalog of services that the service broker offers.
+    /// Gets the catalog of services that the service broker offers.
     /// </summary>
-    public interface ICatalogService
-    {
-        /// <summary>
-        /// Gets the catalog of services that the service broker offers.
-        /// </summary>
-        Task<Catalog> GetCatalogAsync();
-    }
+    Task<Catalog> GetCatalogAsync();
 }

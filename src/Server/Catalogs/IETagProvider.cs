@@ -1,4 +1,4 @@
-﻿namespace OpenServiceBroker.Catalogs
+namespace OpenServiceBroker.Catalogs
 {
     /// <summary>
     /// Provides an ETag.

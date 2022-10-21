@@ -1,4 +1,4 @@
-﻿namespace OpenServiceBroker.Errors
+namespace OpenServiceBroker.Errors
 {
     /// <summary>
     /// The <see cref="MaintenanceInfo.Version"/> field provided in the request does not match the<see cref="MaintenanceInfo.Version"/> field provided in the Service Broker's Catalog.

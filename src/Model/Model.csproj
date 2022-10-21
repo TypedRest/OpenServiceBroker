@@ -3,6 +3,7 @@
   <!-- Project properties -->
   <PropertyGroup>
     <AssemblyName>OpenServiceBroker.Model</AssemblyName>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0</TargetFrameworks>
     <Summary>DTO classes for the Open Service Broker API</Summary>
     <Description>DTO classes for the Open Service Broker API. This is usually referenced indirectly via OpenServiceBroker.Client or OpenServiceBroker.Server.</Description>
     <PackageTags>OSB;Open Service Broker;Model</PackageTags>

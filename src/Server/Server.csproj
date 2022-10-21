@@ -3,7 +3,7 @@
   <!-- Project properties -->
   <PropertyGroup>
     <AssemblyName>OpenServiceBroker.Server</AssemblyName>
-    <TargetFrameworks>netcoreapp3.1;net6.0</TargetFrameworks>
+    <TargetFramework>net6.0</TargetFramework>
     <Summary>Server library for the Open Service Broker API</Summary>
     <Description>A library to help you provide an ASP.NET Core implementation of the Open Service Broker API. This specification allows developers, ISVs, and SaaS vendors a single, simple, and elegant way to deliver services to applications running within cloud native platforms such as Cloud Foundry, OpenShift, and Kubernetes.</Description>
     <PackageTags>OSB;Open Service Broker;Server;ASP.NET Core;Controller</PackageTags>
@@ -15,11 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp3.1'">
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.30" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.30" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)'=='net6.0'">
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.10" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>

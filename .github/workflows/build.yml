@@ -14,12 +14,6 @@ jobs:
           versionSpec: '5.10.x'
       - uses: gittools/actions/gitversion/execute@v0.9.14
         id: gitversion
-      - uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: |
-            3.1.x
-            5.0.x
-            6.0.x
       - uses: actions/cache@v3
         with:
           path: |

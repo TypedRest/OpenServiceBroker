@@ -1,4 +1,3 @@
-using Microsoft.DotNet.PlatformAbstractions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using MyServiceBroker;
@@ -10,7 +9,7 @@ using OpenServiceBroker.Instances;
 var builder = WebApplication.CreateBuilder(args);
 
 // Catalog of available services
-string catalogPath = File.ReadAllText(Path.Combine(ApplicationEnvironment.ApplicationBasePath, "catalog.json"));
+string catalogPath = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "catalog.json"));
 builder.Services.AddSingleton(JsonConvert.DeserializeObject<Catalog>(catalogPath)!);
 
 // Database for storing provisioned service instances

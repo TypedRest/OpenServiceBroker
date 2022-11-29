@@ -14,13 +14,15 @@
     <PackageProjectUrl>https://github.com/TypedRest/OpenServiceBroker/tree/master/template</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/TypedRest/OpenServiceBroker</RepositoryUrl>
     <Authors>Bastian Eicher</Authors>
   </PropertyGroup>
- 
+
   <ItemGroup>
     <Compile Remove="**\*" />
     <None Pack="true" PackagePath="\" Include="..\icon.png" />
+    <None Pack="true" PackagePath="\" Include="..\readme.md" />
     <None Pack="true" PackagePath="content" Include="**\*" Exclude=".template.csproj;nuget.config;readme.md;build.*;*.db;*.user;obj\**;bin\**;.vs\**;.idea\**;_ReSharper.*\**" />
   </ItemGroup>
 

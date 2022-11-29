@@ -1,7 +1,7 @@
 ﻿<Project>
 
+  <!-- Build configuration -->
   <PropertyGroup>
-    <!-- Build configuration -->
     <LangVersion>10.0</LangVersion>
     <ImplicitUsings>True</ImplicitUsings>
     <RootNamespace>OpenServiceBroker</RootNamespace>
@@ -12,20 +12,24 @@
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <NoWarn>$(NoWarn);1591</NoWarn><!-- Missing XML comments -->
-
-    <!-- Metadata -->
-    <Authors>Bastian Eicher</Authors>
-    <Copyright>Copyright Bastian Eicher et al.</Copyright>
-    <PackageProjectUrl>https://openservicebroker.typedrest.net/</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/TypedRest/OpenServiceBroker</RepositoryUrl>
-    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
+  <!-- NuGet Metadata -->
+  <PropertyGroup>
+    <Authors>Bastian Eicher</Authors>
+    <Copyright>Copyright Bastian Eicher et al.</Copyright>
+    <RepositoryUrl>https://github.com/TypedRest/OpenServiceBroker</RepositoryUrl>
+    <PackageProjectUrl>https://openservicebroker.typedrest.net/</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+  </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\icon.png" Pack="true" PackagePath="\" />
+    <None Include="..\..\readme.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
+  <!-- Build-time dependencies -->
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>

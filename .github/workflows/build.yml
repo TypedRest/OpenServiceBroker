@@ -31,20 +31,16 @@ jobs:
         run: .\build.ps1 ${{steps.gitversion.outputs.nuGetVersion}}
       - name: Report test results
         if: always()
-        uses: scacap/action-surefire-report@v1
+        uses: dorny/test-reporter@v1
         with:
-          github_token: ${{github.token}}
-          report_paths: '**/TestResults/TestResults.xml'
+          name: Test Report
+          reporter: dotnet-trx
+          path: src/UnitTests/TestResults/*.trx
 
       # Release
       - name: Create GitHub Release
         if: steps.gitversion.outputs.preReleaseLabel == ''
-        uses: actions/create-release@v1
-        with:
-          tag_name: ${{github.ref}}
-          release_name: ${{github.ref}}
-        env:
-          GITHUB_TOKEN: ${{github.token}}
+        uses: softprops/action-gh-release@v1
       - name: Post-release commit
         if: steps.gitversion.outputs.preReleaseLabel == ''
         run: |

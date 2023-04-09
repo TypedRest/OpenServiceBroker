@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: windows-2022
+    runs-on: ubuntu-latest
     steps:
       # Prepare
       - uses: actions/checkout@v3
@@ -14,21 +14,14 @@ jobs:
           versionSpec: '5.12.x'
       - uses: gittools/actions/gitversion/execute@v0.10.2
         id: gitversion
-      - uses: actions/cache@v3
-        with:
-          path: |
-            ~\AppData\Roaming\0install.net
-            ~\AppData\Local\0install.net
-            C:\ProgramData\0install.net
-          key: 0install-${{hashFiles('**/build.ps1')}}
 
       # Build
       - name: Build (pre-release)
-        if: steps.gitversion.outputs.preReleaseLabel != ''
-        run: .\build.ps1 ${{steps.gitversion.outputs.nuGetVersion}}-${{steps.gitversion.outputs.shortSha}}
+        if: github.ref_type != 'tag'
+        run: ./build.sh ${{steps.gitversion.outputs.nuGetVersion}}-${{steps.gitversion.outputs.shortSha}}
       - name: Build (release)
-        if: steps.gitversion.outputs.preReleaseLabel == ''
-        run: .\build.ps1 ${{steps.gitversion.outputs.nuGetVersion}}
+        if: github.ref_type == 'tag'
+        run: ./build.sh ${{steps.gitversion.outputs.nuGetVersion}}
       - name: Report test results
         if: always()
         uses: dorny/test-reporter@v1
@@ -39,10 +32,10 @@ jobs:
 
       # Release
       - name: Create GitHub Release
-        if: steps.gitversion.outputs.preReleaseLabel == ''
+        if: github.ref_type == 'tag'
         uses: softprops/action-gh-release@v1
       - name: Post-release commit
-        if: steps.gitversion.outputs.preReleaseLabel == ''
+        if: github.ref_type == 'tag'
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
@@ -52,7 +45,7 @@ jobs:
 
       # Publish
       - name: Publish documentation
-        if: steps.gitversion.outputs.preReleaseLabel == ''
+        if: github.ref_type == 'tag'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{github.token}}
@@ -60,11 +53,8 @@ jobs:
           publish_dir: artifacts/Documentation
           cname: openservicebroker.typedrest.net
       - name: Publish packages (GitHub)
-        if: github.event_name == 'push' && !startsWith(github.ref, 'refs/heads/renovate/')
-        run: |
-          Get-ChildItem artifacts\Release\*.nupkg | ForEach-Object {
-            curl.exe -sS -X PUT -u "${{github.actor}}:${{github.token}}" -F package=@$_ https://nuget.pkg.github.com/${{github.repository_owner}}/
-          }
+        if: github.event_name == 'push' && !startsWith(github.ref_name, 'renovate/')
+        run: dotnet nuget push artifacts/Release/*.nupkg --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json --api-key ${{github.token}} --no-symbols --skip-duplicate
       - name: Publish packages (NuGet.org)
-        if: steps.gitversion.outputs.preReleaseLabel == ''
-        run: dotnet nuget push artifacts\Release\*.nupkg --source nuget.org --api-key ${{secrets.NUGET_API_KEY}}
+        if: github.ref_type == 'tag'
+        run: dotnet nuget push artifacts/Release/*.nupkg --source nuget.org --api-key ${{secrets.NUGET_API_KEY}}

@@ -18,9 +18,7 @@
     "globalMetadata": {
       "_baseUrl": "https://openservicebroker.typedrest.net",
       "_appTitle": "OpenServiceBroker for .NET",
-      "_appFooter": "Copyright Bastian Eicher",
-      "_disableBreadcrumb": true,
-      "_enableNewTab": true
+      "_appFooter": "Copyright Bastian Eicher"
     },
     "content": [
       {
@@ -42,6 +40,12 @@
     ],
     "xrefService": [
       "https://xref.docs.microsoft.com/query?uid={uid}"
+    ],
+    "postProcessors": ["ExtractSearchIndex"],
+    "template": [
+      "default",
+      "modern",
+      "template"
     ],
     "dest": "../artifacts/Documentation"
   }

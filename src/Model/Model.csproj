@@ -13,7 +13,7 @@
   <!-- Dependencies -->
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="NJsonSchema" Version="10.8.0" />
+    <PackageReference Include="NJsonSchema" Version="10.9.0" />
   </ItemGroup>
 
 </Project>

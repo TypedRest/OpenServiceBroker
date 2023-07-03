@@ -25,8 +25,8 @@
     <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\..\icon.png" Pack="true" PackagePath="\" />
-    <None Include="..\..\readme.md" Pack="true" PackagePath="\"/>
+    <None Include="$(MSBuildThisFileDirectory)..\icon.png" Pack="true" PackagePath="\" />
+    <None Include="$(MSBuildThisFileDirectory)..\readme.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
   <!-- Build-time dependencies -->

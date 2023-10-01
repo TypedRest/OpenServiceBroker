@@ -10,7 +10,7 @@ namespace OpenServiceBroker;
 /// </summary>
 public class OpenServiceBrokerErrorHandler : IErrorHandler
 {
-    private static readonly MediaTypeFormatter Serializer = new DefaultJsonSerializer();
+    private static readonly MediaTypeFormatter Serializer = new NewtonsoftJsonSerializer();
 
     public async Task HandleAsync(HttpResponseMessage response)
     {

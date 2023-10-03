@@ -109,7 +109,7 @@ public class ServiceInstanceBlockingFacts : FactsBase<IServiceInstanceBlocking>
         Mock.Setup(x => x.UpdateAsync(new("123"), request))
             .Returns(Task.CompletedTask);
 
-        var result = await Client.HttpClient.PatchAsync(Client.ServiceInstancesBlocking["123"].Uri, request, Client.Serializer);
+        var result = await Client.HttpClient.PatchAsync(Client.ServiceInstancesBlocking["123"].Uri, request, Client.Serializers[0]);
         result.StatusCode.Should().Be(HttpStatusCode.OK);
         string resultString = await result.Content.ReadAsStringAsync();
         resultString.Should().Be("{}");

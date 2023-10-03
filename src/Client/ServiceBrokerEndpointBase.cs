@@ -75,5 +75,5 @@ public abstract class ServiceBrokerEndpointBase : EndpointBase
     }
 
     protected Task<T> FromContentAsync<T>(HttpResponseMessage message)
-        => message.Content.ReadAsAsync<T>(new[] {Serializer});
+        => message.Content.ReadAsAsync<T>(Serializers);
 }

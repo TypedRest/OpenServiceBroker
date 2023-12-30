@@ -8,20 +8,12 @@ namespace OpenServiceBroker.Instances;
 /// <summary>
 /// Represents a specific Service Instance. Uses potentially deferred (asynchronous) operations and automatically handles polling to make them appear blocking.
 /// </summary>
-public class ServiceInstancePollingEndpoint : ServiceInstanceEndpointBase<IServiceBindingEndpoint, ServiceBindingPollingEndpoint>, IServiceInstanceEndpoint
+/// <param name="referrer">The endpoint used to navigate to this one.</param>
+/// <param name="relativeUri">The URI of this endpoint relative to the <paramref name="referrer"/>'s.</param>
+public class ServiceInstancePollingEndpoint(IEndpoint referrer, Uri relativeUri)
+    : ServiceInstanceEndpointBase<IServiceBindingEndpoint, ServiceBindingPollingEndpoint>(referrer, relativeUri), IServiceInstanceEndpoint
 {
-    private readonly IServiceInstanceDeferredEndpoint _inner;
-
-    /// <summary>
-    /// Creates a new polling Service Instance endpoint.
-    /// </summary>
-    /// <param name="referrer">The endpoint used to navigate to this one.</param>
-    /// <param name="relativeUri">The URI of this endpoint relative to the <paramref name="referrer"/>'s.</param>
-    public ServiceInstancePollingEndpoint(IEndpoint referrer, Uri relativeUri)
-        : base(referrer, relativeUri)
-    {
-        _inner = new ServiceInstanceDeferredEndpoint(referrer, relativeUri);
-    }
+    private readonly IServiceInstanceDeferredEndpoint _inner = new ServiceInstanceDeferredEndpoint(referrer, relativeUri);
 
     public async Task<ServiceInstanceProvision> ProvisionAsync(ServiceInstanceProvisionRequest request)
     {

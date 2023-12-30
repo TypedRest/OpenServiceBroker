@@ -8,17 +8,11 @@ namespace OpenServiceBroker.Instances;
 /// <summary>
 /// Represents a specific Service Instance with potentially deferred (asynchronous) operations.
 /// </summary>
-public class ServiceInstanceDeferredEndpoint : ServiceInstanceEndpointBase<IServiceBindingDeferredEndpoint, ServiceBindingDeferredEndpoint>, IServiceInstanceDeferredEndpoint
+/// <param name="referrer">The endpoint used to navigate to this one.</param>
+/// <param name="relativeUri">The URI of this endpoint relative to the <paramref name="referrer"/>'s.</param>
+public class ServiceInstanceDeferredEndpoint(IEndpoint referrer, Uri relativeUri)
+    : ServiceInstanceEndpointBase<IServiceBindingDeferredEndpoint, ServiceBindingDeferredEndpoint>(referrer, relativeUri, acceptsIncomplete: true), IServiceInstanceDeferredEndpoint
 {
-    /// <summary>
-    /// Creates a new deferred Service Instance endpoint.
-    /// </summary>
-    /// <param name="referrer">The endpoint used to navigate to this one.</param>
-    /// <param name="relativeUri">The URI of this endpoint relative to the <paramref name="referrer"/>'s.</param>
-    public ServiceInstanceDeferredEndpoint(IEndpoint referrer, Uri relativeUri)
-        : base(referrer, relativeUri, acceptsIncomplete: true)
-    {}
-
     public async Task<ServiceInstanceAsyncOperation> ProvisionAsync(ServiceInstanceProvisionRequest request)
     {
         var response = await HandleAsync(() => HttpClient.PutAsync(Uri, request, Serializer));

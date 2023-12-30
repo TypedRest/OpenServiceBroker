@@ -9,15 +9,8 @@ namespace OpenServiceBroker;
 /// </summary>
 /// <typeparam name="TBlocking">The service type to request from dependency injection for blocking operations.</typeparam>
 /// <typeparam name="TDeferred">The service type to request from dependency injection for deferred (asynchronous) operations.</typeparam>
-public abstract class BrokerControllerBase<TBlocking, TDeferred> : Controller
+public abstract class BrokerControllerBase<TBlocking, TDeferred>(IServiceProvider provider) : Controller
 {
-    private readonly IServiceProvider _provider;
-
-    protected BrokerControllerBase(IServiceProvider provider)
-    {
-        _provider = provider;
-    }
-
     /// <summary>
     /// Performs either a blocking or a deferred operation, handling aspects such as API versioning and error serialization.
     /// </summary>
@@ -85,7 +78,7 @@ public abstract class BrokerControllerBase<TBlocking, TDeferred> : Controller
 
     private bool TryGetService<T>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out T? service)
     {
-        service = _provider.GetService<T>();
+        service = provider.GetService<T>();
         return (service != null);
     }
 

@@ -5,18 +5,12 @@ namespace OpenServiceBroker.Errors;
 /// <summary>
 /// The request to the Service Broker failed.
 /// </summary>
-public class BrokerException : Exception
+public class BrokerException(string message, string errorCode, HttpStatusCode httpCode = (HttpStatusCode)422 /*UnprocessableEntity*/)
+    : Exception(message)
 {
-    public string ErrorCode { get; }
+    public string ErrorCode { get; } = errorCode;
 
-    public HttpStatusCode HttpCode { get; }
-
-    public BrokerException(string message, string errorCode, HttpStatusCode httpCode = (HttpStatusCode)422 /*UnprocessableEntity*/)
-        : base(message)
-    {
-        ErrorCode = errorCode;
-        HttpCode = httpCode;
-    }
+    public HttpStatusCode HttpCode { get; } = httpCode;
 
     /// <summary>
     /// If an update or deprovisioning operation failed, this flag indicates whether or not the Service Instance is still usable. If true, the Service Instance can still be used, false otherwise. This field MUST NOT be present for errors of other operations. Defaults to true.

@@ -1,6 +1,6 @@
 namespace OpenServiceBroker;
 
-public struct ApiVersion : IEquatable<ApiVersion>
+public struct ApiVersion(int major, int minor) : IEquatable<ApiVersion>
 {
     public const string HttpHeaderName = "X-Broker-API-Version";
 
@@ -10,15 +10,9 @@ public struct ApiVersion : IEquatable<ApiVersion>
         return new ApiVersion(int.Parse(split[0]), int.Parse(split[1]));
     }
 
-    public int Major { get; }
+    public int Major { get; } = major;
 
-    public int Minor { get; }
-
-    public ApiVersion(int major, int minor)
-    {
-        Major = major;
-        Minor = minor;
-    }
+    public int Minor { get; } = minor;
 
     public override string ToString() => Major + "." + Minor;
 

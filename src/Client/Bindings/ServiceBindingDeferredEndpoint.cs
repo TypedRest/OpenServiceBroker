@@ -6,17 +6,11 @@ namespace OpenServiceBroker.Bindings;
 /// <summary>
 /// Represents a Service Binding for a specific Service Instance with potentially deferred (asynchronous) operations.
 /// </summary>
-public class ServiceBindingDeferredEndpoint : ServiceBindingEndpointBase, IServiceBindingDeferredEndpoint
+/// <param name="referrer">The endpoint used to navigate to this one.</param>
+/// <param name="relativeUri">The URI of this endpoint relative to the <paramref name="referrer"/>'s.</param>
+public class ServiceBindingDeferredEndpoint(IEndpoint referrer, Uri relativeUri)
+    : ServiceBindingEndpointBase(referrer, relativeUri, acceptsIncomplete: true), IServiceBindingDeferredEndpoint
 {
-    /// <summary>
-    /// Creates a new deferred Service Binding endpoint.
-    /// </summary>
-    /// <param name="referrer">The endpoint used to navigate to this one.</param>
-    /// <param name="relativeUri">The URI of this endpoint relative to the <paramref name="referrer"/>'s.</param>
-    public ServiceBindingDeferredEndpoint(IEndpoint referrer, Uri relativeUri)
-        : base(referrer, relativeUri, acceptsIncomplete: true)
-    {}
-
     public async Task<ServiceBindingAsyncOperation> BindAsync(ServiceBindingRequest request)
     {
         var response = await HandleAsync(() => HttpClient.PutAsync(Uri, request, Serializer));

@@ -30,7 +30,7 @@ public class OpenServiceBrokerErrorHandler : IErrorHandler
 
         try
         {
-            return await response.Content.ReadAsAsync<Error>(new[] {Serializer});
+            return await response.Content.ReadAsAsync<Error>([Serializer]);
         }
         catch
         {

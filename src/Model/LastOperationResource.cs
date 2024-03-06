@@ -16,6 +16,13 @@ public class LastOperationResource : StatusBase, IEquatable<LastOperationResourc
     [JsonConverter(typeof(StringEnumConverter))]
     public LastOperationResourceState State { get; set; }
 
+    /// <summary>
+    /// Indicates how long the platform should wait before polling again.
+    /// Only used on server-side. See <c>LastOperationEndpoint.PollingInterval</c> instead on client-side.
+    /// </summary>
+    [JsonIgnore]
+    public TimeSpan? RetryAfter { get; set; }
+
     public bool Equals(LastOperationResource other)
         => other != null
         && base.Equals(other)

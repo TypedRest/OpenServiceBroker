@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using OpenServiceBroker.Errors;
@@ -97,5 +98,13 @@ public abstract class BrokerControllerBase<TBlocking, TDeferred>(IServiceProvide
             string? headerValue = Request.Headers[OriginatingIdentity.HttpHeaderName].FirstOrDefault();
             return string.IsNullOrEmpty(headerValue) ? null : OriginatingIdentity.Parse(headerValue);
         }
+    }
+
+    /// <summary>
+    /// Sets the Retry-After response header.
+    /// </summary>
+    protected void SetRetryAfter(TimeSpan retryAfter)
+    {
+        HttpContext.Response.Headers.RetryAfter = retryAfter.TotalSeconds.ToString("0", CultureInfo.InvariantCulture);
     }
 }

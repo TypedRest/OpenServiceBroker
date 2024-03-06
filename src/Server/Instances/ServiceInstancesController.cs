@@ -168,7 +168,12 @@ public class ServiceInstancesController : BrokerControllerBase<IServiceInstanceB
         var context = Context(instanceId);
         return Do(acceptsIncomplete: true,
             blocking: _ => throw new NotSupportedException("This server does not support asynchronous operations."),
-            deferred: async x => Ok(await x.GetLastOperationAsync(context, serviceId, planId, operation)));
+            deferred: async x =>
+            {
+                var resource = await x.GetLastOperationAsync(context, serviceId, planId, operation);
+                if (resource.RetryAfter is { } retryAfter) SetRetryAfter(retryAfter);
+                return Ok(resource);
+            });
     }
 
     private ServiceInstanceContext Context(string? instanceId)

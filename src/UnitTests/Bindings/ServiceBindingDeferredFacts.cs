@@ -129,13 +129,16 @@ public class ServiceBindingDeferredFacts : FactsBase<IServiceBindingDeferred>
     {
         var response = new LastOperationResource
         {
-            State = LastOperationResourceState.InProgress
+            State = LastOperationResourceState.InProgress,
+            RetryAfter = TimeSpan.FromSeconds(5)
         };
-
         Mock.Setup(x => x.GetLastOperationAsync(new("123", "456"), "abc", "xyz", "my operation"))
             .ReturnsAsync(response);
-        var result = await Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].LastOperation("abc", "xyz", "my operation").ReadAsync();
+
+        var endpoint = Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].LastOperation("abc", "xyz", "my operation");
+        var result = await endpoint.ReadAsync();
         result.Should().BeEquivalentTo(response);
+        endpoint.PollingInterval.Should().Be(TimeSpan.FromSeconds(5));
     }
 
     [Fact]

@@ -1,0 +1,965 @@
+{
+  "source_base_path": "/home/runner/work/OpenServiceBroker/OpenServiceBroker/doc",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.ApiVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.ApiVersion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.AsyncOperation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.AsyncOperation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingBase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingBlocking.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingBlocking.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingDeferred.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingDeferred.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingDeferredEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingDeferredEndpoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingEndpoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingEndpointBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingEndpointBase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBinding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBinding.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingAsyncOperation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingAsyncOperation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingBase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingBlockingEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingBlockingEndpoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingDeferredEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingDeferredEndpoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingEndpointBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingEndpointBase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingPollingEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingPollingEndpoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingResource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingResource.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingResourceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingResourceObject.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMount.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMount.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMountDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMountDevice.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMountDeviceType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMountDeviceType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMountMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMountMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingsController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingsController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.BrokerControllerBase-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.BrokerControllerBase-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.Catalog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.Catalog.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.CatalogController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.CatalogController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.DashboardClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.DashboardClient.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.Features.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.Features.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.ICatalogService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.ICatalogService.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.IETagProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.IETagProvider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.ILastModifiedProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.ILastModifiedProvider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.Plan.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.Plan.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.SchemaParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.SchemaParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.Schemas.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.Schemas.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.Service.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.Service.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.ServiceBindingSchema.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.ServiceBindingSchema.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.ServiceInstanceSchema.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.ServiceInstanceSchema.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Completable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Completable.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.CompletableWithResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.CompletableWithResult.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.ApiVersionNotSupportedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.ApiVersionNotSupportedException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.AsyncRequiredException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.AsyncRequiredException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.BadRequestException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.BadRequestException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.BrokerException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.BrokerException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.ConcurrencyException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.ConcurrencyException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.ConflictException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.ConflictException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.Error.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.Error.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.GoneException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.GoneException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.MaintenanceInfoConflictException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.MaintenanceInfoConflictException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.NotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.NotFoundException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.RequiresAppException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.RequiresAppException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.StatusBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.StatusBase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.ICompletable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.ICompletable.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.ICompletableWithResult-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.ICompletableWithResult-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.IOpenServiceBrokerClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.IOpenServiceBrokerClient.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.IServicePlanReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.IServicePlanReference.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.IUnchangedFlag.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.IUnchangedFlag.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceBase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceBlocking.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceBlocking.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceDeferred.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceDeferred.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceEndpoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceEndpointBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceEndpointBase-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceAsyncOperation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceAsyncOperation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceBase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceBlockingEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceBlockingEndpoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceDeferredEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceDeferredEndpoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceEndpointBase-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceEndpointBase-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceMetadata.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceMetadata.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstancePollingEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstancePollingEndpoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstancePreviousValues.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstancePreviousValues.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceProvision.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceProvision.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceProvisionRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceProvisionRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceResource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceResource.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceUpdateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceUpdateRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstancesController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstancesController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.LastOperationEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.LastOperationEndpoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.LastOperationResource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.LastOperationResource.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.LastOperationResourceState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.LastOperationResourceState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.MaintenanceInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.MaintenanceInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.MvcBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.MvcBuilderExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.OpenServiceBrokerClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.OpenServiceBrokerClient.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.OpenServiceBrokerErrorHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.OpenServiceBrokerErrorHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.OriginatingIdentity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.OriginatingIdentity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.ServiceBrokerEndpointBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.ServiceBrokerEndpointBase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

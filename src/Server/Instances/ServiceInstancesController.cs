@@ -8,12 +8,9 @@ namespace OpenServiceBroker.Instances;
 /// Exposes Service Instances.
 /// </summary>
 [Route("v2/service_instances/{instance_id}")]
-public class ServiceInstancesController : BrokerControllerBase<IServiceInstanceBlocking, IServiceInstanceDeferred>
+public class ServiceInstancesController(IServiceProvider provider)
+    : BrokerControllerBase<IServiceInstanceBlocking, IServiceInstanceDeferred>(provider)
 {
-    public ServiceInstancesController(IServiceProvider provider)
-        : base(provider)
-    {}
-
     /// <summary>
     /// Fetches a Service Instance.
     /// </summary>

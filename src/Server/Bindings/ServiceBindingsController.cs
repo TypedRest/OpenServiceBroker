@@ -8,12 +8,9 @@ namespace OpenServiceBroker.Bindings;
 /// Exposes bindings for Service Instances.
 /// </summary>
 [Route("v2/service_instances/{instance_id}/service_bindings/{binding_id}")]
-public class ServiceBindingsController : BrokerControllerBase<IServiceBindingBlocking, IServiceBindingDeferred>
+public class ServiceBindingsController(IServiceProvider provider)
+    : BrokerControllerBase<IServiceBindingBlocking, IServiceBindingDeferred>(provider)
 {
-    public ServiceBindingsController(IServiceProvider provider)
-        : base(provider)
-    {}
-
     /// <summary>
     /// Fetches a Service Binding.
     /// </summary>

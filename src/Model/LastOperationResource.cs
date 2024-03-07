@@ -18,8 +18,8 @@ public class LastOperationResource : StatusBase, IEquatable<LastOperationResourc
 
     /// <summary>
     /// Indicates how long the platform should wait before polling again.
-    /// Only used on server-side. See <c>LastOperationEndpoint.PollingInterval</c> instead on client-side.
     /// </summary>
+    /// <remarks>This is only used on the server-side. See <c>LastOperationEndpoint.PollingInterval</c> instead on client-side.</remarks>
     [JsonIgnore]
     public TimeSpan? RetryAfter { get; set; }
 

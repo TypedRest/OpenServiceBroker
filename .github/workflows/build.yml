@@ -10,10 +10,10 @@ jobs:
         with:
           fetch-depth: 0
           show-progress: false
-      - uses: gittools/actions/gitversion/setup@v0.13.4
+      - uses: gittools/actions/gitversion/setup@v0.13.6
         with:
           versionSpec: '5.12.x'
-      - uses: gittools/actions/gitversion/execute@v0.13.4
+      - uses: gittools/actions/gitversion/execute@v0.13.6
         id: gitversion
 
       # Build

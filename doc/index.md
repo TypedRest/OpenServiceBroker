@@ -12,7 +12,7 @@ The Client Library allows you to call Service Brokers that implement the API usi
 
 ## Server Library
 
-Set up a regular ASP.NET Core 6.0+ project and add the NuGet package [OpenServiceBroker.Server](https://www.nuget.org/packages/OpenServiceBroker.Server/). Then implement the following interfaces:
+Set up a regular ASP.NET Core 8.0+ project and add the NuGet package [OpenServiceBroker.Server](https://www.nuget.org/packages/OpenServiceBroker.Server/). Then implement the following interfaces:
 - <xref:OpenServiceBroker.Catalogs.ICatalogService> (optionally also <xref:OpenServiceBroker.Catalogs.IETagProvider> and/or <xref:OpenServiceBroker.Catalogs.ILastModifiedProvider> on the same class)
 - either <xref:OpenServiceBroker.Instances.IServiceInstanceBlocking> or <xref:OpenServiceBroker.Instances.IServiceInstanceDeferred> or both
 - either <xref:OpenServiceBroker.Bindings.IServiceBindingBlocking> or <xref:OpenServiceBroker.Bindings.IServiceBindingDeferred> or both
@@ -32,7 +32,7 @@ services.AddControllers()
         .AddOpenServiceBroker();
 ```
 
-You can use the **[project template](https://github.com/TypedRest/OpenServiceBroker/tree/master/template)** to quickly set up a pre-configured ASP.NET Core 6.0 project with `OpenServiceBroker.Server`.
+You can use the **[project template](https://github.com/TypedRest/OpenServiceBroker/tree/master/template)** to quickly set up a pre-configured ASP.NET Core 8.0 project with `OpenServiceBroker.Server`.
 
 ### Versioning
 

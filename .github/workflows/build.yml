@@ -10,10 +10,10 @@ jobs:
         with:
           fetch-depth: 0
           show-progress: false
-      - uses: gittools/actions/gitversion/setup@v3.0.3
+      - uses: gittools/actions/gitversion/setup@v3.0.4
         with:
           versionSpec: '5.12.x'
-      - uses: gittools/actions/gitversion/execute@v3.0.3
+      - uses: gittools/actions/gitversion/execute@v3.0.4
         id: gitversion
       - uses: actions/setup-dotnet@v4
         with:

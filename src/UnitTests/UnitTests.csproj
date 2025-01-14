@@ -25,7 +25,7 @@
     <PackageReference Include="Moq" Version="4.20.71" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="8.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="8.0.12" />
   </ItemGroup>
 
   <!-- Global usings -->

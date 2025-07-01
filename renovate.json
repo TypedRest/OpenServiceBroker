@@ -3,6 +3,10 @@
   "extends": ["config:base", ":disableDependencyDashboard"],
   "packageRules": [
     {
+      "matchPackagePatterns": ["^gittools"],
+      "allowedVersions": "<4"
+    },
+    {
       "matchPackagePatterns": ["Test", "Assert", "Mock", "[Xx]unit", "Moq"],
       "groupName": "Testing deps",
       "automerge": true,
@@ -13,7 +17,7 @@
       "allowedVersions": "<8"
     },
     {
-      "matchPackagePatterns": ["gittools", "docfx", "SourceLink", "TypedRest.Reactive", "NJsonSchema"],
+      "matchPackagePatterns": ["docfx", "SourceLink", "TypedRest.Reactive", "NJsonSchema"],
       "automerge": true,
       "automergeType": "branch"
     },

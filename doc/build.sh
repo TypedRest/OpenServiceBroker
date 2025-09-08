@@ -9,6 +9,7 @@ else
     dotnet="../0install.sh run --version 9.0.. https://apps.0install.net/dotnet/sdk.xml"
 fi
 
-# Build docs
+echo "Build docs"
+rm -rf api/
 $dotnet tool restore
 $dotnet docfx --logLevel=warning --warningsAsErrors docfx.json

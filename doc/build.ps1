@@ -6,6 +6,9 @@ function Run-DotNet {
     if ($LASTEXITCODE -ne 0) {throw "Exit Code: $LASTEXITCODE"}
 }
 
+# Cleanup
+if (Test-Path api) { rm api -Recurse -Force }
+
 # Build docs
 Run-DotNet tool restore
 Run-DotNet docfx --logLevel=warning --warningsAsErrors docfx.json

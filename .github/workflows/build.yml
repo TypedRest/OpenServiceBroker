@@ -35,9 +35,24 @@ jobs:
           path: src/UnitTests/TestResults/*.trx
 
       # Release
+      - name: Get tag message
+        if: github.ref_type == 'tag'
+        id: tag_message
+        run: |
+          {
+            echo "message<<EOF"
+            git fetch -f origin tag ${{github.ref_name}}
+            git tag -l ${{github.ref_name}} --format="%(contents)"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
       - name: Create GitHub Release
         if: github.ref_type == 'tag'
         uses: softprops/action-gh-release@v2
+        with:
+          body: |
+            **[Client NuGet package](https://www.nuget.org/packages/https://www.nuget.org/packages/OpenServiceBroker.Client/${{steps.gitversion.outputs.nuGetVersion}})** | **[Server NuGet package](https://www.nuget.org/packages/https://www.nuget.org/packages/OpenServiceBroker.Server/${{steps.gitversion.outputs.nuGetVersion}})**
+            ## Changes
+            ${{steps.tag_message.outputs.message}}
       - name: Post-release commit
         if: github.ref_type == 'tag'
         run: |

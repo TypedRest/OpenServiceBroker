@@ -3,7 +3,7 @@
   <!-- Project properties -->
   <PropertyGroup>
     <AssemblyName>OpenServiceBroker.Client</AssemblyName>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net8.0;net9.0;net10.0</TargetFrameworks>
     <Summary>Client library for the Open Service Broker API</Summary>
     <Description>A client library for calling the Open Service Broker API. This specification allows developers, ISVs, and SaaS vendors a single, simple, and elegant way to deliver services to applications running within cloud native platforms such as Cloud Foundry, OpenShift, and Kubernetes.</Description>
     <PackageTags>OSB;Open Service Broker;Client</PackageTags>

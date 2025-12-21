@@ -1,30 +1,23 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace OpenServiceBroker;
 
 public abstract class FactsBase<TMock> : IDisposable
     where TMock : class
 {
-    private readonly TestServer _server;
-
     protected readonly Mock<TMock> Mock = new();
-
+    private readonly TestFactory _factory;
     protected readonly OpenServiceBrokerClient Client;
 
     protected FactsBase()
     {
-        _server = new TestServer(
-            new WebHostBuilder()
-               .ConfigureServices(x
-                    => x.AddScoped(_ => Mock.Object)
-                        .AddControllers()
-                        .AddOpenServiceBroker())
-               .Configure(x => x.UseRouting()
-                                .UseEndpoints(endpoints => endpoints.MapControllers())));
-        Client = new OpenServiceBrokerClient(_server.CreateClient(), new Uri("http://localhost"));
+        _factory = new(Mock);
+        Client = new(_factory.CreateClient(), new Uri("http://localhost"));
     }
 
     public virtual void Dispose()
@@ -35,7 +28,24 @@ public abstract class FactsBase<TMock> : IDisposable
         }
         finally
         {
-            _server.Dispose();
+            _factory.Dispose();
         }
+    }
+
+    private sealed class Stub;
+
+    private sealed class TestFactory(Mock<TMock> mock) : WebApplicationFactory<Stub>
+    {
+        protected override IHostBuilder CreateHostBuilder()
+            => Host.CreateDefaultBuilder()
+                   .ConfigureWebHostDefaults(webBuilder
+                        => webBuilder.UseTestServer()
+                                     .ConfigureServices(services
+                                          => services.AddScoped(_ => mock.Object)
+                                                     .AddControllers()
+                                                     .AddOpenServiceBroker())
+                                     .Configure(app
+                                          => app.UseRouting()
+                                                .UseEndpoints(endpoints => endpoints.MapControllers())));
     }
 }

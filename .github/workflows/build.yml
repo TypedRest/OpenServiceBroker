@@ -50,7 +50,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           body: |
-            **[Client NuGet package](https://www.nuget.org/packages/https://www.nuget.org/packages/OpenServiceBroker.Client/${{steps.gitversion.outputs.nuGetVersion}})** | **[Server NuGet package](https://www.nuget.org/packages/https://www.nuget.org/packages/OpenServiceBroker.Server/${{steps.gitversion.outputs.nuGetVersion}})**
+            **[Client NuGet package](https://www.nuget.org/packages/OpenServiceBroker.Client/${{steps.gitversion.outputs.nuGetVersion}})** | **[Server NuGet package](https://www.nuget.org/packages/OpenServiceBroker.Server/${{steps.gitversion.outputs.nuGetVersion}})**
             ## Changes
             ${{steps.tag_message.outputs.message}}
       - name: Post-release commit

@@ -1,0 +1,1329 @@
+{
+  "source_base_path": "/home/runner/work/OpenServiceBroker/OpenServiceBroker/doc",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.ApiVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.ApiVersion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.ApiVersion",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.AsyncOperation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.AsyncOperation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.AsyncOperation",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.IServiceBindingBase",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Bindings.IServiceBindingBase.yml\" sourcestartlinenumber=\"1\">Common base for <xref href=\"OpenServiceBroker.Bindings.IServiceBindingBlocking\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"OpenServiceBroker.Bindings.IServiceBindingDeferred\" data-throw-if-not-resolved=\"false\"></xref>; do not use directly!</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingBlocking.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingBlocking.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.IServiceBindingBlocking",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Bindings.IServiceBindingBlocking.yml\" sourcestartlinenumber=\"1\">Manages bindings for Service Instances with blocking operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingDeferred.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingDeferred.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.IServiceBindingDeferred",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Bindings.IServiceBindingDeferred.yml\" sourcestartlinenumber=\"1\">Manages bindings for Service Instances with potentially deferred (asynchronous) operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingDeferredEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingDeferredEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.IServiceBindingDeferredEndpoint",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Bindings.IServiceBindingDeferredEndpoint.yml\" sourcestartlinenumber=\"1\">Represents a Service Binding for a specific Service Instance with potentially deferred (asynchronous) operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.IServiceBindingEndpoint",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Bindings.IServiceBindingEndpoint.yml\" sourcestartlinenumber=\"1\">Represents a Service Binding for a specific Service Instance with blocking operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingEndpointBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.IServiceBindingEndpointBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.IServiceBindingEndpointBase",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Bindings.IServiceBindingEndpointBase.yml\" sourcestartlinenumber=\"1\">Common base for <xref href=\"OpenServiceBroker.Bindings.IServiceBindingEndpoint\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"OpenServiceBroker.Bindings.IServiceBindingDeferredEndpoint\" data-throw-if-not-resolved=\"false\"></xref>; do not use directly!</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBinding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBinding.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBinding",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingAsyncOperation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingAsyncOperation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBindingAsyncOperation",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBindingBase",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingBlockingEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingBlockingEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBindingBlockingEndpoint",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Bindings.ServiceBindingBlockingEndpoint.yml\" sourcestartlinenumber=\"1\">Represents a Service Binding for a specific Service Instance with blocking operations. If the Service Broker can only handle a request deferred (asynchronously) <xref href=\"OpenServiceBroker.Errors.AsyncRequiredException\" data-throw-if-not-resolved=\"false\"></xref> is thrown.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBindingContext",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Bindings.ServiceBindingContext.yml\" sourcestartlinenumber=\"1\">Identifies a specific Service Binding to apply an operation to.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingDeferredEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingDeferredEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBindingDeferredEndpoint",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Bindings.ServiceBindingDeferredEndpoint.yml\" sourcestartlinenumber=\"1\">Represents a Service Binding for a specific Service Instance with potentially deferred (asynchronous) operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingEndpointBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingEndpointBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBindingEndpointBase",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Bindings.ServiceBindingEndpointBase.yml\" sourcestartlinenumber=\"1\">A Service Binding endpoint.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingPollingEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingPollingEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBindingPollingEndpoint",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Bindings.ServiceBindingPollingEndpoint.yml\" sourcestartlinenumber=\"1\">Represents a Service Binding for a specific Service Instance. Uses potentially deferred (asynchronous) operations and automatically handles polling to make them appear blocking.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBindingRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingResource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingResource.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBindingResource",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingResourceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingResourceObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBindingResourceObject",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMount.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMount.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBindingVolumeMount",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMountDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMountDevice.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBindingVolumeMountDevice",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMountDeviceType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMountDeviceType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBindingVolumeMountDeviceType",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMountMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingVolumeMountMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBindingVolumeMountMode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingsController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.ServiceBindingsController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings.ServiceBindingsController",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Bindings.ServiceBindingsController.yml\" sourcestartlinenumber=\"1\">Exposes bindings for Service Instances.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Bindings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Bindings.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Bindings",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.BrokerControllerBase-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.BrokerControllerBase-2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.BrokerControllerBase<TBlocking, TDeferred>",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.BrokerControllerBase-2.yml\" sourcestartlinenumber=\"1\">Common base class for Open Service Broker API controllers.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.Catalog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.Catalog.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Catalogs.Catalog",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Catalogs.Catalog.yml\" sourcestartlinenumber=\"1\">A list of all services available on the Service Broker.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.CatalogController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.CatalogController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Catalogs.CatalogController",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Catalogs.CatalogController.yml\" sourcestartlinenumber=\"1\">Exposes a list of all services available on the Service Broker.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.DashboardClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.DashboardClient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Catalogs.DashboardClient",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Catalogs.DashboardClient.yml\" sourcestartlinenumber=\"1\">Contains the data necessary to activate the Dashboard SSO feature for this service.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.Features.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.Features.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Catalogs.Features",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Catalogs.Features.yml\" sourcestartlinenumber=\"1\">Permissions for services.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.ICatalogService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.ICatalogService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Catalogs.ICatalogService",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Catalogs.ICatalogService.yml\" sourcestartlinenumber=\"1\">Provides access to the catalog of services that the service broker offers.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.IETagProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.IETagProvider.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Catalogs.IETagProvider",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Catalogs.IETagProvider.yml\" sourcestartlinenumber=\"1\">Provides an ETag.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.ILastModifiedProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.ILastModifiedProvider.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Catalogs.ILastModifiedProvider",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Catalogs.ILastModifiedProvider.yml\" sourcestartlinenumber=\"1\">Provides a last modified timestamp.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.Plan.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.Plan.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Catalogs.Plan",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Catalogs.Plan.yml\" sourcestartlinenumber=\"1\">Describes a plan for a service available on the Service Broker.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.SchemaParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.SchemaParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Catalogs.SchemaParameters",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Catalogs.SchemaParameters.yml\" sourcestartlinenumber=\"1\">A schema definition for the input parameters.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.Schemas.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.Schemas.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Catalogs.Schemas",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Catalogs.Schemas.yml\" sourcestartlinenumber=\"1\">Schema definitions for Service Instances and bindings for a plan.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.Service.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.Service.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Catalogs.Service",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Catalogs.Service.yml\" sourcestartlinenumber=\"1\">Describes a service available on the Service Broker.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.ServiceBindingSchema.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.ServiceBindingSchema.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Catalogs.ServiceBindingSchema",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Catalogs.ServiceBindingSchema.yml\" sourcestartlinenumber=\"1\">The schema definitions for creating and updating a Service Instance.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.ServiceInstanceSchema.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.ServiceInstanceSchema.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Catalogs.ServiceInstanceSchema",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Catalogs.ServiceInstanceSchema.yml\" sourcestartlinenumber=\"1\">The schema definitions for creating and updating a Service Instance.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Catalogs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Catalogs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Catalogs",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Completable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Completable.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Completable",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.CompletableWithResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.CompletableWithResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.CompletableWithResult",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.ApiVersionNotSupportedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.ApiVersionNotSupportedException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Errors.ApiVersionNotSupportedException",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Errors.ApiVersionNotSupportedException.yml\" sourcestartlinenumber=\"1\">The API version request by the client is not supported by server.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.AsyncRequiredException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.AsyncRequiredException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Errors.AsyncRequiredException",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Errors.AsyncRequiredException.yml\" sourcestartlinenumber=\"1\">This request requires client support for deferred (asynchronous) service operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.BadRequestException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.BadRequestException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Errors.BadRequestException",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Errors.BadRequestException.yml\" sourcestartlinenumber=\"1\">The The request is malformed or missing mandatory data..</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.BrokerException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.BrokerException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Errors.BrokerException",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Errors.BrokerException.yml\" sourcestartlinenumber=\"1\">The request to the Service Broker failed.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.ConcurrencyException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.ConcurrencyException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Errors.ConcurrencyException",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Errors.ConcurrencyException.yml\" sourcestartlinenumber=\"1\">The Service Broker does not support concurrent requests that mutate the same resource.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.ConflictException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.ConflictException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Errors.ConflictException",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Errors.ConflictException.yml\" sourcestartlinenumber=\"1\">An instance with the same id already exists but with different attributes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.Error.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.Error.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Errors.Error",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Errors.Error.yml\" sourcestartlinenumber=\"1\">An error response object.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.GoneException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.GoneException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Errors.GoneException",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Errors.GoneException.yml\" sourcestartlinenumber=\"1\">The specified resource does not exist (anymore).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.MaintenanceInfoConflictException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.MaintenanceInfoConflictException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Errors.MaintenanceInfoConflictException",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Errors.MaintenanceInfoConflictException.yml\" sourcestartlinenumber=\"1\">The <xref href=\"OpenServiceBroker.MaintenanceInfo.Version\" data-throw-if-not-resolved=\"false\"></xref> field provided in the request does not match the<xref href=\"OpenServiceBroker.MaintenanceInfo.Version\" data-throw-if-not-resolved=\"false\"></xref> field provided in the Service Broker's Catalog.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.NotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.NotFoundException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Errors.NotFoundException",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Errors.NotFoundException.yml\" sourcestartlinenumber=\"1\">The resource does not exist or a provisioning operation is still in progress.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.RequiresAppException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.RequiresAppException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Errors.RequiresAppException",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Errors.RequiresAppException.yml\" sourcestartlinenumber=\"1\">The request body is missing the <xref href=\"OpenServiceBroker.Bindings.ServiceBindingResourceObject.AppGuid\" data-throw-if-not-resolved=\"false\"></xref> field.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.StatusBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.StatusBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Errors.StatusBase",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Errors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Errors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Errors",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.ICompletable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.ICompletable.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.ICompletable",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.ICompletable.yml\" sourcestartlinenumber=\"1\">An async/deferred operation that can also be completed synchronously.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.ICompletableWithResult-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.ICompletableWithResult-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.ICompletableWithResult<T>",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.ICompletableWithResult-1.yml\" sourcestartlinenumber=\"1\">An async/deferred operation that can also be completed and provide a result synchronously.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.IOpenServiceBrokerClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.IOpenServiceBrokerClient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.IOpenServiceBrokerClient",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.IOpenServiceBrokerClient.yml\" sourcestartlinenumber=\"1\">A type-safe client for the Open Service Broker API.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.IServicePlanReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.IServicePlanReference.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.IServicePlanReference",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.IUnchangedFlag.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.IUnchangedFlag.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.IUnchangedFlag",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.IUnchangedFlag.yml\" sourcestartlinenumber=\"1\">An operation result that can indicate that nothing was changed.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.IServiceInstanceBase",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Instances.IServiceInstanceBase.yml\" sourcestartlinenumber=\"1\">Common base for <xref href=\"OpenServiceBroker.Instances.IServiceInstanceBlocking\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"OpenServiceBroker.Instances.IServiceInstanceDeferred\" data-throw-if-not-resolved=\"false\"></xref>; do not use directly!</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceBlocking.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceBlocking.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.IServiceInstanceBlocking",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Instances.IServiceInstanceBlocking.yml\" sourcestartlinenumber=\"1\">Manages Service Instances with blocking operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceDeferred.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceDeferred.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.IServiceInstanceDeferred",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Instances.IServiceInstanceDeferred.yml\" sourcestartlinenumber=\"1\">Manages Service Instances with potentially deferred (asynchronous) operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.yml\" sourcestartlinenumber=\"1\">Represents a specific Service Instance with potentially deferred (asynchronous) operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.IServiceInstanceEndpoint",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Instances.IServiceInstanceEndpoint.yml\" sourcestartlinenumber=\"1\">Represents a specific Service Instance with blocking operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceEndpointBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.IServiceInstanceEndpointBase-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.IServiceInstanceEndpointBase<TServiceBindingEndpoint>",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Instances.IServiceInstanceEndpointBase-1.yml\" sourcestartlinenumber=\"1\">Common base for <xref href=\"OpenServiceBroker.Instances.IServiceInstanceEndpoint\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint\" data-throw-if-not-resolved=\"false\"></xref>; do not use directly!</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceAsyncOperation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceAsyncOperation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.ServiceInstanceAsyncOperation",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.ServiceInstanceBase",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceBlockingEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceBlockingEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.ServiceInstanceBlockingEndpoint",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Instances.ServiceInstanceBlockingEndpoint.yml\" sourcestartlinenumber=\"1\">Represents a specific Service Instance with blocking operations. If the Service Broker can only handle a request deferred (asynchronously) <xref href=\"OpenServiceBroker.Errors.AsyncRequiredException\" data-throw-if-not-resolved=\"false\"></xref> is thrown.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.ServiceInstanceContext",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Instances.ServiceInstanceContext.yml\" sourcestartlinenumber=\"1\">Identifies a specific Service Instance to apply an operation to.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceDeferredEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceDeferredEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.ServiceInstanceDeferredEndpoint",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Instances.ServiceInstanceDeferredEndpoint.yml\" sourcestartlinenumber=\"1\">Represents a specific Service Instance with potentially deferred (asynchronous) operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceEndpointBase-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceEndpointBase-2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.ServiceInstanceEndpointBase<TServiceBindingEndpointInterface, TServiceBindingEndpoint>",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Instances.ServiceInstanceEndpointBase-2.yml\" sourcestartlinenumber=\"1\">A Service Instance endpoint.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceMetadata.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceMetadata.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.ServiceInstanceMetadata",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Instances.ServiceInstanceMetadata.yml\" sourcestartlinenumber=\"1\">Metadata for a Service Instance.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstancePollingEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstancePollingEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.ServiceInstancePollingEndpoint",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Instances.ServiceInstancePollingEndpoint.yml\" sourcestartlinenumber=\"1\">Represents a specific Service Instance. Uses potentially deferred (asynchronous) operations and automatically handles polling to make them appear blocking.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstancePreviousValues.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstancePreviousValues.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.ServiceInstancePreviousValues",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Instances.ServiceInstancePreviousValues.yml\" sourcestartlinenumber=\"1\">Information about a Service Instance prior to the update.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceProvision.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceProvision.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.ServiceInstanceProvision",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceProvisionRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceProvisionRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.ServiceInstanceProvisionRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceResource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceResource.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.ServiceInstanceResource",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceUpdateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstanceUpdateRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.ServiceInstanceUpdateRequest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.ServiceInstancesController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.ServiceInstancesController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances.ServiceInstancesController",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.Instances.ServiceInstancesController.yml\" sourcestartlinenumber=\"1\">Exposes Service Instances.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.Instances.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.Instances.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.Instances",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.LastOperationEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.LastOperationEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.LastOperationEndpoint",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.LastOperationEndpoint.yml\" sourcestartlinenumber=\"1\">An endpoint to obtain the state of a deferred (asynchronous) operation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.LastOperationResource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.LastOperationResource.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.LastOperationResource",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.LastOperationResource.yml\" sourcestartlinenumber=\"1\">Represents the state of the last requested deferred operation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.LastOperationResourceState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.LastOperationResourceState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.LastOperationResourceState",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.MaintenanceInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.MaintenanceInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.MaintenanceInfo",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.MaintenanceInfo.yml\" sourcestartlinenumber=\"1\">This field can be used to ensure that the end-user of a Platform is provisioning what they are expecting since maintenance information can be used to describe important information (such as the version of the operating system the Service Instance will run on).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.MvcBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.MvcBuilderExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.MvcBuilderExtensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.OpenServiceBrokerClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.OpenServiceBrokerClient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.OpenServiceBrokerClient",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.OpenServiceBrokerClient.yml\" sourcestartlinenumber=\"1\">A type-safe client for the Open Service Broker API.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.OpenServiceBrokerErrorHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.OpenServiceBrokerErrorHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.OpenServiceBrokerErrorHandler",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.OpenServiceBrokerErrorHandler.yml\" sourcestartlinenumber=\"1\">Handles Open Service Broker error responses.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.OriginatingIdentity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.OriginatingIdentity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.OriginatingIdentity",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.OriginatingIdentity.yml\" sourcestartlinenumber=\"1\">Describes the identity of the user that initiated a request from the Platform.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.ServiceBrokerEndpointBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.ServiceBrokerEndpointBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker.ServiceBrokerEndpointBase",
+      "Summary": "<p sourcefile=\"api/OpenServiceBroker.ServiceBrokerEndpointBase.yml\" sourcestartlinenumber=\"1\">Common base class for Open Service Broker endpoints.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenServiceBroker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenServiceBroker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenServiceBroker",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

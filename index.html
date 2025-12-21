@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Home | OpenServiceBroker for .NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Home | OpenServiceBroker for .NET ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/doc/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="open-service-broker-api-for-net">Open Service Broker API for .NET</h1>
+
+<p>This project provides both a server and a client .NET library for the <a href="https://www.openservicebrokerapi.org/">Open Service Broker API</a> specification. This specification allows developers, ISVs, and SaaS vendors a single, simple, and elegant way to deliver services to applications running within cloud native platforms such as Cloud Foundry, OpenShift, and Kubernetes.</p>
+<p>The Server Library implements the API for you using ASP.NET Core. You simply need to provide implementations for a few interfaces, shielded from the HTTP-related details.</p>
+<p>The Client Library allows you to call Service Brokers that implement the API using idiomatic C# interfaces and type-safe DTOs.</p>
+<h2 id="server-library">Server Library</h2>
+<p>Set up a regular ASP.NET Core 8.0+ project and add the NuGet package <a href="https://www.nuget.org/packages/OpenServiceBroker.Server/">OpenServiceBroker.Server</a>. Then implement the following interfaces:</p>
+<ul>
+<li><a class="xref" href="api/OpenServiceBroker.Catalogs.ICatalogService.html">ICatalogService</a> (optionally also <a class="xref" href="api/OpenServiceBroker.Catalogs.IETagProvider.html">IETagProvider</a> and/or <a class="xref" href="api/OpenServiceBroker.Catalogs.ILastModifiedProvider.html">ILastModifiedProvider</a> on the same class)</li>
+<li>either <a class="xref" href="api/OpenServiceBroker.Instances.IServiceInstanceBlocking.html">IServiceInstanceBlocking</a> or <a class="xref" href="api/OpenServiceBroker.Instances.IServiceInstanceDeferred.html">IServiceInstanceDeferred</a> or both</li>
+<li>either <a class="xref" href="api/OpenServiceBroker.Bindings.IServiceBindingBlocking.html">IServiceBindingBlocking</a> or <a class="xref" href="api/OpenServiceBroker.Bindings.IServiceBindingDeferred.html">IServiceBindingDeferred</a> or both</li>
+</ul>
+<p>Register your implementations in the <code>IServiceCollection</code> for dependency injection. For example:</p>
+<pre><code class="lang-csharp">services.AddTransient&lt;ICatalogService, MyCatalogService&gt;()
+        .AddTransient&lt;IServiceInstanceBlocking, MyServiceInstanceBlocking&gt;()
+        .AddTransient&lt;IServiceBindingBlocking, MyServiceBindingBlocking&gt;();
+</code></pre>
+<p>Then enable MVC Controllers using <code>.AddMvc()</code> or <code>.AddControllers()</code> followed by calling the <a class="xref" href="api/OpenServiceBroker.MvcBuilderExtensions.html##OpenServiceBroker_MvcBuilderExtensions_AddOpenServiceBroker_Microsoft_Extensions_DependencyInjection_IMvcBuilder_">.AddOpenServiceBroker()</a> extension method:</p>
+<pre><code class="lang-csharp">services.AddControllers()
+        .AddOpenServiceBroker();
+</code></pre>
+<p>You can use the <strong><a href="https://github.com/TypedRest/OpenServiceBroker/tree/master/template">project template</a></strong> to quickly set up a pre-configured ASP.NET Core 8.0 project with <code>OpenServiceBroker.Server</code>.</p>
+<h3 id="versioning">Versioning</h3>
+<p>The Server Library inspects the <code>X-Broker-API-Version</code> header for all requests (as defined in the specification). Currently it accepts all versions from <code>2.0</code> to <code>2.16</code>.</p>
+<h2 id="client-library">Client Library</h2>
+<p>Add the NuGet package <a href="https://www.nuget.org/packages/OpenServiceBroker.Client/">OpenServiceBroker.Client</a> to your project. You can then create an instance of the client like this:</p>
+<pre><code class="lang-csharp">var client = new OpenServiceBrokerClient(new Uri(&quot;http://example.com/&quot;));
+</code></pre>
+<h3 id="asynchronous-operations">Asynchronous Operations</h3>
+<p>All operations that result in HTTP request are <code>async</code>. Non-successful HTTP status codes are mapped to domain-specific exception types (<a class="xref" href="api/OpenServiceBroker.Errors.BrokerException.html">BrokerException</a> and derived). Refer to the libraries XML documentation for details on which exceptions to expect on which invocations.</p>
+<p>The Open Service Broker API specification allows for both synchronous/blocking and asynchronous/incomplete/deferred operations. To avoid confusion with the C# language concept of <code>async</code> this library uses the terms &quot;blocking&quot; and &quot;deferred&quot; to describe these API features.</p>
+<p>Instances of <a class="xref" href="api/OpenServiceBroker.OpenServiceBrokerClient.html">OpenServiceBrokerClient</a> have three properties that expose the same functionality in different ways:</p>
+<ul>
+<li><a class="xref" href="api/OpenServiceBroker.OpenServiceBrokerClient.html#OpenServiceBroker_OpenServiceBrokerClient_ServiceInstancesBlocking">ServiceInstancesBlocking</a> allows you to request blocking responses from the server. However, you may encounter <a class="xref" href="api/OpenServiceBroker.Errors.AsyncRequiredException.html">AsyncRequiredException</a> if the server does not support blocking operations.</li>
+<li><a class="xref" href="api/OpenServiceBroker.OpenServiceBrokerClient.html#OpenServiceBroker_OpenServiceBrokerClient_ServiceInstancesDeferred">ServiceInstancesDeferred</a> allows you to request deferred responses from the server. However, you have to manually handle waiting/polling for the completion of operations.</li>
+<li><a class="xref" href="api/OpenServiceBroker.OpenServiceBrokerClient.html#OpenServiceBroker_OpenServiceBrokerClient_ServiceInstancesPolling">ServiceInstancesPolling</a> combines the advantages of both. It requests deferred responses from the server and transparently handles the waiting/polling for you. It is the recommended option for most use-cases.</li>
+</ul>
+<h3 id="samples">Samples</h3>
+<p>Read the catalog:</p>
+<pre><code class="lang-csharp">var result = await client.Catalog.ReadAsync();
+</code></pre>
+<p>Provision a service instance:</p>
+<pre><code class="lang-csharp">var result = await client.ServiceInstancesPolling[&quot;123&quot;].ProvisionAsync(new ServiceInstanceProvisionRequest
+{
+    ServiceId = &quot;abc&quot;,
+    PlanId = &quot;xyz&quot;,
+    Context = new JObject
+    {
+        {&quot;platform&quot;, &quot;myplatform&quot;}
+    },
+    Parameters = new JObject
+    {
+        {&quot;some_option&quot;, &quot;some value&quot;}
+    }
+});
+</code></pre>
+<p>Fetch a service instance:</p>
+<pre><code class="lang-csharp">var result = await client.ServiceInstancesPolling[&quot;123&quot;].FetchAsync();
+</code></pre>
+<p>Update a service instance:</p>
+<pre><code class="lang-csharp">var result = await client.ServiceInstancesPolling[&quot;123&quot;].UpdateAsync(new ServiceInstanceUpdateRequest
+{
+    ServiceId = &quot;abc&quot;,
+    PlanId = &quot;xyz&quot;,
+    Context = new JObject
+    {
+        {&quot;platform&quot;, &quot;myplatform&quot;}
+    },
+    Parameters = new JObject
+    {
+        {&quot;some_option&quot;, &quot;some value&quot;}
+    }
+});
+</code></pre>
+<p>Deprovision a service instance:</p>
+<pre><code class="lang-csharp">await client.ServiceInstancesPolling[&quot;123&quot;].DeprovisionAsync(serviceId: &quot;abc&quot;, planId: &quot;xyz&quot;);
+</code></pre>
+<p>Create a service binding:</p>
+<pre><code class="lang-csharp">var result = await client.ServiceInstancesPolling[&quot;123&quot;].ServiceBindings[&quot;456&quot;].ProvisionAsync(new ServiceBindingRequest
+{
+    ServiceId = &quot;abc&quot;,
+    PlanId = &quot;xyz&quot;,
+    BindResource = new ServiceBindingResourceObject
+    {
+        AppGuid = &quot;e490c9df-6627-4699-8db8-55edc2a88e58&quot;
+    },
+    Context = new JObject
+    {
+        {&quot;platform&quot;, &quot;myplatform&quot;}
+    },
+    Parameters = new JObject
+    {
+        {&quot;some_option&quot;, &quot;some value&quot;}
+    }
+});
+</code></pre>
+<p>Fetch a service binding:</p>
+<pre><code class="lang-csharp">var result = await client.ServiceInstancesPolling[&quot;123&quot;].ServiceBindings[&quot;456&quot;].FetchAsync();
+</code></pre>
+<p>Delete a service binding:</p>
+<pre><code class="lang-csharp">await client.ServiceInstancesPolling[&quot;123&quot;].ServiceBindings[&quot;456&quot;].UnbindAsync(serviceId: &quot;abc&quot;, planId: &quot;xyz&quot;);
+</code></pre>
+<h3 id="versioning-1">Versioning</h3>
+<p>The Client Library specifies the API version it expects by setting the <code>X-Broker-API-Version</code> header for all requests (as defined in the specification).</p>
+<p>Currently the Client Library supports the <code>2.16</code> feature set but defaults to setting the version header to <code>2.13</code> for greater compatibility with older brokers. If the broker you are calling expects a different version and you are sure your request is compliant with that version of the specification you can override this:</p>
+<pre><code class="lang-csharp">client.SetApiVersion(new ApiVersion(2, 16));
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/doc/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright Bastian Eicher
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

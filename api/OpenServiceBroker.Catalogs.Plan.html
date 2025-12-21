@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Plan | OpenServiceBroker for .NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Plan | OpenServiceBroker for .NET ">
+      
+      <meta name="description" content="Describes a plan for a service available on the Service Broker.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TypedRest/OpenServiceBroker/new/0.7.0/apiSpec/new?filename=OpenServiceBroker_Catalogs_Plan.md&amp;value=---%0Auid%3A%20OpenServiceBroker.Catalogs.Plan%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="OpenServiceBroker.Catalogs.Plan">
+
+
+
+  <h1 id="OpenServiceBroker_Catalogs_Plan" data-uid="OpenServiceBroker.Catalogs.Plan" class="text-break">
+Class Plan  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Model/Catalogs/Plan.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="OpenServiceBroker.html">OpenServiceBroker</a>.<a class="xref" href="OpenServiceBroker.Catalogs.html">Catalogs</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>OpenServiceBroker.Model.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Describes a plan for a service available on the Service Broker.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Plan : IEquatable&lt;Plan&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Plan</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="OpenServiceBroker.Catalogs.Plan.html">Plan</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="OpenServiceBroker.CompletableWithResult.html#OpenServiceBroker_CompletableWithResult_Complete__2___0___1_">CompletableWithResult.Complete&lt;TCompletable, TResult&gt;(TCompletable, TResult?)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="OpenServiceBroker_Catalogs_Plan_Bindable_" data-uid="OpenServiceBroker.Catalogs.Plan.Bindable*"></a>
+
+  <h3 id="OpenServiceBroker_Catalogs_Plan_Bindable" data-uid="OpenServiceBroker.Catalogs.Plan.Bindable">
+  Bindable
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Model/Catalogs/Plan.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Specifies whether Service Instances of the Service Plan can be bound to applications. This field is OPTIONAL. If specified, this takes precedence over the bindable attribute of the service. If not specified, the default is derived from the service.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;bindable&quot;, NullValueHandling = NullValueHandling.Ignore)]
+public bool? Bindable { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="OpenServiceBroker_Catalogs_Plan_Description_" data-uid="OpenServiceBroker.Catalogs.Plan.Description*"></a>
+
+  <h3 id="OpenServiceBroker_Catalogs_Plan_Description" data-uid="OpenServiceBroker.Catalogs.Plan.Description">
+  Description
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Model/Catalogs/Plan.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A short description of the plan. MUST be a non-empty string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;description&quot;, Required = Required.Always)]
+public string Description { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="OpenServiceBroker_Catalogs_Plan_Free_" data-uid="OpenServiceBroker.Catalogs.Plan.Free*"></a>
+
+  <h3 id="OpenServiceBroker_Catalogs_Plan_Free" data-uid="OpenServiceBroker.Catalogs.Plan.Free">
+  Free
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Model/Catalogs/Plan.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>When false, Service Instances of this plan have a cost. The default is true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;free&quot;)]
+public bool Free { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="OpenServiceBroker_Catalogs_Plan_Id_" data-uid="OpenServiceBroker.Catalogs.Plan.Id*"></a>
+
+  <h3 id="OpenServiceBroker_Catalogs_Plan_Id" data-uid="OpenServiceBroker.Catalogs.Plan.Id">
+  Id
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Model/Catalogs/Plan.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>An identifier used to correlate this plan in future requests to the Service Broker. This MUST be globally unique such that Platforms (and their users) MUST be able to assume that seeing the same value (no matter what Service Broker uses it) will always refer to this plan and for the same service. MUST be a non-empty string. Using a GUID is RECOMMENDED.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;id&quot;, Required = Required.Always)]
+public string Id { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="OpenServiceBroker_Catalogs_Plan_MaintenanceInfo_" data-uid="OpenServiceBroker.Catalogs.Plan.MaintenanceInfo*"></a>
+
+  <h3 id="OpenServiceBroker_Catalogs_Plan_MaintenanceInfo" data-uid="OpenServiceBroker.Catalogs.Plan.MaintenanceInfo">
+  MaintenanceInfo
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Model/Catalogs/Plan.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Maintenance information for a Service Instance which is provisioned using the Service Plan.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;maintenance_info&quot;, NullValueHandling = NullValueHandling.Ignore)]
+public MaintenanceInfo MaintenanceInfo { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="OpenServiceBroker.MaintenanceInfo.html">MaintenanceInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="OpenServiceBroker_Catalogs_Plan_MaximumPollingDuration_" data-uid="OpenServiceBroker.Catalogs.Plan.MaximumPollingDuration*"></a>
+
+  <h3 id="OpenServiceBroker_Catalogs_Plan_MaximumPollingDuration" data-uid="OpenServiceBroker.Catalogs.Plan.MaximumPollingDuration">
+  MaximumPollingDuration
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Model/Catalogs/Plan.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A duration, in seconds, that the Platform SHOULD use as the Service's maximum polling duration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;maximum_polling_duration&quot;, NullValueHandling = NullValueHandling.Ignore)]
+public int? MaximumPollingDuration { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="OpenServiceBroker_Catalogs_Plan_Metadata_" data-uid="OpenServiceBroker.Catalogs.Plan.Metadata*"></a>
+
+  <h3 id="OpenServiceBroker_Catalogs_Plan_Metadata" data-uid="OpenServiceBroker.Catalogs.Plan.Metadata">
+  Metadata
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Model/Catalogs/Plan.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>An opaque object of metadata for a Service Plan. It is expected that Platforms will treat this as a blob. Note that there are conventions in existing Service Brokers and Platforms for fields that aid in the display of catalog data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;metadata&quot;)]
+public JObject Metadata { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">JObject</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="OpenServiceBroker_Catalogs_Plan_Name_" data-uid="OpenServiceBroker.Catalogs.Plan.Name*"></a>
+
+  <h3 id="OpenServiceBroker_Catalogs_Plan_Name" data-uid="OpenServiceBroker.Catalogs.Plan.Name">
+  Name
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Model/Catalogs/Plan.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The CLI-friendly name of the plan. MUST only contain alphanumeric characters, periods, and hyphens (no spaces). MUST be unique within the service. MUST be a non-empty string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;name&quot;, Required = Required.Always)]
+public string Name { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="OpenServiceBroker_Catalogs_Plan_PlanUpdateable_" data-uid="OpenServiceBroker.Catalogs.Plan.PlanUpdateable*"></a>
+
+  <h3 id="OpenServiceBroker_Catalogs_Plan_PlanUpdateable" data-uid="OpenServiceBroker.Catalogs.Plan.PlanUpdateable">
+  PlanUpdateable
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Model/Catalogs/Plan.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether the Plan supports upgrade/downgrade/sidegrade to another version. This field is OPTIONAL. If specified, this takes precedence over <a class="xref" href="OpenServiceBroker.Catalogs.Service.html#OpenServiceBroker_Catalogs_Service_PlanUpdateable">PlanUpdateable</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;plan_updateable&quot;, NullValueHandling = NullValueHandling.Ignore)]
+public bool? PlanUpdateable { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="OpenServiceBroker_Catalogs_Plan_Schemas_" data-uid="OpenServiceBroker.Catalogs.Plan.Schemas*"></a>
+
+  <h3 id="OpenServiceBroker_Catalogs_Plan_Schemas" data-uid="OpenServiceBroker.Catalogs.Plan.Schemas">
+  Schemas
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Model/Catalogs/Plan.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Schema definitions for Service Instances and bindings for the plan.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;schemas&quot;)]
+public Schemas Schemas { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="OpenServiceBroker.Catalogs.Schemas.html">Schemas</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="OpenServiceBroker_Catalogs_Plan_Equals_" data-uid="OpenServiceBroker.Catalogs.Plan.Equals*"></a>
+
+  <h3 id="OpenServiceBroker_Catalogs_Plan_Equals_OpenServiceBroker_Catalogs_Plan_" data-uid="OpenServiceBroker.Catalogs.Plan.Equals(OpenServiceBroker.Catalogs.Plan)">
+  Equals(Plan)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Model/Catalogs/Plan.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(Plan other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="OpenServiceBroker.Catalogs.Plan.html">Plan</a></dt>
+    <dd><p>An object to compare with this object.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="OpenServiceBroker_Catalogs_Plan_Equals_" data-uid="OpenServiceBroker.Catalogs.Plan.Equals*"></a>
+
+  <h3 id="OpenServiceBroker_Catalogs_Plan_Equals_System_Object_" data-uid="OpenServiceBroker.Catalogs.Plan.Equals(System.Object)">
+  Equals(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Model/Catalogs/Plan.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The object to compare with the current object.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the specified object  is equal to the current object; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="OpenServiceBroker_Catalogs_Plan_GetHashCode_" data-uid="OpenServiceBroker.Catalogs.Plan.GetHashCode*"></a>
+
+  <h3 id="OpenServiceBroker_Catalogs_Plan_GetHashCode" data-uid="OpenServiceBroker.Catalogs.Plan.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Model/Catalogs/Plan.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Serves as the default hash function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>A hash code for the current object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Model/Catalogs/Plan.cs/#L10" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright Bastian Eicher
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

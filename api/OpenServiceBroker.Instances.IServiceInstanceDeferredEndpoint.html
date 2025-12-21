@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IServiceInstanceDeferredEndpoint | OpenServiceBroker for .NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IServiceInstanceDeferredEndpoint | OpenServiceBroker for .NET ">
+      
+      <meta name="description" content="Represents a specific Service Instance with potentially deferred (asynchronous) operations.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TypedRest/OpenServiceBroker/new/0.7.0/apiSpec/new?filename=OpenServiceBroker_Instances_IServiceInstanceDeferredEndpoint.md&amp;value=---%0Auid%3A%20OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint">
+
+
+
+  <h1 id="OpenServiceBroker_Instances_IServiceInstanceDeferredEndpoint" data-uid="OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint" class="text-break">
+Interface IServiceInstanceDeferredEndpoint  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Client/Instances/IServiceInstanceDeferredEndpoint.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="OpenServiceBroker.html">OpenServiceBroker</a>.<a class="xref" href="OpenServiceBroker.Instances.html">Instances</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>OpenServiceBroker.Client.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents a specific Service Instance with potentially deferred (asynchronous) operations.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IServiceInstanceDeferredEndpoint : IServiceInstanceEndpointBase&lt;IServiceBindingDeferredEndpoint&gt;, IEndpoint</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="OpenServiceBroker.Instances.IServiceInstanceEndpointBase-1.html#OpenServiceBroker_Instances_IServiceInstanceEndpointBase_1_FetchAsync">IServiceInstanceEndpointBase&lt;IServiceBindingDeferredEndpoint&gt;.FetchAsync()</a>
+    </div>
+    <div>
+      <a class="xref" href="OpenServiceBroker.Instances.IServiceInstanceEndpointBase-1.html#OpenServiceBroker_Instances_IServiceInstanceEndpointBase_1_ServiceBindings">IServiceInstanceEndpointBase&lt;IServiceBindingDeferredEndpoint&gt;.ServiceBindings</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">IEndpoint.GetLinks(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">IEndpoint.Link(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">IEndpoint.LinkTemplate(string, IDictionary&lt;string, object&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">IEndpoint.LinkTemplate(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://dotnet.typedrest.net/api/TypedRest.Endpoints.IEndpoint.html#TypedRest_Endpoints_IEndpoint_Uri">IEndpoint.Uri</a>
+    </div>
+    <div>
+      <a class="xref" href="https://dotnet.typedrest.net/api/TypedRest.Endpoints.IEndpoint.html#TypedRest_Endpoints_IEndpoint_HttpClient">IEndpoint.HttpClient</a>
+    </div>
+    <div>
+      <a class="xref" href="https://dotnet.typedrest.net/api/TypedRest.Endpoints.IEndpoint.html#TypedRest_Endpoints_IEndpoint_Serializers">IEndpoint.Serializers</a>
+    </div>
+    <div>
+      <a class="xref" href="https://dotnet.typedrest.net/api/TypedRest.Endpoints.IEndpoint.html#TypedRest_Endpoints_IEndpoint_ErrorHandler">IEndpoint.ErrorHandler</a>
+    </div>
+    <div>
+      <a class="xref" href="https://dotnet.typedrest.net/api/TypedRest.Endpoints.IEndpoint.html#TypedRest_Endpoints_IEndpoint_LinkExtractor">IEndpoint.LinkExtractor</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="OpenServiceBroker.CompletableWithResult.html#OpenServiceBroker_CompletableWithResult_Complete__2___0___1_">CompletableWithResult.Complete&lt;TCompletable, TResult&gt;(TCompletable, TResult?)</a>
+  </div>
+  </dd></dl>
+
+
+
+  <h2 id="OpenServiceBroker_Instances_IServiceInstanceDeferredEndpoint_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>What a Service Instance represents can vary by service. Examples include a single database on a multi-tenant server, a dedicated cluster, or an account on a web application.</p>
+</div>
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="OpenServiceBroker_Instances_IServiceInstanceDeferredEndpoint_DeprovisionAsync_" data-uid="OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.DeprovisionAsync*"></a>
+
+  <h3 id="OpenServiceBroker_Instances_IServiceInstanceDeferredEndpoint_DeprovisionAsync_System_String_System_String_" data-uid="OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.DeprovisionAsync(System.String,System.String)">
+  DeprovisionAsync(string?, string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Client/Instances/IServiceInstanceDeferredEndpoint.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deprovisions/deletes the Service Instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;AsyncOperation&gt; DeprovisionAsync(string? serviceId = null, string? planId = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>serviceId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The id of the service associated with the instance being deleted.</p>
+</dd>
+    <dt><code>planId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The id of the plan associated with the instance being deleted.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="OpenServiceBroker.AsyncOperation.html">AsyncOperation</a>&gt;</dt>
+    <dd><p>A potentially deferred (asynchronous) operation. If <a class="xref" href="OpenServiceBroker.AsyncOperation.html#OpenServiceBroker_AsyncOperation_Completed">Completed</a> is false, start polling <a class="xref" href="OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.html#OpenServiceBroker_Instances_IServiceInstanceDeferredEndpoint_LastOperation_System_String_System_String_System_String_">LastOperation(string?, string?, string?)</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="OpenServiceBroker.Errors.GoneException.html">GoneException</a></dt>
+    <dd><p>The instance does not exist (anymore).</p>
+</dd>
+  </dl>
+
+
+
+  <a id="OpenServiceBroker_Instances_IServiceInstanceDeferredEndpoint_LastOperation_" data-uid="OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.LastOperation*"></a>
+
+  <h3 id="OpenServiceBroker_Instances_IServiceInstanceDeferredEndpoint_LastOperation_System_String_System_String_System_String_" data-uid="OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.LastOperation(System.String,System.String,System.String)">
+  LastOperation(string?, string?, string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Client/Instances/IServiceInstanceDeferredEndpoint.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Provides an endpoint to obtain the state of the last requested deferred (asynchronous) operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IPollingEndpoint&lt;LastOperationResource&gt; LastOperation(string? serviceId = null, string? planId = null, string? operation = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>serviceId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>If present, it MUST be the ID of the service being used.</p>
+</dd>
+    <dt><code>planId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>If present, it MUST be the ID of the plan for the Service Instance. If this endpoint is being polled as a result of changing the plan through a Service Instance Update, the ID of the plan prior to the update MUST be used.</p>
+</dd>
+    <dt><code>operation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A Service Broker-provided identifier for the operation. When a value for operation is included with deferred (asynchronous) responses for Provision, Update, and Deprovision requests, the Platform MUST provide the same value using this query parameter. If present, MUST be a non-empty string.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://dotnet.typedrest.net/api/TypedRest.Endpoints.Reactive.IPollingEndpoint-1.html">IPollingEndpoint</a>&lt;<a class="xref" href="OpenServiceBroker.LastOperationResource.html">LastOperationResource</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="OpenServiceBroker_Instances_IServiceInstanceDeferredEndpoint_ProvisionAsync_" data-uid="OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.ProvisionAsync*"></a>
+
+  <h3 id="OpenServiceBroker_Instances_IServiceInstanceDeferredEndpoint_ProvisionAsync_OpenServiceBroker_Instances_ServiceInstanceProvisionRequest_" data-uid="OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.ProvisionAsync(OpenServiceBroker.Instances.ServiceInstanceProvisionRequest)">
+  ProvisionAsync(ServiceInstanceProvisionRequest)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Client/Instances/IServiceInstanceDeferredEndpoint.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Provisions the Service Instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ServiceInstanceAsyncOperation&gt; ProvisionAsync(ServiceInstanceProvisionRequest request)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="OpenServiceBroker.Instances.ServiceInstanceProvisionRequest.html">ServiceInstanceProvisionRequest</a></dt>
+    <dd><p>Parameters for the requested Service Instance provision.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="OpenServiceBroker.Instances.ServiceInstanceAsyncOperation.html">ServiceInstanceAsyncOperation</a>&gt;</dt>
+    <dd><p>A potentially deferred (asynchronous) operation. If <a class="xref" href="OpenServiceBroker.AsyncOperation.html#OpenServiceBroker_AsyncOperation_Completed">Completed</a> is false, start polling <a class="xref" href="OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.html#OpenServiceBroker_Instances_IServiceInstanceDeferredEndpoint_LastOperation_System_String_System_String_System_String_">LastOperation(string?, string?, string?)</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="OpenServiceBroker.Errors.ConflictException.html">ConflictException</a></dt>
+    <dd><p>An instance with the same id already exists but with different attributes.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="OpenServiceBroker_Instances_IServiceInstanceDeferredEndpoint_UpdateAsync_" data-uid="OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.UpdateAsync*"></a>
+
+  <h3 id="OpenServiceBroker_Instances_IServiceInstanceDeferredEndpoint_UpdateAsync_OpenServiceBroker_Instances_ServiceInstanceUpdateRequest_" data-uid="OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.UpdateAsync(OpenServiceBroker.Instances.ServiceInstanceUpdateRequest)">
+  UpdateAsync(ServiceInstanceUpdateRequest)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Client/Instances/IServiceInstanceDeferredEndpoint.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the Service Instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ServiceInstanceAsyncOperation&gt; UpdateAsync(ServiceInstanceUpdateRequest request)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="OpenServiceBroker.Instances.ServiceInstanceUpdateRequest.html">ServiceInstanceUpdateRequest</a></dt>
+    <dd><p>Parameters for the requested Service Instance update.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="OpenServiceBroker.Instances.ServiceInstanceAsyncOperation.html">ServiceInstanceAsyncOperation</a>&gt;</dt>
+    <dd><p>A potentially deferred (asynchronous) operation. If <a class="xref" href="OpenServiceBroker.AsyncOperation.html#OpenServiceBroker_AsyncOperation_Completed">Completed</a> is false, start polling <a class="xref" href="OpenServiceBroker.Instances.IServiceInstanceDeferredEndpoint.html#OpenServiceBroker_Instances_IServiceInstanceDeferredEndpoint_LastOperation_System_String_System_String_System_String_">LastOperation(string?, string?, string?)</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="OpenServiceBroker.Errors.BrokerException.html">BrokerException</a></dt>
+    <dd><p>The requested change is not supported.</p>
+</dd>
+  </dl>
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/TypedRest/OpenServiceBroker/blob/0.7.0/src/Client/Instances/IServiceInstanceDeferredEndpoint.cs/#L11" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright Bastian Eicher
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

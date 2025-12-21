@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Shared/">
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Project Path="Client/Client.csproj" />
+  <Project Path="Model/Model.csproj" />
+  <Project Path="Server/Server.csproj" />
+  <Project Path="UnitTests/UnitTests.csproj" />
+</Solution>

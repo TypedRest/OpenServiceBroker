@@ -13,7 +13,7 @@ max_line_length = off
 [*.{json,xml,yml,htm,html,js,ts,css,scss,less}]
 indent_size = 2
 
-[*.{*proj,resx,config,ruleset,cd,props,targets,nuspec}]
+[*.{*proj,slnx,resx,config,ruleset,cd,props,targets,nuspec}]
 end_of_line = crlf
 indent_size = 2
 
@@ -23,10 +23,6 @@ end_of_line = crlf
 [*.{bat,cmd}]
 charset = latin1
 end_of_line = crlf
-
-[*.sln]
-end_of_line = crlf
-indent_style = tab
 
 [*.{md,resx,Designer.*}]
 trim_trailing_whitespace = false

@@ -11,7 +11,8 @@
       "properties": {
         "TargetFramework": "net8.0"
       },
-      "dest": "api"
+      "dest": "api",
+      "filter": "filterConfig.yml"
     }
   ],
   "build": {

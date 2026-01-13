@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="OpenServiceBroker.Server" Version="0.7.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="10.1.0" />
   </ItemGroup>

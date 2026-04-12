@@ -47,7 +47,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
       - name: Create GitHub Release
         if: github.ref_type == 'tag'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           body: |
             **[Client NuGet package](https://www.nuget.org/packages/OpenServiceBroker.Client/${{steps.gitversion.outputs.nuGetVersion}})** | **[Server NuGet package](https://www.nuget.org/packages/OpenServiceBroker.Server/${{steps.gitversion.outputs.nuGetVersion}})**

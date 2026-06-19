@@ -15,4 +15,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="10.2.1" />
   </ItemGroup>
 
+  <!-- Temporarily unblock build until https://github.com/dotnet/efcore/issues/38257 is resolved -->
+  <ItemGroup>
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-2m69-gcr7-jv3q" />
+  </ItemGroup>
+
 </Project>

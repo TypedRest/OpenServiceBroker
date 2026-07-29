@@ -13,10 +13,6 @@
       "automergeType": "branch"
     },
     {
-      "matchPackageNames": ["FluentAssertions"],
-      "allowedVersions": "<8"
-    },
-    {
       "matchPackagePatterns": ["docfx", "SourceLink", "TypedRest.Reactive", "NJsonSchema"],
       "automerge": true,
       "automergeType": "branch"

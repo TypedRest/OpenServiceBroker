@@ -18,6 +18,8 @@ jobs:
       - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: '10.0.x'
+      - name: Add NuGet package source
+        run: dotnet nuget add source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json --name github --username ${{github.actor}} --password ${{github.token}} --store-password-in-clear-text
 
       # Build
       - name: Build (pre-release)

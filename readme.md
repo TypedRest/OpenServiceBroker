@@ -5,9 +5,9 @@
 
 This project provides both a server and a client .NET library for the [Open Service Broker API](https://www.openservicebrokerapi.org/) specification. This specification allows developers, ISVs, and SaaS vendors a single, simple, and elegant way to deliver services to applications running within cloud native platforms such as Cloud Foundry, OpenShift, and Kubernetes.
 
-The **[Server Library](#server-library)** implements the API for you using ASP.NET Core. You simply need to provide implementations for a few interfaces, shielded from the HTTP-related details.
+The **[Server Library](src/Server/README.md)** implements the API for you using ASP.NET Core. You simply need to provide implementations for a few interfaces, shielded from the HTTP-related details.
 
-The **[Client Library](#client-library)** allows you to call Service Brokers that implement the API using idiomatic C# interfaces and type-safe DTOs.
+The **[Client Library](src/Client/README.md)** allows you to call Service Brokers that implement the API using idiomatic C# interfaces and type-safe DTOs.
 
 ## Server Library
 
@@ -33,11 +33,7 @@ services.AddControllers()
         .AddOpenServiceBroker();
 ```
 
-You can use the **[project template](template/)** to quickly set up a pre-configured ASP.NET Core 8.0 project with `OpenServiceBroker.Server`.
-
-### Versioning
-
-The server library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.16`.
+You can use the **[project template](template/readme.md)** to quickly set up a pre-configured ASP.NET Core 8.0 project with `OpenServiceBroker.Server`.
 
 ## Client Library
 
@@ -149,16 +145,6 @@ Delete a service binding:
 
 ```csharp
 await client.ServiceInstancesPolling["123"].ServiceBindings["456"].UnbindAsync(serviceId: "abc", planId: "xyz");
-```
-
-### Versioning
-
-The client library specifies the API version it expects by setting the `X-Broker-API-Version` header for all requests (as defined in the specification).
-
-Currently the client library supports the `2.16` feature set but defaults to setting the version header to `2.13` for greater compatibility with older brokers. If the broker you are calling expects a different version and you are sure your request is compliant with that version of the specification you can override this:
-
-```csharp
-client.SetApiVersion(new ApiVersion(2, 16));
 ```
 
 ## Building

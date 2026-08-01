@@ -22,11 +22,11 @@
     <PackageProjectUrl>https://openservicebroker.typedrest.net/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)..\icon.png" Pack="true" PackagePath="\" />
-    <None Include="$(MSBuildThisFileDirectory)..\readme.md" Pack="true" PackagePath="\"/>
+    <None Include="README.md" Pack="True" PackagePath="\" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
   </ItemGroup>
 
   <!-- Build-time dependencies -->

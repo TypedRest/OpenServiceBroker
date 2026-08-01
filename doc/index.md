@@ -10,6 +10,25 @@ The Server Library implements the API for you using ASP.NET Core. You simply nee
 
 The Client Library allows you to call Service Brokers that implement the API using idiomatic C# interfaces and type-safe DTOs.
 
+## NuGet packages
+
+| Package                                                                              | Description                                           |
+| ------------------------------------------------------------------------------------ | ----------------------------------------------------- |
+| [OpenServiceBroker.Server](https://www.nuget.org/packages/OpenServiceBroker.Server/) | Implements the API for you using ASP.NET Core.        |
+| [OpenServiceBroker.Client](https://www.nuget.org/packages/OpenServiceBroker.Client/) | Calls Service Brokers that implement the API.         |
+| [OpenServiceBroker.Model](https://www.nuget.org/packages/OpenServiceBroker.Model/)   | DTO classes and exceptions used by both of the above. |
+
+All three share the <xref:OpenServiceBroker> namespace and its sub-namespaces. Classes are split across the packages depending on whether they are server-side, client-side or shared DTOs.
+
+### Dependencies
+
+```mermaid
+flowchart TD
+    server["OpenServiceBroker.Server"] --> model
+    client["OpenServiceBroker.Client"] --> model
+    model["OpenServiceBroker.Model"]
+```
+
 ## Server Library
 
 Set up a regular ASP.NET Core 8.0+ project and add the NuGet package [OpenServiceBroker.Server](https://www.nuget.org/packages/OpenServiceBroker.Server/). Then implement the following interfaces:

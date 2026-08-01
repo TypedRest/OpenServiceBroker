@@ -37,7 +37,7 @@ You can use the **[project template](template/)** to quickly set up a pre-config
 
 ### Versioning
 
-The Server Library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.16`.
+The server library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.16`.
 
 ## Client Library
 
@@ -153,9 +153,9 @@ await client.ServiceInstancesPolling["123"].ServiceBindings["456"].UnbindAsync(s
 
 ### Versioning
 
-The Client Library specifies the API version it expects by setting the `X-Broker-API-Version` header for all requests (as defined in the specification).
+The client library specifies the API version it expects by setting the `X-Broker-API-Version` header for all requests (as defined in the specification).
 
-Currently the Client Library supports the `2.16` feature set but defaults to setting the version header to `2.13` for greater compatibility with older brokers. If the broker you are calling expects a different version and you are sure your request is compliant with that version of the specification you can override this:
+Currently the client library supports the `2.16` feature set but defaults to setting the version header to `2.13` for greater compatibility with older brokers. If the broker you are calling expects a different version and you are sure your request is compliant with that version of the specification you can override this:
 
 ```csharp
 client.SetApiVersion(new ApiVersion(2, 16));

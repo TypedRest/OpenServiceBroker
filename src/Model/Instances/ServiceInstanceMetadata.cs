@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace OpenServiceBroker.Instances;
@@ -10,5 +11,6 @@ public class ServiceInstanceMetadata
     /// <summary>
     /// Broker specified key-value pairs specifying attributes of Service Instances that are meaningful and relevant to Platform users, but do not directly imply behaviour changes by the Platform.
     /// </summary>
+    [JsonProperty("labels", NullValueHandling = NullValueHandling.Ignore)]
     public JObject Labels { get; set; }
 }

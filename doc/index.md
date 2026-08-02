@@ -136,7 +136,7 @@ await client.ServiceInstancesPolling["123"].DeprovisionAsync(serviceId: "abc", p
 Create a service binding:
 
 ```csharp
-var result = await client.ServiceInstancesPolling["123"].ServiceBindings["456"].ProvisionAsync(new ServiceBindingRequest
+var result = await client.ServiceInstancesPolling["123"].ServiceBindings["456"].BindAsync(new ServiceBindingRequest
 {
     ServiceId = "abc",
     PlanId = "xyz",

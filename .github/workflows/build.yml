@@ -22,12 +22,8 @@ jobs:
         run: dotnet nuget add source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json --name github --username ${{github.actor}} --password ${{github.token}} --store-password-in-clear-text
 
       # Build
-      - name: Build (pre-release)
-        if: github.ref_type != 'tag'
-        run: ./build.sh ${{steps.gitversion.outputs.nuGetVersion}}-${{steps.gitversion.outputs.shortSha}}
-      - name: Build (release)
-        if: github.ref_type == 'tag'
-        run: ./build.sh ${{steps.gitversion.outputs.nuGetVersion}}
+      - name: Build
+        run: ./build.sh ${{steps.gitversion.outputs.nuGetVersion}}${{github.ref_type != 'tag' && format('-{0}', steps.gitversion.outputs.shortSha) || ''}}
       - name: Report test results
         if: always()
         uses: dorny/test-reporter@v3

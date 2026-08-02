@@ -13,7 +13,17 @@ public class CatalogFacts : FactsBase<ICatalogService>
                 {
                     Id = "123",
                     Name = "my_service",
-                    Description = "my service"
+                    Description = "my service",
+                    Plans =
+                    {
+                        new Plan
+                        {
+                            Id = "456",
+                            Name = "my_plan",
+                            Description = "my plan",
+                            BindingRotatable = true
+                        }
+                    }
                 }
             }
         };

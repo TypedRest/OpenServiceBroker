@@ -6,6 +6,12 @@ namespace OpenServiceBroker.Bindings;
 public abstract class ServiceBindingBase
 {
     /// <summary>
+    /// An optional object containing metadata about this Service Binding, such as its expiration date.
+    /// </summary>
+    [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
+    public ServiceBindingMetadata Metadata { get; set; }
+
+    /// <summary>
     /// A free-form hash of credentials that can be used by applications or users to access the service. MUST be returned if the Service Broker supports generation of credentials.
     /// </summary>
     [JsonProperty("credentials", NullValueHandling = NullValueHandling.Ignore)]
@@ -38,7 +44,8 @@ public abstract class ServiceBindingBase
 
     protected bool Equals(ServiceBindingBase other)
         => SyslogDrainUrl == other.SyslogDrainUrl
-        && RouteServiceUrl == other.RouteServiceUrl;
+        && RouteServiceUrl == other.RouteServiceUrl
+        && Equals(Metadata, other.Metadata);
 
     public override bool Equals(object obj) => obj is ServiceBindingBase other && Equals(other);
 
@@ -46,7 +53,10 @@ public abstract class ServiceBindingBase
     {
         unchecked
         {
-            return ((SyslogDrainUrl != null ? SyslogDrainUrl.GetHashCode() : 0) * 397) ^ (RouteServiceUrl != null ? RouteServiceUrl.GetHashCode() : 0);
+            int hashCode = SyslogDrainUrl != null ? SyslogDrainUrl.GetHashCode() : 0;
+            hashCode = (hashCode * 397) ^ (RouteServiceUrl != null ? RouteServiceUrl.GetHashCode() : 0);
+            hashCode = (hashCode * 397) ^ (Metadata?.GetHashCode() ?? 0);
+            return hashCode;
         }
     }
 }

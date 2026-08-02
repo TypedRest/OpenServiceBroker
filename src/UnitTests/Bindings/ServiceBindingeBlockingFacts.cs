@@ -37,6 +37,30 @@ public class ServiceBindingBlockingFacts : FactsBase<IServiceBindingBlocking>
     }
 
     [Fact]
+    public async Task BindRotate()
+    {
+        var request = new ServiceBindingRequest
+        {
+            ServiceId = "abc",
+            PlanId = "xyz",
+            PredecessorBindingId = "789"
+        };
+        var response = new ServiceBinding
+        {
+            Metadata = new()
+            {
+                ExpiresAt = new DateTimeOffset(2019, 12, 31, 23, 59, 59, TimeSpan.Zero),
+                RenewBefore = new DateTimeOffset(2019, 12, 30, 23, 59, 59, TimeSpan.Zero)
+            }
+        };
+
+        Mock.Setup(x => x.BindAsync(new("123", "456"), request))
+            .ReturnsAsync(response);
+        var result = await Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].BindAsync(request);
+        result.Should().BeEquivalentTo(response);
+    }
+
+    [Fact]
     public async Task BindUnchanged()
     {
         var request = new ServiceBindingRequest

@@ -1,4 +1,5 @@
 using System.Net;
+using Newtonsoft.Json.Linq;
 using OpenServiceBroker.Errors;
 using TypedRest;
 using TypedRest.Http;
@@ -13,7 +14,12 @@ public class ServiceInstanceBlockingFacts : FactsBase<IServiceInstanceBlocking>
         var response = new ServiceInstanceResource
         {
             ServiceId = "abc",
-            PlanId = "xyz"
+            PlanId = "xyz",
+            Metadata = new()
+            {
+                Labels = new() {{"key1", "value1"}},
+                Attributes = new() {{"broker.generated.attr1", "value1"}}
+            }
         };
 
         Mock.Setup(x => x.FetchAsync("123"))

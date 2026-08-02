@@ -42,11 +42,20 @@ public class ServiceBindingRequest : IServicePlanReference, IEquatable<ServiceBi
     [JsonProperty("bind_resource")]
     public ServiceBindingResourceObject BindResource { get; set; }
 
+    /// <summary>
+    /// Requests the rotation of an existing Service Binding. If present, MUST be the ID of a non-expired Service Binding of the same Service Instance.
+    /// The request creates a new Service Binding; both the new and the old Service Binding MUST be valid in parallel until they expire or are deleted.
+    /// Only supported for plans with <see cref="Catalogs.Plan.BindingRotatable"/> set to true.
+    /// </summary>
+    [JsonProperty("predecessor_binding_id")]
+    public string PredecessorBindingId { get; set; }
+
     public bool Equals(ServiceBindingRequest other)
         => other != null
         && ServiceId == other.ServiceId
         && PlanId == other.PlanId
-        && Equals(BindResource, other.BindResource);
+        && Equals(BindResource, other.BindResource)
+        && PredecessorBindingId == other.PredecessorBindingId;
 
     public override bool Equals(object obj) => obj is ServiceBindingRequest other && Equals(other);
 
@@ -57,6 +66,7 @@ public class ServiceBindingRequest : IServicePlanReference, IEquatable<ServiceBi
             int hashCode = ServiceId?.GetHashCode() ?? 0;
             hashCode = (hashCode * 397) ^ (PlanId?.GetHashCode() ?? 0);
             hashCode = (hashCode * 397) ^ (BindResource?.GetHashCode() ?? 0);
+            hashCode = (hashCode * 397) ^ (PredecessorBindingId?.GetHashCode() ?? 0);
             return hashCode;
         }
     }

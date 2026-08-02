@@ -47,6 +47,13 @@ public class Plan : IEquatable<Plan>
     public bool? Bindable { get; set; }
 
     /// <summary>
+    /// Whether a Service Binding of this plan supports Service Binding rotation via <see cref="Bindings.ServiceBindingRequest.PredecessorBindingId"/>. The default is false.
+    /// </summary>
+    [JsonProperty("binding_rotatable")]
+    [DefaultValue(false)]
+    public bool BindingRotatable { get; set; }
+
+    /// <summary>
     /// Whether the Plan supports upgrade/downgrade/sidegrade to another version. This field is OPTIONAL. If specified, this takes precedence over <see cref="Service.PlanUpdateable"/>.
     /// </summary>
     [JsonProperty("plan_updateable", NullValueHandling = NullValueHandling.Ignore)]
@@ -77,6 +84,7 @@ public class Plan : IEquatable<Plan>
         && Description == other.Description
         && Free == other.Free
         && Bindable == other.Bindable
+        && BindingRotatable == other.BindingRotatable
         && PlanUpdateable == other.PlanUpdateable
         && Equals(Schemas, other.Schemas)
         && Equals(MaintenanceInfo, other.MaintenanceInfo);
@@ -92,6 +100,7 @@ public class Plan : IEquatable<Plan>
             hashCode = (hashCode * 397) ^ (Description?.GetHashCode() ?? 0);
             hashCode = (hashCode * 397) ^ Free.GetHashCode();
             hashCode = (hashCode * 397) ^ Bindable.GetHashCode();
+            hashCode = (hashCode * 397) ^ BindingRotatable.GetHashCode();
             hashCode = (hashCode * 397) ^ PlanUpdateable.GetHashCode();
             return hashCode;
         }

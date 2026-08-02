@@ -30,7 +30,7 @@ You can use the [project template](https://github.com/TypedRest/OpenServiceBroke
 
 ### Versioning
 
-The Server Library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.16`.
+The Server Library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.17`.
 
 ## Related packages
 

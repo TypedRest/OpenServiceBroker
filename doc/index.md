@@ -55,7 +55,7 @@ You can use the **[project template](https://github.com/TypedRest/OpenServiceBro
 
 ### Versioning
 
-The Server Library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.16`.
+The Server Library inspects the `X-Broker-API-Version` header for all requests (as defined in the specification). Currently it accepts all versions from `2.0` to `2.17`.
 
 ## Client Library
 
@@ -155,6 +155,17 @@ var result = await client.ServiceInstancesPolling["123"].ServiceBindings["456"].
 });
 ```
 
+Rotate a service binding (requires `binding_rotatable` in the plan):
+
+```csharp
+var result = await client.ServiceInstancesPolling["123"].ServiceBindings["789"].BindAsync(new ServiceBindingRequest
+{
+    ServiceId = "abc",
+    PlanId = "xyz",
+    PredecessorBindingId = "456"
+});
+```
+
 Fetch a service binding:
 
 ```csharp
@@ -171,8 +182,8 @@ await client.ServiceInstancesPolling["123"].ServiceBindings["456"].UnbindAsync(s
 
 The Client Library specifies the API version it expects by setting the `X-Broker-API-Version` header for all requests (as defined in the specification).
 
-Currently the Client Library supports the `2.16` feature set but defaults to setting the version header to `2.13` for greater compatibility with older brokers. If the broker you are calling expects a different version and you are sure your request is compliant with that version of the specification you can override this:
+Currently the Client Library supports the `2.17` feature set but defaults to setting the version header to `2.13` for greater compatibility with older brokers. If the broker you are calling expects a different version and you are sure your request is compliant with that version of the specification you can override this:
 
 ```csharp
-client.SetApiVersion(new ApiVersion(2, 16));
+client.SetApiVersion(new ApiVersion(2, 17));
 ```

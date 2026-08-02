@@ -16,10 +16,17 @@ public class ServiceInstanceResource : ServiceInstanceBase, IEquatable<ServiceIn
     [JsonProperty("dashboard_url")]
     public Uri DashboardUrl { get; set; }
 
+    /// <summary>
+    /// An optional object containing metadata for the Service Instance.
+    /// </summary>
+    [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
+    public ServiceInstanceMetadata Metadata { get; set; }
+
     public bool Equals(ServiceInstanceResource other)
         => other != null
         && base.Equals(other)
-        && DashboardUrl == other.DashboardUrl;
+        && DashboardUrl == other.DashboardUrl
+        && Equals(Metadata, other.Metadata);
 
     public override bool Equals(object obj) => obj is ServiceInstanceResource other && Equals(other);
 
@@ -27,7 +34,9 @@ public class ServiceInstanceResource : ServiceInstanceBase, IEquatable<ServiceIn
     {
         unchecked
         {
-            return (base.GetHashCode() * 397) ^ (DashboardUrl != null ? DashboardUrl.GetHashCode() : 0);
+            int hashCode = (base.GetHashCode() * 397) ^ (DashboardUrl != null ? DashboardUrl.GetHashCode() : 0);
+            hashCode = (hashCode * 397) ^ (Metadata?.GetHashCode() ?? 0);
+            return hashCode;
         }
     }
 }

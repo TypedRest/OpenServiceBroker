@@ -55,7 +55,7 @@ public abstract class BrokerControllerBase<TBlocking, TDeferred>(IServiceProvide
     /// <summary>
     /// The latest Open Service Broker API version currently supported.
     /// </summary>
-    public static ApiVersion SupportedApiVersion => new(2, 16);
+    public static ApiVersion SupportedApiVersion => new(2, 17);
 
     private void CheckApiVersion()
     {

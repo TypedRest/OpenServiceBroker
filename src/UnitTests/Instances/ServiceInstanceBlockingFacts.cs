@@ -115,9 +115,9 @@ public class ServiceInstanceBlockingFacts : FactsBase<IServiceInstanceBlocking>
         Mock.Setup(x => x.UpdateAsync(new("123"), request))
             .Returns(Task.CompletedTask);
 
-        var result = await Client.HttpClient.PatchAsync(Client.ServiceInstancesBlocking["123"].Uri, request, Client.Serializers[0]);
+        var result = await Client.HttpClient.PatchAsync(Client.ServiceInstancesBlocking["123"].Uri, request, Client.Serializers[0], TestContext.Current.CancellationToken);
         result.StatusCode.Should().Be(HttpStatusCode.OK);
-        string resultString = await result.Content.ReadAsStringAsync();
+        string resultString = await result.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
         resultString.Should().Be("{}");
     }
 
@@ -135,9 +135,9 @@ public class ServiceInstanceBlockingFacts : FactsBase<IServiceInstanceBlocking>
         Mock.Setup(x => x.DeprovisionAsync(new("123"), "abc", "xyz"))
             .Returns(Task.CompletedTask);
 
-        var result = await Client.HttpClient.DeleteAsync(Client.ServiceInstancesBlocking["123"].Uri.Join("?service_id=abc&plan_id=xyz"));
+        var result = await Client.HttpClient.DeleteAsync(Client.ServiceInstancesBlocking["123"].Uri.Join("?service_id=abc&plan_id=xyz"), TestContext.Current.CancellationToken);
         result.StatusCode.Should().Be(HttpStatusCode.OK);
-        string resultString = await result.Content.ReadAsStringAsync();
+        string resultString = await result.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
         resultString.Should().Be("{}");
     }
 

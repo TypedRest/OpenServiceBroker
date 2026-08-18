@@ -136,7 +136,7 @@ public class ServiceBindingDeferredFacts : FactsBase<IServiceBindingDeferred>
             .ReturnsAsync(response);
 
         var endpoint = Client.ServiceInstancesDeferred["123"].ServiceBindings["456"].LastOperation("abc", "xyz", "my operation");
-        var result = await endpoint.ReadAsync();
+        var result = await endpoint.ReadAsync(TestContext.Current.CancellationToken);
         result.Should().BeEquivalentTo(response);
         endpoint.PollingInterval.Should().Be(TimeSpan.FromSeconds(5));
     }

@@ -30,7 +30,7 @@ public class CatalogFacts : FactsBase<ICatalogService>
 
         Mock.Setup(x => x.GetCatalogAsync())
             .ReturnsAsync(response);
-        var result = await Client.Catalog.ReadAsync();
+        var result = await Client.Catalog.ReadAsync(TestContext.Current.CancellationToken);
         result.Should().BeEquivalentTo(response);
     }
 
@@ -57,8 +57,8 @@ public class CatalogFacts : FactsBase<ICatalogService>
             .ReturnsAsync(result);
 
         var catalogEndpoint = Client.Catalog;
-        var result1 = await catalogEndpoint.ReadAsync();
-        var result2 = await catalogEndpoint.ReadAsync();
+        var result1 = await catalogEndpoint.ReadAsync(TestContext.Current.CancellationToken);
+        var result2 = await catalogEndpoint.ReadAsync(TestContext.Current.CancellationToken);
         result1.Should().BeEquivalentTo(result2);
 
         Mock.Verify(x => x.GetCatalogAsync(), Times.Once());

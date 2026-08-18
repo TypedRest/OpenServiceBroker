@@ -183,7 +183,7 @@ public class ServiceInstanceDeferredFacts : FactsBase<IServiceInstanceDeferred>
 
         Mock.Setup(x => x.GetLastOperationAsync(new("123"), "abc", "xyz", "my operation"))
             .ReturnsAsync(response);
-        var result = await Client.ServiceInstancesDeferred["123"].LastOperation("abc", "xyz", "my operation").ReadAsync();
+        var result = await Client.ServiceInstancesDeferred["123"].LastOperation("abc", "xyz", "my operation").ReadAsync(TestContext.Current.CancellationToken);
         result.Should().BeEquivalentTo(response);
     }
 

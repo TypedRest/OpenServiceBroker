@@ -106,8 +106,8 @@ public class ServiceBindingBlockingFacts : FactsBase<IServiceBindingBlocking>
         Mock.Setup(x => x.UnbindAsync(new("123", "456"), "abc", "xyz"))
             .Returns(Task.CompletedTask);
 
-        var result = await Client.HttpClient.DeleteAsync(Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].Uri.Join("?service_id=abc&plan_id=xyz"));
-        string resultString = await result.Content.ReadAsStringAsync();
+        var result = await Client.HttpClient.DeleteAsync(Client.ServiceInstancesBlocking["123"].ServiceBindings["456"].Uri.Join("?service_id=abc&plan_id=xyz"), TestContext.Current.CancellationToken);
+        string resultString = await result.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
         resultString.Should().Be("{}");
     }
 

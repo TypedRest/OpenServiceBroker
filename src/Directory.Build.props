@@ -19,6 +19,7 @@
     <Authors>Bastian Eicher</Authors>
     <Copyright>Copyright Bastian Eicher et al.</Copyright>
     <RepositoryUrl>https://github.com/TypedRest/OpenServiceBroker</RepositoryUrl>
+    <PackageReleaseNotes>https://github.com/TypedRest/OpenServiceBroker/releases/tag/$(Version)</PackageReleaseNotes>
     <PackageProjectUrl>https://openservicebroker.typedrest.net/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>

@@ -6,7 +6,7 @@ Server library implementing the [Open Service Broker API](https://www.openservic
 
 ## Usage
 
-Set up a regular ASP.NET Core 8.0+ project. Then implement the following interfaces:
+Set up a regular ASP.NET Core 10.0+ project. Then implement the following interfaces:
 - `ICatalogService` (optionally also `IETagProvider` and/or `ILastModifiedProvider` on the same class)
 - either `IServiceInstanceBlocking` or `IServiceInstanceDeferred` or both
 - either `IServiceBindingBlocking` or `IServiceBindingDeferred` or both
@@ -26,7 +26,7 @@ services.AddControllers()
         .AddOpenServiceBroker();
 ```
 
-You can use the [project template](https://github.com/TypedRest/OpenServiceBroker/tree/master/template) to quickly set up a pre-configured ASP.NET Core 8.0 project with `OpenServiceBroker.Server`.
+You can use the [project template](https://github.com/TypedRest/OpenServiceBroker/tree/master/template) to quickly set up a pre-configured ASP.NET Core 10.0 project with `OpenServiceBroker.Server`.
 
 ### Versioning
 
